@@ -1,0 +1,160 @@
+/* Vispārējie null reset vai bāzes stili pēc vajadzības */
+
+/* Bāzes stils */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #111; /* Rezerves fons (ja attēli neslēdzas) */
+    color: #fff;      /* Teksta krāsa, ņemot vērā tumšo fonu */
+    overflow-x: hidden;
+  }
+  
+  /* Galvenā vietnes galvene – navigācija */
+  .site-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10; /* Lai būtu virs hero */
+  }
+  
+  .site-header .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .site-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .site-header nav a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+  }
+  
+  .site-header nav a:hover,
+  .site-header nav a.active {
+    color: #ffc107;
+  }
+  
+  /* 1) Hero sekcija */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Pilns ekrāns */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Slēpjam pārplūdi */
+  }
+  
+  /* Fona attēls */
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/your-hero-image.jpg') center center / cover no-repeat;
+    z-index: 1;
+  }
+  
+  /* Krāsainais pārklājums ar gradientu + neliela caurspīdība */
+  .color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* “vaporwave” stila gradient, vari mainīt krāsas */
+    background: linear-gradient(45deg, rgba(255,0,150,0.5), rgba(0,150,255,0.5));
+    mix-blend-mode: screen; /* Izveido interesantu sajaukumu ar fona attēlu */
+    z-index: 2;
+  }
+  
+  /* Teksta konteiners centrā */
+  .hero-content {
+    position: relative;
+    z-index: 3; /* Virs background + overlay */
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  /* Lielais virsraksts ar gradient-text efektu */
+  .hero-content h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin: 0 0 1rem 0;
+    color: #fff; /* Rezerves krāsa, ja background-clip netiks atbalstīts */
+    background: linear-gradient(to right, #ffe259, #ffa751);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* lai redzams grad. */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 900;
+  }
+  
+  /* Apakšvirsraksts */
+  .hero-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+  
+  /* Paragrāfs – var vēl piestrādāt pie stila */
+  .hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  
+  /* Poga */
+  .hero-content .button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    background-color: #ffc107;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero-content .button:hover {
+    background-color: #ff9800;
+  }
+  
+  /* 2) Par sadaļu zem hero */
+  .about-section {
+    position: relative;
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .about-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  

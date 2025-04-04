@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>Prātotāji</title>
+  <style>
+    /* Basic reset + fonts */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 1) Globālais fons visam ekrānam */
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* lai nerādītu skrollbāru */
+      font-family: sans-serif;
+      /* Globālais fons: globalBg.jpg */
+      background: url("images/globalBg.jpg") center center / cover no-repeat;
+    }
+
+    /* 2) Iekšējais “split” konteiners ar OTRU fonu (pratotajiBg + gradient), 
+          aizņemot 90% (lai ~10% maliņa apkārt) */
+    .split-container {
+      position: relative;
+      width: 95%;      
+      height: 95%;     
+      margin: 2% auto; /* 5% no augšas un apakšas, auto lai centrē horizontāli */
+      overflow: hidden;
+      color: #fff;
+      /* Otrs fons – ietonētais pratotajiBg */
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("images/pratotajiBg.jpg") center center / cover no-repeat;
+    }
+
+    /* Logo kreisajā augšējā stūrī KONTEINERA ietvaros */
+    .logo-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 10px;
+      z-index: 999;
+    }
+    .logo-container a {
+      display: inline-block;
+    }
+    .logo-container img {
+      height: 80px; 
+      opacity: 0.7;
+      transition: transform 0.3s ease;
+      animation: pulse 2s infinite; 
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .logo-container img:hover {
+      transform: scale(1.1);
+      animation: none;
+    }
+
+    .politicians-row {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start; /* lai nelec vertikāli */
+  margin-top: 1rem;
+}
+
+.politician-card {
+  width: 300px;
+  height: 320px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* animācija */
+}
+
+.politician-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.politician-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid #fff;
+  margin-bottom: 0.5rem;
+}
+.politician-card .name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.politician-card .position {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+    /* Poga “Prātotāji”, lai atgrieztos iepriekš */
+    .back-button {
+      position: absolute;
+      top: 70%;
+      right: 40%;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      color: #fff;
+      background-color: rgba(101, 141, 79, 0.8);
+      border: 2px solid #fff;
+      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .back-button:hover {
+      background: rgba(0,0,0,0.6);
+    }
+
+    /* Modal logs (YouTube + teksts) */
+    .modal-overlay {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none; 
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh; /* lai logs neiziet ārpus ekrāna */
+  background: rgba(30, 30, 30, 0.8);
+  border: 2px solid #fff;
+  padding: 1rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column; /* Sākumā “kolonnā” (vertikāli) */
+  overflow: hidden;       /* Ja nepieciešams, kontrolē pārpildi */
+}
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+    }
+ /* Iekšējais .modal-body tiks sadalīts 2 blokos */
+.modal-body {
+  display: flex;
+  flex-direction: column; /* Mazos ekrānos video virs teksta */
+  gap: 1rem; 
+  flex: 1;
+  overflow: hidden;       
+}
+
+.video-container {
+  width: 100%;         /* Mazos ekrānos lai aizņem pilnu platumu */
+  aspect-ratio: 16/9;  /* Saglabā 16:9 proporciju, ja pārlūks atbalsta */
+  background: #000;    /* Rezerves fons, ja nav video */
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+}
+.text-container {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  padding: 1rem;
+  overflow-y: auto;    /* Ja teksts garāks par pieejamo augstumu */
+  flex: 1;            /* Lai šī kolonna “izstieptos” pārējo vietu */
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;  /* mobīlajam layout */
+  gap: 1rem;
+  flex: 1;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .modal-body {
+    flex-direction: row;
+    align-items: flex-start;   /* <== lai katrs bloks ir savā augstumā */
+    gap: 2rem;                 /* <== atstarpe starp video un tekstu */
+  }
+
+  .video-container {
+    width: 50%;
+    flex-shrink: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .text-container {
+    width: 50%;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  .text-container h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.text-container h2 {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  color: #eee;
+}
+
+.text-container .label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.text-container p {
+  margin: 0 0 0.7rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.fragment {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Iekšējais konteiners ar ietonēto pratotajiBg fonu -->
+  <div class="split-container" id="splitContainer">
+
+    <!-- Logo stūrī -->
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/logo_small.png" alt="Logo">
+      </a>
+    </div>
+
+    <!-- Politiķu rinda augšpusē -->
+    <div class="politicians-row">
+      <!-- Paraugs: 3 politiķu kartītes -->
+      <div class="politician-card" 
+           data-video="https://www.youtube.com/embed/bQZbYTCwHNs" 
+           data-text="files/vaira1.html">
+        <img src="images/vaira_freiberga.jpg" alt="Vaira Vīķe-Freiberga">
+        <div class="name">Vaira Vīķe-Freiberga</div>
+        <div class="position">Latvijas valsts eksprezidente</div>
+      </div>
+
+      <div class="politician-card" 
+           data-video="https://www.youtube.com/embed/qezJrphpgP0" 
+           data-text="files/kacs1.html">
+        <img src="images/maksims_kacs.jpg" alt="Maksims Kacs">
+        <div class="name">Maksims Kacs</div>
+        <div class="position">Kremļa opozicionārs</div>
+      </div>
+
+      <div class="politician-card" 
+           data-video="https://www.youtube.com/embed/Z7xKhzQj7IY" 
+           data-text="files/puteklis1.html">
+        <img src="images/puteklis.jpg" alt="Puteklis">
+        <div class="name">Puteklis</div>
+        <div class="position">
+          Briesmīgie Putekļa piedzīvojumi (Imants Ziedonis)
+        </div>
+      </div>
+    </div>
+
+    <!-- Poga “Prātotāji”, lai atgrieztos uz iepriekšējo lapu vai citu (pielāgot) -->
+    <button class="back-button" onclick="window.location.href='politika_new.html'">Politiskā analīze</button>
+  </div>
+
+  <!-- Modal logs (YouTube + .txt fails) -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div class="modal-body">
+        <div class="video-container">
+          <iframe id="modalVideo" width="100%" height="250" 
+                  src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="text-container" id="modalText"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalText  = document.getElementById('modalText');
+
+    // Politiķu kartītes
+    const politicianCards = document.querySelectorAll('.politician-card');
+
+    politicianCards.forEach(card => {
+      card.addEventListener('click', async () => {
+        const videoURL = card.getAttribute('data-video'); 
+        const textFilePath = card.getAttribute('data-text');
+
+        modalVideo.src = videoURL;
+        try {
+          const resp = await fetch(textFilePath);
+          const textData = await resp.text();
+          modalText.innerHTML = textData;
+        } catch (e) {
+          modalText.textContent = 
+            "Neizdevās ielādēt tekstu no " + textFilePath;
+        }
+
+        modalOverlay.style.display = 'flex';
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modalOverlay.style.display = 'none';
+      modalVideo.src = "";
+      modalText.textContent = "";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Datori — Putekļa pasaule</title>
+  <style>
+    body {
+  margin: 0;
+  background: #0e0e0e;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden; /* NEVIS overflow: hidden */
+         }
+    canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .top-logo {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1000;
+  background: none;     /* ← noņem fonu */
+  padding: 0;           /* ← noņem tukšumu apkārt */
+  border-radius: 0;     /* ← noapaļojumu noņem */
+  box-shadow: none;     /* ← noņem ēnu */
+}
+
+    .top-logo a {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 1.2em;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .top-logo a:hover {
+      color: #c84a2f;
+      transform: scale(1.05);
+    }
+ 
+    .top-logo img {
+  height: 80px;
+  animation: pulse 2.5s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+    .top-logo img:hover {
+  transform: scale(1.1);
+  /* animation: none; */ /* ← šo izdzēš! */
+}
+
+
+    .intro-line {
+      position: absolute;
+      top: 5em;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1em;
+      color: #bbb;
+      font-style: italic;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 0.5s;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    .overlay-text {
+       position: absolute;
+       top: 28%; /* no 40% uz 28% */
+       left: 50%;
+       transform: translate(-50%, -50%);
+       text-align: center;
+       z-index: 2;
+    }
+    .overlay-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      color: #ee6c4d;
+      margin-bottom: 0.3em;
+    }
+    .overlay-text p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+    
+    .grid-links {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  width: 90%;
+  max-width: 1100px; /* vai vairāk, ja vajag */
+  flex-wrap: nowrap; /* <- svarīgi */
+}
+.grid-links a {
+  flex: 1 1 0;
+  max-width: 140px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #eee;
+  padding: 0.6em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #444;
+  transition: background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+    .grid-links a img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 0.5em;
+      border: 1px solid #333;
+      background: #111;
+    }
+    .grid-links a:hover {
+      background: #ee6c4d;
+      color: white;
+    }
+
+    .quote {
+      position: absolute;
+      bottom: 1em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-style: italic;
+      font-size: 1em;
+      color: #999;
+      z-index: 2;
+    }
+
+    /* ContentBox stili + animācijas */
+    #contentBox {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: 70%;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1.5em;
+  color: #f0f0f0;
+  line-height: 1.5em;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  animation: fadeInBox 0.4s forwards;
+
+  /* scroll tikai lodziņam */
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+    @keyframes fadeInBox {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    /* Aizverot varam izmantot fade-out */
+    .fade-out {
+      animation: fadeOutBox 0.3s forwards;
+    }
+    @keyframes fadeOutBox {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+    }
+
+    #contentBox h2 {
+      margin-top: 0;
+      color: #ee6c4d;
+    }
+    #contentBox a {
+      color: #ee6c4d;
+      text-decoration: none;
+    }
+
+    #closeBtn {
+      position: absolute;
+      top: 0.4em;
+      right: 0.5em;
+      background: none;
+      border: none;
+      color: #ee6c4d;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    #closeBtn:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="networkCanvas"></canvas>
+
+  <div class="top-logo">
+    <a href="index.html">
+      <img src="images/logo_small.png" alt="Puteklis">
+      </a>
+  </div>
+
+  <div class="intro-line">Cilvēks radīja mašīnu, lai palīdzētu sev... un tā sāka ieteikt, ko ēst vakariņās.</div>
+
+  <div class="overlay-text">
+    <h1>Datori</h1>
+    <p>Laiks un saprāts digitālajā laikmetā.</p>
+  </div>
+
+  <!-- Pogas (tagad ar data-id, lai lādētu saturu) -->
+  <div class="grid-links">
+    <a href="#" data-id="mi">
+      <img src="images/thumbs/MI.jpg" alt="MI">
+      MI
+    </a>
+    <a href="#" data-id="intuicija">
+      <img src="images/thumbs/intuicija.jpg" alt="intuicija">
+      Digitālā intuīcija
+    </a>
+    <a href="#" data-id="tagadne">
+      <img src="images/thumbs/tagadne.jpg" alt="Tagadne">
+      Tagadne
+    </a>
+    <a href="#" data-id="nakotne">
+      <img src="images/thumbs/nakotne.jpg" alt="Nākotne">
+      Nākotne
+    </a>
+    <a href="#" data-id="pagatne">
+      <img src="images/thumbs/pagatne.jpg" alt="Pagātne">
+      Pagātne
+    </a>
+  </div>
+
+  <!-- Te parādīsies iekšējais ievads / raksts -->
+  <div id="contentBox"></div>
+  <div class="quote" id="quoteBox">"Katrs bits ir sapņa atblāzma."</div>
+
+  <script>
+    // 1) Tīkla animācija
+    const canvas = document.getElementById('networkCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const points = [];
+    const numPoints = 80;
+    for (let i = 0; i < numPoints; i++) {
+      points.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8
+      });
+    }
+
+    let mouse = { x: null, y: null };
+    canvas.addEventListener('mousemove', e => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < points.length; i++) {
+        let p = points[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = '#ee6c4d';
+        ctx.fill();
+
+        for (let j = i + 1; j < points.length; j++) {
+          let q = points[j];
+          let dx = p.x - q.x;
+          let dy = p.y - q.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        // Reakcija uz peli
+        if (mouse.x && mouse.y) {
+          let dx = p.x - mouse.x;
+          let dy = p.y - mouse.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            p.vx += dx * 0.0005;
+            p.vy += dy * 0.0005;
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // 2) Rotējošās citāti
+    const quotes = [
+      "Katrs bits ir sapņa atblāzma.",
+      "Mikroskēmas čuksti kļūst par domām.",
+      "Nospied klaviatūras taustiņu — un dzimst pasaule.",
+      "Signāli — mūsdienu valoda."
+    ];
+    setInterval(() => {
+      const box = document.getElementById('quoteBox');
+      box.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+    }, 6000);
+
+    // 3) Satura atvēršana -> #contentBox
+    const contentBox = document.getElementById('contentBox');
+
+    document.querySelectorAll('.grid-links a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault(); // nepāriet prom
+        const id = link.getAttribute('data-id');
+
+        // Ja #contentBox jau redzams, animē fade-out, tad maini saturu
+        if (contentBox.style.display === 'block') {
+          contentBox.classList.add('fade-out');
+          setTimeout(() => {
+            contentBox.classList.remove('fade-out');
+            showContent(id);
+          }, 300);
+        } else {
+          // Vienkārši atver saturu
+          showContent(id);
+        }
+      });
+    });
+
+    function showContent(id) {
+      contentBox.style.display = 'block';
+      contentBox.innerHTML = `
+        <button id="closeBtn" title="Aizvērt">✖</button>
+      `;
+      switch(id) {
+        case 'mi':
+          contentBox.innerHTML += `
+             <h2>🤖 Mākslīgais intelekts šodien: ne tikai Skynets, bet arī tavs kolēģis</h2>
+
+      <p><em>Reiz bija laiki, kad "mākslīgais intelekts" izklausījās pēc Terminatora filmas trešās daļas mārketinga reklāmas.</em></p>
+      <p>Šodien MI ir:</p>
+      <ul>
+        <li>tava meklētājprogramma,</li>
+        <li>tavas Google Maps prognozes,</li>
+        <li>tava Spotify dziesmu izlase,</li>
+        <li>un, jā — čoms, kas tev raksta referātu piektdienas naktī.</li>
+      </ul>
+
+      <h3>📅 Kur mēs esam 2025. gadā?</h3>
+      <p>Mākslīgais intelekts vairs nav tikai zinātnieku rotaļlieta laboratorijā. Tagad tas ir:</p>
+      <ul>
+        <li><strong>ChatGPT, Claude, Gemini, Mistral</strong> — teksta ģenerēšanas mašīnas ar IQ, kas sapņo par Turinga testu.</li>
+        <li><strong>DALL·E, Midjourney, Leonardo AI</strong> — mākslinieki bez otas, bez krampjiem rokām un bez autortiesībām (nu labi, šis vēl ir diskutējams).</li>
+        <li><strong>Deepfake video</strong> — tur, kur agrāk vajadzēja Holivudas budžetu, tagad pietiek ar pāris klikšķiem.</li>
+      </ul>
+
+      <h3>🧑‍💻 Ko tas nozīmē parastam cilvēkam?</h3>
+      <p>Tu jau dzīvo ar MI, vienkārši to nezini. Lūk, kā tas izpaužas:</p>
+      <ul>
+        <li>Tavs kolēģis raksta e-pastu ar ChatGPT, bet izliekas, ka viņš ir ģeniāls.</li>
+        <li>Tava Instagram lente optimizēta pēc algoritma, kas zina tavas vājības labāk nekā tava mamma.</li>
+        <li>Tu meklē “ātrāko ceļu uz darbu”, un MI nosūta tevi cauri bērnudārza pagalmiem, jo "statistiski tā sanāk ātrāk".</li>
+      </ul>
+      <p><em>Un jā, arī šis raksts varētu būt uzrakstīts ar MI.</em></p>
+      <p><strong>Bet tā nav krāpšana.</strong> Tā ir sadarbība. Kā cilvēks un robots spēlē šahu. Tikai tagad robots uztaisa arī galdiņu, raksta noteikumus un sūta preses relīzi.</p>
+
+      <h3>❓ Lielie jautājumi</h3>
+      <ul>
+        <li>Nav skaidrs, kas ir cilvēka, kas — mašīnu darbs.</li>
+        <li>Zināšanas ir sekundēs pieejamas, bet izpratne — joprojām deficīts.</li>
+        <li>Informācijas plūsma ātra, bet uzticība — trausla kā Google docā neatvērts fails.</li>
+        <li>Un: Vai cilvēks ir vēl nepieciešams, ja MI jau uzrakstīja referātu, atbildēja uz e-pastu, uzzīmēja logotipu un uzvarēja memu konkursā?</li>
+      </ul>
+
+      <h3>⚠️ Bet MI nav visspēcīgs</h3>
+      <p>MI nav gudrāks par tevi. Viņš vienkārši:</p>
+      <ul>
+        <li>nav noguris,</li>
+        <li>neiet uz tualeti,</li>
+        <li>un nelasa Facebook komentārus pirms miega.</li>
+      </ul>
+      <p>Viņš zina daudz, bet nesaprot pasauli kā cilvēks — viņam nav pieredzes ar slapjām zeķēm martā vai mizotiem kartupeļiem.</p>
+
+      <h3>🇱🇻 Un Latvijā?</h3>
+      <ul>
+        <li>Uzņēmumi sāk izmantot MI klientu apkalpošanā, mārketingā un dokumentu analīzē.</li>
+        <li>Skolēni kļūst par "prompt-inženieriem", skolotāji — meklē ChatGPT detektorus.</li>
+        <li>Valsts pārvalde vēl tikai no papīra pārceļas uz PDF, bet MI jau raksta secinājumus par reformām.</li>
+      </ul>
+
+      <h3>💡 Ko mums darīt?</h3>
+      <ul>
+        <li>Domāt vairāk.</li>
+        <li>Uzdot labākus jautājumus — arī sev pašiem.</li>
+        <li>Neuztvert MI kā burvju nūjiņu vai apokalipsi. Tas ir rīks. Un rīka spēku nosaka roka, kas to tur.</li>
+      </ul>
+
+      <h3>🧾 Nobeigumā:</h3>
+      <p>Mākslīgais intelekts šobrīd nav nedz dievs, nedz velns. Viņš ir aizņemts interns ar milzīgu datu krātuvi un bez sajūtām par robežām.</p>
+      <p><strong>Tavs uzdevums?</strong> Iemācīties ar viņu dzīvot, strādāt un — reizēm — arī pasmieties.</p>
+    </div>
+  `;
+  break;
+        case 'intuicija':
+          contentBox.innerHTML += `
+         <h2>🧠 Nojauta — Digitālā intuīcija</h2>
+      <p>Vai algoritmi lasa mūsu domas vai vienkārši mūs pazīst pārāk labi?</p>
+
+      <p><em>Ir noticis tā:</em></p>
+      <ul>
+        <li>Tu domā par ceļojumu uz Itāliju, un pēkšņi sociālajos tīklos parādās reklāma ar lētām aviobiļetēm uz Romu.</li>
+        <li>Tu meklē dāvanas mammai, un Google iesaka Jaunā Rīgas teātra biļetes.</li>
+      </ul>
+
+      <p><strong>Un Tu nodomā:</strong> Kas tas ir, kā tas (dators) varēja zināt, ko es šobrīd domāju?</p>
+
+      <h3>🔍 Digitālā nojauta jeb “machine feels me”</h3>
+      <p>Šķiet, ka dators ir attīstījis <strong>sesto maņu</strong>. Bet patiesībā tā ir:</p>
+      <ul>
+        <li>algoritmu analīze,</li>
+        <li>datu ieguve,</li>
+        <li>prognozējošā modelēšana,</li>
+        <li>un Tu pats — ar savu <strong>milzīgo klikšķu vēsturi</strong>.</li>
+      </ul>
+      <p><strong>Digitālā intuīcija</strong> nav nekāda “burvestība” — tā ir loģika ar kosmisku apjomu datu.</p>
+
+      <h3>🧮 Kā tas strādā - vienkāršos vārdos?</h3>
+      <ul>
+        <li>Tu meklē “cepumi bez glutēna” → sistēma zina, ka Tevi interesē veselīgs uzturs.</li>
+        <li>Tu skaties video par trauksmi → sistēma piedāvā meditāciju, psihologus, piparmētru tēju.</li>
+        <li>Tu ilgi skaties uz kādu produktu → sistēma “sajūt”, ka Tu gatavojies pirkt. Un sāk tevi "presēt".</li>
+      </ul>
+      <p><em>Tā nav pareģošana. Tas ir tikai augstas precizitātes datu “zīlēšanas galds”.</em></p>
+
+      <h3>🤖 Vai dators jūt? Nē. Bet viņš tevi redz labāk nekā tu pats</h3>
+      <p>Cilvēka intuīcija balstās uz pieredzi, emocijām, ķermeņa valodu un sajūtām.<br>
+         Mašīnas intuīcija balstās uz:</p>
+      <ul>
+        <li>miljoniem uzvedības modeļu,</li>
+        <li>statistiku,</li>
+        <li>laika, vietas, konteksta kombināciju.</li>
+      </ul>
+      <p><strong>Atšķirība?</strong><br>
+         Cilvēks kļūdās. Mašīna... kļūdās masveidā, bet pārliecinoši.</p>
+
+      <h3>🧭 Tad ko darīt ar šo digitālo “nojautu”?</h3>
+      <ul>
+        <li>Bez panikas. Tā nav skaitļotāja dvēsele – tas ir tikai kods ar datu diētu.</li>
+        <li>Nevajag arī akli uzticēties – reklāmas nav nekādi krutie padomdevēji.</li>
+        <li>Un nevajag aizmirst, ka cilvēka īstā nojauta ir unikāla — mašīnai tā ir tikai imitējama.</li>
+      </ul>
+
+      <h3>🧘‍♂️ Kopsavilkums:</h3>
+      <ul>
+        <li>algoritmiska empātijas imitācija,</li>
+        <li>iepriekš paredzamu modeļu detektēšana,</li>
+        <li>un Tavs paša digitālais spogulis.</li>
+      </ul>
+      <p>Tu klikšķināji, viņi pierakstīja. Tu apstājies, viņi aprēķināja.<br>
+         Un tad Google “nejauši” ieteica to, par ko domāji... <em>bet varbūt vispirms Tu ieraudzīji, un tad iedomājies?</em></p>
+    </div>
+  `;
+  break;
+        case 'tagadne':
+          contentBox.innerHTML += `
+            <h2>🧠 Mēs dzīvojam starp viedierīcēm, bet uzvedamies kā dumjierīces.</h2>
+      <p>Zinātne skrien, tehnoloģijas dominē, cilvēks tik 'tin'. Kurš šeit īsti domā?<br>
+      Laipni lūgti 2025. gada vidū, kur:</p>
+
+      <ul>
+        <li>Mākslīgais intelekts raksta satura plānus.</li>
+        <li>Datu centri patērē vairāk elektrības nekā dažas labas valstis.</li>
+        <li>Zinātnieki publicē pētījumu pēc pētījuma, bet sabiedrība viņus pārtrauc ar "man ir viedoklis".</li>
+      </ul>
+
+      <h3>🤖 AI nav nākotne. Tā ir tava tagadne. Un tu jau esi tur iekšā.</h3>
+      <p>ChatGPT, Claude, Gemini, Copilot — tie nav brīnumi, tie ir biroja darbinieku klusie kolēģi. Viņi nepārtrauc sapulces, bet dara melno darbu:</p>
+      <ul>
+        <li>→ Raksta e-pastus.</li>
+        <li>→ Apkopo dokumentus.</li>
+        <li>→ Izdomā tekstus, kurus vadītājs paņems kā savus.</li>
+      </ul>
+      <p>Korporatīvā pasaule mācās MI izmantot. Skolas vēl tikai mēģina aizliegt. Bet tas jau ir par vēlu.</p>
+      <p>Un cilvēks? Cilvēks kļūst par promptu ievades mezglu, kas reizēm atver Exceli.</p>
+
+      <h3>📱 Tehnoloģijas kā fons. Fons, kas pārņem skatuvi.</h3>
+      <p>Reiz telefons bija rīks. Tagad tas ir tavs galvenais sabiedrotais, modinātājs, fotogrāfs, navigators, terapeits un spiegs.</p>
+      <p>Smartwatch ziņo par tavu miegu, bet tu gulēji slikti, jo skatījies tajā līdz 2:41.<br>
+      Tavs auto analizē ceļu labāk nekā tu, bet tāpat Tu stāvi sastrēgumā, klausoties podcastu par laika menedžmentu.</p>
+      <p>Mēs esam sasnieguši brīdi, kurā tehnoloģijas nav atbalsts, bet noteikšanas instruments. Tu domā, ka izvēlies, bet tas bija piedāvāts “Priekš tevis” profilā.</p>
+
+      <h3>🧬 Zinātne kļūst par fonu – ja tā nav TikTok formātā</h3>
+      <p>Zinātne šobrīd ir iespaidīga, bet margināla.<br>
+      Mēs zinām:</p>
+      <ul>
+        <li>kā modificēt DNS,</li>
+        <li>kā atklāt kvantu dīvainības,</li>
+        <li>kā kartēt smadzeņu aktivitāti ar mikroshēmu.</li>
+      </ul>
+      <p>Un tomēr cilvēks vairāk tic bioenerģētikai, čia sēklām un elpas terapijai.<br>
+      Zinātne prasa laiku un domāšanu. Taču tā nespēlē algoritmu spēli, kur virsraksts svarīgāks par saturu.</p>
+
+      <h3>👤 Cilvēks šajā ainavā: datu punkts ar emocijām</h3>
+      <p>Cilvēks šobrīd:</p>
+      <ul>
+        <li>Iegūst vairāk informācijas nekā jebkad — bet nezina, kam ticēt.</li>
+        <li>Lieto vairāk tehnoloģiju — bet neizprot tās.</li>
+        <li>Lasa virsrakstus — bet dzīvo pēc iespaidiem.</li>
+      </ul>
+      <p>Tu neesi vainīgs. Tu esi sistēmas produkts, kas pielāgojies digitālai plūsmai. Bet jautājums ir — vai šis ir pielāgošanās maksimums, vai pašiznīcināšanās sākums?</p>
+
+      <h3>⚠️ Brīdinājums no tagadnes:</h3>
+      <p>Algoritmi tagad definē cilvēka uzvedību.<br>
+      Nevis atspoguļo, bet veido.</p>
+      <p>Mēs runājam par brīvību, bet dzīvojam “Es piekrītu” režīmā.<br>
+      Mēs sapņojam par radošumu, bet ļaujam sevi profilēt ar emoji klikšķiem.<br>
+      Mēs gribam būt unikāli, bet strādājam saskaņā ar mašīnas paredzētu modeli.</p>
+
+      <h3>🎯 Secinājums:</h3>
+      <p>Šī nav distopija. Šī ir realitāte, kas izskatās draudzīga, bet darbojas ar klusu dominances kodu.</p>
+      <p>Un cilvēks? Cilvēks ir apņēmies 'tīt' tālāk. Līdz kļūst par pasīvu algoritmiskās tagadnes vērotāju, kurš vairs nejautā: “Kas būs tālāk?”<br>
+      ...bet vienkārši nospiež "Next".</p>
+    </div>
+  `;
+  break;
+        case 'nakotne':
+          contentBox.innerHTML += `
+            <h2>🌐 Nākotne — Vai cilvēks būs iekļauts?</h2>
+      <p>Mašīnas mācās. Tehnoloģijas paātrinās. Zinātne pārsteidz. Bet vai mēs vēl esam daļa no spēles?</p>
+
+      <h3>🤖 Mākslīgais intelekts: vēl viens rīks vai pats jau nākamais lietotājs?</h3>
+      <p>AI vairs nav tikai palīgs. Tas sāk pārņemt lēmumus, ko senāk pieņēma cilvēki. Radošums, tulkošana, datu analīze, pat programmēšana – tas viss tiek automatizēts, optimizēts, aizvietots.</p>
+      <p>Jautājums vairs nav: “Ko MI vēl nespēj?”,<br>bet drīzāk: “Ko cilvēks vēl spēj darīt labāk?”</p>
+
+      <h3>👁️ Tehnoloģijas kļūst neredzamas</h3>
+      <p>Nākotnē tehnoloģijas neizskatīsies pēc robotiem.<br>Tās būs iekļautas mūsu drēbēs, mūsu acīs, mūsu ādā, mūsu balss tonī.<br>Mēs nedzīvosim “blakus” tehnoloģijām – mēs dzīvosim ar to iekšā sevī.</p>
+      <p>Ne tikai "smartphone", bet "smartself".</p>
+
+      <h3>🧬 Zinātne virzās uz robežām</h3>
+      <p>No gēnu inženierijas līdz kvantu datoriem – zinātne ļauj mums spēlēties ar realitātes struktūru.</p>
+      <ul>
+        <li>Mēs varēsim ārstēt slimības, pirms tās parādās.</li>
+        <li>Mēs varēsim redzēt, dzirdēt un atcerēties vairāk nekā jebkad.</li>
+        <li>Mēs varēsim mainīt to, kas nozīmē būt cilvēkam.</li>
+      </ul>
+      <p>Un tas rada jautājumu:<br>Vai cilvēks joprojām būs cilvēks, ja viņš sevi pārveidos par pusrobotu?</p>
+
+      <h3>👤 Cilvēks — vai vēl būs vajadzīgs?</h3>
+      <p>Vai mēs esam nākotnes virzītāji, vai tikai vērotāji?<br>
+      Vai būs vēl vajadzīgs rakstnieks, ja AI rakstīs ātrāk?<br>
+      Vai būs vēl vajadzīgs skolotājs, ja bērni mācīsies ar personalizētiem MI asistentiem?</p>
+      <p>Varbūt būs vajadzīgs tikai lietotājs, kurš maksā un klusē.</p>
+
+      <h3>📉 Līdzdalības ilūzija</h3>
+      <p>Tehnoloģiju nākotne tiek būvēta ar:</p>
+      <ul>
+        <li>milzīgiem kapitāliem,</li>
+        <li>globāliem uzņēmumiem,</li>
+        <li>datiem, ko mēs paši brīvprātīgi atdodam.</li>
+      </ul>
+      <p>Un cilvēks? Ko viņš saņem:</p>
+      <ul>
+        <li>“Piekrītu lietošanas noteikumiem”</li>
+        <li>"Tava uzmanība ir mūsu produkts"</li>
+        <li>un “Jaunais atjauninājums mainīs Tavu dzīvi (bet tu to nepamanīsi).”</li>
+      </ul>
+
+      <h3>🗺 Kas mūs sagaida?</h3>
+      <p>Trīs iespējas:</p>
+      <ul>
+        <li><strong>Simbioze:</strong> Cilvēks un tehnoloģija attīstās kopā.</li>
+        <li><strong>Asimilācija:</strong> Cilvēks pakāpeniski kļūst par tehnoloģiju paplašinājumu.</li>
+        <li><strong>Aizvietošana:</strong> Cilvēks kļūst lieks. Efektivitāte uzvar humānisma paliekas.</li>
+      </ul>
+
+      <h3>🎯 Secinājums:</h3>
+      <p>Nākotne nav tehnoloģiska problēma. Tas ir jautājums par pašu cilvēku.</p>
+      <p>Ja mēs neuzdodam jautājumus, tad uz tiem atbildēs serveri.<br>
+      Ja mēs neiesaistāmies, tad nākotne mūs integrēs – kā funkciju, nevis kā būtni.</p>
+      <p>Un, iespējams, pats svarīgākais jautājums nav:</p>
+      <p><em>“Ko MI spēs pēc 10 gadiem?”</em><br>
+      ...bet:<br>
+      <strong>“Vai cilvēks vēl spēs domāt, just un atteikties — brīvprātīgi?”</strong></p>
+    </div>
+  `;
+  break;
+        case 'pagatne':
+          contentBox.innerHTML += `
+           <h2>🔩 Kad mašīnas svilpa, bet cilvēks vēl svilpoja pretī</h2>
+      <p><strong>Pirms klikšķiem, kad domāja pārnesumos un dūmos</strong><br>
+      Pirms MI un Wi-Fi, pirms touchscreen un serveriem — bija tvaiks, zobrati, radiolampas un skaitļošanas mehānismi ar kloķiem.<br>
+      Un cilvēks vēl zināja, kā strādā tas, ko viņš lietoja. Tā bija pasaule, kur mehānika bija saprotama, bet cilvēks vēl nezināja, ko tieši viņš atbrīvo.</p>
+
+      <h3>🕰️ Tehnoloģija bija smaga. Burtiski.</h3>
+      <ul>
+        <li>Rēķinātājs? Metāla kaste ar kloķiem.</li>
+        <li>Telefons? Sienas aparāts ar rokturi, kas savienots ar operatores ausīm.</li>
+        <li>Radio? Lampa, kas sildīja tavu istabu un reizēm nodedzināja pirkstu.</li>
+        <li>Toreiz tehnoloģija grabēja, dūmoja, kustējās, kvēloja un čīkstēja.</li>
+        <li>Katrs klikšķis bija mehānisks spiedziens, nevis bezskaņas kapacitīvā pieskāriena čuksts.</li>
+      </ul>
+
+      <h3>🤯 Cilvēks vēl domāja ar galvu</h3>
+      <ul>
+        <li>Matemātika tika rēķināta uz papīra, nevis pārrēķināta kalkulatorā.</li>
+        <li>Atmiņa bija galvā, nevis mākoņservisā.</li>
+        <li>“Palīgs” bija sēdošs cilvēks aiz rakstāmgalda, nevis gaismas indikators ar vārdu Alexa.</li>
+        <li>Būt inteliģentam nozīmēja zināt, nevis spēt meklēt.</li>
+      </ul>
+
+      <h3>🔧 Mašīnas bija cilvēka papildinājums — nevis aizvietotājs</h3>
+      <p>Mašīna palīdzēja ražot, pacelt, transportēt.<br>
+      Tā nepieņēma lēmumus, tikai izpildīja.<br>
+      Un, kad tā salūza, cilvēks to pats izjauca un salika atpakaļ.<br>
+      Tagad? Kad printeris čīkst, mēs restartējam visu sistēmu un lūdzam palīdzību mākslīgajam intelektam.</p>
+
+      <h3>⚙️ Lēnums radīja cieņu</h3>
+      <ul>
+        <li>Bija jāpagaida, līdz uzsils lampiņa.</li>
+        <li>Rakstāmmašīna kļūdījās skaļi un neatgriezeniski.</li>
+        <li>Televīzijai bija tikai viens kanāls, viens laiks, un viena programma.</li>
+        <li>Un tajā bija klātbūtne, uzmanība un apzināta darbība.</li>
+        <li>Tagad, kad viss ir “pēc pieprasījuma”, cilvēks kļuvis par haotisku klikšķu algoritmu pats sev.</li>
+      </ul>
+
+      <h3>📜 Bet viss sākās tur</h3>
+      <ul>
+        <li>Pirmie priekšstati par datoru (Charles Babbage (1791–1871) angļu matemātiķis, kurš izstrādāja "Analītisko mašīnu" )</li>
+        <li>Mehāniskie kalkulatori, kas lika cilvēkiem sajūsmā apstāties</li>
+        <li>Pirmie elektrības vadi, kas solīja jaunu civilizāciju</li>
+      </ul>
+      <p>Tā bija laikmeta sākotne, kas vēl nezināja, ka beigsies ar čipu pierē un attention span &lt; 7 sekundēm.</p>
+
+      <h3>🎯 Secinājums:</h3>
+      <p>Senā pagātne nebija vieda. Bet tā bija godīga.<br>
+      Cilvēks vēl pats grieza kloķi, pats vilka sviru, pats uzņēmās riskus, pats domāja.</p>
+      <p>Un tieši tāpēc viņš:</p>
+      <ul>
+        <li>izdomāja datoru,</li>
+        <li>radīja internetu,</li>
+        <li>izgudroja MI...</li>
+      </ul>
+      <p>...un tagad viņam jāatbild uz jautājumu, vai tas viss bija tā vērts.</p>
+    </div>
+  `;
+  break;
+        default:
+          contentBox.innerHTML += `<h2>Nekas nav atrodams</h2>`;
+      }
+
+      // Pievieno aizvērt pogas eventu
+      document.getElementById('closeBtn').addEventListener('click', () => {
+        closeBox();
+      });
+    }
+
+    // 4) F-ja aizvērt saturu
+    function closeBox() {
+      // Pieliek fade-out klasi
+      contentBox.classList.add('fade-out');
+      // Pēc animācijas beigām => noslēpj
+      setTimeout(() => {
+        contentBox.style.display = 'none';
+        contentBox.classList.remove('fade-out');
+      }, 300);
+    }
+
+    // 5) Klikšķis ārpus contentBox aizver to
+    document.addEventListener('click', function(e) {
+      const box = document.getElementById('contentBox');
+      if (box.style.display === 'block' && !box.contains(e.target) 
+          && !e.target.matches('.grid-links a, .grid-links a *')) {
+        closeBox();
+      }
+    });
+  </script>
+</body>
+</html>

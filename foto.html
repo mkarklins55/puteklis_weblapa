@@ -1,0 +1,619 @@
+<!DOCTYPE HTML>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foto — Putekļa pasaule</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Lightbox2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #fffaf5;
+      --accent: #ee6c4d;
+      --text: #333;
+      --muted: #888;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+    }
+    /* LOGO */
+    .top-logo {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1000;
+  background: none;     /* ← noņem fonu */
+  padding: 0;           /* ← noņem tukšumu apkārt */
+  border-radius: 0;     /* ← noapaļojumu noņem */
+  box-shadow: none;     /* ← noņem ēnu */
+}
+
+    .top-logo a {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 1.2em;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .top-logo a:hover {
+      color: #c84a2f;
+      transform: scale(1.05);
+    }
+ 
+    .top-logo img {
+  height: 80px;
+  animation: pulse 2.5s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+    .top-logo img:hover {
+  transform: scale(1.1);
+  /* animation: none; */ /* ← šo izdzēš! */
+}
+
+    /* HEADER */
+    header {
+  padding: 0.1em 5% 0.2em;
+  text-align: center;
+  margin-top: 40px; /* <- ja vajag vēl augstāk, var -20px */
+}
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4em;
+      margin: 0.1em 0 0.1em;
+    }
+    header p {
+      font-size: 1.05em;
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    /* SLIDESHOW */
+    .slideshow {
+      width: 100%;
+      height: 360px;
+      overflow: hidden;
+      position: relative;
+      margin-top: -5px;
+    }
+    .slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    /* FILTER BUTTONS */
+    .filters {
+      text-align: center;
+      margin: 2em 0;
+    }
+    .filters button {
+      margin: 0.5em;
+      padding: 0.6em 1.2em;
+      border: none;
+      border-radius: 20px;
+      background: #f1f1f1;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .filters button.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* GALLERY GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2em;
+      padding: 0 5%;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card .content {
+      padding: 1em;
+    }
+    .card .content .title {
+      font-weight: bold;
+      margin-bottom: 0.3em;
+    }
+    .card .content .desc {
+      margin-top: 0.5em;
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    /* SMALL THUMB GALLERY */
+    .thumbs-wrap a {
+  position: relative;
+  overflow: visible; /* Ļauj palielinātajam attēlam \"iziet\" no sākotnējiem robežām */
+}
+
+.thumbs-wrap img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  transform-origin: center center; 
+  /* transform-origin: top left; – vari pielāgot atkarībā no vajadzības */
+}
+
+.thumbs-wrap a:hover img {
+  transform: scale(1.1);  /* Palielini līdz 3 reizēm (pielāgo pēc vajadzības) */
+  z-index: 999;         /* Paceļ attēlu virs citiem */
+}
+    .thumbs-wrap {
+      margin-top: 0.7em;
+      display: none; /* hidden by default */
+    }
+    .thumbs-wrap.active {
+      display: flex; 
+      gap: 0.5em; 
+      flex-wrap: wrap;
+    }
+    .thumbs-wrap img:hover {
+      transform: scale(1.05);
+    }
+
+    .show-thumbs-btn {
+      display: inline-block; 
+      margin-top: 0.5em;
+      padding: 0.4em 0.8em; 
+      background: var(--accent); 
+      color: #fff; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      font-weight: 600;
+    }
+    
+    /* FOOTER */
+    footer {
+      margin-top: 4em;
+      text-align: center;
+      padding: 2em;
+      background: #1d1d1d;
+      color: #ccc;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-logo">
+    <a href="index.html">
+      <img src="images/logo_small.png" alt="Puteklis">
+       </a>
+  </div>
+
+  <header>
+    <h1>Foto</h1>
+    <p>No putekļiem rodas stāsti. No gaismas — attēli.</p>
+  </header>
+
+  <!-- SLIDESHOW -->
+  <div class="slideshow">
+    <img src="images/slider/slide1.jpg" class="active">
+    <img src="images/slider/slide2.jpg">
+    <img src="images/slider/slide3.jpg">
+    <img src="images/slider/slide4.jpg">
+    <img src="images/slider/slide5.jpg">
+  </div>
+
+  <div class="filters">
+    <button class="active" onclick="filter('all', this)">Visi</button>
+    <button onclick="filter('mi', this)">MI</button>
+    <button onclick="filter('daba', this)">Daba</button>
+    <button onclick="filter('cilveks', this)">Cilvēks</button>
+    <button onclick="filter('sabiedriba', this)">Sabiedrība</button>
+    <button onclick="filter('putekli', this)">Putekļi</button>
+  </div>
+
+  <div class="grid" id="gallery">
+
+    <div class="card" data-tags="mi">
+        <a href="pdf/AI_portfolio.pdf" target="_blank">
+          <img src="images/previews/MI1_preview.jpg" alt="MI preview">
+        </a>
+        <div class="content">
+          <div class="title">Portfolio</div>
+          <div class="desc">Putekļi ir kā klusais ceļš starp redzamo un nojaušamo</div>
+          <a href="pdf/AI_portfolio.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+        </div>
+      </div>
+    
+      <div class="card" data-tags="mi">
+        <a href="pdf/Indesign Photo Album AI .pdf" target="_blank">
+          <img src="images/previews/MI2_preview.jpg" alt="MI preview">
+        </a>
+        <div class="content">
+          <div class="title">Nojauta</div>
+          <div class="desc">Ceļo cauri gaismas un ēnas stāstiem — vietai, kur atmiņas, sajūtas un laiks saplūst vienā bezgalīgā mirklī</div>
+          <a href="pdf/Indesign Photo Album AI .pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+        </div>
+      </div>
+  
+      <div class="card" data-tags="mi">
+          <a href="pdf/AI_portfolio_3.pdf" target="_blank">
+            <img src="images/previews/MI3_preview.jpg" alt="MI preview">
+          </a>
+          <div class="content">
+            <div class="title">Ēnas</div>
+            <div class="desc">Noslēpumainā urbānā noskaņa satiekas ar ēterisku skaistumu</div>
+            <a href="pdf/AI_portfolio_3.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+          </div>
+        </div>
+  
+        <div class="card" data-tags="mi">
+          <a href="pdf/AI_portfolio_4_upd.pdf" target="_blank">
+            <img src="images/previews/MI4_preview.jpg" alt="MI preview">
+          </a>
+          <div class="content">
+            <div class="title">Nākotne</div>
+            <div class="desc">Fotogrāfija tver mirkli, māksla – izjūtu, bet kopā ar MI tās veido nākotnes redzējumu.</div>
+            <a href="pdf/AI_portfolio_4_upd.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+          </div>
+        </div>
+  
+        <div class="card" data-tags="mi">
+          <a href="pdf/Elegant Photo Album_Liepaja.pdf" target="_blank">
+            <img src="images/previews/MI5_preview.jpg" alt="MI preview">
+          </a>
+          <div class="content">
+            <div class="title">Liepāja</div>
+            <div class="desc">Katru foto vēro divi skatītāji — cilvēks un MI.</div>
+            <a href="pdf/Elegant Photo Album_Liepaja.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+          </div>
+        </div>
+
+    <!-- DABA: Uzklikšķinot uz "Skatīt galeriju"  => atveras 12 thumbnaili, katrs atver Lightbox2 -->
+    <div class="card" data-tags="daba">
+      <img src="images/previews/daba1.jpg" alt="Zaļā daba">
+      <div class="content">
+        <div class="title">Daba neskrien </div>
+        <div class="desc">Un tomēr tā vienmēr ir priekšā.</div>
+        
+        <!-- Poga, lai parādītu 10 thumbnail -->
+        <div class="show-thumbs-btn" onclick="toggleThumbs(this)">Skatīt galeriju (12)</div>
+
+        <!-- Thumbnaili, kur katrs -> Lightbox -->
+        <div class="thumbs-wrap">
+          <!-- 1 -->
+          <a href="images/gallery/daba1.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba1.jpg" alt="daba1">
+          </a>
+          <!-- 2 -->
+          <a href="images/gallery/daba2.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba2.jpg" alt="daba2">
+          </a>
+          <!-- 3 -->
+          <a href="images/gallery/daba3.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba3.jpg" alt="daba3">
+          </a>
+          <!-- 4 -->
+          <a href="images/gallery/daba4.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba4.jpg" alt="daba4">
+          </a>
+          <!-- 5 -->
+          <a href="images/gallery/daba5.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba5.jpg" alt="daba5">
+          </a>
+          <!-- 6 -->
+          <a href="images/gallery/daba6.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba6.jpg" alt="daba6">
+          </a>
+          <!-- 7 -->
+          <a href="images/gallery/daba7.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba7.jpg" alt="daba7">
+          </a>
+          <!-- 8 -->
+          <a href="images/gallery/daba8.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba8.jpg" alt="daba8">
+          </a>
+          <!-- 9 -->
+          <a href="images/gallery/daba9.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba9.jpg" alt="daba9">
+          </a>
+          <!-- 10 -->
+          <a href="images/gallery/daba10.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba10.jpg" alt="daba10">
+          </a>
+          <!-- 11 -->
+          <a href="images/gallery/daba11.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba11.jpg" alt="daba11">
+          </a>
+          <!-- 12 -->
+          <a href="images/gallery/daba12.jpg" data-lightbox="daba">
+            <img src="images/gallery/thumbs/daba12.jpg" alt="daba12">
+          </a>              
+        </div>
+
+       <!-- <a href="pdf/daba_zala.pdf" target="_blank"
+           style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">
+           📄 Skatīt PDF
+        </a> -->
+      </div>
+    </div>
+
+<!-- CILVĒKI: Uzklikšķinot uz "Skatīt galeriju"  => atveras 12 thumbnaili, katrs atver Lightbox2 -->
+<div class="card" data-tags="cilveks">
+    <img src="images/previews/cilveks1.jpg" alt="Cilvēks">
+    <div class="content">
+      <div class="title">Sejas mainās</div>
+      <div class="desc">Cilvēks — vienīgais zīdītājs, kas fotografē ēdienu.</div>
+      
+      <!-- Poga, lai parādītu 10 thumbnail -->
+      <div class="show-thumbs-btn" onclick="toggleThumbs(this)">Skatīt galeriju (12)</div>
+
+      <!-- Thumbnaili, kur katrs -> Lightbox -->
+      <div class="thumbs-wrap">
+        <!-- 1 -->
+        <a href="images/gallery/cilveks1.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks1.jpg" alt="cilveks1">
+        </a>
+        <!-- 2 -->
+        <a href="images/gallery/cilveks2.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks2.jpg" alt="cilveks2">
+        </a>
+        <!-- 3 -->
+        <a href="images/gallery/cilveks3.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks3.jpg" alt="cilveks3">
+        </a>
+        <!-- 4 -->
+        <a href="images/gallery/cilveks4.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks4.jpg" alt="cilveks4">
+        </a>
+        <!-- 5 -->
+        <a href="images/gallery/cilveks5.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks5.jpg" alt="cilveks5">
+        </a>
+        <!-- 6 -->
+        <a href="images/gallery/cilveks6.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks6.jpg" alt="cilveks6">
+        </a>
+        <!-- 7 -->
+        <a href="images/gallery/cilveks7.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks7.jpg" alt="cilveks7">
+        </a>
+        <!-- 8 -->
+        <a href="images/gallery/cilveks8.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks8.jpg" alt="cilveks8">
+        </a>
+        <!-- 9 -->
+        <a href="images/gallery/cilveks9.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks9.jpg" alt="cilveks9">
+        </a>
+        <!-- 10 -->
+        <a href="images/gallery/cilveks10.jpg" data-lightbox="cilveks">
+          <img src="images/gallery/thumbs/cilveks10.jpg" alt="cilveks10">
+        </a>
+        <!-- 11 -->
+        <a href="images/gallery/cilveks11.jpg" data-lightbox="cilveks">
+            <img src="images/gallery/thumbs/cilveks11.jpg" alt="cilveks11">
+          </a>
+        <!-- 12 -->
+        <a href="images/gallery/cilveks12.jpg" data-lightbox="cilveks">
+            <img src="images/gallery/thumbs/cilveks12.jpg" alt="cilveks12">
+          </a>
+      </div>
+
+    <!--  <a href="pdf/daba_zala.pdf" target="_blank"
+         style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">
+         📄 Skatīt PDF
+      </a> -->
+    </div>
+  </div>
+
+  <!-- SABIEDRIBA: Uzklikšķinot uz "Skatīt galeriju"  => atveras 12 thumbnaili, katrs atver Lightbox2 -->
+<div class="card" data-tags="sabiedriba">
+    <img src="images/previews/sabiedriba1.jpg" alt="sabiedriba">
+    <div class="content">
+      <div class="title">Kultūra kvadrātmetros</div>
+      <div class="desc">Sabiedrība kļuva civilizēta, kad iemācījās dalīt sienas, bet ne klusumu.</div>
+      
+      <!-- Poga, lai parādītu 10 thumbnail -->
+      <div class="show-thumbs-btn" onclick="toggleThumbs(this)">Skatīt galeriju (12)</div>
+
+      <!-- Thumbnaili, kur katrs -> Lightbox -->
+      <div class="thumbs-wrap">
+        <!-- 1 -->
+        <a href="images/gallery/sabiedriba1.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba1.jpg" alt="sabiedriba1">
+        </a>
+        <!-- 2 -->
+        <a href="images/gallery/sabiedriba2.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba2.jpg" alt="sabiedriba2">
+        </a>
+        <!-- 3 -->
+        <a href="images/gallery/sabiedriba3.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba3.jpg" alt="sabiedriba3">
+        </a>
+        <!-- 4 -->
+        <a href="images/gallery/sabiedriba4.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba4.jpg" alt="sabiedriba4">
+        </a>
+        <!-- 5 -->
+        <a href="images/gallery/sabiedriba5.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba5.jpg" alt="sabiedriba5">
+        </a>
+        <!-- 6 -->
+        <a href="images/gallery/sabiedriba6.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba6.jpg" alt="sabiedriba6">
+        </a>
+        <!-- 7 -->
+        <a href="images/gallery/sabiedriba7.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba7.jpg" alt="sabiedriba7">
+        </a>
+        <!-- 8 -->
+        <a href="images/gallery/sabiedriba8.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba8.jpg" alt="sabiedriba8">
+        </a>
+        <!-- 9 -->
+        <a href="images/gallery/sabiedriba9.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba9.jpg" alt="sabiedriba9">
+        </a>
+        <!-- 10 -->
+        <a href="images/gallery/sabiedriba10.jpg" data-lightbox="sabiedriba">
+          <img src="images/gallery/thumbs/sabiedriba10.jpg" alt="sabiedriba10">
+        </a>
+        <!-- 11 -->
+        <a href="images/gallery/sabiedriba11.jpg" data-lightbox="sabiedriba">
+            <img src="images/gallery/thumbs/sabiedriba11.jpg" alt="sabiedriba11">
+          </a>
+        <!-- 12 -->
+        <a href="images/gallery/sabiedriba12.jpg" data-lightbox="sabiedriba">
+            <img src="images/gallery/thumbs/sabiedriba12.jpg" alt="sabiedriba12">
+          </a>
+      </div>
+
+    <!--  <a href="pdf/daba_zala.pdf" target="_blank"
+         style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">
+         📄 Skatīt PDF
+      </a> -->
+    </div>
+  </div>
+
+ <!-- PUTEKĻI: Uzklikšķinot uz "Skatīt galeriju"  => atveras 12 thumbnaili, katrs atver Lightbox2 -->
+ <div class="card" data-tags="putekli">
+    <img src="images/previews/putekli1.jpg" alt="putekli">
+    <div class="content">
+      <div class="title">Kosmosa daļiņas</div>
+      <div class="desc">Puteklis — vienīgā lieta, kas vienlaikus ir gan senatnes liecība, gan šodienas problēma.</div>
+      
+      <!-- Poga, lai parādītu 10 thumbnail -->
+      <div class="show-thumbs-btn" onclick="toggleThumbs(this)">Skatīt galeriju (12)</div>
+
+      <!-- Thumbnaili, kur katrs -> Lightbox -->
+      <div class="thumbs-wrap">
+        <!-- 1 -->
+        <a href="images/gallery/putekli1.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli1.jpg" alt="putekli1">
+        </a>
+        <!-- 2 -->
+        <a href="images/gallery/putekli2.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli2.jpg" alt="putekli2">
+        </a>
+        <!-- 3 -->
+        <a href="images/gallery/putekli3.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli3.jpg" alt="putekli3">
+        </a>
+        <!-- 4 -->
+        <a href="images/gallery/putekli4.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli4.jpg" alt="putekli4">
+        </a>
+        <!-- 5 -->
+        <a href="images/gallery/putekli5.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli5.jpg" alt="putekli5">
+        </a>
+        <!-- 6 -->
+        <a href="images/gallery/putekli6.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli6.jpg" alt="putekli6">
+        </a>
+        <!-- 7 -->
+        <a href="images/gallery/putekli7.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli7.jpg" alt="putekli7">
+        </a>
+        <!-- 8 -->
+        <a href="images/gallery/putekli8.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli8.jpg" alt="putekli8">
+        </a>
+        <!-- 9 -->
+        <a href="images/gallery/putekli9.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli9.jpg" alt="putekli9">
+        </a>
+        <!-- 10 -->
+        <a href="images/gallery/putekli10.jpg" data-lightbox="putekli">
+          <img src="images/gallery/thumbs/putekli10.jpg" alt="putekli10">
+        </a>
+        <!-- 11 -->
+        <a href="images/gallery/putekli11.jpg" data-lightbox="putekli">
+            <img src="images/gallery/thumbs/putekli11.jpg" alt="putekli11">
+          </a>
+        <!-- 12 -->
+        <a href="images/gallery/putekli12.jpg" data-lightbox="putekli">
+            <img src="images/gallery/thumbs/putekli12.jpg" alt="putekli12">
+          </a>
+      </div>
+
+    <!--  <a href="pdf/daba_zala.pdf" target="_blank"
+         style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">
+         📄 Skatīt PDF
+      </a> -->
+    </div>
+  </div>
+
+  </div>
+
+  <footer>
+    &copy; Putekļa pasaule · Ar mīlestību pret fotogrāfiju ·
+    <a href="#" style="color: #ee6c4d; text-decoration: none;">Uz augšu</a>
+  </footer>
+
+  <script>
+    // Slaidrādes loģika
+    const slides = document.querySelectorAll('.slideshow img');
+    let sIndex = 0;
+    setInterval(() => {
+      slides[sIndex].classList.remove('active');
+      sIndex = (sIndex + 1) % slides.length;
+      slides[sIndex].classList.add('active');
+    }, 6000);
+
+    // Filtrēšana
+    function filter(tag, btn) {
+      document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.card').forEach(card => {
+        const tags = card.dataset.tags;
+        card.style.display = (tag === 'all' || tags.includes(tag)) ? 'block' : 'none';
+      });
+    }
+
+    // Parādīt/paslēpt thumbnail sīktēlus
+    function toggleThumbs(btn) {
+      const thumbs = btn.nextElementSibling;
+      thumbs.classList.toggle('active');
+    }
+  </script>
+
+  <!-- Lightbox2 JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ceļojumi un piedzīvojumi – Jaunais card slider izkārtojums</title>
+  <style>
+    /* Pamatkonteksts */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      color: #333;
+    }
+
+    /* Augšējā josla ar kategoriju ikonām */
+    .top-nav {
+      background: #333;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2em;
+      padding: 1em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: opacity 0.3s ease;
+    }
+    .top-nav a:hover {
+      opacity: 0.7;
+    }
+    .top-nav a span {
+      font-size: 1.5rem;
+      margin-bottom: 0.3em;
+    }
+
+    /* Hero stila virsraksts */
+    header.hero {
+      position: relative;
+      height: 40vh;
+      background: url('images/fonins.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+    header.hero h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+    header.hero p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Katrā kategorijas sekcijā virsraksts un neliels apraksts */
+    .category-section {
+      margin: 3em auto;
+      max-width: 1200px;
+     /* padding: 0 1em; */
+      scroll-margin-top: 80px; /* vai cik px atbilst tavas fiksētās galvenes augstums */
+      background: url('images/mans_fons.jpg') center/cover no-repeat;
+     /* Ja vajadzīgs fiksēts fons: background-attachment: fixed; */
+     padding: 2em 1em; /* lai saturam apkārt ir vieta */
+    }
+    .category-section h2 {
+      font-size: 1.8em;
+      margin-bottom: 0.3em;
+    }
+    .category-section p {
+      margin-bottom: 1em;
+      color: #555;
+    }
+
+    /* Horizontālā karteņu slīdrāde (carousel) */
+    .carousel-wrapper {
+      position: relative;
+      margin-top: 1em;
+    }
+    .card-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 1em;
+      scroll-snap-type: x mandatory; /* lai “nolokās” pa kartiņām */
+      padding-bottom: 1em;
+    }
+    .card-slider::-webkit-scrollbar {
+      height: 8px;
+    }
+    .card-slider::-webkit-scrollbar-thumb {
+      background: #aaa;
+      border-radius: 4px;
+    }
+
+    /* Kartiņa */
+    .card {
+      flex: 0 0 calc(33.33% - 1em);
+      background-image: url('images/armibg.jpg');
+      background-size: cover;       /* attēls aizpilda visu kartiņu */
+      background-position: center;  /* attēls centrējas */
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 0.2em;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      background-blend-mode: overlay;
+      filter: brightness(1.05);
+    }
+    .card h2, .card h3 {
+      font-size: 1.1em;
+      margin-bottom: 0.5em;
+    }
+
+    /* Data-category foni */
+    .card[data-category="sapnis"] {
+     background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .card[data-category="latvija-pargajiens"] {
+     background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .card[data-category="arzemes-velo"] {
+     background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .card[data-category="auto"] {
+     background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .card[data-category="latvija-velo"] {
+     background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+              }
+
+    /* Attēli / YouTube priekšskatījumi */
+    .media-img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 0.8em;
+    }
+    .yt-preview {
+      position: relative;
+      cursor: pointer;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: red;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 50%;
+      font-size: 24px;
+    }
+
+    .card-button {
+      display: inline-block;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 0.8em;
+    }
+    .card-button.green {
+      background: #e3690d;
+      color: white;
+    }
+
+    .image-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    /* Samazinām pdf-ikonu */
+    .pdf-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8rem; /* agrāk bija 2.5rem */
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 0.2em 0.4em; /* arī padarām polsterējumu mazāku */
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      color: #333;
+      transition: background 0.3s;
+    }
+    .pdf-icon:hover {
+      background: rgba(255, 255, 255, 1);
+      color: #000;
+    }
+
+    /* Pogu (bultu) stils, ja vajag “pāriet pa kreisi/pa labi” */
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 999;
+    }
+    .carousel-nav button {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 1.5em;
+      padding: 0.4em 0.8em;
+      cursor: pointer;
+      pointer-events: auto;
+      border-radius: 50%;
+      transition: background 0.2s ease;
+      margin: 0 1em;
+    }
+    .carousel-nav button:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+#latvija-pargajiens {
+  background: url('images/pargajiens_fons.jpg') center/cover no-repeat;
+}
+#sapnis {
+  background: url('images/sapnis_fons.jpg') center/cover no-repeat;
+}
+#latvija-velo {
+  background: url('images/latvija_fons.jpg') center/cover no-repeat;
+ 
+}
+#arzemes-velo {
+  background: url('images/arzemes_fons.jpg') center/cover no-repeat;
+}
+#auto {
+  background: url('images/auto_fons.jpg') center/cover no-repeat;
+}
+
+#latvija-pargajiens h2 {
+  color: #f9fbf7;
+}
+#latvija-pargajiens p {
+  color: #e7f6d4;
+}
+#latvija-velo h2 {
+  color: #f9fbf7;
+}
+#latvija-velo p {
+  color: #e7f6d4;
+}
+#arzemes-velo h2 {
+  color: #f9fbf7;
+}
+#arzemes-velo p {
+  color: #e7f6d4;
+}
+#auto h2 {
+  color: #f9fbf7;
+}
+#auto p {
+  color: #e7f6d4;
+}
+#sapnis h2 {
+  color: #f9fbf7;
+}
+#sapnis p {
+  color: #e7f6d4;
+}
+
+/* Logo kreisajā augšējā stūrī KONTEINERA ietvaros */
+.logo-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 10px;
+      z-index: 999;
+    }
+    .logo-container a {
+      display: inline-block;
+    }
+    .logo-container img {
+      height: 80px; 
+      opacity: 0.7;
+      transition: transform 0.3s ease;
+      animation: pulse 2s infinite; 
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .logo-container img:hover {
+      transform: scale(1.1);
+      animation: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Hero virsraksts -->
+  <header class="hero">
+    <h1>Ceļojumi un piedzīvojumi</h1>
+    <p>Filtrē pēc kategorijas vai izvēlies konkrētu ceļojumu no sadaļas</p>
+  </header>
+
+  <!-- Logo stūrī -->
+  <div class="logo-container">
+     <a href="index.html">
+       <img src="images/logo_small.png" alt="Logo">
+     </a>
+   </div>
+
+
+  <!-- Augšējā navigācija (ikonas/pogas katrai kategorijai) -->
+  <nav class="top-nav">
+    <a href="#latvija-pargajiens"><span>🥾</span> Piedzīvojumi dabā</a>
+    <a href="#latvija-velo"><span>🚲</span> Ar velo Latvijā</a>
+    <a href="#arzemes-velo"><span>🌍</span> Ar velo ārzemēs</a>
+    <a href="#auto"><span>🚗</span> Ar auto</a>
+    <a href="#sapnis"><span>🌀</span> MI un citi</a>
+  </nav>
+
+    <!-- SADAĻA: pārgājieni -->
+  <section class="category-section" id="latvija-pargajiens">
+    <h2>🥾 Piedzīvojumi dabā</h2>
+    <p>Pārgājieni, laivu braucieni un uz slēpēm</p>
+    <div class="carousel-wrapper">
+
+      <!-- Bultiņas (ja gribi) -->
+      <div class="carousel-nav">
+        <button class="prev">‹</button>
+        <button class="next">›</button>
+      </div>
+
+      <div class="card-slider">
+               
+        <article class="card" data-category="latvija-pargajiens">
+            <h2>
+                 Pārgājiens Ainaži–Salacgrīva un Veczemju klintis - Tūja 2025
+                </h2>
+            <div class="yt-preview" data-id="JkjFshiKwME">
+            <img class="media-img" src="https://img.youtube.com/vi/JkjFshiKwME/hqdefault.jpg"/>
+            <div class="play-overlay">
+                  ▶
+                 </div>
+            </div>
+            </article>
+
+            <article class="card" id="haanja" data-category="latvija-pargajiens">
+                <h2>
+                     Sporta nometne Hāņā 2024
+                    </h2>
+                <div class="yt-preview" data-id="7bdXZqQEA0o">
+                <img class="media-img" src="https://img.youtube.com/vi/7bdXZqQEA0o/hqdefault.jpg"/>
+                <div class="play-overlay">
+                      ▶
+                     </div>
+                </div>
+                </article>
+                <article class="card" id="Madona 2023" data-category="latvija-pargajiens">
+                    <h2>
+                         Madona 2023
+                        </h2>
+                    <div class="yt-preview" data-id="9-WA8LfpSsU">
+                    <img class="media-img" src="https://img.youtube.com/vi/9-WA8LfpSsU/hqdefault.jpg"/>
+                    <div class="play-overlay">
+                          ▶
+                         </div>
+                    </div>
+                    </article>
+                    <article class="card" id="kanali 2021" data-category="latvija-pargajiens">
+                        <h2>
+                             Nakts laivu brauciens pa Rīgas kanālu 2021
+                            </h2>
+                        <div class="yt-preview" data-id="6RFL-5jueEs">
+                        <img class="media-img" src="https://img.youtube.com/vi/6RFL-5jueEs/hqdefault.jpg"/>
+                        <div class="play-overlay">
+                              ▶
+                             </div>
+                        </div>
+                        </article>   
+                        <article class="card" id="Zala kaapa 2 2021" data-category="latvija-pargajiens">
+                            <h2>
+                                 Zaļā kāpa Ķemeros 2021
+                                </h2>
+                            <div class="yt-preview" data-id="c4Q62jMBdsY">
+                            <img class="media-img" src="https://img.youtube.com/vi/c4Q62jMBdsY/hqdefault.jpg"/>
+                            <div class="play-overlay">
+                                  ▶
+                                 </div>
+                            </div>
+                            </article>
+                            <article class="card" id="Tiraine 2021" data-category="latvija-pargajiens">
+                            <h2>
+                                 Tīraines un Ķemeru purvi un meži 2021
+                                </h2>
+                            <div class="yt-preview" data-id="nWY_8N-ieAE">
+                            <img class="media-img" src="https://img.youtube.com/vi/nWY_8N-ieAE/hqdefault.jpg"/>
+                            <div class="play-overlay">
+                                  ▶
+                                 </div>
+                            </div>
+                            </article>
+                            <article class="card" id="Brasla 2020" data-category="latvija-pargajiens">
+                                <h2>
+                                     Pastaiga gar upi Brasla 2020
+                                    </h2>
+                                <div class="yt-preview" data-id="HBVpswGsgj4">
+                                <img class="media-img" src="https://img.youtube.com/vi/HBVpswGsgj4/hqdefault.jpg"/>
+                                <div class="play-overlay">
+                                      ▶
+                                     </div>
+                                </div>
+                                </article>
+       
+                                <article class="card" id="Kemeri 2015" data-category="latvija-pargajiens">
+                                    <h2>
+                                         Ķemeri un Slokas taka 2015
+                                        </h2>
+                                    <div class="yt-preview" data-id="Dl8ELGiJB2A">
+                                    <img class="media-img" src="https://img.youtube.com/vi/Dl8ELGiJB2A/hqdefault.jpg"/>
+                                    <div class="play-overlay">
+                                          ▶
+                                         </div>
+                                    </div>
+                                    </article>
+
+                                    <article class="card" id="Amata 2014" data-category="latvija-pargajiens">
+                                        <h2>
+                                             Gar Amatu 2014
+                                            </h2>
+                                        <div class="yt-preview" data-id="IdmsQH5UN1s">
+                                        <img class="media-img" src="https://img.youtube.com/vi/IdmsQH5UN1s/hqdefault.jpg"/>
+                                        <div class="play-overlay">
+                                              ▶
+                                             </div>
+                                        </div>
+                                        </article>
+
+
+
+    </div>
+  </section>
+
+  <!-- SADAĻA: Velo Latvijā -->
+  <section class="category-section" id="latvija-velo">
+    <h2>🚲 Ar velo Latvijā</h2>
+    <p>Šeit ir mana dzimetene ...</p>
+    <div class="carousel-wrapper">
+
+      <!-- Bultiņas (ja gribi) -->
+      <div class="carousel-nav">
+        <button class="prev">‹</button>
+        <button class="next">›</button>
+      </div>
+    </article>
+      <div class="card-slider">
+        <article class="card" id="ergli" data-category="latvija-velo">
+            <h2>
+                 Tour de Eagle 2023
+                </h2>
+            <div class="yt-preview" data-id="RARgBXEMXYU">
+            <img class="media-img" src="https://img.youtube.com/vi/RARgBXEMXYU/hqdefault.jpg"/>
+            <div class="play-overlay">
+                  ▶
+                 </div>
+            </div>
+            </article>
+            <article class="card" id="lieldienas 2023" data-category="latvija-velo">
+                <h2>
+                     Lieldienas 2023
+                    </h2>
+                <div class="yt-preview" data-id="TSVOBGfZ3D0">
+                <img class="media-img" src="https://img.youtube.com/vi/TSVOBGfZ3D0/hqdefault.jpg"/>
+                <div class="play-overlay">
+                      ▶
+                     </div>
+                </div>
+                </article>
+                
+                <article class="card" id="Marupe 2022" data-category="latvija-velo">
+                    <h2>
+                         Mārupe 2022
+                        </h2>
+                    <div class="yt-preview" data-id="mFpJN9vi7jU">
+                    <img class="media-img" src="https://img.youtube.com/vi/mFpJN9vi7jU/hqdefault.jpg"/>
+                    <div class="play-overlay">
+                          ▶
+                         </div>
+                    </div>
+                    </article>
+                    <article class="card" id="Baltezeri 2022" data-category="latvija-velo">
+                        <h2>
+                             Apkārt Baltezeriem 2022
+                            </h2>
+                        <div class="yt-preview" data-id="iZ9FSfp36-o">
+                        <img class="media-img" src="https://img.youtube.com/vi/iZ9FSfp36-o/hqdefault.jpg"/>
+                        <div class="play-overlay">
+                              ▶
+                             </div>
+                        </div>
+                        </article>
+                        <article class="card" id="velonoslegums 2022" data-category="latvija-velo">
+                        <h2>
+                             Velo sezonas noslēgums 2022
+                            </h2>
+                        <div class="yt-preview" data-id="_Tb6a9REq9c">
+                        <img class="media-img" src="https://img.youtube.com/vi/_Tb6a9REq9c/hqdefault.jpg"/>
+                        <div class="play-overlay">
+                              ▶
+                             </div>
+                        </div>
+                        </article>
+                        <article class="card" id="Ogre 2021" data-category="latvija-velo">
+                            <h2>
+                                 Ogre 2021
+                                </h2>
+                            <div class="yt-preview" data-id="jmxK_CdC168">
+                            <img class="media-img" src="https://img.youtube.com/vi/jmxK_CdC168/hqdefault.jpg"/>
+                            <div class="play-overlay">
+                                  ▶
+                                 </div>
+                            </div>
+                            </article>
+                            <article class="card" id="ar riten pa kurzem 2021" data-category="latvija-velo">
+                                <h2>
+                                     Ar riten pa Kurzem 2021
+                                    </h2>
+                                    <div class="image-wrapper">
+                                <img class="media-img" src="images/previews/velo_no_skrundas_2021_pavasaris.jpg"/>
+                                <a class="pdf-icon" href="pdf/velo_no_skrundas_2021_pavasaris.pdf" target="_blank" title="Lasīt PDF">
+                                     📄 
+                                    </a>
+                                </div>
+                                </article>
+                                <article class="card" id="Velosenosana 2020" data-category="latvija-velo">
+                                    <h2>
+                                         Velosēņošana 2020
+                                        </h2>
+                                        <div class="image-wrapper">
+                                    <img class="media-img" src="images/previews/velozurnals_03.jpg"/>
+                                    <a class="pdf-icon" href="pdf/velozurnals_03.pdf" target="_blank" title="Lasīt PDF">
+                                         📄 
+                                        </a>
+                                    </div>
+                                    </article>
+                                    <article class="card" id="Pirmsjani 2020" data-category="latvija-velo">
+                                        <h2>
+                                             Pirmsjāņu velotūre 2020
+                                            </h2>
+                                            <div class="image-wrapper">
+                                        <img class="media-img" src="images/previews/velozurnals_02.jpg"/>
+                                        <a class="pdf-icon" href="pdf/velozurnals_02.pdf" target="_blank" title="Lasīt PDF">
+                                             📄 
+                                            </a>
+                                        </div>
+                                        </article>
+                
+                                        <article class="card" id="jurmala 2020" data-category="latvija-velo">
+                                            <h2>
+                                                 Jūrmala 2020
+                                                </h2>
+                                            <div class="yt-preview" data-id="pcY1FygphVg">
+                                            <img class="media-img" src="https://img.youtube.com/vi/pcY1FygphVg/hqdefault.jpg"/>
+                                            <div class="play-overlay">
+                                                  ▶
+                                                 </div>
+                                            </div>
+                                            </article>
+                                            <article class="card" id="marupe jurmala 2020" data-category="latvija-velo">
+                                                <h2>
+                                                     Mārupe - Jūrmala 2020
+                                                    </h2>
+                                                <div class="yt-preview" data-id="_N6driDF9ko">
+                                                <img class="media-img" src="https://img.youtube.com/vi/_N6driDF9ko/hqdefault.jpg"/>
+                                                <div class="play-overlay">
+                                                      ▶
+                                                     </div>
+                                                </div>
+                                                </article>
+
+                                                <article class="card" id="Rezekne 2019" data-category="latvija-velo">
+                                                    <h2>
+                                                         Brenguļi - Rēzekne 2019
+                                                        </h2>
+                                                    <div class="yt-preview" data-id="pOsry85bQVo">
+                                                    <img class="media-img" src="https://img.youtube.com/vi/pOsry85bQVo/hqdefault.jpg"/>
+                                                    <div class="play-overlay">
+                                                          ▶
+                                                         </div>
+                                                    </div>
+                                                    </article>
+                                                    <article class="card" id="Zemgale 2018" data-category="latvija-velo">
+                                                        <h2>
+                                                             Zemgale - zelta rudens 2018
+                                                            </h2>
+                                                        <div class="yt-preview" data-id="pqIYjzg8Y4Y">
+                                                        <img class="media-img" src="https://img.youtube.com/vi/pqIYjzg8Y4Y/hqdefault.jpg"/>
+                                                        <div class="play-overlay">
+                                                              ▶
+                                                             </div>
+                                                        </div>
+                                                        </article>
+                                                        <article class="card" id="Velosenosana 2015" data-category="latvija-velo">
+                                                            <h2>
+                                                                 Velosēņošana 2015
+                                                                </h2>
+                                                            <div class="yt-preview" data-id="viljdd77I7U">
+                                                            <img class="media-img" src="https://img.youtube.com/vi/viljdd77I7U/hqdefault.jpg"/>
+                                                            <div class="play-overlay">
+                                                                  ▶
+                                                                 </div>
+                                                            </div>
+                                                            </article>
+
+
+
+                        
+    </div>
+  </section>
+
+
+  <!-- SADAĻA: Velo ārzemes -->
+  <section class="category-section" id="arzemes-velo">
+    <h2>🌍 Velo ārzemēs</h2>
+    <p>Kas gan var būt labāks par šo</p>
+    <div class="carousel-wrapper">
+
+      <!-- Bultiņas (ja gribi) -->
+      <div class="carousel-nav">
+        <button class="prev">‹</button>
+        <button class="next">›</button>
+      </div>
+
+      <div class="card-slider">
+    </article>
+    <article class="card" id="lofoti" data-category="arzemes-velo">
+    <h2>
+         Ziemeļnorvēģija 2024
+        </h2>
+        <div class="image-wrapper">   
+    <img class="media-img" src="images/previews/Velozurnals_Lofotu_salas_2024.jpg"/>
+    <a class="pdf-icon" href="pdf/Velozurnals_Lofotu_salas_2024.pdf" target="_blank" title="Lasīt PDF">
+         📄 
+        </a>
+    </div>
+    </article>
+    <article class="card" id="lofoti" data-category="arzemes-velo">
+    <h2>
+         Ziemeļnorvēģija 2024
+        </h2>
+    <div class="yt-preview" data-id="wtlOA65dR8E">
+    <img class="media-img" src="https://img.youtube.com/vi/wtlOA65dR8E/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+    
+    <article class="card" id="alpi" data-category="arzemes-velo">
+        <h2>
+             Divreiz pāri Alpiem 2024
+            </h2>
+            <div class="image-wrapper">
+        <img class="media-img" src="images/previews/velozurnals_Alpi_2024_SMALL.jpg"/>
+        <a class="pdf-icon" href="pdf/velozurnals_Alpi_2024_SMALL.pdf" target="_blank" title="Lasīt PDF">
+             📄 
+            </a>
+        </div>
+        </article>
+    
+        <article class="card" id="transilvanija" data-category="arzemes-velo">
+    <h2>
+         Transilvānija 2023
+        </h2>
+        <div class="image-wrapper">
+    <img class="media-img" src="images/previews/Velozurnals_transilvanija_small.jpg"/>
+    <a class="pdf-icon" href="pdf/Velozurnals_transilvanija_small.pdf" target="_blank" title="Lasīt PDF">
+         📄 
+        </a>
+    </div>
+    </article>
+    <article class="card" id="transilvanija" data-category="arzemes-velo">
+    <h2>
+         Transilvānija 2023
+        </h2>
+    <div class="yt-preview" data-id="6Jwyey3Ao9U">
+    <img class="media-img" src="https://img.youtube.com/vi/6Jwyey3Ao9U/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+    <article class="card" id="velopavasaris Griekija" data-category="arzemes-velo">
+        <h2>
+             Velopavasaris Grieķijā 2023
+            </h2>
+        <div class="yt-preview" data-id="h9Ulw4kMoPk">
+        <img class="media-img" src="https://img.youtube.com/vi/h9Ulw4kMoPk/hqdefault.jpg"/>
+        <div class="play-overlay">
+              ▶
+             </div>
+        </div>
+        </article>
+        <article class="card" id="Maroka 2022" data-category="arzemes-velo">
+            <h2>
+                 Maroka 2022
+                </h2>
+                <div class="image-wrapper">
+            <img class="media-img" src="images/previews/velozurnals_nr6_Maroka.jpg"/>
+            <a class="pdf-icon" href="pdf/velozurnals_nr6_Maroka.pdf" target="_blank" title="Lasīt PDF">
+                 📄 
+                </a>
+            </div>
+            </article>
+            <article class="card" id="Maroka 2022" data-category="arzemes-velo">
+            <h2>
+                 Maroka 2022
+                </h2>
+            <div class="yt-preview" data-id="yEdhHDtdWgY">
+            <img class="media-img" src="https://img.youtube.com/vi/yEdhHDtdWgY/hqdefault.jpg"/>
+            <div class="play-overlay">
+                  ▶
+                 </div>
+            </div>
+            </article>
+            <article class="card" id="Birzai 2021" data-category="arzemes-velo">
+            <h2>
+                 Birzai 18.novembris 2021
+                </h2>
+            <div class="yt-preview" data-id="_4TPoNVAIrw">
+            <img class="media-img" src="https://img.youtube.com/vi/_4TPoNVAIrw/hqdefault.jpg"/>
+            <div class="play-overlay">
+                  ▶
+                 </div>
+            </div>
+            </article>
+            <article class="card" id="Kreta 2021" data-category="arzemes-velo">
+            <h2>
+                 Krēta 2021
+                </h2>
+            <div class="yt-preview" data-id="cZCJrLBUgQs">
+            <img class="media-img" src="https://img.youtube.com/vi/cZCJrLBUgQs/hqdefault.jpg"/>
+            <div class="play-overlay">
+                  ▶
+                 </div>
+            </div>
+            </article>
+            <article class="card" id="Igaunija 2020" data-category="arzemes-velo">
+                <h2>
+                     Igaunija 2020
+                    </h2>
+                    <div class="image-wrapper">
+                <img class="media-img" src="images/previews/velozurnals_01.jpg"/>
+                <a class="pdf-icon" href="pdf/velozurnals_01.pdf" target="_blank" title="Lasīt PDF">
+                     📄 
+                    </a>
+                </div>
+                </article>
+    <article class="card" id="Armenija 1 2019" data-category="arzemes-velo">
+<h2>
+     Armēnija 1.daļa (3) 2019
+    </h2>
+<div class="yt-preview" data-id="apU7R1UF3sk">
+<img class="media-img" src="https://img.youtube.com/vi/apU7R1UF3sk/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Armenija 2 2019" data-category="arzemes-velo">
+<h2>
+     Armēnija 2.daļa (3) 2019
+    </h2>
+<div class="yt-preview" data-id="IX8gynJZUJg">
+<img class="media-img" src="https://img.youtube.com/vi/IX8gynJZUJg/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Armenija 3 2019" data-category="arzemes-velo">
+<h2>
+     Armēnija 3.daļa (3) 2019
+    </h2>
+<div class="yt-preview" data-id="plMtI5tSzEA">
+<img class="media-img" src="https://img.youtube.com/vi/plMtI5tSzEA/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Armenija sl 2019" data-category="arzemes-velo">
+<h2>
+     Armēnija bildes un apraksts 2019
+    </h2>
+    <div class="image-wrapper">
+<img class="media-img" src="images/previews/Velozurnals_nr4_Armenija.jpg"/>
+<a class="pdf-icon" href="pdf/Velozurnals_nr4_Armenija.pdf" target="_blank" title="Lasīt PDF">
+     📄 
+    </a>
+</div>
+</article>
+<article class="card" id="Armenija sl 2019" data-category="arzemes-velo">
+<h2>
+     Armēnija bildes un apraksts 2019
+    </h2>
+<div class="yt-preview" data-id="8Hkn3zuwSVM">
+<img class="media-img" src="https://img.youtube.com/vi/8Hkn3zuwSVM/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Gruzija 1 2018" data-category="arzemes-velo">
+<h2>
+     Gruzija - Turcija 1.daļa (4) 2018
+    </h2>
+<div class="yt-preview" data-id="mLDEoVumX74">
+<img class="media-img" src="https://img.youtube.com/vi/mLDEoVumX74/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Gruzija 2 2018" data-category="arzemes-velo">
+<h2>
+     Gruzija - Turcija 2.daļa (4) 2018
+    </h2>
+<div class="yt-preview" data-id="wk4BQVaEL7s">
+<img class="media-img" src="https://img.youtube.com/vi/wk4BQVaEL7s/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Gruzija 3 2018" data-category="arzemes-velo">
+<h2>
+     Gruzija - Turcija 3.daļa (4) 2018
+    </h2>
+<div class="yt-preview" data-id="7bgJRz7jAtY">
+<img class="media-img" src="https://img.youtube.com/vi/7bgJRz7jAtY/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Gruzija 4 2018" data-category="arzemes-velo">
+<h2>
+     Gruzija - Turcija 4.daļa (4) 2018
+    </h2>
+<div class="yt-preview" data-id="-GkMdJhfzUI">
+<img class="media-img" src="https://img.youtube.com/vi/-GkMdJhfzUI/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Melnkalne 2015" data-category="arzemes-velo">
+<h2>
+     Melnkalne 2015
+    </h2>
+<div class="yt-preview" data-id="DrKSrN-eZoU">
+<img class="media-img" src="https://img.youtube.com/vi/DrKSrN-eZoU/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+    </div>
+  </section>
+
+<!-- SADAĻA: Ar auto -->
+<section class="category-section" id="auto">
+    <h2>🚗 Ar auto</h2>
+    <p>šurpu turpu</p>
+    <div class="carousel-wrapper">
+
+      <!-- Bultiņas (ja gribi) -->
+      <div class="carousel-nav">
+        <button class="prev">‹</button>
+        <button class="next">›</button>
+      </div>
+
+      <div class="card-slider">
+        <article class="card" id="ance" data-category="auto">
+            <h2>
+                 Valmiermuižnieki ciemos pie Kurzemniekiem 2023
+                </h2>
+            <div class="yt-preview" data-id="R72vcm_VU3s">
+            <img class="media-img" src="https://img.youtube.com/vi/R72vcm_VU3s/hqdefault.jpg"/>
+            <div class="play-overlay">
+                  ▶
+                 </div>
+            </div>
+            </article>
+            <article class="card" id="muzeju nakts" data-category="auto">
+                <h2>
+                     Muzeju nakts 2023
+                    </h2>
+                <div class="yt-preview" data-id="J88dpZeOLXs">
+                <img class="media-img" src="https://img.youtube.com/vi/J88dpZeOLXs/hqdefault.jpg"/>
+                <div class="play-overlay">
+                      ▶
+                     </div>
+                </div>
+                </article>
+                <article class="card" id="pasaka 2022" data-category="auto">
+                    <h2>
+                         Ziemas pasaka 2022
+                        </h2>
+                    <div class="yt-preview" data-id="AR8N3I6E9ug">
+                    <img class="media-img" src="https://img.youtube.com/vi/AR8N3I6E9ug/hqdefault.jpg"/>
+                    <div class="play-overlay">
+                          ▶
+                         </div>
+                    </div>
+                    </article>
+<article class="card" id="Griekija 2021" data-category="auto">
+<h2>
+     Grieķija 2021
+    </h2>
+<div class="yt-preview" data-id="STI3K_sjdtw">
+<img class="media-img" src="https://img.youtube.com/vi/STI3K_sjdtw/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Kurzeme 2021" data-category="auto">
+<h2>
+     Kurzeme 2021
+    </h2>
+<div class="yt-preview" data-id="ExVhNhUbj28" >
+<img class="media-img" src="https://img.youtube.com/vi/ExVhNhUbj28/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Pagrabkalni 2021" data-category="auto">
+<h2>
+     Pagrabkalni &amp; Aklais purvs &amp; Skrīveri 2021
+    </h2>
+<div class="yt-preview" data-id="rqa8l1xdUuQ">
+<img class="media-img" src="https://img.youtube.com/vi/rqa8l1xdUuQ/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Riga 2020" data-category="auto">
+    <h2>
+         Pavadot veco gadu Rīgā 2020
+        </h2>
+    <div class="yt-preview" data-id="1EtV7u6B3fg">
+    <img class="media-img" src="https://img.youtube.com/vi/1EtV7u6B3fg/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+    <article class="card" id="Ogre 2020" data-category="auto">
+    <h2>
+         Ogres upe un Velna klēpis 2020
+        </h2>
+    <div class="yt-preview" data-id="pZxpbtk8AxU">
+    <img class="media-img" src="https://img.youtube.com/vi/pZxpbtk8AxU/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+    <article class="card" id="rudens 2020" data-category="auto">
+        <h2>
+             Rudens Latvijā 2020
+            </h2>
+        <div class="yt-preview" data-id="Pug_iHZxAhU">
+        <img class="media-img" src="https://img.youtube.com/vi/Pug_iHZxAhU/hqdefault.jpg"/>
+        <div class="play-overlay">
+              ▶
+             </div>
+        </div>
+        </article>
+        <article class="card" id="Straupe 2020" data-category="auto">
+        <h2>
+             Straupes pilsbaznīca 2020
+            </h2>
+        <div class="yt-preview" data-id="qI9Ibnb_RUc">
+        <img class="media-img" src="https://img.youtube.com/vi/qI9Ibnb_RUc/hqdefault.jpg"/>
+        <div class="play-overlay">
+              ▶
+             </div>
+        </div>
+        </article>
+        <article class="card" id="Latgale 2020" data-category="auto">
+            <h2>
+                 Kokarēviči Latgalē 2020
+                </h2>
+            <div class="yt-preview" data-id="i0WJ1PKcyVU">
+            <img class="media-img" src="https://img.youtube.com/vi/i0WJ1PKcyVU/hqdefault.jpg"/>
+            <div class="play-overlay">
+                  ▶
+                 </div>
+            </div>
+            </article>
+            <article class="card" id="Vansu tilts 2020" data-category="auto">
+                <h2>
+                     Rīga 2020
+                    </h2>
+                <div class="yt-preview" data-id="P3lZKhRRRl0">
+                <img class="media-img" src="https://img.youtube.com/vi/P3lZKhRRRl0/hqdefault.jpg"/>
+                <div class="play-overlay">
+                      ▶
+                     </div>
+                </div>
+                </article>
+                <article class="card" id="Randu 2020" data-category="auto">
+                    <h2>
+                         Randu pļavas un Latvijas daba pavasarī 2020
+                        </h2>
+                    <div class="yt-preview" data-id="hSS14FustBc">
+                    <img class="media-img" src="https://img.youtube.com/vi/hSS14FustBc/hqdefault.jpg"/>
+                    <div class="play-overlay">
+                          ▶
+                         </div>
+                    </div>
+                    </article>
+                    <article class="card" id="Kuldiga 2020" data-category="auto">
+                    <h2>
+                         Kuldīga 2020
+                        </h2>
+                    <div class="yt-preview" data-id="bIzbSNDQ4iM">
+                    <img class="media-img" src="https://img.youtube.com/vi/bIzbSNDQ4iM/hqdefault.jpg"/>
+                    <div class="play-overlay">
+                          ▶
+                         </div>
+                    </div>
+                    </article>
+                    <article class="card" id="karantinas pavasaris 2020" data-category="auto">
+                    <h2>
+                         Pavasaris - karantīna 2020
+                        </h2>
+                    <div class="yt-preview" data-id="hlvPDH11Yjw">
+                    <img class="media-img" src="https://img.youtube.com/vi/hlvPDH11Yjw/hqdefault.jpg"/>
+                    <div class="play-overlay">
+                          ▶
+                         </div>
+                    </div>
+                    </article>
+                    <article class="card" id="teika 2020" data-category="auto">
+                    <h2>
+                         Rīga - karantīna 2020
+                        </h2>
+                    <div class="yt-preview" data-id="91IktPt3Jb0">
+                    <img class="media-img" src="https://img.youtube.com/vi/91IktPt3Jb0/hqdefault.jpg"/>
+                    <div class="play-overlay">
+                          ▶
+                         </div>
+                    </div>
+                    </article>
+                    <article class="card" id="jurmala maijs 2020" data-category="auto">
+                        <h2>
+                             Jūrmala maijs 2020
+                            </h2>
+                        <div class="yt-preview" data-id="VKopIvEJyUw">
+                        <img class="media-img" src="https://img.youtube.com/vi/VKopIvEJyUw/hqdefault.jpg"/>
+                        <div class="play-overlay">
+                              ▶
+                             </div>
+                        </div>
+                        </article>
+                        <article class="card" id="Agenskalns 2019" data-category="auto">
+                            <h2>
+                                 Āgenskalns 2019
+                                </h2>
+                            <div class="yt-preview" data-id="0Z9xzR95ikk">
+                            <img class="media-img" src="https://img.youtube.com/vi/0Z9xzR95ikk/hqdefault.jpg"/>
+                            <div class="play-overlay">
+                                  ▶
+                                 </div>
+                            </div>
+                            </article>
+                            <article class="card" id="Spanija 1 2018" data-category="auto">
+                                <h2>
+                                     Spānija 1.daļa (2) 2018
+                                    </h2>
+                                <div class="yt-preview" data-id="bpZTJxcBoO0">
+                                <img class="media-img" src="https://img.youtube.com/vi/bpZTJxcBoO0/hqdefault.jpg"/>
+                                <div class="play-overlay">
+                                      ▶
+                                     </div>
+                                </div>
+                                </article>
+                                <article class="card" id="Spanija 2 2018" data-category="auto">
+                                <h2>
+                                     Spānija 2.daļa (2) 2018
+                                    </h2>
+                                <div class="yt-preview" data-id="-UKE8Uz_Ubo">
+                                <img class="media-img" src="https://img.youtube.com/vi/-UKE8Uz_Ubo/hqdefault.jpg"/>
+                                <div class="play-overlay">
+                                      ▶
+                                     </div>
+                                </div>
+                                </article>
+                                <article class="card" id="Kandava 2016" data-category="auto">
+                                <h2>
+                                     Čužu purvs un Kandava 2016
+                                    </h2>
+                                <div class="yt-preview" data-id="6Tx4S69Ztk4">
+                                <img class="media-img" src="https://img.youtube.com/vi/6Tx4S69Ztk4/hqdefault.jpg"/>
+                                <div class="play-overlay">
+                                      ▶
+                                     </div>
+                                </div>
+                                </article>
+                                <article class="card" id="Lieldienas 2016" data-category="auto">
+                                <h2>
+                                     Lieldienas 2016
+                                    </h2>
+                                <div class="yt-preview" data-id="OKXt_Ec6buI">
+                                <img class="media-img" src="https://img.youtube.com/vi/OKXt_Ec6buI/hqdefault.jpg"/>
+                                <div class="play-overlay">
+                                      ▶
+                                     </div>
+                                </div>
+                                </article>
+<article class="card" id="Malpils 2015" data-category="auto">
+<h2>
+     Mālpils un Sigulda 2015
+    </h2>
+<div class="yt-preview" data-id="uchFLyGJ6iM">
+<img class="media-img" src="https://img.youtube.com/vi/uchFLyGJ6iM/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Vidzeme 2015" data-category="auto">
+<h2>
+     Zelta rudens Vidzemē 2015
+    </h2>
+<div class="yt-preview" data-id="waAwI2eFuvY">
+<img class="media-img" src="https://img.youtube.com/vi/waAwI2eFuvY/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Selija 2015" data-category="auto">
+<h2>
+     Sēlija 2015
+    </h2>
+<div class="yt-preview" data-id="jhp7Xh1qLL8">
+<img class="media-img" src="https://img.youtube.com/vi/jhp7Xh1qLL8/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Vecriga 2015" data-category="auto">
+    <h2>
+         Ekskursija pa Vecrīgu 2015
+        </h2>
+    <div class="yt-preview" data-id="moLn-OMw6lk">
+    <img class="media-img" src="https://img.youtube.com/vi/moLn-OMw6lk/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+    <article class="card" id="Engure 2015" data-category="auto">
+    <h2>
+         Engure 2015
+        </h2>
+    <div class="yt-preview" data-id="T690xIxfcg8">
+    <img class="media-img" src="https://img.youtube.com/vi/T690xIxfcg8/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+    <article class="card" id="Birzai 2015" data-category="auto">
+    <h2>
+         Biržai 2015
+        </h2>
+    <div class="yt-preview" data-id="gLpYClfvihI">
+    <img class="media-img" src="https://img.youtube.com/vi/gLpYClfvihI/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+    <article class="card" id="Narva 2015" data-category="auto">
+    <h2>
+         Narva 2015
+        </h2>
+    <div class="yt-preview" data-id="HIEPLXzemr4">
+    <img class="media-img" src="https://img.youtube.com/vi/HIEPLXzemr4/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+    <article class="card" id="Cehija 2014" data-category="auto">
+    <h2>
+         Čehija un Polija 2014
+        </h2>
+    <div class="yt-preview" data-id="8Rv-4L2Gg8M">
+    <img class="media-img" src="https://img.youtube.com/vi/8Rv-4L2Gg8M/hqdefault.jpg"/>
+    <div class="play-overlay">
+          ▶
+         </div>
+    </div>
+    </article>
+<article class="card" id="Regate 2013" data-category="auto">
+<h2>
+     Kuģu regate 2013
+    </h2>
+<div class="yt-preview" data-id="1drpdL8Cu90">
+<img class="media-img" src="https://img.youtube.com/vi/1drpdL8Cu90/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Seda 2013" data-category="auto">
+<h2>
+     Talka un Sedas purvs 2013
+    </h2>
+<div class="yt-preview" data-id="Tg2IEhiFxWs">
+<img class="media-img" src="https://img.youtube.com/vi/Tg2IEhiFxWs/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="TV 2013" data-category="auto">
+<h2>
+     TV tornis un Botāniskais dārzs 2013
+    </h2>
+<div class="yt-preview" data-id="cP67qvOC7fY">
+<img class="media-img" src="https://img.youtube.com/vi/cP67qvOC7fY/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Ieriki 2013" data-category="auto">
+<h2>
+     Ieriķu dzirnavas un Āraišu pils 2013
+    </h2>
+<div class="yt-preview" data-id="ClJqCDcT8nU">
+<img class="media-img" src="https://img.youtube.com/vi/ClJqCDcT8nU/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Durbe 2013" data-category="auto">
+<h2>
+     Kaņiera ezers un Durbes pils 2013
+    </h2>
+<div class="yt-preview" data-id="iC8nlhm0lvE">
+<img class="media-img" src="https://img.youtube.com/vi/iC8nlhm0lvE/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="rujiena 2012" data-category="auto">
+<h2>
+     Rūjiena 2012
+    </h2>
+<div class="yt-preview" data-id="LEiksq1LGhs">
+<img class="media-img" src="https://img.youtube.com/vi/LEiksq1LGhs/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Cinevilla 2012" data-category="auto">
+<h2>
+     Ložmetējkalns un Cinevilla 2012
+    </h2>
+<div class="yt-preview" data-id="jKGaG5BysnA">
+<img class="media-img" src="https://img.youtube.com/vi/jKGaG5BysnA/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Cena 2012" data-category="auto">
+<h2>
+     Cenas tīrelis 2012
+    </h2>
+<div class="yt-preview" data-id="l533yqE-A9o">
+<img class="media-img" src="https://img.youtube.com/vi/l533yqE-A9o/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Ligatne 2012" data-category="auto">
+<h2>
+     Līgatnes bunkurs 2012
+    </h2>
+<div class="yt-preview" data-id="Pu9DLP883t8">
+<img class="media-img" src="https://img.youtube.com/vi/Pu9DLP883t8/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Pernava 2012" data-category="auto">
+<h2>
+     Purvs Igaunijā un Pērnava 2012
+    </h2>
+<div class="yt-preview" data-id="h6tiMelJD0U">
+<img class="media-img" src="https://img.youtube.com/vi/h6tiMelJD0U/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Laucu 2012" data-category="auto">
+<h2>
+     Lauču akmens 2012
+    </h2>
+<div class="yt-preview" data-id="VO51PnCU6O0">
+<img class="media-img" src="https://img.youtube.com/vi/VO51PnCU6O0/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+<article class="card" id="Ungurmuiza 2012" data-category="auto">
+<h2>
+     Ungurmuiža 2012
+    </h2>
+<div class="yt-preview" data-id="G1HhovCPWgg">
+<img class="media-img" src="https://img.youtube.com/vi/G1HhovCPWgg/hqdefault.jpg"/>
+<div class="play-overlay">
+      ▶
+     </div>
+</div>
+</article>
+    </div>
+  </section>
+
+<!-- SADAĻA: sapnis -->
+<section class="category-section" id="sapnis">
+    <h2>🌀 MI un citi</h2>
+    <p>Mākslīgais intelekts un citi</p>
+    <div class="carousel-wrapper">
+
+      <!-- Bultiņas (ja gribi) -->
+      <div class="carousel-nav">
+        <button class="prev">‹</button>
+        <button class="next">›</button>
+      </div>
+
+      <div class="card-slider">
+        <!-- Zaļās kāpas taka 2024 -->
+        <article class="card" data-category="sapnis">
+          <h3>Zaļās kāpas taka 2024</h3>
+          <div class="yt-preview" data-id="6bU88_7ca9A">
+            <img class="media-img" src="https://img.youtube.com/vi/6bU88_7ca9A/hqdefault.jpg" alt="Zaļās kāpas taka 2024">
+            <div class="play-overlay">▶</div>
+          </div>
+        </article>
+        <!-- Gastrotūre Sēlijā 2023 -->
+        <article class="card" data-category="sapnis">
+            <h3>Gastrotūre Sēlijā 2023</h3>
+            <div class="yt-preview" data-id="J4PIePHen6g">
+              <img class="media-img" src="https://img.youtube.com/vi/J4PIePHen6g/hqdefault.jpg" alt="Gastrotūre Sēlijā 2023">
+              <div class="play-overlay">▶</div>
+            </div>
+          </article>
+          <!-- Halloween party 2023 -->
+        <article class="card" data-category="sapnis">
+            <h3>Halloween party 2023</h3>
+            <div class="yt-preview" data-id="tE_rtbEhbTg">
+              <img class="media-img" src="https://img.youtube.com/vi/tE_rtbEhbTg/hqdefault.jpg" alt="Halloween party 2023">
+              <div class="play-overlay">▶</div>
+            </div>
+          </article>
+          <!-- Viktorijas laikmeta velotūre 2023 -->
+          <article class="card" data-category="sapnis">
+            <h3>Viktorijas laikmeta velotūre 2023</h3>
+            <div class="yt-preview" data-id="QWvP_guOHB4">
+              <img class="media-img" src="https://img.youtube.com/vi/QWvP_guOHB4/hqdefault.jpg" alt="Viktorijas laikmeta velotūre 2023">
+              <div class="play-overlay">▶</div>
+            </div>
+          </article>
+          <!-- Retrospekcija 2022 -->
+          <article class="card" data-category="sapnis">
+            <h3>Retrospekcija 2022</h3>
+            <div class="yt-preview" data-id="vEVVQEUg8Ik">
+              <img class="media-img" src="https://img.youtube.com/vi/vEVVQEUg8Ik/hqdefault.jpg" alt="Retrospekcija 2022">
+              <div class="play-overlay">▶</div>
+            </div>
+          </article>                  
+    </div>
+  </section>
+
+
+  <!-- Skripts karuseļiem un YouTube embed aizstāšanai -->
+  <script>
+    // 1) Karuseļa bultiņas + drag + wheel
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+      const slider = wrapper.querySelector('.card-slider');
+      const prev = wrapper.querySelector('.prev');
+      const next = wrapper.querySelector('.next');
+
+      // Bultiņas
+      if (next) {
+        next.addEventListener('click', () => {
+          slider.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+      }
+      if (prev) {
+        prev.addEventListener('click', () => {
+          slider.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+      }
+
+      // Pele – "click & drag"
+      let isDown = false;
+      let startX, scrollLeft;
+
+      slider.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+      slider.addEventListener('mouseleave', () => {
+        isDown = false;
+      });
+      slider.addEventListener('mouseup', () => {
+        isDown = false;
+      });
+      slider.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = x - startX;
+        slider.scrollLeft = scrollLeft - walk;
+      });
+
+      // Pele – ritenītis horizontālam scroll
+      slider.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        const distance = e.deltaY * 3; // reizinam ar 3
+        slider.scrollBy({ left: distance, behavior: 'smooth' });
+        }, { passive: false });
+    });
+
+    // 2) Klikšķinot uz .card, ja iekšā ir .yt-preview, tad palaist video
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function (e) {
+        // ja klikšķis bijis uz <a> (piemēram, PDF ikonas links), tad nedaram neko
+        if (e.target.closest('a')) return;
+
+        const yt = card.querySelector('.yt-preview');
+        if (yt) yt.click();
+      });
+    });
+
+    // 3) Kad noklikšķina tieši uz .yt-preview, nomaina to uz iFrame
+    document.querySelectorAll('.yt-preview').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const id = el.dataset.id;
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+        iframe.frameBorder = "0";
+        iframe.allowFullscreen = true;
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.style.width = "100%";
+        iframe.style.height = "220px";
+        el.replaceWith(iframe);
+      });
+    });
+  </script>
+</body>
+</html>

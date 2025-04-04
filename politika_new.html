@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>TravelStore - Vienas un tās pašas pogas Split</title>
+  <style>
+    /* == Pamata stili == */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+  font-family: 'CormorantGaramond';
+  src: url('fonts/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* mainīgais fonts */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond';
+  src: url('fonts/CormorantGaramond-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+    /* Globālais fons – saglabājam, ja vajag redzamu maliņu apkārt */
+    html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'CormorantGaramond', serif;
+  background: url("images/globalBg.jpg") center center / cover no-repeat;
+}
+
+    /* .split-container – mazāka, lai apkārt būtu fona maliņa */
+    .split-container {
+      position: relative;
+      width: 95%;
+      height: 95%;
+      margin: 2% auto 0;
+    }
+    /* == Abas puses (4s split animācija ar scale(1.3)) == */
+    .side {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: width 4s ease, transform 4s ease;
+      z-index: 1;
+    }
+    .left-side {
+      left: 0;
+      background: linear-gradient(
+                  rgba(0, 0, 0, 0.5),
+                  rgba(0, 0, 0, 0.5)
+                ),
+                url("images/government.jpg");
+      background-size: cover;
+      background-position: center;
+      animation: slideFromTop 1.2s forwards;
+      transform: translateY(-100%);
+    }
+    @keyframes slideFromTop {
+      to { transform: translateY(0); }
+    }
+    .right-side {
+      right: 0;
+      background: linear-gradient(
+                  rgba(0, 0, 0, 0.5),
+                  rgba(0, 0, 0, 0.5)
+                ),
+                url("images/opposition.jpg");
+      background-size: cover;
+      background-position: center;
+      animation: slideFromBottom 1.2s forwards;
+      transform: translateY(100%);
+    }
+    @keyframes slideFromBottom {
+      to { transform: translateY(0); }
+    }
+    .side.active {
+      width: 85%;
+      transform: scale(1.3);
+      z-index: 2;
+    }
+    .side.minimized {
+      width: 15%;
+    }
+
+    /* == LOGO KONTEINERS – Logotips pašā kreisajā augšējā stūrī, fiksēts iekš .split-container */
+    .logo-container {
+      position: absolute;   /* attiecībā pret .split-container */
+      top: 0;
+      left: 0;
+      margin: 10px;        /* lai nav pielipis stūrī */
+      z-index: 999;
+    }
+    .logo-container a {
+      display: inline-block;
+    }
+    .logo-container img {
+      height:80px; /* 2× lielāks */
+      opacity: 0.5;  /* caurspīdīgāks */
+      transition: transform 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .logo-container img:hover {
+      transform: scale(1.1);
+      animation: none;
+    }
+
+    /* == Centrālais virsraksts (default stāvoklī) – nedaudz zemāk, lai neatņemtu vietu logotipam */
+    .center-title {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5rem;
+      color: #fff;
+      text-align: center;
+      z-index: 3;
+      opacity: 0;
+    }
+
+    /* == Divlīmeņu virsraksti (galvenais + apakšvirsraksts) katrā pusē */
+    .side-title {
+      position: absolute;
+      left: 50%;
+      color: #fff;
+      text-align: center;
+      opacity: 0;
+      z-index: 5;
+    }
+    /* Virsrakstiem pietiekami zemāk – mainām top vērtības */
+    .main-heading {
+      top: 38%;  /* agrāk 25% → tagad 28% */
+      font-size: 2.5rem;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .sub-heading {
+      top: 50%;  /* agrāk 35% → tagad 38% */
+      font-size: 1.5rem;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .side.active .main-heading {
+      animation: fadeUpMain 0.8s forwards;
+    }
+    .side.active .sub-heading {
+      animation: fadeUpSub 0.8s forwards;
+      animation-delay: 0.8s;
+    }
+    @keyframes fadeUpMain {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+    @keyframes fadeUpSub {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    /* == Vienas un tās pašas 2 pogas, katrai sava krāsa == */
+    .btn {
+      position: absolute;
+      top: 60%;
+      transform: translate(-50%, -50%);
+      padding: 1rem 2rem;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: left 4s ease, transform 0.5s ease, background 0.5s ease;
+      z-index: 3;
+      opacity: 0;
+      box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
+    }
+    #btnCorporate {
+      left: 42.5%;
+      background-color: rgba(101, 141, 79, 0.8);
+      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
+    }
+    #btnVacation {
+      left: 57.5%;
+      background-color: rgba(222, 145, 22, 0.8);
+      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
+    }
+    #btnCorporate:hover {
+      background-color: rgba(85, 124, 65, 0.8);
+    }
+    #btnVacation:hover {
+      background-color: rgba(222, 145, 22, 0.8);
+    }
+    .left-active #btnCorporate {
+      left: 42.5%;
+    }
+    .left-active #btnVacation {
+      display: none;
+    }
+    .right-active #btnVacation {
+      left: 57.5%;
+    }
+    .right-active #btnCorporate {
+      display: none;
+    }
+
+    /* == Teksta animācija pa vārdiem (centrālajam virsrakstam) == */
+    .word {
+      display: inline-block;
+      margin-right: 0.2em;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUpWords 0.6s forwards;
+    }
+    @keyframes fadeUpWords {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="split-container" id="splitContainer">
+    <!-- Logo konteiners, logotips atrodas kreisajā augšējā stūrī -->
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/logo_small.png" alt="Puteklis Logo">
+      </a>
+    </div>
+
+    <!-- Kreiso pusi -->
+    <div class="side left-side" id="leftSide">
+      <h2 class="side-title main-heading" id="leftMain">Domāt ir drosmīgāk nekā pakļauties</h2>
+      <h3 class="side-title sub-heading" id="leftSub">Viņi grib, lai tu klusē – mēs gribam, lai tu domā!</h3>
+    </div>
+
+    <!-- Labo pusi -->
+    <div class="side right-side" id="rightSide">
+      <h2 class="side-title main-heading" id="rightMain">Kad domāt kļūst bīstami - mēs esam klāt</h2>
+      <h3 class="side-title sub-heading" id="rightSub">Viņi sola brīvību, bet būvē sev impēriju</h3>
+    </div>
+
+    <!-- Centrālais virsraksts (default) -->
+    <h1 class="center-title" id="centerTitle">Politiskā analīze</h1>
+
+    <!-- Divas pogas -->
+    <button class="btn" id="btnCorporate">Prātotāji</button>
+    <button class="btn" id="btnVacation">Atprātotāji</button>
+  </div>
+
+  <script>
+    const splitContainer = document.getElementById('splitContainer');
+    const leftSide = document.getElementById('leftSide');
+    const rightSide = document.getElementById('rightSide');
+
+    const leftMain = document.getElementById('leftMain');
+    const leftSub = document.getElementById('leftSub');
+    const rightMain = document.getElementById('rightMain');
+    const rightSub = document.getElementById('rightSub');
+
+    const centerTitle = document.getElementById('centerTitle');
+    const btnCorporate = document.getElementById('btnCorporate');
+    const btnVacation = document.getElementById('btnVacation');
+
+    let currentState = 'default';
+    let revertTimeout = null;
+
+    /* Teksta animācija “pa vārdiem” – tikai centrālajam virsrakstam */
+    function animateWords(element, fullText) {
+      element.innerHTML = "";
+      const words = fullText.split(" ");
+      words.forEach((word, i) => {
+        const span = document.createElement("span");
+        span.className = "word";
+        span.textContent = word + (i < words.length - 1 ? " " : "");
+        span.style.animationDelay = `${0.15 * i}s`;
+        element.appendChild(span);
+      });
+    }
+
+    /* FadeUp elementam */
+    function fadeUpElement(elem, delaySec = 0) {
+      elem.style.opacity = '0';
+      elem.style.transform = 'translate(-50%, 20px)';
+      setTimeout(() => {
+        elem.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+        elem.style.transform = 'translate(-50%, 0)';
+        elem.style.opacity = '1';
+      }, delaySec * 1000);
+    }
+
+    /* Lapas sākumā – animējam centrālo virsrakstu un pogas */
+    window.addEventListener('DOMContentLoaded', () => {
+      animateWords(centerTitle, "Politiskā analīze");
+      setTimeout(() => {
+        fadeUpElement(centerTitle, 0);
+        fadeUpElement(btnCorporate, 0.3);
+        fadeUpElement(btnVacation, 0.5);
+      }, 300);
+    });
+
+    /* Aktivizē kreiso pusi */
+    function activateLeftSide() {
+      if (revertTimeout) {
+        clearTimeout(revertTimeout);
+        revertTimeout = null;
+      }
+      leftSide.classList.add('active');
+      rightSide.classList.add('minimized');
+      splitContainer.classList.add('left-active');
+      centerTitle.style.opacity = '0';
+      btnVacation.style.opacity = '0';
+      fadeUpElement(btnCorporate, 0);
+      currentState = 'leftActive';
+    }
+
+    /* Aktivizē labo pusi */
+    function activateRightSide() {
+      if (revertTimeout) {
+        clearTimeout(revertTimeout);
+        revertTimeout = null;
+      }
+      rightSide.classList.add('active');
+      leftSide.classList.add('minimized');
+      splitContainer.classList.add('right-active');
+      centerTitle.style.opacity = '0';
+      btnCorporate.style.opacity = '0';
+      fadeUpElement(btnVacation, 0);
+      currentState = 'rightActive';
+    }
+
+    /* Revert uz sākotnējo stāvokli (50/50) */
+    function revertToDefault() {
+      leftSide.classList.remove('active', 'minimized');
+      rightSide.classList.remove('active', 'minimized');
+      splitContainer.classList.remove('left-active', 'right-active');
+      currentState = 'default';
+      revertTimeout = setTimeout(() => {
+        if (currentState === 'default') {
+          animateWords(centerTitle, "Politiskā analīze");
+          fadeUpElement(centerTitle, 0);
+          fadeUpElement(btnCorporate, 0.3);
+          fadeUpElement(btnVacation, 0.5);
+        }
+      }, 4000);
+    }
+
+    // Eventi
+    btnCorporate.addEventListener('mouseenter', () => {
+      if (currentState === 'default') {
+        activateLeftSide();
+      }
+    });
+    btnVacation.addEventListener('mouseenter', () => {
+      if (currentState === 'default') {
+        activateRightSide();
+      }
+    });
+    rightSide.addEventListener('mouseenter', () => {
+      if (currentState === 'leftActive') {
+        revertToDefault();
+      }
+    });
+    leftSide.addEventListener('mouseenter', () => {
+      if (currentState === 'rightActive') {
+        revertToDefault();
+      }
+    });
+    btnCorporate.addEventListener('click', () => {
+      window.location.href = 'pratotaji.html';
+    });
+    btnVacation.addEventListener('click', () => {
+      window.location.href = 'atpratotaji.html';
+    });
+  </script>
+</body>
+</html>
