@@ -212,6 +212,57 @@
     #closeBtn:hover {
       color: #fff;
     }
+    .centeredContent {
+  max-width: 500px; /* vai 400px - kā tev labāk patīk */
+  margin: 0 auto;   /* centrē visu pa vidu */
+  text-align: center;
+}
+
+#songSelector {
+  background-color: #ee6c4d;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#lyricsBox {
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  white-space: pre-line;
+  color: #333;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  text-align: left;
+}
+
+#lyricsBox p {
+  margin: 0;  /* <-- noņem augšas/apakšas tukšumu */
+  padding: 0; /* <-- noņem iekšējās atstarpes */
+}
+
+
+audio {
+  width: 100%; /* šeit jābūt 100%, nevis 10%! */
+  margin-top: 10px;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
   </style>
 </head>
 <body>
@@ -441,29 +492,27 @@
     </div>
 <h3>🎵 Roboti gan komponē, gan izpilda</h3>
     <p>Klausies dažus no demo failiem: </p>
+<div class="centeredContent">
+  <select id="songSelector" onchange="playSelectedSong()">
+    <option value="">-- Izvēlies dziesmu --</option>
+    <option value="music/The Lost Sock Saga.mp3">The Lost Sock Saga</option>
+    <option value="music/un mēs braucam.mp3">Un mēs braucam</option>
+    <option value="music/There are prisoners trapped between cloc.mp3">There are prisoners trapped between clocks</option>
+    <option value="music/We are driving.mp3">We are driving</option>
+    <option value="music/Yesterday I searched for future's perfec.mp3">Yesterday I searched for future's perfect</option>
+    <option value="music/Dziesmina par putekliti.mp3">Dziesmiņa par puteklīti</option>
+    <option value="music/Whispers fall.mp3">Whispers fall</option>
+  </select>
 
-    <audio controls>
-      <source src="music/The Lost Sock Saga.mp3" type="audio/mpeg">
-      Tava pārlūks neatbalsta audio elementu.
-    </audio>
-    <audio controls>
-      <source src="music/un mēs braucam.mp3" type="audio/mpeg">
-    </audio>
-    <audio controls>
-      <source src="music/There are prisoners trapped between cloc.mp3" type="audio/mpeg">
-    </audio>
-    <audio controls>
-      <source src="music/We are driving.mp3" type="audio/mpeg">
-    </audio>
-    <audio controls>
-      <source src="music/Yesterday I searched for future's perfec.mp3" type="audio/mpeg">
-    </audio>
-    <audio controls>
-      <source src="music/Dziesmina par putekliti.mp3" type="audio/mpeg">
-    </audio>
-    <audio controls>
-      <source src="music/Whispers fall.mp3" type="audio/mpeg">
-    </audio>
+  <audio id="audioPlayer" controls>
+    <source id="audioSource" src="" type="audio/mpeg">
+    Tavs pārlūks neatbalsta audio elementu.
+  </audio>
+  <div id="lyricsBox">
+    <p id="lyricsText" class="fade-in">Izvēlies dziesmu, lai redzētu vārdus.</p>
+  </div>
+</div>
+ 
   `;
   break;
         case 'intuicija':
@@ -738,6 +787,57 @@
         closeBox();
       }
     });
+
+    function playSelectedSong() {
+  var selector = document.getElementById("songSelector");
+  var player = document.getElementById("audioPlayer");
+  var source = document.getElementById("audioSource");
+  var lyricsText = document.getElementById("lyricsText");
+
+  var selectedSong = selector.value;
+
+  if (selectedSong) {
+    // Uzstāda jauno audio avotu
+    source.src = selectedSong;
+    player.load();
+    player.play();
+    
+    // Atrodi dziesmas faila vārdu
+    var fileName = selectedSong.split('/').pop().replace('.mp3', '.txt');
+
+    // Lasa vārdus no lyrics mapes
+    fetch('lyrics/' + fileName)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Lyrics file not found');
+        }
+        return response.text();
+      })
+      .then(data => {
+  var lyricsText = document.getElementById("lyricsText");
+
+  // Tīram iepriekšējo fade-in stāvokli
+  lyricsText.classList.remove("show");
+
+  // Tikai apgriežam katras rindas malas (noņem atstarpes), BET netīram tukšas rindas!
+  var cleanedData = data
+    .split('\n')
+    .map(line => line.trim())
+    .join('\n');
+
+  lyricsText.innerText = cleanedData;
+
+  // Neliela aizture, tad parādām ar fade-in
+  setTimeout(() => {
+    lyricsText.classList.add("show");
+  }, 100);
+})
+
+
+
+  }
+}
+
   </script>
 </body>
 </html>
