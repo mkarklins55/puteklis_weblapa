@@ -263,6 +263,7 @@ audio {
 .fade-in.show {
   opacity: 1;
 }
+
   </style>
 </head>
 <body>
@@ -510,6 +511,7 @@ audio {
     <option value="music/Kurzemes_rezidence.mp3">Kurzemes_rezidence</option>
     <option value="music/Wheels are turning, morning's gold.mp3">Wheels are turning, morning's gold</option>
     <option value="music/Dusty paths wind through the rye.mp3">Dusty paths wind through the rye</option>
+    <option value="music/DRust on the rails and grass in the ties.mp3">Rust on the rails and grass in the ties</option>
   </select>
 
   <audio id="audioPlayer" controls>
@@ -768,86 +770,85 @@ audio {
     </div>
   `;
   break;
-        default:
-          contentBox.innerHTML += `<h2>Nekas nav atrodams</h2>`;
-      }
-
-      // Pievieno aizvērt pogas eventu
-      document.getElementById('closeBtn').addEventListener('click', () => {
-        closeBox();
-      });
+      default:
+        contentBox.innerHTML += `<h2>Nekas nav atrodams</h2>`;
     }
 
-    // 4) F-ja aizvērt saturu
-    function closeBox() {
-      // Pieliek fade-out klasi
-      contentBox.classList.add('fade-out');
-      // Pēc animācijas beigām => noslēpj
-      setTimeout(() => {
-        contentBox.style.display = 'none';
-        contentBox.classList.remove('fade-out');
-      }, 300);
-    }
-
-    // 5) Klikšķis ārpus contentBox aizver to
-    document.addEventListener('click', function(e) {
-      const box = document.getElementById('contentBox');
-      if (box.style.display === 'block' && !box.contains(e.target) 
-          && !e.target.matches('.grid-links a, .grid-links a *')) {
-        closeBox();
-      }
+    // Pievieno aizvērt pogas eventu
+    document.getElementById('closeBtn').addEventListener('click', () => {
+      closeBox();
     });
-
-    function playSelectedSong() {
-  var selector = document.getElementById("songSelector");
-  var player = document.getElementById("audioPlayer");
-  var source = document.getElementById("audioSource");
-  var lyricsText = document.getElementById("lyricsText");
-
-  var selectedSong = selector.value;
-
-  if (selectedSong) {
-    // Uzstāda jauno audio avotu
-    source.src = selectedSong;
-    player.load();
-    player.play();
-    
-    // Atrodi dziesmas faila vārdu
-    var fileName = selectedSong.split('/').pop().replace('.mp3', '.txt');
-
-    // Lasa vārdus no lyrics mapes
-    fetch('lyrics/' + fileName)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Lyrics file not found');
-        }
-        return response.text();
-      })
-      .then(data => {
-  var lyricsText = document.getElementById("lyricsText");
-
-  // Tīram iepriekšējo fade-in stāvokli
-  lyricsText.classList.remove("show");
-
-  // Tikai apgriežam katras rindas malas (noņem atstarpes), BET netīram tukšas rindas!
-  var cleanedData = data
-    .split('\n')
-    .map(line => line.trim())
-    .join('\n');
-
-  lyricsText.innerText = cleanedData;
-
-  // Neliela aizture, tad parādām ar fade-in
-  setTimeout(() => {
-    lyricsText.classList.add("show");
-  }, 100);
-})
-
-
-
   }
-}
 
-  </script>
+  // 4) F-ja aizvērt saturu
+  function closeBox() {
+    // Pieliek fade-out klasi
+    contentBox.classList.add('fade-out');
+    // Pēc animācijas beigām => noslēpj
+    setTimeout(() => {
+      contentBox.style.display = 'none';
+      contentBox.classList.remove('fade-out');
+    }, 300);
+  }
+
+  // 5) Klikšķis ārpus contentBox aizver to
+  document.addEventListener('click', function(e) {
+    const box = document.getElementById('contentBox');
+    if (box.style.display === 'block' && !box.contains(e.target) 
+        && !e.target.matches('.grid-links a, .grid-links a *')) {
+      closeBox();
+    }
+  });
+
+  // DZIESMU IZVĒLE (dropdown)
+  function playSelectedSong() {
+    var selector = document.getElementById("songSelector");
+    var player = document.getElementById("audioPlayer");
+    var source = document.getElementById("audioSource");
+    var lyricsText = document.getElementById("lyricsText");
+
+    var selectedSong = selector.value;
+
+    if (selectedSong) {
+      // Uzstāda jauno audio avotu
+      source.src = selectedSong;
+      player.load();
+      player.play();
+      
+      // Atrodi dziesmas faila vārdu
+      var fileName = selectedSong.split('/').pop().replace('.mp3', '.txt');
+
+      // Lasa vārdus no lyrics mapes
+      fetch('lyrics/' + fileName)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Lyrics file not found');
+          }
+          return response.text();
+        })
+        .then(data => {
+          lyricsText.classList.remove("show");
+
+          // Apgriež katras rindas malas, bet neslēpj tukšās rindas
+          var cleanedData = data
+            .split('\n')
+            .map(line => line.trim())
+            .join('\n');
+
+          lyricsText.innerText = cleanedData;
+
+          // Neliela aizture, tad parādām ar fade-in
+          setTimeout(() => {
+            lyricsText.classList.add("show");
+          }, 100);
+        })
+        .catch(error => {
+          lyricsText.innerText = "Nav pieejami vārdi.";
+        });
+    }
+  }
+ 
+</script>
 </body>
 </html>
+
