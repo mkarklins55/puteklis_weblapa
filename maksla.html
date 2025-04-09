@@ -2,28 +2,47 @@
 <html lang="lv">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Māksla</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    /* Globālais stils */
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #f0f0f0;
-      font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
       padding: 20px;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #f0f0f0;
     }
     h1 {
       text-align: center;
       font-size: 3em;
       margin-bottom: 10px;
-      animation: fadeInDown 1.5s ease-out;
+      text-shadow: 2px 2px 4px #000;
     }
+    h2, p {
+      text-shadow: 2px 2px 4px #000;
+    }
+    .logo-container {
+      position: absolute; top: 0; left: 0; margin: 10px; z-index: 999;
+    }
+    .logo-container img {
+      height: 80px; opacity: 0.7; transition: transform 0.3s ease; animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .logo-container img:hover { transform: scale(1.1); animation: none; }
+
+    html { scroll-behavior: smooth; }
+
     .art-section {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
       gap: 20px;
       margin-top: 30px;
-      animation: fadeInUp 2s ease-out;
     }
     .art-card {
       position: relative;
@@ -33,8 +52,7 @@
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       transition: transform 0.3s, background 0.3s;
-      background-size: cover;
-      background-position: center;
+      background-size: cover; background-position: center;
       color: #f0f0f0;
     }
     .art-card:hover {
@@ -46,105 +64,56 @@
       margin-bottom: 10px;
       text-shadow: 2px 2px 4px #000;
     }
-    h2, p {
-      text-shadow: 2px 2px 4px #000;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+
+    /* Audio atskaņotājs */
     audio {
       display: block;
-      margin: 30px auto;
       width: 300px;
       background: rgba(255, 255, 255, 0.1);
       border: none;
       border-radius: 20px;
       padding: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       backdrop-filter: blur(5px);
       position: fixed;
-      bottom: 20px;
-      left: 50%;
+      bottom: 20px; left: 50%;
       transform: translateX(-50%);
       z-index: 1000;
     }
 
-    /* Logo kreisajā augšējā stūrī KONTEINERA ietvaros */
-    .logo-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      margin: 10px;
-      z-index: 999;
-    }
-    .logo-container a {
-      display: inline-block;
-    }
-    .logo-container img {
-      height: 80px;
-      opacity: 0.7;
-      transition: transform 0.3s ease;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    .logo-container img:hover {
-      transform: scale(1.1);
-      animation: none;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* Modāli grāmatu sadaļai - tie paši vecie */
     .modal {
-      display: none;
-      position: fixed;
+      display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.7);
       z-index: 999;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.7);
     }
     .modal-content {
-      background: #fff;
-      margin: 10% auto;
-      padding: 30px;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 500px;
-      text-align: center;
+      background: #fff; margin:10% auto; padding:30px; border-radius:10px;
+      width:80%; max-width:500px; text-align: center; position: relative;
     }
     .close-button {
-      float: right;
-      font-size: 1.5em;
-      cursor: pointer;
+      position: absolute; top:15px; right:20px; background:none; border:none;
+      font-size:1.5em; color:#333; cursor:pointer;
     }
-    .book-card:hover {
-      transform: scale(1.05);
-      transition: transform 0.3s;
+    .book-card:hover { transform: scale(1.05); }
+
+    section {
+      padding: 100px 20px; text-align: center;
     }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- Logo stūrī -->
-    <div class="logo-container">
-        <a href="index.html">
-          <img src="images/logo_small.png" alt="Logo">
-        </a>
-    </div>
+  <!-- Logo -->
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="images/logo_small.png" alt="Logo">
+    </a>
+  </div>
 
   <h1>Māksla</h1>
 
+  <!-- Sākuma 5 sadaļas -->
   <div class="art-section">
     <a href="#gramatas" class="art-card" style="background-image: url('images/gramatas.jpg');">
       <div class="art-icon"><i class="fas fa-book"></i></div>
@@ -172,440 +141,543 @@
       <p>Domu šautriņas cauri laikam.</p>
     </a>
   </div>
-  
-<!-- Pievienojam tukšu vietu -->
-<div style="height: 160px;"></div>
 
-<section id="gramatas" style="position: relative; text-align: center; background: url('images/gramatu-fons.jpg') no-repeat center center / cover; min-height: 100vh; scroll-margin-top: 15px;">
-  <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
-    <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Grāmatas</h2>
-    <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
-      Putekļi starp lappusēm. Vārdi, kas elpo. Domu ceļi, kas ved uz citām pasaulēm.
-    </p>
+  <!-- Papildu atstarpe -->
+  <div style="height: 160px;"></div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
 
-      <div class="book-card" onclick="showLasitasGramataModal()" style="background: url('images/lasitas2-gramatas.jpg') no-repeat center center / cover; position: relative; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; cursor: pointer; overflow: hidden;">
-        <div style="background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Lasītās grāmatas</h3>
-          <p style="font-size: 1em;"></p>
+  <!-- ==================== GRĀMATAS SADAĻA ==================== -->
+  <section id="gramatas" 
+           style="position: relative; text-align: center; 
+                  background: url('images/gramatu-fons.jpg') center center / cover; 
+                  min-height: 100vh; scroll-margin-top: 15px;">
+    <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
+      <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
+        Grāmatas
+      </h2>
+      <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
+        Putekļi starp lappusēm. Vārdi, kas elpo. Domu ceļi, kas ved uz citām pasaulēm.
+      </p>
+
+      <!-- 3 grāmatu 'kartiņas' -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
+
+        <div class="book-card" onclick="showLasitasGramataModal()"
+             style="background: url('images/lasitas2-gramatas.jpg') center center / cover; 
+                    position: relative; padding: 20px; border-radius: 16px; 
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
+                    cursor: pointer; overflow: hidden;">
+          <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+            <h3 style="margin-bottom: 10px;">Lasītās grāmatas</h3>
+            <p style="font-size: 1em;"></p>
+          </div>
         </div>
-      </div>
 
-      <div class="book-card" onclick="showRekomendetasGramataModal()" style="background: url('images/rekomendacijas.jpg') no-repeat center center / cover; position: relative; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; cursor: pointer; overflow: hidden;">
-        <div style="background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Rekomendācijas</h3>
-          <p style="font-size: 1em;"></p>
+        <div class="book-card" onclick="showRekomendetasGramataModal()"
+             style="background: url('images/rekomendacijas.jpg') center center / cover; 
+                    position: relative; padding: 20px; border-radius: 16px; 
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
+                    cursor: pointer; overflow: hidden;">
+          <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+            <h3 style="margin-bottom: 10px;">Rekomendācijas</h3>
+            <p style="font-size: 1em;"></p>
+          </div>
         </div>
-      </div>
 
-      <div class="book-card" onclick="showNeizlasitsGramataModal()" style="background: url('images/neizlasits.jpg') no-repeat center center / cover; position: relative; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; cursor: pointer; overflow: hidden;">
-        <div style="background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Neizlasīts</h3>
-          <p style="font-size: 1em;"></p>
+        <div class="book-card" onclick="showNeizlasitsGramataModal()"
+             style="background: url('images/neizlasits.jpg') center center / cover; 
+                    position: relative; padding: 20px; border-radius: 16px; 
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
+                    cursor: pointer; overflow: hidden;">
+          <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+            <h3 style="margin-bottom: 10px;">Neizlasīts</h3>
+            <p style="font-size: 1em;"></p>
+          </div>
         </div>
-      </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== LASĪTĀS GRĀMATAS MODĀLAIS LOGS ========== -->
+  <div id="lasitasGramataModal"
+       onclick="closeLasitasGramataModalOutside(event)"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+              background:rgba(0,0,0,0.7); z-index:1000;">
+    <div style="background: url('images/lasitas_gramatas.jpg') center center / cover; 
+                padding: 60px; margin: 15px auto; width: 90%; max-width: 900px; 
+                border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.7); 
+                position: relative;">
+
+      <!-- Aizvēršanas poga (X) -->
+      <button onclick="event.stopPropagation(); closeLasitasGramataModalDirect()"
+              style="position:absolute; top:15px; right:20px; background:none; border:none; 
+                     font-size:2em; color:#faf7f7; cursor:pointer;">&times;</button>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
+
+        <!-- Grāmata 1 -->
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
+          <img src="images/1984.jpg" alt="1984 grāmata"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color: #333;">1984 – Džordžs Orvels</h3>
+          <p style="color: #555;">
+            Totalitāra valsts, kurā Lielais Brālis visu redz un vada cilvēku domas.
+            Romāns brīdina par brīvības iznīcināšanu, kontroles mašīnām un patiesības deformāciju.
+            Orvela vīzija ir drūma, bet šokējoši aktuāla arī mūsdienās.
+          </p>
+        </div>
+
+        <!-- Grāmata 2 -->
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
+          <img src="images/musu_valdnieks.jpg" alt="Mušu valdnieks"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color: #333;">Mušu valdnieks - Viljams Goldings</h3>
+          <p style="color: #555;">
+            Zēni uz neapdzīvotas salas zaudē cilvēcību.
+            Sabiedrības maskas nokrīt, paliek instinkti.
+            Tumšs un satriecošs cilvēka dabas atspoguļojums
+          </p>
+        </div>
+
+        <!-- Grāmata 3 -->
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
+          <img src="images/jelgava_94.jpg" alt="Jelgava 94"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color: #333;">Jelgava 94 – Jānis Joņevs</h3>
+          <p style="color: #555;">
+            Stāsts par jauniešiem 90. gadu Jelgavā.
+            Romāns ataino dumpīgās paaudzes vēlmi atrast savu vietu pasaulē pēc PSRS sabrukuma.
+            Tas ir spilgts, godīgs un reizē melanholisks skats uz jaunību, metāla mūziku un brīvības meklējumiem
+          </p>
+        </div>
+
+      </div>
     </div>
   </div>
-</section>
 
-<!-- LASĪTĀS GRĀMATAS POPUP -->
-<div id="lasitasGramataModal"  onclick="closeLasitasGramataModalOutside(event)" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000;">
-  <div style="background: url('images/lasitas_gramatas.jpg') no-repeat center center / cover; padding: 60px; margin: 15px auto; width: 90%; max-width: 900px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.7); position: relative;">
+ <!-- ========== REKOMENDĒTĀS GRĀMATAS MODĀLS ========== -->
+  <div id="rekomendetasGramataModal"
+       onclick="closeRekomendetasGramataModalOutside(event)"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+              background:rgba(0,0,0,0.7); z-index:1000;">
+    <div style="background: url('images/rekomendet_gramatas.jpg') center center / cover; 
+                padding: 60px; margin: 15px auto; width:90%; max-width: 900px; 
+                border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.7); 
+                position: relative;">
 
-    <!-- Aizvēršanas poga -->
-    <button onclick="event.stopPropagation(); closeLasitasGramataModalDirect()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:2em; color:#faf7f7; cursor:pointer;">&times;</button>
+      <!-- X poga -->
+      <button onclick="event.stopPropagation(); closeRekomendetasGramataModalDirect()"
+              style="position:absolute; top:15px; right:20px; background:none; border:none; 
+                     font-size:2em; color:#faf7f7; cursor:pointer;">&times;</button>
 
-    <!-- Saturs -->
-    <!--<h2 style="font-size: 2.5em; margin-bottom: 20px; color: #f3eded;">Lasītās grāmatas</h2>
-    <p style="font-size: 1.2em; margin-bottom: 30px; color: #f0eaea;">
-      Grāmatas, kas ceļojušas cauri prātam un atstājušas pēdas. Domu takas, kas vēl šodien elpo.
-    </p> -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:20px;">
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <!-- Grāmata 1 -->
+        <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
+          <img src="images/skarba_taka.jpg" alt="skarba taka"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color:#333;">Skarbās takas vilinājums - Bils Braisons</h3>
+          <p style="color:#555;">
+            Humoristisks un pašironisks stāsts par Bila Braisona un viņa drauga ceļojumu pa Apalaču taku.
+            Grāmata ir ne tikai par dabas skaistumu un pārgājienu izaicinājumiem, bet arī par cilvēciskajām vājībām un draudzību.
+          </p>
+        </div>
 
-      <!-- Grāmata 1 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/1984.jpg" alt="1984 grāmata" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">1984 – Džordžs Orvels</h3>
-        <p style="color: #555;">Totalitāra valsts, kurā Lielais Brālis visu redz un vada cilvēku domas.
-          Romāns brīdina par brīvības iznīcināšanu, kontroles mašīnām un patiesības deformāciju.
-          Orvela vīzija ir drūma, bet šokējoši aktuāla arī mūsdienās.</p>
+        <!-- Grāmata 2 -->
+        <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
+          <img src="images/aitas.jpg" alt="aitas"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color:#333;">aitas - Armands Puče</h3>
+          <p style="color:#555;">
+            Mūsdienu pasaule, kur cilvēki viegli ļaujas manipulācijām, kļūstot par bezdomu ganāmpulku.
+            Ar asu prātu un ironiju Puče atsedz digitālās ēnas puses un sociālo tīklu ilūzijas.
+          </p>
+        </div>
+
+        <!-- Grāmata 3 -->
+        <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
+          <img src="images/sirds.jpg" alt="sirds"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color:#333;">Sirds mirst pēdējā – Mārgareta Atvuda</h3>
+          <p style="color:#555;">
+            Pasaulē, kur sabrūk ekonomika un likumi, cerība uz drošību kļūst par brīvprātīgu ieslodzījumu.
+            Atvuda satīriski rāda, kā cilvēki labprāt maina brīvību pret ilūziju par kārtību.
+          </p>
+        </div>
+
       </div>
-
-      <!-- Grāmata 2 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/musu_valdnieks.jpg" alt="Mušu valdnieks" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">Mušu valdnieks - Viljams Goldings</h3>
-        <p style="color: #555;">Zēni uz neapdzīvotas salas zaudē cilvēcību.
-          Sabiedrības maskas nokrīt, paliek instinkti.
-          Tumšs un satriecošs cilvēka dabas atspoguļojums</p>
-      </div>
-
-      <!-- Grāmata 3 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/jelgava_94.jpg" alt="Jelgava 94" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">Jelgava 94 – Jānis Joņevs</h3>
-        <p style="color: #555;">Stāsts par jauniešiem 90. gadu Jelgavā.
-          Romāns ataino dumpīgās paaudzes vēlmi atrast savu vietu pasaulē pēc PSRS sabrukuma.
-          Tas ir spilgts, godīgs un reizē melanholisks skats uz jaunību, metāla mūziku un brīvības meklējumiem</p>
-      </div>
-
     </div>
   </div>
-</div>
 
-<!-- REKOMENDĒTĀS GRĀMATAS POPUP -->
-<div id="rekomendetasGramataModal" onclick="closeRekomendetasGramataModalOutside(event)" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000;">
-  <div style="background: url('images/rekomendet_gramatas.jpg') no-repeat center center / cover; padding: 60px; margin: 15px auto; width: 90%; max-width: 900px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.7); position: relative;">
+  <!-- ========== NEIZLASĪTĀS GRĀMATAS MODĀLS ========== -->
+  <div id="neizlasitsGramataModal"
+       onclick="closeNeizlasitsGramataModalOutside(event)"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+              background:rgba(0,0,0,0.7); z-index:1000;">
+    <div style="background:url('images/neizlasits_gramatas.jpg') center center / cover; 
+                padding:60px; margin:15px auto; width:90%; max-width:900px; 
+                border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.7); position:relative;">
 
-    <!-- Aizvēršanas poga -->
-    <button onclick="event.stopPropagation(); closeRekomendetasGramataModalDirect()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:2em; color:#faf7f7; cursor:pointer;">&times;</button>
+      <!-- X poga -->
+      <button onclick="event.stopPropagation(); closeNeizlasitsGramataModalDirect()"
+              style="position:absolute; top:15px; right:20px; background:none; border:none; 
+                     font-size:2em; color:#faf7f7; cursor:pointer;">&times;</button>
 
-    <!-- Saturs -->
-    <!--<h2 style="font-size: 2.5em; margin-bottom: 20px; color: #f3eded;">Rekomendācijas</h2>
-    <p style="font-size: 1.2em; margin-bottom: 30px; color: #f0eaea;">
-      Jo dzīve ir pārāk īsa, lai lasītu sliktas grāmatas.
-    </p> -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px;">
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <!-- Grāmata 1 -->
+        <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
+          <img src="images/slampe.jpg" alt="slampe"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color:#333;">Nemodernās Slampes meitenes - Rihards Bargais</h3>
+          <p style="color:#555;">
+            Rihards Bargais ar asu skatienu un rūgteni maigu ironiju iemūžina vientuļos varoņus,
+            kas staigā starp sapņiem un ikdienas purviem.
+          </p>
+        </div>
 
-      <!-- Grāmata 1 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/skarba_taka.jpg" alt="skarba taka" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">Skarbās takas vilinājums - Bils Braisons</h3>
-        <p style="color: #555;">Humoristisks un pašironisks stāsts par Bila Braisona un viņa drauga ceļojumu pa Apalaču taku Amerikā.
-          Grāmata ir ne tikai par dabas skaistumu un pārgājienu izaicinājumiem, bet arī par cilvēciskajām vājībām un draudzību.</p>
+        <!-- Grāmata 2 -->
+        <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
+          <img src="images/mugursoma.jpg" alt="mugursoma"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color:#333;">Trakā mugursomnieka negantie piedzīvojumi - Harijs Vagrants</h3>
+          <p style="color:#555;">
+            Vēji, kas smaržo pēc brīvības, un Lidl konteineru romantika Kiprā.
+            Harijs Vagrants dodas dzīves piedzīvojumā bez bagāžas, tikai ar mūzikas instrumentu un sapni.
+          </p>
+        </div>
+
+        <!-- Grāmata 3 -->
+        <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
+          <img src="images/dust.jpg" alt="dust"
+               style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
+          <h3 style="color:#333;">Putekļi - Hjū Hovijs</h3>
+          <p style="color:#555;">
+            Cilvēce cenšas izdzīvot drupās pēc pasaules gala.
+            Dzīve pazemes pilsētā balansē starp cerību un izmisumu.
+          </p>
+        </div>
+
       </div>
-
-      <!-- Grāmata 2 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/aitas.jpg" alt="aitas" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">aitas - Armands Puče</h3>
-        <p style="color: #555;">Mūsdienu pasaule, kur cilvēki viegli ļaujas manipulācijām, kļūstot par bezdomu ganāmpulku.
-          Ar asu prātu un ironiju Puče atsedz digitālās ēnas puses un sociālo tīklu ilūzijas.
-          "Aitas" ir skarbs un provokatīvs atgādinājums par brīvības cenu laikmetā, kur domāt patstāvīgi ir drosmīgs izaicinājums.</p>
-      </div>
-
-      <!-- Grāmata 3 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/sirds.jpg" alt="sirds" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">Sirds mirst pēdējā – Mārgareta Atvuda</h3>
-        <p style="color: #555;">Pasaulē, kur sabrūk ekonomika un likumi, cerība uz drošību kļūst par brīvprātīgu ieslodzījumu.
-          Atvuda satīriski rāda, kā cilvēki labprāt maina brīvību pret ilūziju par kārtību, kamēr viņu sirdis klusām kapitulē.</p>
-      </div>
-
     </div>
   </div>
-</div>
 
-<!-- NEIZLASĪTĀS GRĀMATAS POPUP -->
-<div id="neizlasitsGramataModal" onclick="closeNeizlasitsGramataModalOutside(event)" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000;">
-  <div style="background: url('images/neizlasits_gramatas.jpg') no-repeat center center / cover; padding: 60px; margin: 15px auto; width: 90%; max-width: 900px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.7); position: relative;">
 
-    <!-- Aizvēršanas poga -->
-    <button onclick="event.stopPropagation(); closeNeizlasitsGramataModalDirect()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:2em; color:#faf7f7; cursor:pointer;">&times;</button>
+  <!-- ==================== FILMAS SADAĻA ==================== -->
+  <section id="filmas"
+           style="position:relative; text-align:center; background: url('images/filmu-fons.jpg') center center / cover; min-height:100vh;">
+    <div style="max-width:1000px; margin:auto; padding:50px 20px;">
+      <h2 style="font-size:3em; margin-bottom:20px; color:#fff;">Filmas</h2>
+      <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;">
+        Šeit ir sadaļas par dažādiem filmu žanriem. Klikšķini, lai atvērtu detalizētu sarakstu.
+      </p>
 
-    <!-- Saturs -->
-    <!--<h2 style="font-size: 2.5em; margin-bottom: 20px; color: #f3eded;">Rekomendācijas</h2>
-    <p style="font-size: 1.2em; margin-bottom: 30px; color: #f0eaea;">
-      Jo dzīve ir pārāk īsa, lai lasītu sliktas grāmatas.
-    </p> -->
+      <!-- Te būs vairākas “filmu sadaļas” (katra - book-card). 
+           Katra: Sci-Fi, Teātris-Filmas, MūzikasFilmas, DzejasFilmas? (vai kādas vēlies!) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <!-- Pazudušās gaismas -->
+        <div class="book-card"
+             style="background:url('images/sci_fi.jpg') center center / cover; padding:20px; border-radius:16px;
+                    box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+             onclick="showMultiFilmModal('sciFiModal')">
+          <h3 style="margin-bottom:10px;">Pazudušās gaismas</h3>
+          <p>Tikai tumsā var ieraudzīt zvaigznes</p> 
+        </div>
 
-      <!-- Grāmata 1 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/slampe.jpg" alt="slampe" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">Nemodernās Slampes meitenes - Rihards Bargais</h3>
-        <p style="color: #555;">Rihards Bargais ar asu skatienu un rūgteni maigu ironiju iemūžina vientuļos varoņus, kas staigā starp sapņiem un ikdienas purviem.
-        </p>
-      </div>
+        <!-- Teātra filmas -->
+        <div class="book-card"
+             style="background:url('images/teatris_filmas.jpg') center center / cover; padding:20px; border-radius:16px;
+                    box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+             onclick="showMultiFilmModal('theaterFilmsModal')">
+          <h3 style="margin-bottom:10px;">Teātra ekranizācijas</h3>
+          <p>Klasiskie iestudējumi, kas pārcelti uz kino.</p>
+        </div>
 
-      <!-- Grāmata 2 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/mugursoma.jpg" alt="mugursoma" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">Trakā mugursomnieka negantie piedzīvojumi - Harijs Vagrants</h3>
-        <p style="color: #555;">Vēji, kas smaržo pēc brīvības, hipiji Grieķijā, vecmāmiņas Rumānijā, kas medī ne tikai biezpiena sieriņus, un Lidl konteineru romantika Kiprā.
-          Harijs Vagrants dodas dzīves piedzīvojumā bez bagāžas, tikai ar mūzikas instrumentu un sapni – izdzīvot uz pasaules malas un vēl pasmaidīt.</p>
-      </div>
+        <!-- Mūzikas filmas -->
+        <div class="book-card"
+             style="background:url('images/music_films.jpg') center center / cover; padding:20px; border-radius:16px;
+                    box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+             onclick="showMultiFilmModal('musicFilmsModal')">
+          <h3 style="margin-bottom:10px;">Mūzikas filmas</h3>
+          <p>Operas, koncertfilmas un muzikāli brīnumi.</p>
+        </div>
 
-      <!-- Grāmata 3 -->
-      <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
-        <img src="images/dust.jpg" alt="dust" style="width:100px; height:auto; margin-bottom: 15px; border-radius: 6px;">
-        <h3 style="color: #333;">Putekļi - Hjū Hovijs</h3>
-        <p style="color: #555;">Cilvēce cenšas izdzīvot drupās pēc pasaules gala. 
-          Dzīve noslēgtajā pazemes pilsētā balansē starp cerību un izmisumu, kad slepenās sazvērestības un vecie meli sāk brukt. 
-          Grāmata stāsta par drosmi un neatlaidību cīņā par brīvību vietā, kur pat elpa ir pretrunā ar likumiem.</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- Pievienojam tukšu vietu -->
-<div style="height: 160px;"></div>
-
-<section id="filmas" style="position: relative; text-align: center; background: url('images/filmu-fons.jpg') no-repeat center center / cover; min-height: 100vh; scroll-margin-top: 15px;">
-  <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
-    <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Filmas</h2>
-    <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
-      Putekļi uz lentēm. Stāsti, kas elpo gaismā. Kadri, kas paliek atmiņā.
-    </p>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-
-      <div class="book-card" onclick="showFilma1Modal()" style="background: url('images/filma1.jpg') no-repeat center center / cover; position: relative; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; cursor: pointer; overflow: hidden;">
-        <div style="background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Pazudušās Gaismas</h3>
+        <!-- Dzejas filmas -->
+        <div class="book-card"
+             style="background:url('images/poetry_films.jpg') center center / cover; padding:20px; border-radius:16px;
+                    box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+             onclick="showMultiFilmModal('poetryFilmsModal')">
+          <h3 style="margin-bottom:10px;">Dzejas filmas</h3>
+          <p>Poēzija, kas atdzīvojas ekrānā.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="book-card" onclick="showFilma2Modal()" style="background: url('images/filma2.jpg') no-repeat center center / cover; position: relative; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; cursor: pointer; overflow: hidden;">
-        <div style="background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Putekļi ceļā</h3>
+  <!-- ========== 4 dažādi modālie logi (daudzfilmu) ========== -->
+
+  <!-- 1) Pazudušās gaismas -->
+  <div id="sciFiModal" onclick="closeModalOutside(event, 'sciFiModal')"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001; justify-content:center; align-items:center;">
+    <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
+         onclick="event.stopPropagation();">
+      <button onclick="closeMultiFilmModal('sciFiModal')"
+              style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+
+    <!--  <h2 style="color:#fff; text-align:center;">Sci-Fi Filmas — saraksts</h2> -->
+
+      <div style="display:flex; gap:20px; margin-top:20px;">
+        <!-- Kreisā kolonna (filmu saraksts) -->
+        <div style="width:300px; background:#222; padding:10px; border-radius:8px; overflow-y:auto; max-height:500px;">
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/gCcx85zbxz4"
+               data-descr="apraksti/blade_runner_2049.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Blade Runner 2049</h4>
+          </div>
+
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/6IZGwvxhXvw"
+               data-descr="apraksti/Melancholia.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Melancholia</h4>
+          </div>
+
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/2VT2apoX90o"
+               data-descr="apraksti/Children of Men.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Children of Men</h4>
+          </div>
+        
+          <div class="mini-film-card"
+          data-video="https://www.youtube.com/embed/ZgZccxuj2RY"
+          data-descr="apraksti/Flow.html"
+          style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+       <h4 style="margin:0; color:#fff;">Flow</h4>
+     </div>
+        
+        
+        </div>
+
+        <!-- Labā kolonna => video + apraksts -->
+        <div style="flex:1; background:#333; border-radius:8px; padding:10px; position:relative;">
+          <div style="position:relative; padding-top:56.25%; background:#000; margin-bottom:10px;">
+            <iframe class="multiFilmVideo"
+                    style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                    frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="multiFilmText"
+               style="max-height:200px; overflow-y:auto; background:#444; padding:10px; color:#fff;">
+            <p>Šeit ielādēsies apraksts no HTML faila</p>
+          </div>
         </div>
       </div>
-
-      <div class="book-card" onclick="showFilma3Modal()" style="background: url('images/filma3.jpg') no-repeat center center / cover; position: relative; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; cursor: pointer; overflow: hidden;">
-        <div style="background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Mākslas ēnas</h3>
-        </div>
-      </div>
-
     </div>
   </div>
-</section>
 
-<!-- MODĀLI FILMĀM -->
+  <!-- 2) Teātra ekranizācijas -->
+  <div id="theaterFilmsModal" onclick="closeModalOutside(event, 'theaterFilmsModal')"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001;">
+    <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
+         onclick="event.stopPropagation();">
+      <button onclick="closeMultiFilmModal('theaterFilmsModal')"
+              style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
 
-<!-- FILMA 1 -->
-<div id="filma1Modal" onclick="closeFilma1ModalOutside(event)" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000;">
-  <div style="background: url('images/filma1-background.jpg') no-repeat center center / cover; padding: 60px; margin: 15px auto; width: 90%; max-width: 900px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.7); position: relative;">
-    <button onclick="event.stopPropagation(); closeFilma1ModalDirect()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
-    <h2 style="color: #fff;">Pazudušās Gaismas</h2>
-    <p style="color: #eee;">Poētisks stāsts par pilsētu, kur gaisma ir aizmirsusi spīdēt. 
-    Viena cilvēka ceļojums cauri tumsai, meklējot zaudēto sapni.  
-    Stilistiski krāšņa un emocionāla filma par cerību un izdzīvošanu.</p>
+      <h2 style="color:#fff; text-align:center;">Teātra ekranizācijas</h2>
+      <!-- Līdzīgs saturs: minikartītes + video + text -->
+      <p style="color:#ccc; margin: 10px 0;">Piemēri: “Romeo un Džuljeta” iestudējums kinoversijā, etc.</p>
+    </div>
   </div>
-</div>
 
-<!-- FILMA 2 -->
-<div id="filma2Modal" onclick="closeFilma2ModalOutside(event)" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000;">
-  <div style="background: url('images/filma2-background.jpg') no-repeat center center / cover; padding: 60px; margin: 15px auto; width: 90%; max-width: 900px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.7); position: relative;">
-    <button onclick="event.stopPropagation(); closeFilma2ModalDirect()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
-    <h2 style="color: #fff;">Putekļi ceļā</h2>
-    <p style="color: #eee;">Ceļojums pa pasauli, kas grimst putekļos.  
-    Ceļinieku grupas stāsts par brīvības, mākslas un izdzīvošanas alkām.  
-    Kinematogrāfiski iespaidīga un domas rosinoša lente.</p>
+  <!-- 3) Mūzikas filmas -->
+  <div id="musicFilmsModal" onclick="closeModalOutside(event, 'musicFilmsModal')"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001;">
+    <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
+         onclick="event.stopPropagation();">
+      <button onclick="closeMultiFilmModal('musicFilmsModal')"
+              style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+
+      <h2 style="color:#fff; text-align:center;">Mūzikas filmas</h2>
+      <!-- Var izveidot minikartītes, data-video, data-descr -->
+    </div>
   </div>
-</div>
 
-<!-- FILMA 3 -->
-<div id="filma3Modal" onclick="closeFilma3ModalOutside(event)" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000;">
-  <div style="background: url('images/filma3-background.jpg') no-repeat center center / cover; padding: 60px; margin: 15px auto; width: 90%; max-width: 900px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.7); position: relative;">
-    <button onclick="event.stopPropagation(); closeFilma3ModalDirect()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
-    <h2 style="color: #fff;">Mākslas ēnas</h2>
-    <p style="color: #eee;">Dokumentāls stāsts par māksliniekiem, kas cīnās par savu balsi sabiedrībā, kas vairs neklausās.  
-    Filma par radošuma spēku un ēnām, kas piezogas, kad māksla zaudē brīvību.</p>
+  <!-- 4) Dzejas filmas -->
+  <div id="poetryFilmsModal" onclick="closeModalOutside(event, 'poetryFilmsModal')"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001;">
+    <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
+         onclick="event.stopPropagation();">
+      <button onclick="closeMultiFilmModal('poetryFilmsModal')"
+              style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+
+      <h2 style="color:#fff; text-align:center;">Dzejas filmas</h2>
+      <!-- Arī te ievietojam minikartītes, data-video, data-descr -->
+    </div>
   </div>
-</div>
 
 
-<section id="teatris" style="padding: 100px 20px; text-align: center;">
-  <h2>Teātris</h2>
-  <p>Šeit būs informācija par teātri.</p>
-</section>
-
-<section id="muzika" style="padding: 100px 20px; text-align: center;">
-  <h2>Mūzika</h2>
-  <p>Šeit būs informācija par mūziku.</p>
-</section>
-
-<section id="dzeja" style="padding: 100px 20px; text-align: center;">
-  <h2>Dzeja</h2>
-  <p>Šeit būs informācija par dzeju.</p>
-</section>
-
-<audio id="background-audio" controls muted
-  style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-         width: 300px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 999;">
-  Tavs pārlūks neatbalsta audio atskaņošanu.
-</audio>
+  <!-- ==================== TEĀTRIS / MŪZIKA / DZEJA ==================== -->
+  <section id="teatris" style="padding:100px 20px; text-align:center;">
+    <h2>Teātris</h2>
+    <p>Teātra noskaņa...</p>
+  </section>
+  <section id="muzika" style="padding:100px 20px; text-align:center;">
+    <h2>Mūzika</h2>
+    <p>Muzikāli toņi...</p>
+  </section>
+  <section id="dzeja" style="padding:100px 20px; text-align:center;">
+    <h2>Dzeja</h2>
+    <p>Dzejas vārdi...</p>
+  </section>
 
 
-<script>
-  const playlist = [
-    'music/Sous mes bottes, la poussière chante.mp3',
-    'music/Putekļi krīt.mp3',
-    'music/Where roads crumble softly underfoot.mp3',
-    'music/In der Ecke liegt der Staub.mp3'
+  <!-- AUDIO atskaņotājs -->
+  <audio id="background-audio" controls muted>
+    Tavs pārlūks neatbalsta audio atskaņošanu.
+  </audio>
+
+
+  <script>
+    /* ========== AUDIO Playlist ========== */
+    const playlist = [
+      'music/Sous mes bottes, la poussière chante.mp3',
+      'music/Putekļi krīt.mp3',
+      'music/Where roads crumble softly underfoot.mp3'
     ];
-  
-  let currentSongIndex = 0;
-  const audio = document.getElementById('background-audio');
-  
-  // Uzliek pirmo dziesmu
-  audio.src = playlist[currentSongIndex];
-  
-  // Kad beidzas dziesma, pāriet uz nākamo
-  audio.addEventListener('ended', () => {
-    currentSongIndex++;
-    if (currentSongIndex >= playlist.length) {
-      currentSongIndex = 0;  // ja playliste beidzas, sāk no jauna
-    }
+    let currentSongIndex = 0;
+    const audio = document.getElementById('background-audio');
     audio.src = playlist[currentSongIndex];
-    audio.play();
-  });
-  
-  // Automātiskā palaišana pēc klikšķa
-  function startAudio() {
-    audio.muted = false;
-    audio.play();
-    document.removeEventListener('click', startAudio);
-    document.removeEventListener('scroll', startAudio);
-  }
-  
-  //document.addEventListener('click', startAudio);
-  //document.addEventListener('scroll', startAudio);
-  </script>
-  
-<style>
-  audio {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-  }
-</style>
 
-<script>
-  const modal = document.getElementById("modal");
-  const modalTitle = document.getElementById("modal-title");
-  const modalDescription = document.getElementById("modal-description");
-  const closeButton = document.querySelector(".close-button");
-  
-  function openModal(title, description) {
-    modalTitle.innerText = title;
-    modalDescription.innerText = description;
-    modal.style.display = "block";
-  }
-  
-  closeButton.onclick = function() {
-    modal.style.display = "none";
-  }
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-  
-  document.querySelectorAll('.book-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const title = card.querySelector('h3').innerText;
-      const description = card.querySelector('p').innerText;
-      openModal(title, description);
+    audio.addEventListener('ended', () => {
+      currentSongIndex++;
+      if (currentSongIndex >= playlist.length) currentSongIndex = 0;
+      audio.src = playlist[currentSongIndex];
+      audio.play();
     });
-  });
-</script>
 
-<script>
-  function showLasitasGramataModal() {
-  document.getElementById('lasitasGramataModal').style.display = 'block';
-}
-
-// FUNKCIJA: aizver, ja klikšķināts fonā (ārpus modāļa)
-function closeLasitasGramataModalOutside(event) {
-  // Ja tieši “fons” ir noklikšķināts
-  if (event.target.id === 'lasitasGramataModal') {
-    document.getElementById('lasitasGramataModal').style.display = 'none';
-  }
-}
-
-// FUNKCIJA: aizver, ja nospiests X
-function closeLasitasGramataModalDirect() {
-  document.getElementById('lasitasGramataModal').style.display = 'none';
-}
-</script>
-
-<script>
-   function showRekomendetasGramataModal() {
-  document.getElementById('rekomendetasGramataModal').style.display = 'block';
-}
-
-// FUNKCIJA: aizver, ja klikšķināts fonā (ārpus modāļa)
-function closeRekomendetasGramataModalOutside(event) {
-  // Ja tieši “fons” ir noklikšķināts
-  if (event.target.id === 'rekomendetasGramataModal') {
-    document.getElementById('rekomendetasGramataModal').style.display = 'none';
-  }
-}
-
-// FUNKCIJA: aizver, ja nospiests X
-function closeRekomendetasGramataModalDirect() {
-  document.getElementById('rekomendetasGramataModal').style.display = 'none';
-}
-</script>
-
-<script>
-   function showNeizlasitsGramataModal() {
-  document.getElementById('neizlasitsGramataModal').style.display = 'block';
-}
-
-// FUNKCIJA: aizver, ja klikšķināts fonā (ārpus modāļa)
-function closeNeizlasitsGramataModalOutside(event) {
-  // Ja tieši “fons” ir noklikšķināts
-  if (event.target.id === 'neizlasitsGramataModal') {
-    document.getElementById('neizlasitsGramataModal').style.display = 'none';
-  }
-}
-
-// FUNKCIJA: aizver, ja nospiests X
-function closeNeizlasitsGramataModalDirect() {
-  document.getElementById('neizlasitsGramataModal').style.display = 'none';
-}
-</script>
-
-<script>
-  function showFilma1Modal() {
-    document.getElementById('filma1Modal').style.display = 'block';
-  }
-  function closeFilma1ModalOutside(event) {
-    if (event.target.id === 'filma1Modal') {
-      document.getElementById('filma1Modal').style.display = 'none';
+    function startAudio() {
+      audio.muted = false;
+      audio.play();
+      document.removeEventListener('click', startAudio);
+      document.removeEventListener('scroll', startAudio);
     }
-  }
-  function closeFilma1ModalDirect() {
-    document.getElementById('filma1Modal').style.display = 'none';
-  }
-  
-  function showFilma2Modal() {
-    document.getElementById('filma2Modal').style.display = 'block';
-  }
-  function closeFilma2ModalOutside(event) {
-    if (event.target.id === 'filma2Modal') {
-      document.getElementById('filma2Modal').style.display = 'none';
+    //document.addEventListener('click', startAudio);
+    //document.addEventListener('scroll', startAudio);
+
+
+    /* ========== GRĀMATU modāli (vecās funkcijas) ========== */
+    function showLasitasGramataModal() {
+      audio.pause(); // pauzē mūziku, ja atver modāli
+      document.getElementById('lasitasGramataModal').style.display = 'block';
     }
-  }
-  function closeFilma2ModalDirect() {
-    document.getElementById('filma2Modal').style.display = 'none';
-  }
-  
-  function showFilma3Modal() {
-    document.getElementById('filma3Modal').style.display = 'block';
-  }
-  function closeFilma3ModalOutside(event) {
-    if (event.target.id === 'filma3Modal') {
-      document.getElementById('filma3Modal').style.display = 'none';
+    function closeLasitasGramataModalOutside(e){
+      if(e.target.id==='lasitasGramataModal'){
+        closeLasitasGramataModalDirect();
+      }
     }
-  }
-  function closeFilma3ModalDirect() {
-    document.getElementById('filma3Modal').style.display = 'none';
-  }
+    function closeLasitasGramataModalDirect(){
+      document.getElementById('lasitasGramataModal').style.display='none';
+      audio.play(); // atkal ieslēdz mūziku, aizverot modāli
+    }
+
+    function showRekomendetasGramataModal() {
+      audio.pause();
+      document.getElementById('rekomendetasGramataModal').style.display='block';
+    }
+    function closeRekomendetasGramataModalOutside(e){
+      if(e.target.id==='rekomendetasGramataModal'){
+        closeRekomendetasGramataModalDirect();
+      }
+    }
+    function closeRekomendetasGramataModalDirect(){
+      document.getElementById('rekomendetasGramataModal').style.display='none';
+      audio.play();
+    }
+
+    function showNeizlasitsGramataModal() {
+      audio.pause();
+      document.getElementById('neizlasitsGramataModal').style.display='block';
+    }
+    function closeNeizlasitsGramataModalOutside(e){
+      if(e.target.id==='neizlasitsGramataModal'){
+        closeNeizlasitsGramataModalDirect();
+      }
+    }
+    function closeNeizlasitsGramataModalDirect(){
+      document.getElementById('neizlasitsGramataModal').style.display='none';
+      audio.play();
+    }
+
+
+    /* ========== Multi-film Modal ========== */
+
+    // Kad spiež "Sci-Fi Filmas" card vai citu -> showMultiFilmModal('sciFiModal')
+    function showMultiFilmModal(modalId) {
+      // 1) pauzē mūziku
+      audio.pause();
+      // 2) parāda konkrēto modāli
+      const modal = document.getElementById(modalId);
+      modal.style.display = 'flex';
+      // 3) Notīra jebkādus “multiFilmVideo” un “multiFilmText” (ja vajag)
+      // ... var sarežģīt, bet šobrīd paraugs
+    }
+
+    // Aizver “multiFilmModal(???)” 
+    function closeMultiFilmModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.style.display = 'none';
+      // Ja iekšā bija iframe -> notīra
+      const iframe = modal.querySelector('.multiFilmVideo');
+      if (iframe) iframe.src = "";
+      // Teksts
+      const textDiv = modal.querySelector('.multiFilmText');
+      if (textDiv) textDiv.innerHTML = "<p>Šeit ielādēsies apraksts no HTML faila</p>";
+
+      audio.play(); // Mūzika atgriežas
+    }
+
+    // Kad klikšķina uz tumšā fona => ja target.id=== ??? => aizver
+    function closeModalOutside(e, modalId){
+      if(e.target.id === modalId){
+        closeMultiFilmModal(modalId);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Meklējam visus .mini-film-card visos modālos
+      const allMiniFilmCards = document.querySelectorAll('.mini-film-card');
+      allMiniFilmCards.forEach(card => {
+        card.addEventListener('click', async () => {
+          // Atrodam attiecīgo "multiFilmVideo", "multiFilmText" tuvāk
+          // vienkāršībā meklējam vecākelementā:
+          const parentModal = card.closest('[id$="Modal"]'); // ends with "Modal"
+          const iframe = parentModal.querySelector('.multiFilmVideo');
+          const textDiv = parentModal.querySelector('.multiFilmText');
+
+          const videoUrl = card.getAttribute('data-video');
+          const descrFile= card.getAttribute('data-descr');
+
+          if(iframe) iframe.src = videoUrl;
+
+          try {
+            const resp = await fetch(descrFile);
+            if(!resp.ok) throw new Error("HTTP error " + resp.status);
+            const htmlContent = await resp.text();
+            if(textDiv) textDiv.innerHTML = htmlContent;
+          } catch(e) {
+            if(textDiv) textDiv.innerHTML = "<p>Kļūda ielādējot aprakstu: "+ e.message +"</p>";
+          }
+        });
+      });
+    });
   </script>
-  
+
+  <!-- Font Awesome script (ja vajadzīgs) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
