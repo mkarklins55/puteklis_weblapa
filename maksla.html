@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Māksla</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     /* Globālais stils */
     body {
@@ -24,17 +23,26 @@
       text-shadow: 2px 2px 4px #000;
     }
     .logo-container {
-      position: absolute; top: 0; left: 0; margin: 10px; z-index: 999;
+      position: absolute;
+      top: 0; left: 0;
+      margin: 10px;
+      z-index: 999;
     }
     .logo-container img {
-      height: 80px; opacity: 0.7; transition: transform 0.3s ease; animation: pulse 2s infinite;
+      height: 80px;
+      opacity: 0.7;
+      transition: transform 0.3s ease;
+      animation: pulse 2s infinite;
     }
     @keyframes pulse {
       0%   { transform: scale(1); }
       50%  { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
-    .logo-container img:hover { transform: scale(1.1); animation: none; }
+    .logo-container img:hover {
+      transform: scale(1.1);
+      animation: none;
+    }
 
     html { scroll-behavior: smooth; }
 
@@ -42,8 +50,9 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
       gap: 20px;
-      margin-top: 30px;
+      margin-top: 40px;
     }
+
     .art-card {
       position: relative;
       background: rgba(255, 255, 255, 0.05);
@@ -52,7 +61,8 @@
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       transition: transform 0.3s, background 0.3s;
-      background-size: cover; background-position: center;
+      background-size: cover; 
+      background-position: center;
       color: #f0f0f0;
     }
     .art-card:hover {
@@ -81,37 +91,95 @@
       z-index: 1000;
     }
 
-    /* Modāli grāmatu sadaļai - tie paši vecie */
+    /* Modāli grāmatu sadaļai */
     .modal {
-      display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+      display: none;
+      position: fixed; 
+      top:0; left:0; 
+      width:100%; 
+      height:100%;
       background: rgba(0,0,0,0.7);
       z-index: 999;
     }
     .modal-content {
-      background: #fff; margin:10% auto; padding:30px; border-radius:10px;
-      width:80%; max-width:500px; text-align: center; position: relative;
+      background: #fff; 
+      margin:10% auto; 
+      padding:30px; 
+      border-radius:10px;
+      width:80%; 
+      max-width:500px; 
+      text-align: center; 
+      position: relative;
     }
     .close-button {
-      position: absolute; top:15px; right:20px; background:none; border:none;
-      font-size:1.5em; color:#333; cursor:pointer;
+      position: absolute; 
+      top:15px; 
+      right:20px; 
+      background:none; 
+      border:none;
+      font-size:1.5em; 
+      color:#333; 
+      cursor:pointer;
     }
-    .book-card:hover { transform: scale(1.05); }
+    .book-card:hover { 
+      transform: scale(1.05); 
+    }
 
     section {
-      padding: 100px 20px; text-align: center;
+      padding: 100px 20px; 
+      text-align: center;
     }
 
     .mini-film-card {
-    transition: background 0.3s, transform 0.3s; /* Lai pārmaiņa ir gluda */
-  }
+      transition: background 0.3s, transform 0.3s;
+    }
+    .mini-film-card:hover {
+      background: #555;
+      transform: scale(1.03);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+    }
 
-  .mini-film-card:hover {
-    background: #555; /* gaišāks fons */
-    transform: scale(1.03); /* nedaudz palielinās */
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4); /* gaismas spīdums ap kartīti */
-  }
+    .modal-container {
+      display: flex;
+      flex-direction: column;
+      height: 90vh;
+      max-height: 90vh;
+      overflow: hidden;
+    }
+    .modal-header, .modal-footer {
+      padding: 1rem;
+      background-color: #333;
+    }
+    .modal-body {
+      flex: 1;
+      overflow: hidden;
+      min-height: 0;
+    }
+    .film-list, .film-details {
+      overflow-y: auto;
+      min-height: 0;
+    }
+    .empty-placeholder {
+      text-align: center;
+      color: #777;
+      margin-top: 2rem;
+    }
+
+    /* Papildu pielāgojumi, lai sadaļas nebrauc virs cita satura */
+    /* Izņemti min-height:100vh un pielikti margin */
+    #gramatas {
+      position: relative; 
+      background: url('images/gramatu-fons.jpg') center center / cover; 
+      margin-top: 60px; 
+    }
+    #filmas {
+      position: relative; 
+      background: url('images/filmu-fons.jpg') center center / cover; 
+      margin-top: 80px; 
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Logo -->
@@ -152,15 +220,8 @@
     </a>
   </div>
 
-  <!-- Papildu atstarpe -->
-  <div style="height: 160px;"></div>
-
-
   <!-- ==================== GRĀMATAS SADAĻA ==================== -->
-  <section id="gramatas" 
-           style="position: relative; text-align: center; 
-                  background: url('images/gramatu-fons.jpg') center center / cover; 
-                  min-height: 100vh; scroll-margin-top: 15px;">
+  <section id="gramatas" style="scroll-margin-top: 15px;">
     <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
       <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
         Grāmatas
@@ -209,7 +270,6 @@
     </div>
   </section>
 
-
   <!-- ========== LASĪTĀS GRĀMATAS MODĀLAIS LOGS ========== -->
   <div id="lasitasGramataModal"
        onclick="closeLasitasGramataModalOutside(event)"
@@ -247,7 +307,7 @@
           <p style="color: #555;">
             Zēni uz neapdzīvotas salas zaudē cilvēcību.
             Sabiedrības maskas nokrīt, paliek instinkti.
-            Tumšs un satriecošs cilvēka dabas atspoguļojums
+            Tumšs un satriecošs cilvēka dabas atspoguļojums.
           </p>
         </div>
 
@@ -259,7 +319,7 @@
           <p style="color: #555;">
             Stāsts par jauniešiem 90. gadu Jelgavā.
             Romāns ataino dumpīgās paaudzes vēlmi atrast savu vietu pasaulē pēc PSRS sabrukuma.
-            Tas ir spilgts, godīgs un reizē melanholisks skats uz jaunību, metāla mūziku un brīvības meklējumiem
+            Tas ir spilgts, godīgs un reizē melanholisks skats uz jaunību, metāla mūziku un brīvības meklējumiem.
           </p>
         </div>
 
@@ -267,7 +327,7 @@
     </div>
   </div>
 
- <!-- ========== REKOMENDĒTĀS GRĀMATAS MODĀLS ========== -->
+  <!-- ========== REKOMENDĒTĀS GRĀMATAS MODĀLS ========== -->
   <div id="rekomendetasGramataModal"
        onclick="closeRekomendetasGramataModalOutside(event)"
        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
@@ -286,7 +346,7 @@
 
         <!-- Grāmata 1 -->
         <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
-          <img src="images/skarba_taka.jpg" alt="skarba taka"
+          <img src="images/skarba_taka.jpg" alt="Skarba taka"
                style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
           <h3 style="color:#333;">Skarbās takas vilinājums - Bils Braisons</h3>
           <p style="color:#555;">
@@ -297,7 +357,7 @@
 
         <!-- Grāmata 2 -->
         <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
-          <img src="images/aitas.jpg" alt="aitas"
+          <img src="images/aitas.jpg" alt="Aitas"
                style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
           <h3 style="color:#333;">aitas - Armands Puče</h3>
           <p style="color:#555;">
@@ -308,7 +368,7 @@
 
         <!-- Grāmata 3 -->
         <div style="background:#f5f5f5; padding:20px; border-radius:10px; text-align:center;">
-          <img src="images/sirds.jpg" alt="sirds"
+          <img src="images/sirds.jpg" alt="Sirds mirst pēdējā"
                style="width:100px; height:auto; margin-bottom:15px; border-radius:6px;">
           <h3 style="color:#333;">Sirds mirst pēdējā – Mārgareta Atvuda</h3>
           <p style="color:#555;">
@@ -374,23 +434,15 @@
     </div>
   </div>
 
-   <!-- Papildu atstarpe -->
-   <div style="height: 160px;"></div>
-
   <!-- ==================== FILMAS SADAĻA ==================== -->
-  <section id="filmas"
-           style="position:relative; text-align:center; background: url('images/filmu-fons.jpg') center center / cover; min-height:100vh;">
-    <div style="max-width:1000px; margin:auto; padding:50px 20px;">
+  <section id="filmas" style="scroll-margin-top: 15px; padding: 50px 20px;">
+    <div style="max-width:1000px; margin:auto;">
       <h2 style="font-size:3em; margin-bottom:20px; color:#fff;">Filmas</h2>
       <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;">
         Šeit ir sadaļas par dažādiem filmu žanriem. Klikšķini, lai atvērtu detalizētu sarakstu.
       </p>
 
-      <!-- Te būs vairākas “filmu sadaļas” (katra - book-card). 
-           Katra: Sci-Fi, Teātris-Filmas, MūzikasFilmas, DzejasFilmas? (vai kādas vēlies!) -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
-
-        <!-- Pazudušās gaismas -->
         <div class="book-card"
              style="background:url('images/sci_fi.jpg') center center / cover; padding:20px; border-radius:16px;
                     box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
@@ -399,7 +451,6 @@
           <p>Tikai tumsā var ieraudzīt zvaigznes</p> 
         </div>
 
-        <!-- Dūmakainie ceļi -->
         <div class="book-card"
              style="background:url('images/teatris_filmas.jpg') center center / cover; padding:20px; border-radius:16px;
                     box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
@@ -408,22 +459,20 @@
           <p>Psiholoģisks ceļojums miglā, kur nekas nav skaidrs.</p>
         </div>
 
-        <!-- Mūzikas filmas -->
         <div class="book-card"
              style="background:url('images/music_films.jpg') center center / cover; padding:20px; border-radius:16px;
                     box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
-             onclick="showMultiFilmModal('musicFilmsModal')">
-          <h3 style="margin-bottom:10px;">Mūzikas filmas</h3>
-          <p>Operas, koncertfilmas un muzikāli brīnumi.</p>
+             onclick="showMultiFilmModal('dustBornModal')">
+          <h3 style="margin-bottom:10px;">Putekļos dzimušie</h3>
+          <p>No putekļiem — uz gaismu.</p>
         </div>
 
-        <!-- Dzejas filmas -->
         <div class="book-card"
              style="background:url('images/poetry_films.jpg') center center / cover; padding:20px; border-radius:16px;
                     box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
-             onclick="showMultiFilmModal('poetryFilmsModal')">
-          <h3 style="margin-bottom:10px;">Dzejas filmas</h3>
-          <p>Poēzija, kas atdzīvojas ekrānā.</p>
+             onclick="showMultiFilmModal('windWillCarryModal')">
+          <h3 style="margin-bottom:10px;">Vējš nesīs tālāk</h3>
+          <p>Mēs esam tikai vēja stāsti nākotnes tukšumā.</p>
         </div>
       </div>
     </div>
@@ -433,13 +482,12 @@
 
   <!-- 1) Pazudušās gaismas -->
   <div id="sciFiModal" onclick="closeModalOutside(event, 'sciFiModal')"
-  style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+              background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
     <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
          onclick="event.stopPropagation();">
       <button onclick="closeMultiFilmModal('sciFiModal')"
               style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
-
-    <!--  <h2 style="color:#fff; text-align:center;">Sci-Fi Filmas — saraksts</h2> -->
 
       <div style="display:flex; gap:20px; margin-top:20px;">
         <!-- Kreisā kolonna (filmu saraksts) -->
@@ -450,35 +498,30 @@
                style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
             <h4 style="margin:0; color:#fff;">Blade Runner 2049</h4>
           </div>
-
           <div class="mini-film-card"
                data-video="https://www.youtube.com/embed/6IZGwvxhXvw"
                data-descr="apraksti/Melancholia.html"
                style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
             <h4 style="margin:0; color:#fff;">Melancholia</h4>
           </div>
-
           <div class="mini-film-card"
                data-video="https://www.youtube.com/embed/2VT2apoX90o"
                data-descr="apraksti/Children of Men.html"
                style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
             <h4 style="margin:0; color:#fff;">Children of Men</h4>
           </div>
-        
           <div class="mini-film-card"
-          data-video="https://www.youtube.com/embed/ZgZccxuj2RY"
-          data-descr="apraksti/Flow.html"
-          style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-       <h4 style="margin:0; color:#fff;">Flow</h4>
-     </div>
-        
-     <div class="mini-film-card"
-          data-video="https://www.youtube.com/embed/_klfx5sGzFk"
-          data-descr="apraksti/poor things.html"
-          style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-       <h4 style="margin:0; color:#fff;">Poor things</h4>
-     </div>
-        
+               data-video="https://www.youtube.com/embed/ZgZccxuj2RY"
+               data-descr="apraksti/Flow.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Flow</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/_klfx5sGzFk"
+               data-descr="apraksti/poor things.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Poor things</h4>
+          </div>
         </div>
 
         <!-- Labā kolonna => video + apraksts -->
@@ -497,99 +540,203 @@
     </div>
   </div>
 
-<!-- 2) Dūmakainie ceļi -->
-<div id="mistyPathsModal" onclick="closeModalOutside(event, 'mistyPathsModal')"
-style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
-  <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
-       onclick="event.stopPropagation();">
-    <button onclick="closeMultiFilmModal('mistyPathsModal')"
-            style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
-
-   <!-- <h2 style="color:#fff; text-align:center;">Dūmakainie ceļi</h2> -->
-    <!-- style="color:#ccc; margin: 10px 0; text-align:center;">Stāsti par miglu, ilūzijām un apziņas labirintiem.</p> -->
-
-    <div style="display:flex; gap:20px; margin-top:20px;">
-      <!-- Kreisā kolonna (filmu saraksts) -->
-      <div style="width:300px; background:#222; padding:10px; border-radius:8px; overflow-y:auto; max-height:500px;">
-        <div class="mini-film-card"
-             data-video="https://www.youtube.com/embed/4mcVodJmBlU"
-             data-descr="apraksti/a_cure_for_wellness.html"
-             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-          <h4 style="margin:0; color:#fff;">A Cure for Wellness</h4>
-        </div>
-
-        <div class="mini-film-card"
-             data-video="https://www.youtube.com/embed/C_uTkUGcHv4"
-             data-descr="apraksti/the_menu.html"
-             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-          <h4 style="margin:0; color:#fff;">The Menu</h4>
-        </div>
-
-        <div class="mini-film-card"
-             data-video="https://www.youtube.com/embed/bO8EqMsxOiU"
-             data-descr="apraksti/the_road.html"
-             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-          <h4 style="margin:0; color:#fff;">The Road</h4>
-        </div>
-
-        <div class="mini-film-card"
-             data-video="https://www.youtube.com/embed/vU29VfayDMw"
-             data-descr="apraksti/the_lobster.html"
-             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-          <h4 style="margin:0; color:#fff;">The Lobster</h4>
-        </div>
-
-        <div class="mini-film-card"
-             data-video="https://www.youtube.com/embed/CdYy2MPs4ng"
-             data-descr="apraksti/the_double.html"
-             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-          <h4 style="margin:0; color:#fff;">The Double</h4>
-        </div>
-      </div>
-
-      <!-- Labā kolonna => video + apraksts -->
-      <div style="flex:1; background:#333; border-radius:8px; padding:10px; position:relative;">
-        <div style="position:relative; padding-top:56.25%; background:#000; margin-bottom:10px;">
-          <iframe class="multiFilmVideo"
-                  style="position:absolute; top:0; left:0; width:100%; height:100%;"
-                  frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="multiFilmText"
-             style="max-height:200px; overflow-y:auto; background:#444; padding:10px; color:#fff;">
-          <p>Šeit ielādēsies apraksts no HTML faila</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  <!-- 3) Mūzikas filmas -->
-  <div id="musicFilmsModal" onclick="closeModalOutside(event, 'musicFilmsModal')"
-       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001;">
+  <!-- 2) Dūmakainie ceļi -->
+  <div id="mistyPathsModal" onclick="closeModalOutside(event, 'mistyPathsModal')"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+              background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
     <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
          onclick="event.stopPropagation();">
-      <button onclick="closeMultiFilmModal('musicFilmsModal')"
+      <button onclick="closeMultiFilmModal('mistyPathsModal')"
               style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
 
-      <h2 style="color:#fff; text-align:center;">Mūzikas filmas</h2>
-      <!-- Var izveidot minikartītes, data-video, data-descr -->
+      <div style="display:flex; gap:20px; margin-top:20px;">
+        <!-- Kreisā kolonna (filmu saraksts) -->
+        <div style="width:300px; background:#222; padding:10px; border-radius:8px; overflow-y:auto; max-height:500px;">
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/4mcVodJmBlU"
+               data-descr="apraksti/a_cure_for_wellness.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">A Cure for Wellness</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/C_uTkUGcHv4"
+               data-descr="apraksti/the_menu.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">The Menu</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/bO8EqMsxOiU"
+               data-descr="apraksti/the_road.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">The Road</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/vU29VfayDMw"
+               data-descr="apraksti/the_lobster.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">The Lobster</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/6sxCFZ8_d84"
+               data-descr="apraksti/nomadland.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Nomadland</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/LPm52rq8CZA"
+               data-descr="apraksti/station_eleven.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Station Eleven</h4>
+          </div>
+        </div>
+
+        <!-- Labā kolonna => video + apraksts -->
+        <div style="flex:1; background:#333; border-radius:8px; padding:10px; position:relative;">
+          <div style="position:relative; padding-top:56.25%; background:#000; margin-bottom:10px;">
+            <iframe class="multiFilmVideo"
+                    style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                    frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="multiFilmText"
+               style="max-height:200px; overflow-y:auto; background:#444; padding:10px; color:#fff;">
+            <p>Šeit ielādēsies apraksts no HTML faila</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- 4) Dzejas filmas -->
-  <div id="poetryFilmsModal" onclick="closeModalOutside(event, 'poetryFilmsModal')"
-       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001;">
+  <!-- 3) Putekļos dzimušie -->
+  <div id="dustBornModal" onclick="closeModalOutside(event, 'dustBornModal')"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
     <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
          onclick="event.stopPropagation();">
-      <button onclick="closeMultiFilmModal('poetryFilmsModal')"
+      <button onclick="closeMultiFilmModal('dustBornModal')"
               style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
 
-      <h2 style="color:#fff; text-align:center;">Dzejas filmas</h2>
-      <!-- Arī te ievietojam minikartītes, data-video, data-descr -->
+      <div style="display:flex; gap:20px; margin-top:20px;">
+        <div style="width:300px; background:#222; padding:10px; border-radius:8px; overflow-y:auto; max-height:500px;">
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/VDvfFIZQIuQ"
+               data-descr="apraksti/triangle_of_sadness.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Triangle Of Sadness</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/MukZcsN1ySU"
+               data-descr="apraksti/silent_night.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Silent Night</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/GdRXPAHIEW4"
+               data-descr="apraksti/the_brutalist.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">The Brutalist</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/GWJ8tOFwGH8"
+               data-descr="apraksti/vesper.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Vesper</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/SWSDQfJQhUg"
+               data-descr="apraksti/parasite.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Parasite</h4>
+          </div>
+        </div>
+
+        <div style="flex:1; background:#333; border-radius:8px; padding:10px; position:relative;">
+          <div style="position:relative; padding-top:56.25%; background:#000; margin-bottom:10px;">
+            <iframe class="multiFilmVideo"
+                    style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                    frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="multiFilmText"
+               style="max-height:200px; overflow-y:auto; background:#444; padding:10px; color:#fff;">
+            <p>Šeit ielādēsies apraksts no HTML faila</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- 4) Vējš nesīs tālāk -->
+  <div id="windWillCarryModal" onclick="closeModalOutside(event, 'windWillCarryModal')"
+       style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
+    <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
+         onclick="event.stopPropagation();">
+      <button onclick="closeMultiFilmModal('windWillCarryModal')"
+              style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+
+      <div style="display:flex; gap:20px; margin-top:20px;">
+        <div style="width:300px; background:#222; padding:10px; border-radius:8px; overflow-y:auto; max-height:500px;">
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/8ZYhuvIv1pA"
+               data-descr="apraksti/silo.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Silo</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/kEkZdgWu7mM"
+               data-descr="apraksti/westworld.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Westworld</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/-Yt89b5AcwY"
+               data-descr="apraksti/altered_carbon.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Altered Carbon</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/9kQP6VagSHM"
+               data-descr="apraksti/the_stand.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">The Stand</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/ASr0n5LnWnU"
+               data-descr="apraksti/beforeigners.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Beforeigners</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/8Puhr7wiuqk"
+               data-descr="apraksti/8_tage.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">8 Tage</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/V0XOApF5nLU"
+               data-descr="apraksti/black_mirror.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Black Mirror</h4>
+          </div>
+          <div class="mini-film-card"
+               data-video="https://www.youtube.com/embed/X4QYV5GTz7c"
+               data-descr="apraksti/foundation.html"
+               style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+            <h4 style="margin:0; color:#fff;">Foundation</h4>
+          </div>
+        </div>
+
+        <div style="flex:1; background:#333; border-radius:8px; padding:10px; position:relative;">
+          <div style="position:relative; padding-top:56.25%; background:#000; margin-bottom:10px;">
+            <iframe class="multiFilmVideo"
+                    style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                    frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="multiFilmText"
+               style="max-height:200px; overflow-y:auto; background:#444; padding:10px; color:#fff;">
+            <p>Šeit ielādēsies apraksts no HTML faila</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== TEĀTRIS / MŪZIKA / DZEJA ==================== -->
   <section id="teatris" style="padding:100px 20px; text-align:center;">
@@ -605,12 +752,10 @@ style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; bac
     <p>Dzejas vārdi...</p>
   </section>
 
-
   <!-- AUDIO atskaņotājs -->
   <audio id="background-audio" controls muted>
     Tavs pārlūks neatbalsta audio atskaņošanu.
   </audio>
-
 
   <script>
     /* ========== AUDIO Playlist ========== */
@@ -639,10 +784,9 @@ style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; bac
     //document.addEventListener('click', startAudio);
     //document.addEventListener('scroll', startAudio);
 
-
     /* ========== GRĀMATU modāli (vecās funkcijas) ========== */
     function showLasitasGramataModal() {
-      audio.pause(); // pauzē mūziku, ja atver modāli
+      audio.pause(); 
       document.getElementById('lasitasGramataModal').style.display = 'block';
     }
     function closeLasitasGramataModalOutside(e){
@@ -652,7 +796,7 @@ style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; bac
     }
     function closeLasitasGramataModalDirect(){
       document.getElementById('lasitasGramataModal').style.display='none';
-      audio.play(); // atkal ieslēdz mūziku, aizverot modāli
+      audio.play();
     }
 
     function showRekomendetasGramataModal() {
@@ -683,35 +827,21 @@ style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; bac
       audio.play();
     }
 
-
     /* ========== Multi-film Modal ========== */
-
-    // Kad spiež "Sci-Fi Filmas" card vai citu -> showMultiFilmModal('sciFiModal')
     function showMultiFilmModal(modalId) {
-      // 1) pauzē mūziku
       audio.pause();
-      // 2) parāda konkrēto modāli
       const modal = document.getElementById(modalId);
       modal.style.display = 'flex';
-      // 3) Notīra jebkādus “multiFilmVideo” un “multiFilmText” (ja vajag)
-      // ... var sarežģīt, bet šobrīd paraugs
     }
-
-    // Aizver “multiFilmModal(???)” 
     function closeMultiFilmModal(modalId) {
       const modal = document.getElementById(modalId);
       modal.style.display = 'none';
-      // Ja iekšā bija iframe -> notīra
       const iframe = modal.querySelector('.multiFilmVideo');
       if (iframe) iframe.src = "";
-      // Teksts
       const textDiv = modal.querySelector('.multiFilmText');
       if (textDiv) textDiv.innerHTML = "<p>Šeit ielādēsies apraksts no HTML faila</p>";
-
-      audio.play(); // Mūzika atgriežas
+      audio.play();
     }
-
-    // Kad klikšķina uz tumšā fona => ja target.id=== ??? => aizver
     function closeModalOutside(e, modalId){
       if(e.target.id === modalId){
         closeMultiFilmModal(modalId);
@@ -719,13 +849,10 @@ style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; bac
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Meklējam visus .mini-film-card visos modālos
       const allMiniFilmCards = document.querySelectorAll('.mini-film-card');
       allMiniFilmCards.forEach(card => {
         card.addEventListener('click', async () => {
-          // Atrodam attiecīgo "multiFilmVideo", "multiFilmText" tuvāk
-          // vienkāršībā meklējam vecākelementā:
-          const parentModal = card.closest('[id$="Modal"]'); // ends with "Modal"
+          const parentModal = card.closest('[id$="Modal"]');
           const iframe = parentModal.querySelector('.multiFilmVideo');
           const textDiv = parentModal.querySelector('.multiFilmText');
 
@@ -747,7 +874,7 @@ style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; bac
     });
   </script>
 
-  <!-- Font Awesome script (ja vajadzīgs) -->
+  <!-- Font Awesome (ja vajadzīgs) -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>
