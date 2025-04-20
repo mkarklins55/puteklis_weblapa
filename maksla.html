@@ -177,6 +177,11 @@
       background: url('images/filmu-fons.jpg') center center / cover; 
       margin-top: 80px; 
     }
+    #teatris {
+      position: relative; 
+      background: url('images/teatra-fons.jpg') center center / cover; 
+      margin-top: 80px; 
+    }
   </style>
 </head>
 
@@ -738,11 +743,87 @@
     </div>
   </div>
 
-  <!-- ==================== TEĀTRIS / MŪZIKA / DZEJA ==================== -->
-  <section id="teatris" style="padding:100px 20px; text-align:center;">
-    <h2>Teātris</h2>
-    <p>Teātra noskaņa...</p>
-  </section>
+  
+<!-- ==================== TEĀTRA SADAĻa ==================== -->
+<section id="teatris" style="scroll-margin-top: 15px; padding: 50px 20px;">
+  <div style="max-width:1000px; margin:auto;">
+    <h2 style="font-size:3em; margin-bottom:20px; color:#fff;">Teātris</h2>
+    <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;">
+      Aktieri, teksti, klusuma spriedze. Skatuve kā spogulis.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
+      <div class="book-card"
+           style="background:url('images/teatris_dust.jpg') center center / cover; padding:20px; border-radius:16px;
+                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+           onclick="showMultiFilmModal('dustTheatreModal')">
+        <h3 style="margin-bottom:10px;">Putekļainā skatuve</h3>
+        <p>Kur viss sākas un beidzas elpā.</p> 
+      </div>
+
+      <div class="book-card"
+           style="background:url('images/absurds.jpg') center center / cover; padding:20px; border-radius:16px;
+                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+           onclick="showMultiFilmModal('absurdTheatreModal')">
+        <h3 style="margin-bottom:10px;">Absurda noriets</h3>
+        <p>Pazust, nesakot vārdu.</p>
+      </div>
+
+      <div class="book-card"
+           style="background:url('images/masks.jpg') center center / cover; padding:20px; border-radius:16px;
+                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+           onclick="showMultiFilmModal('masksTheatreModal')">
+        <h3 style="margin-bottom:10px;">Masku bēres</h3>
+        <p>Kur aktieris pazūd sevī.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MODĀLI TEĀTRIM ==================== -->
+<!-- 1. Putekļainā skatuve -->
+<div id="dustTheatreModal" onclick="closeModalOutside(event, 'dustTheatreModal')"
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
+  <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
+       onclick="event.stopPropagation();">
+    <button onclick="closeMultiFilmModal('dustTheatreModal')"
+            style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+
+    <div style="display:flex; gap:20px; margin-top:20px;">
+      <div style="width:300px; background:#222; padding:10px; border-radius:8px; overflow-y:auto; max-height:500px;">
+        <div class="mini-film-card"
+             data-video="https://www.youtube.com/embed/nNqGC1Gk0Jk"
+             data-descr="apraksti/skatuve_1.html"
+             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+          <h4 style="margin:0; color:#fff;">Noktirne</h4>
+        </div>
+        <div class="mini-film-card"
+             data-video="https://www.youtube.com/embed/sPxmp0EYfXw"
+             data-descr="apraksti/skatuve_2.html"
+             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+          <h4 style="margin:0; color:#fff;">Tumsas elpa</h4>
+        </div>
+      </div>
+
+      <div style="flex:1; background:#333; border-radius:8px; padding:10px; position:relative;">
+        <div style="position:relative; padding-top:56.25%; background:#000; margin-bottom:10px;">
+          <iframe class="multiFilmVideo"
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                  frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="multiFilmText"
+             style="max-height:200px; overflow-y:auto; background:#444; padding:10px; color:#fff;">
+          <p>Šeit ielādēsies apraksts no HTML faila</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== TEĀTRIS / MŪZIKA / DZEJA ==================== -->
+
+
   <section id="muzika" style="padding:100px 20px; text-align:center;">
     <h2>Mūzika</h2>
     <p>Muzikāli toņi...</p>
