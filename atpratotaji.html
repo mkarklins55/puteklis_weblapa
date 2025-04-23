@@ -64,33 +64,31 @@
     }
 
     .politicians-row {
-  width: 100%;
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start; /* lai nelec vertikāli */
-  margin-top: 1rem;
+  gap: 20px;
+  padding: 100px 20px 40px;
 }
 
+
+
 .politician-card {
-  width: 300px;
-  height: 320px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.5rem;
-  box-sizing: border-box;
+  width: 250px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 10px;
+  border-radius: 8px;
   text-align: center;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* animācija */
+  color: #fff;
 }
+
 
 .politician-card:hover {
   transform: scale(1.03);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.08);
 }
+
 
 .politician-card img {
   width: 100%;
