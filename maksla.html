@@ -762,12 +762,13 @@
       </div>
 
       <div class="book-card"
-           style="background:url('images/absurds.jpg') center center / cover; padding:20px; border-radius:16px;
-                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
-           onclick="showMultiFilmModal('absurdTheatreModal')">
-        <h3 style="margin-bottom:10px;">Putekļu diriģenti</h3>
-        <p>Tēli, kas nerunā, bet atstāj pēdas uz skatuves sirdsapziņas.</p>
-      </div>
+      style="background:url('images/absurds.jpg') center center / cover; padding:20px; border-radius:16px;
+             box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+      onclick="showMultiFilmModal('putekluDirigentiModal')">
+   <h3 style="margin-bottom:10px;">Putekļu diriģenti</h3>
+   <p>Tēli, kas nerunā, bet atstāj pēdas uz skatuves sirdsapziņas.</p>
+ </div>
+
 
       <div class="book-card"
            style="background:url('images/masks.jpg') center center / cover; padding:20px; border-radius:16px;
@@ -827,7 +828,18 @@
    style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
 <h4 style="margin:0; color:#fff;">Antigone</h4>
 </div>
-
+<div class="mini-film-card"
+   data-video="https://www.youtube.com/embed/k-VaEpeX7jE"
+   data-descr="apraksti/vairak_par_dzivi.html"
+   style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+<h4 style="margin:0; color:#fff;">Vairāk par dzīvi / TEĀTRIS</h4>
+</div>
+<div class="mini-film-card"
+   data-video="https://www.youtube.com/embed/KgGbyrWsRWU"
+   data-descr="apraksti/bilete_uz_tranaju.html"
+   style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+<h4 style="margin:0; color:#fff;">Biļete uz Tranaju</h4>
+</div>
 
       </div>
 
@@ -846,8 +858,67 @@
   </div>
 </div>
 
+<!-- 1. Putekļu diriģenti -->
 
-<!-- ==================== TEĀTRIS / MŪZIKA / DZEJA ==================== -->
+<div id="putekluDirigentiModal" onclick="closeModalOutside(event, 'putekluDirigentiModal')"
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
+  <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
+       onclick="event.stopPropagation();">
+    <button onclick="closeMultiFilmModal('putekluDirigentiModal')"
+            style="position:absolute; top:10px; right:10px; background:none; border:none;
+                   font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+
+    <div style="display:flex; gap:20px; margin-top:20px;">
+      <!-- Kreisā puse: režisoru saraksts -->
+      <div style="width:300px; background:#222; padding:10px; border-radius:8px; overflow-y:auto; max-height:500px;">
+     
+        <div class="mini-film-card"
+     data-video="https://www.youtube.com/embed/6SR6f6skJOM"
+     data-descr="pdf/vimba.pdf"
+     style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+  <h4 style="margin:0; color:#fff;">Jānis Vimba</h4>
+</div>
+
+<div class="mini-film-card"
+data-video="https://www.youtube.com/embed/0FagR9p3d2A"
+data-descr="pdf/senkovs.pdf"
+style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+<h4 style="margin:0; color:#fff;">Elmārs Seņkovs</h4>
+</div>
+
+<div class="mini-film-card"
+data-video="https://www.youtube.com/embed/X6v6G81bDdY"
+data-descr="pdf/Lukasz_Twarkowski.pdf"
+style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+<h4 style="margin:0; color:#fff;">Lukasz Twarkowski</h4>
+</div>
+        
+  
+      </div>
+
+      <!-- Labā puse: video un apraksts -->
+      <div style="flex:1; background:#333; border-radius:8px; padding:10px; position:relative;">
+        <div style="position:relative; padding-top:56.25%; background:#000; margin-bottom:10px;">
+          <iframe class="multiFilmVideo"
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                  frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="multiFilmText"
+             style="max-height:200px; overflow-y:auto; background:#444; padding:10px; color:#fff;">
+          <p>Šeit ielādēsies režisora apraksts</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- ==================== MŪZIKA / DZEJA ==================== -->
 
 
   <section id="muzika" style="padding:100px 20px; text-align:center;">
@@ -969,10 +1040,18 @@
           if(iframe) iframe.src = videoUrl;
 
           try {
-            const resp = await fetch(descrFile);
-            if(!resp.ok) throw new Error("HTTP error " + resp.status);
-            const htmlContent = await resp.text();
-            if(textDiv) textDiv.innerHTML = htmlContent;
+            if (descrFile.endsWith(".pdf")) {
+  if (textDiv) {
+    textDiv.innerHTML = `
+      <iframe src="${descrFile}" width="100%" height="400px" style="border:none;"></iframe>
+    `;
+  }
+} else {
+  const resp = await fetch(descrFile);
+  if (!resp.ok) throw new Error("HTTP error " + resp.status);
+  const htmlContent = await resp.text();
+  if (textDiv) textDiv.innerHTML = htmlContent;
+}
           } catch(e) {
             if(textDiv) textDiv.innerHTML = "<p>Kļūda ielādējot aprakstu: "+ e.message +"</p>";
           }
