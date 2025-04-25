@@ -182,6 +182,11 @@
       background: url('images/teatra-fons.jpg') center center / cover; 
       margin-top: 80px; 
     }
+    #muzika {
+      position: relative; 
+      background: url('images/muzika-fons.png') center center / cover; 
+      margin-top: 80px; 
+    }
   </style>
 </head>
 
@@ -859,10 +864,9 @@
 </div>
 
 <!-- 2. Putekļu diriģenti -->
-
 <div id="putekluDirigentiModal" onclick="closeModalOutside(event, 'putekluDirigentiModal')"
      style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-            background:rgba(0,0,0,0.8); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
+            background:rgba(0,0,0,0.85); z-index:1001; overflow-y:auto; padding:20px; box-sizing:border-box;">
   <div style="background:#1c1c1c; padding:20px; border-radius:12px; width:90%; max-width:1000px; margin:40px auto; position:relative;"
        onclick="event.stopPropagation();">
     <button onclick="closeMultiFilmModal('putekluDirigentiModal')"
@@ -872,29 +876,26 @@
     <div style="display:flex; gap:20px; margin-top:20px;">
       <!-- Kreisā puse: režisoru saraksts -->
       <div style="width:300px; background:#222; padding:10px; border-radius:8px; overflow-y:auto; max-height:500px;">
-     
         <div class="mini-film-card"
-     data-video="https://www.youtube.com/embed/6SR6f6skJOM"
-     data-descr="pdf/vimba.pdf"
-     style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-  <h4 style="margin:0; color:#fff;">Jānis Vimba</h4>
-</div>
+             data-video="https://www.youtube.com/embed/6SR6f6skJOM"
+             data-descr="apraksti/vimba.html"
+             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+          <h4 style="margin:0; color:#fff;">Jānis Vimba</h4>
+        </div>
 
-<div class="mini-film-card"
-data-video="https://www.youtube.com/embed/0FagR9p3d2A"
-data-descr="pdf/senkovs.pdf"
-style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-<h4 style="margin:0; color:#fff;">Elmārs Seņkovs</h4>
-</div>
+        <div class="mini-film-card"
+             data-video="https://www.youtube.com/embed/0FagR9p3d2A"
+             data-descr="pdf/senkovs.pdf"
+             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+          <h4 style="margin:0; color:#fff;">Elmārs Seņkovs</h4>
+        </div>
 
-<div class="mini-film-card"
-data-video="https://www.youtube.com/embed/X6v6G81bDdY"
-data-descr="pdf/Lukasz_Twarkowski.pdf"
-style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
-<h4 style="margin:0; color:#fff;">Lukasz Twarkowski</h4>
-</div>
-        
-  
+        <div class="mini-film-card"
+             data-video="https://www.youtube.com/embed/X6v6G81bDdY"
+             data-descr="pdf/Lukasz_Twarkowski.pdf"
+             style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+          <h4 style="margin:0; color:#fff;">Lukasz Twarkowski</h4>
+        </div>
       </div>
 
       <!-- Labā puse: video un apraksts -->
@@ -906,12 +907,13 @@ style="cursor:pointer; background:#333; margin-bottom:10px; padding:10px; border
         </div>
         <div class="multiFilmText"
              style="max-height:200px; overflow-y:auto; background:#444; padding:10px; color:#fff;">
-          <p>Šeit ielādēsies režisora apraksts</p>
+          <p><em>Lūdzu, izvēlies režisoru, lai skatītos video un lasītu aprakstu.</em></p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- Klusuma Semiotikas testa modālis (stand-alone) -->
 <style>
@@ -1154,20 +1156,116 @@ document.addEventListener('keydown', e => {
     closeKlusumaModal();
   }
 });
+
+function nextPrev(step) {
+  if (step === 1) {
+    // Pārbaude, vai atzīmēta atbilde
+    const currentInputs = slides[curSlide].querySelectorAll('input[type="radio"]');
+    const isChecked = Array.from(currentInputs).some(input => input.checked);
+    if (!isChecked) {
+      alert("Lūdzu, izvēlies atbildi pirms turpini.");
+      return;
+    }
+  }
+
+  if (step === 1 && curSlide === slides.length - 1) {
+    document.getElementById('semioticsTest').style.display = 'none';
+    calculateMaskResult();
+    return;
+  }
+
+  curSlide += step;
+  curSlide = Math.max(0, Math.min(curSlide, slides.length - 1));
+  showSlide(curSlide);
+}
+
 </script>
 
+<!-- ==================== MŪZIKA ==================== -->
 
 
+<section id="muzika" style="scroll-margin-top: 15px; padding: 50px 20px;">
+  <div style="max-width:1000px; margin:auto;">
+    <h2 style="font-size:3em; margin-bottom:20px; color:#fff;">Mūzika</h2>
+    <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;">
+      Skaņas, kas dzied klusumā. Dziesmas, kas elpo starp rindiņām.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
+      <div class="book-card"
+           style="background:url('images/muzika_melna.jpg') center center / cover; padding:20px; border-radius:16px;
+                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+           onclick="showMultiFilmModal('darkCabaretModal')">
+        <h3 style="margin-bottom:10px;">Tumšais kabarē</h3>
+        <p>Balss, kas smejas caur asarām un maskām.</p> 
+      </div>
+
+      <div class="book-card"
+           style="background:url('images/muzika_sinteze.jpg') center center / cover; padding:20px; border-radius:16px;
+                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+           onclick="showMultiFilmModal('synthModal')">
+        <h3 style="margin-bottom:10px;">Elektro sapņi</h3>
+        <p>Sintezatori, kas elpo distopiju un melanholiju.</p>
+      </div>
+
+      <div class="book-card"
+           style="background:url('images/muzika_akustika.jpg') center center / cover; padding:20px; border-radius:16px;
+                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
+           onclick="showMultiFilmModal('folkModal')">
+        <h3 style="margin-bottom:10px;">Putekļu balādes</h3>
+        <p>Akustiskas dziesmas, kas skan kā atmiņu dūmaka.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="darkCabaretModal" onclick="closeModalOutside(event, 'darkCabaretModal')"
+     style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1001;overflow-y:auto;padding:20px;box-sizing:border-box;">
+  <div style="background:#1c1c1c;padding:20px;border-radius:12px;width:90%;max-width:1000px;margin:40px auto;position:relative;"
+       onclick="event.stopPropagation();">
+    <button onclick="closeMultiFilmModal('darkCabaretModal')"
+            style="position:absolute;top:10px;right:10px;background:none;border:none;font-size:2em;color:#fff;cursor:pointer;">&times;</button>
+
+    <div style="display:flex;gap:20px;margin-top:20px;">
+      <div style="width:300px;background:#222;padding:10px;border-radius:8px;overflow-y:auto;max-height:500px;">
+        <div class="mini-film-card"
+     data-video="https://www.youtube.com/embed/VTO_lgWe6QA"
+     data-descr="apraksti/putekla_country_nr1_2025.html"
+     style="cursor:pointer; display:flex; align-items:center; gap:10px;
+            background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+  <img src="images/songs_of_the_dust.png" alt="songs of the dust" style="width:50px; height:50px; border-radius:6px; object-fit:cover;">
+  <span style="color:white;">Putekļa COUNTRY nr.1 - 2025</span>
+</div>
+
+<div class="mini-film-card"
+     data-video="https://www.youtube.com/embed/G5Os1G0xA94"
+     data-descr="apraksti/dust_opera.html"
+     style="cursor:pointer; display:flex; align-items:center; gap:10px;
+            background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+  <img src="images/dust_opera.png" alt="dust opera" style="width:50px; height:50px; border-radius:6px; object-fit:cover;">
+  <span style="color:white;">Dust Opera - 2025</span>
+</div>
+
+      </div>
+
+      <div style="flex:1;background:#333;border-radius:8px;padding:10px;position:relative;">
+        <div style="position:relative;padding-top:56.25%;background:#000;margin-bottom:10px;">
+          <iframe class="multiFilmVideo"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                  frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="multiFilmText"
+             style="max-height:200px;overflow-y:auto;background:#444;padding:10px;color:#fff;">
+          <p>Šeit ielādēsies mūzikas apraksts no HTML faila.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
+<!-- ==================== DZEJA ==================== -->
 
-<!-- ==================== MŪZIKA / DZEJA ==================== -->
-
-
-  <section id="muzika" style="padding:100px 20px; text-align:center;">
-    <h2>Mūzika</h2>
-    <p>Muzikāli toņi...</p>
-  </section>
   <section id="dzeja" style="padding:100px 20px; text-align:center;">
     <h2>Dzeja</h2>
     <p>Dzejas vārdi...</p>
@@ -1250,10 +1348,34 @@ document.addEventListener('keydown', e => {
 
     /* ========== Multi-film Modal ========== */
     function showMultiFilmModal(modalId) {
-      audio.pause();
-      const modal = document.getElementById(modalId);
-      modal.style.display = 'flex';
-    }
+  const modal = document.getElementById(modalId);
+  modal.style.display = 'block';
+
+  // Atrod pirmo mini-film-card un ielādē video/tekstu
+  const firstCard = modal.querySelector('.mini-film-card');
+  const iframe = modal.querySelector('.multiFilmVideo');
+  const textContainer = modal.querySelector('.multiFilmText');
+
+  if (firstCard && iframe && textContainer) {
+    const videoUrl = firstCard.getAttribute('data-video');
+    const descrUrl = firstCard.getAttribute('data-descr');
+
+    iframe.src = ""; // drošs notīrīšanas solis
+    iframe.src = videoUrl;
+
+    fetch(descrUrl)
+      .then(response => response.text())
+      .then(html => {
+        textContainer.innerHTML = html;
+      })
+      .catch(err => {
+        textContainer.innerHTML = "<p>Aprakstu neizdevās ielādēt.</p>";
+      });
+  }
+}
+
+
+
     function closeMultiFilmModal(modalId) {
       const modal = document.getElementById(modalId);
       modal.style.display = 'none';
