@@ -748,8 +748,8 @@
     </div>
   </div>
 
-  
-<!-- ==================== TEĀTRA SADAĻa ==================== -->
+    
+<!-- ==================== TEĀTRA SADAĻA ==================== -->
 <section id="teatris" style="scroll-margin-top: 15px; padding: 50px 20px;">
   <div style="max-width:1000px; margin:auto;">
     <h2 style="font-size:3em; margin-bottom:20px; color:#fff;">Teātris</h2>
@@ -1196,24 +1196,24 @@ function nextPrev(step) {
            style="background:url('images/muzika_melna.jpg') center center / cover; padding:20px; border-radius:16px;
                   box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
            onclick="showMultiFilmModal('darkCabaretModal')">
-        <h3 style="margin-bottom:10px;">Tumšais kabarē</h3>
-        <p>Balss, kas smejas caur asarām un maskām.</p> 
+        <h3 style="margin-bottom:10px;">Putekļu hronikas</h3>
+        <p>Dziesmas, kas dzimušas digitālā dūmakā.</p> 
       </div>
 
       <div class="book-card"
            style="background:url('images/muzika_sinteze.jpg') center center / cover; padding:20px; border-radius:16px;
                   box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
            onclick="showMultiFilmModal('synthModal')">
-        <h3 style="margin-bottom:10px;">Elektro sapņi</h3>
-        <p>Sintezatori, kas elpo distopiju un melanholiju.</p>
+        <h3 style="margin-bottom:10px;">Putekļa ausis</h3>
+        <p>Ko klausās Puteklis, kad nerunā?</p>
       </div>
 
       <div class="book-card"
            style="background:url('images/muzika_akustika.jpg') center center / cover; padding:20px; border-radius:16px;
                   box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
            onclick="showMultiFilmModal('folkModal')">
-        <h3 style="margin-bottom:10px;">Putekļu balādes</h3>
-        <p>Akustiskas dziesmas, kas skan kā atmiņu dūmaka.</p>
+        <h3 style="margin-bottom:10px;">Putekļa spēle</h3>
+        <p>Cik labi zini balādes, algoritmu lūgšanas un kabarē kaisli?</p>
       </div>
     </div>
   </div>
@@ -1234,7 +1234,7 @@ function nextPrev(step) {
      style="cursor:pointer; display:flex; align-items:center; gap:10px;
             background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
   <img src="images/songs_of_the_dust.png" alt="songs of the dust" style="width:50px; height:50px; border-radius:6px; object-fit:cover;">
-  <span style="color:white;">Putekļa COUNTRY nr.1 - 2025</span>
+  <span style="color:white;">Dust Country</span>
 </div>
 
 <div class="mini-film-card"
@@ -1243,7 +1243,16 @@ function nextPrev(step) {
      style="cursor:pointer; display:flex; align-items:center; gap:10px;
             background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
   <img src="images/dust_opera.png" alt="dust opera" style="width:50px; height:50px; border-radius:6px; object-fit:cover;">
-  <span style="color:white;">Dust Opera - 2025</span>
+  <span style="color:white;">Dust Opera</span>
+</div>
+
+<div class="mini-film-card"
+     data-video="https://www.youtube.com/embed/sGCgbWjMnfw"
+     data-descr="apraksti/dust_cabare.html"
+     style="cursor:pointer; display:flex; align-items:center; gap:10px;
+            background:#333; margin-bottom:10px; padding:10px; border-radius:8px;">
+  <img src="images/dust_cabare.png" alt="dust cabare" style="width:50px; height:50px; border-radius:6px; object-fit:cover;">
+  <span style="color:white;">Dust Cabare</span>
 </div>
 
       </div>
@@ -1263,6 +1272,47 @@ function nextPrev(step) {
   </div>
 </div>
 
+
+<!-- PUTEKĻA AUSIS: MODĀLIS -->
+<div id="synthModal" onclick="closeModalOutside(event, 'synthModal')"
+     style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1001;overflow-y:auto;padding:20px;box-sizing:border-box;">
+  <div style="background:#1c1c1c;padding:20px;border-radius:12px;width:90%;max-width:1000px;margin:40px auto;position:relative;"
+       onclick="event.stopPropagation();">
+    <button onclick="closeMultiFilmModal('synthModal')"
+            style="position:absolute;top:10px;right:10px;background:none;border:none;font-size:2em;color:#fff;cursor:pointer;">&times;</button>
+
+    <h2 style="color:white; font-size:2.2em; margin-bottom:20px;">Putekļa ausis</h2>
+    <p style="color:#ddd; font-size:1.1em; margin-bottom:30px;">Kad skaņa kļūst par dūmakainu valodu. Spotify, trokšņi un vizuāli viļņi.</p>
+
+    <!-- STILĪGS AUDIO BLOKS -->
+    <div style="display: flex; align-items: center; background: #111; border-radius: 16px; padding: 20px; gap: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.6); margin-bottom: 40px;">
+      <img src="images/cover_dust_audio.png" alt="cover" style="width: 100px; height: 100px; border-radius: 12px; object-fit: cover;">
+      <div style="flex: 1;">
+        <h3 style="color: white; margin: 0 0 6px;">Dust Serenāde</h3>
+        <p style="color: #aaa; margin: 0 0 10px;">Elektroniska ambienta ainava.</p>
+        <audio id="dustAudio" style="width: 100%;">
+          <source src="music/Dziesmina par putekliti.mp3" type="audio/mp3">
+          Tavu pārlūkprogrammu neatbalsta audio atskaņotājs.
+        </audio>
+        <canvas id="dustCanvas" width="600" height="80" style="width: 100%; margin-top: 8px;"></canvas>
+      </div>
+    </div>
+
+    <!-- SPOTIFY -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+      <div style="background:#000; padding:20px; border-radius:12px;">
+        <h3 style="color:white;">Melanholiskā sinteze</h3>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/YOUR_PLAYLIST_1" width="100%" height="152" frameborder="0" allow="encrypted-media"></iframe>
+        <p style="color:#aaa; margin-top:10px;">Piesātinātas, elektrificētas smeldzes.</p>
+      </div>
+      <div style="background:#000; padding:20px; border-radius:12px;">
+        <h3 style="color:white;">Digitālais kabarē</h3>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/YOUR_PLAYLIST_2" width="100%" height="152" frameborder="0" allow="encrypted-media"></iframe>
+        <p style="color:#aaa; margin-top:10px;">Kad groteskā un glamūrīgā saplūst.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ==================== DZEJA ==================== -->
 
@@ -1448,6 +1498,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- Font Awesome (ja vajadzīgs) -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- JS AUDIO VIZUALIZĀCIJAI -->
+<script>
+  const audio = document.getElementById('dustAudio');
+  const canvas = document.getElementById('dustCanvas');
+  const ctx = canvas.getContext('2d');
+  
+  let audioContext;
+  let analyser;
+  let source;
+  let dataArray;
+  let animationId;
+  
+  audio.addEventListener('play', async () => {
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      await audioContext.resume();
+      analyser = audioContext.createAnalyser();
+      source = audioContext.createMediaElementSource(audio);
+      source.connect(analyser);
+      analyser.connect(audioContext.destination);
+      analyser.fftSize = 256;
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+    }
+  
+    function draw() {
+      animationId = requestAnimationFrame(draw);
+      analyser.getByteFrequencyData(dataArray);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const barWidth = (canvas.width / dataArray.length) * 1.5;
+      let barHeight, x = 0;
+      for(let i = 0; i < dataArray.length; i++) {
+        barHeight = dataArray[i];
+        ctx.fillStyle = `rgba(255, 111, 97, ${barHeight / 255})`;
+        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth + 1;
+      }
+    }
+  
+    draw();
+  });
+  
+  audio.addEventListener('pause', () => cancelAnimationFrame(animationId));
+  audio.addEventListener('ended', () => cancelAnimationFrame(animationId));
+  </script>
+    
 
 </body>
 </html>
