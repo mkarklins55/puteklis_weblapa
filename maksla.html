@@ -1275,29 +1275,26 @@ function nextPrev(step) {
 
 <!-- PUTEKĻA AUSIS: MODĀLIS -->
 <div id="synthModal" onclick="closeModalOutside(event, 'synthModal')"
+
+
      style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1001;overflow-y:auto;padding:20px;box-sizing:border-box;">
   <div style="background:#1c1c1c;padding:20px;border-radius:12px;width:90%;max-width:1000px;margin:40px auto;position:relative;"
        onclick="event.stopPropagation();">
-    <button onclick="closeMultiFilmModal('synthModal')"
+    
+       <button onclick="closeMultiFilmModal('synthModal')"
             style="position:absolute;top:10px;right:10px;background:none;border:none;font-size:2em;color:#fff;cursor:pointer;">&times;</button>
 
-    <h2 style="color:white; font-size:2.2em; margin-bottom:20px;">Putekļa ausis</h2>
-    <p style="color:#ddd; font-size:1.1em; margin-bottom:30px;">Kad skaņa kļūst par dūmakainu valodu. Spotify, trokšņi un vizuāli viļņi.</p>
-
-    <!-- STILĪGS AUDIO BLOKS -->
-         
     
-
-    <!-- SPOTIFY -->
+        <!-- SPOTIFY -->
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
       <div style="background:#000; padding:20px; border-radius:12px;">
         <h3 style="color:white;">Melanholiskā sinteze</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6x92A5rnAQVZnfD48HiuoK?utm_source=generator" width="100%" height="152" frameborder="0" allow="encrypted-media"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/20cIsFtSe3ElMdjGuO8rZL?utm_source=generator" width="100%" height="152" frameborder="0" allow="encrypted-media"></iframe>
         <p style="color:#aaa; margin-top:10px;">Piesātinātas, elektrificētas smeldzes.</p>
       </div>
       <div style="background:#000; padding:20px; border-radius:12px;">
         <h3 style="color:white;">Digitālais kabarē</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/YOUR_PLAYLIST_2" width="100%" height="152" frameborder="0" allow="encrypted-media"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/18sGnxnJIj7QOhIh7yMqdE?utm_source=generator" width="100%" height="152" frameborder="0" allow="encrypted-media"></iframe>
         <p style="color:#aaa; margin-top:10px;">Kad groteskā un glamūrīgā saplūst.</p>
       </div>
     </div>
@@ -1414,22 +1411,31 @@ function nextPrev(step) {
   }
 }
 
+function closeMultiFilmModal(modalId) {
+  const modal = document.getElementById(modalId);
+  modal.style.display = 'none';
 
+  if (modalId === 'synthModal') {
+    // Ja ir Spotify logs
+    stopSpotify();
+  } else {
+    // Ja ir parasts multi-film logs
+    const iframe = modal.querySelector('.multiFilmVideo');
+    if (iframe) iframe.src = "";
 
-    function closeMultiFilmModal(modalId) {
-      const modal = document.getElementById(modalId);
-      modal.style.display = 'none';
-      const iframe = modal.querySelector('.multiFilmVideo');
-      if (iframe) iframe.src = "";
-      const textDiv = modal.querySelector('.multiFilmText');
-      if (textDiv) textDiv.innerHTML = "<p>Šeit ielādēsies apraksts no HTML faila</p>";
-      audio.play();
-    }
-    function closeModalOutside(e, modalId){
-      if(e.target.id === modalId){
-        closeMultiFilmModal(modalId);
-      }
-    }
+    const textDiv = modal.querySelector('.multiFilmText');
+    if (textDiv) textDiv.innerHTML = "<p>Šeit ielādēsies apraksts no HTML faila</p>";
+  }
+
+  audio.play();
+}
+
+function closeModalOutside(e, modalId){
+  if(e.target.id === modalId){
+    closeMultiFilmModal(modalId);
+  }
+}
+
 
     document.addEventListener('DOMContentLoaded', () => {
   const allMiniFilmCards = document.querySelectorAll('.mini-film-card');
@@ -1534,6 +1540,19 @@ document.addEventListener('DOMContentLoaded', () => {
   audio.addEventListener('ended', () => cancelAnimationFrame(animationId));
   </script>
     
+    <script>
+      function stopSpotify() {
+        const modal = document.getElementById('synthModal');
+        const iframes = modal.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          const src = iframe.src;
+          iframe.src = src; // Atjauno src, tas "restartē" Spotify iframe un aptur atskaņošanu
+        });
+      }
+      </script>
+      
+      
+
 
 </body>
 </html>
