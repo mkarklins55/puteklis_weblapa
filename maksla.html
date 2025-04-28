@@ -1181,43 +1181,63 @@ function nextPrev(step) {
 
 </script>
 
-<!-- ==================== MŪZIKA ==================== -->
-
-
-<section id="muzika" style="scroll-margin-top: 15px; padding: 50px 20px;">
-  <div style="max-width:1000px; margin:auto;">
-    <h2 style="font-size:3em; margin-bottom:20px; color:#fff;">Mūzika</h2>
-    <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;">
+<!-- ==================== MŪZIKA SADAĻA ==================== -->
+<section id="muzika" style="scroll-margin-top: 15px;">
+  <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
+    <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
+      Mūzika
+    </h2>
+    <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
       Skaņas, kas dzied klusumā. Dziesmas, kas elpo starp rindiņām.
     </p>
 
+      <!-- 3 mūzikas 'kartiņas' -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
-      <div class="book-card"
-           style="background:url('images/muzika_melna.jpg') center center / cover; padding:20px; border-radius:16px;
-                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
-           onclick="showMultiFilmModal('darkCabaretModal')">
-        <h3 style="margin-bottom:10px;">Putekļu hronikas</h3>
-        <p>Dziesmas, kas dzimušas digitālā dūmakā.</p> 
+      
+
+      <!-- Putekļu hronikas -->
+      <div class="book-card" onclick="showMultiFilmModal('darkCabaretModal')"
+           style="background: url('images/muzika_melna2.png') center center / contain;
+                  position: relative; padding: 20px; border-radius: 16px;
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
+                  cursor: pointer; overflow: hidden;">
+        <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+          <h3 style="margin-bottom: 10px;">Putekļu hronikas</h3>
+          <p style="font-size: 1em;">Dziesmas, kas dzimušas digitālā dūmakā.</p>
+        </div>
       </div>
 
-      <div class="book-card"
-           style="background:url('images/muzika_sinteze.jpg') center center / cover; padding:20px; border-radius:16px;
-                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
-           onclick="showMultiFilmModal('synthModal')">
-        <h3 style="margin-bottom:10px;">Putekļa ausis</h3>
-        <p>Ko klausās Puteklis, kad nerunā?</p>
+      <!-- Putekļa ausis -->
+      <div class="book-card" onclick="showMultiFilmModal('synthModal')"
+           style="background: url('images/muzika_sinteze.jpg') center center / contain;
+                  position: relative; padding: 20px; border-radius: 16px;
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
+                  cursor: pointer; overflow: hidden;">
+        <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+          <h3 style="margin-bottom: 10px;">Putekļa ausis</h3>
+          <p style="font-size: 1em;">Ko klausās Puteklis, kad nerunā?</p>
+        </div>
       </div>
 
-      <div class="book-card"
-           style="background:url('images/muzika_akustika.jpg') center center / cover; padding:20px; border-radius:16px;
-                  box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
-           onclick="showMultiFilmModal('folkModal')">
-        <h3 style="margin-bottom:10px;">Putekļa spēle</h3>
-        <p>Cik labi zini balādes, algoritmu lūgšanas un kabarē kaisli?</p>
+      <!-- Putekļa sapņi -->
+      <div class="book-card" onclick="openPuzzleGame()"
+           style="background: url('images/sapni.jpg') center center / contain;
+                  position: relative; padding: 20px; border-radius: 16px;
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
+                  cursor: pointer; overflow: hidden;">
+        <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+          <h3 style="margin-bottom: 10px;">Putekļa mozaīkas</h3>
+          <p style="font-size: 1em;">Pat putekļi reizēm grib būt kārtībā.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
+
+
+
+
 
 <div id="darkCabaretModal" onclick="closeModalOutside(event, 'darkCabaretModal')"
      style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1001;overflow-y:auto;padding:20px;box-sizing:border-box;">
@@ -1298,6 +1318,19 @@ function nextPrev(step) {
         <p style="color:#aaa; margin-top:10px;">Kad groteskā un glamūrīgā saplūst.</p>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Puzles spēles modālis -->
+<div id="puzzleGameModal" onclick="closeOutsidePuzzle(event)"
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:1001; overflow:hidden;">
+  <div id="puzzleInnerModal" style="background:#111; padding:10px; border-radius:12px; width:80vmin; height:85vmin; margin:auto; position:absolute; top:0; bottom:0; left:0; right:0; display:flex; flex-direction:column;">
+
+    <button onclick="closePuzzleGame()"
+            style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+
+        <div id="puzzleContainer" style="flex:1; display:grid; grid-template-columns:repeat(5, 1fr); gap:1px;"></div>
+    <p id="puzzleResult" style="color:#ddd; text-align:center; margin-top:10px; display:none; font-size:1.5em;">Tu saliki puzli! Lieliski!</p>
   </div>
 </div>
 
@@ -1550,8 +1583,94 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
       </script>
+    
+    <script>
+      const puzzlePieces = Array.from({length: 25}, (_, i) => i + 1);
+      const correctOrder = [...puzzlePieces];
+    
+      const puzzleImages = [
+        'images/puzzle1.png',
+        'images/puzzle2.png',
+        'images/puzzle3.png'
+      ];
+      let currentPuzzleImageIndex = 0;
+    
+      function openPuzzleGame() {
+        const modal = document.getElementById('puzzleGameModal');
+        modal.style.display = 'block';
+        shuffleArray(puzzlePieces);
+        renderPuzzle();
+      }
+    
+      function closePuzzleGame() {
+        const modal = document.getElementById('puzzleGameModal');
+        modal.style.display = 'none';
+        document.getElementById('puzzleResult').style.display = 'none';
+        advancePuzzleImage(); // kad aizver - pāriet uz nākamo bildi
+      }
+    
+      function closeOutsidePuzzle(event) {
+        if(event.target.id === 'puzzleGameModal') closePuzzleGame();
+      }
+    
+      function renderPuzzle() {
+        const container = document.getElementById('puzzleContainer');
+        container.innerHTML = '';
+        puzzlePieces.forEach(num => {
+          const piece = document.createElement('div');
+          piece.style = `
+            width:100%; 
+            padding-top:100%; 
+            background-image:url('${puzzleImages[currentPuzzleImageIndex]}');
+            background-size:500% 500%; 
+            background-position:${-(num-1)%5*25}% ${-Math.floor((num-1)/5)*25}%;
+            cursor:move;
+          `;
+          piece.draggable = true;
+          piece.ondragstart = e => e.dataTransfer.setData('text/plain', num);
+          piece.ondragover = e => e.preventDefault();
+          piece.ondrop = e => {
+            e.preventDefault();
+            const draggedNum = +e.dataTransfer.getData('text/plain');
+            swapPieces(draggedNum, num);
+          };
+          container.appendChild(piece);
+        });
+        checkPuzzleSolved();
+      }
+    
+      function swapPieces(a, b) {
+        const idxA = puzzlePieces.indexOf(a);
+        const idxB = puzzlePieces.indexOf(b);
+        [puzzlePieces[idxA], puzzlePieces[idxB]] = [puzzlePieces[idxB], puzzlePieces[idxA]];
+        renderPuzzle();
+      }
+    
+      function checkPuzzleSolved() {
+        if (puzzlePieces.every((v, i) => v === correctOrder[i])) {
+          const result = document.getElementById('puzzleResult');
+          result.style.display = 'block';
+          document.getElementById('puzzleInnerModal').style.boxShadow = '0 0 20px #4CAF50, 0 0 40px #4CAF50, 0 0 60px #4CAF50';
+          setTimeout(() => document.getElementById('puzzleInnerModal').style.boxShadow = '', 2000);
+          document.getElementById('puzzleContainer').style.gap = '0';
+          advancePuzzleImage(); // kad pabeidz - pāriet uz nākamo bildi
+        }
+      }
+    
+      function advancePuzzleImage() {
+        currentPuzzleImageIndex = (currentPuzzleImageIndex + 1) % puzzleImages.length;
+      }
+    
+      function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+      }
+    </script>
+    
       
-      
+    
 
 
 </body>
