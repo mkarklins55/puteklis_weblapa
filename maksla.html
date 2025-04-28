@@ -187,6 +187,11 @@
       background: url('images/muzika-fons.png') center center / cover; 
       margin-top: 80px; 
     }
+    #muzeji {
+      position: relative; 
+      background: url('images/muzeji-fons.png') center center / cover; 
+      margin-top: 80px; 
+    }
   </style>
 </head>
 
@@ -223,10 +228,10 @@
       <h2>Mūzika</h2>
       <p>Skaņas, kas dreb un skar dvēseli.</p>
     </a>
-    <a href="#dzeja" class="art-card" style="background-image: url('images/dzeja.jpg');">
+    <a href="#muzeji" class="art-card" style="background-image: url('images/muzeji.png');">
       <div class="art-icon"><i class="fas fa-feather-alt"></i></div>
-      <h2>Dzeja</h2>
-      <p>Domu šautriņas cauri laikam.</p>
+      <h2>Muzeji</h2>
+      <p>Pēdas, kas ved cauri pagātnei.</p>
     </a>
   </div>
 
@@ -1191,15 +1196,12 @@ function nextPrev(step) {
       Skaņas, kas dzied klusumā. Dziesmas, kas elpo starp rindiņām.
     </p>
 
-      <!-- 3 mūzikas 'kartiņas' -->
+    <!-- 3 mūzikas 'kartiņas' -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
-      
-
-      <!-- Putekļu hronikas -->
       <div class="book-card" onclick="showMultiFilmModal('darkCabaretModal')"
-           style="background: url('images/muzika_melna2.png') center center / contain;
-                  position: relative; padding: 20px; border-radius: 16px;
-                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
+           style="background: url('images/muzika_melna2.png') center center / cover; 
+                  position: relative; padding: 20px; border-radius: 16px; 
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                   cursor: pointer; overflow: hidden;">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
           <h3 style="margin-bottom: 10px;">Putekļu hronikas</h3>
@@ -1207,11 +1209,10 @@ function nextPrev(step) {
         </div>
       </div>
 
-      <!-- Putekļa ausis -->
       <div class="book-card" onclick="showMultiFilmModal('synthModal')"
-           style="background: url('images/muzika_sinteze.jpg') center center / contain;
-                  position: relative; padding: 20px; border-radius: 16px;
-                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
+           style="background: url('images/muzika_sinteze.jpg') center center / cover; 
+                  position: relative; padding: 20px; border-radius: 16px; 
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                   cursor: pointer; overflow: hidden;">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
           <h3 style="margin-bottom: 10px;">Putekļa ausis</h3>
@@ -1219,21 +1220,21 @@ function nextPrev(step) {
         </div>
       </div>
 
-      <!-- Putekļa sapņi -->
       <div class="book-card" onclick="openPuzzleGame()"
-           style="background: url('images/sapni.jpg') center center / contain;
-                  position: relative; padding: 20px; border-radius: 16px;
-                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
+           style="background: url('images/sapni.jpg') center center / cover; 
+                  position: relative; padding: 20px; border-radius: 16px; 
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                   cursor: pointer; overflow: hidden;">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
           <h3 style="margin-bottom: 10px;">Putekļa mozaīkas</h3>
           <p style="font-size: 1em;">Pat putekļi reizēm grib būt kārtībā.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
+
+
 
 
 
@@ -1336,10 +1337,54 @@ function nextPrev(step) {
 
 <!-- ==================== DZEJA ==================== -->
 
-  <section id="dzeja" style="padding:100px 20px; text-align:center;">
-    <h2>Dzeja</h2>
-    <p>Dzejas vārdi...</p>
-  </section>
+<!-- ==================== MUZEJI SADAĻA ==================== -->
+<section id="muzeji" style="scroll-margin-top: 15px;">
+  <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
+    <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
+      Muzeji
+    </h2>
+    <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
+      Pēdas, kas dzīvo starp mums. Atmiņas, kas elpo cauri laikam.
+    </p>
+
+    <!-- 3 muzeju 'kartiņas' -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
+      <div class="book-card"
+           style="background: url('images/vesture_muzeji.jpg') center center / cover; 
+                  position: relative; padding: 20px; border-radius: 16px; 
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
+                  cursor: pointer; overflow: hidden;">
+        <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+          <h3 style="margin-bottom: 10px;">Vēstures elpa</h3>
+          <p style="font-size: 1em;">Stāsti, kas skan caur akmeņiem un gadsimtiem.</p>
+        </div>
+      </div>
+
+      <div class="book-card"
+           style="background: url('images/modernie_muzeji.jpg') center center / cover; 
+                  position: relative; padding: 20px; border-radius: 16px; 
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
+                  cursor: pointer; overflow: hidden;">
+        <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+          <h3 style="margin-bottom: 10px;">Laikmetīgā doma</h3>
+          <p style="font-size: 1em;">Māksla, kas izaicina telpu un laiku.</p>
+        </div>
+      </div>
+
+      <div class="book-card"
+           style="background: url('images/zinatne_muzeji.jpg') center center / cover; 
+                  position: relative; padding: 20px; border-radius: 16px; 
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
+                  cursor: pointer; overflow: hidden;">
+        <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+          <h3 style="margin-bottom: 10px;">Zinātnes pasaule</h3>
+          <p style="font-size: 1em;">No mikroskopa lēcām līdz Visuma robežām.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- AUDIO atskaņotājs -->
   <audio id="background-audio" controls muted>
