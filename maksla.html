@@ -1354,7 +1354,7 @@ function nextPrev(step) {
                   cursor: pointer; overflow: hidden;"  
            onclick="showFantasyMuseumModal()">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Fantāziju muzejs</h3>
+          <h3 style="margin-bottom: 10px;">Fantāziju galerija</h3>
                   </div>
       </div>
     
@@ -1396,54 +1396,209 @@ function nextPrev(step) {
     <button onclick="closeMultiFilmModal('fantasyMuseumModal')"
             style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
 
-    <h2 style="text-align:center; color:white; margin-bottom:30px;">Fantāziju muzejs</h2>
+   <!--- <h2 style="text-align:center; color:white; margin-bottom:30px;">Fantāziju galerija</h2> -->
 
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:20px; margin-top:20px;">
 
-      <!-- 1. Kartīte -->
-      <div style="background:#222; border-radius:10px; padding:10px; color:white; text-align:center; overflow:hidden;">
-        <img src="images/ghost_library.png" alt="Spoku bibliotēka" style="width:100%; height:150px; object-fit:cover; border-radius:8px 8px 0 0;">
-        <h3>Spoku bibliotēka</h3>
-        <p>Grāmatas, kas lasāmas tikai tad, kad neviens neskatās.</p>
-        <small>Tīmekļi no aizmiršanas</small>
+      <!-- Kartīte 1 -->
+      <div class="card" onclick="openFlickrGallery(0)">
+        <img src="https://live.staticflickr.com/65535/54485870913_3a4cb820c2_c.jpg" alt="Nākotne pēc 300 gadiem" class="card-img">
+        <div class="card-content">
+          <h3 class="title">Nākotne pēc 300 gadiem</h3>
+          <p class="desc">Digitāli atdzimuša pasaule</p>
+        </div>
       </div>
 
-      <!-- 2. Kartīte -->
-      <div style="background:#222; border-radius:10px; padding:10px; color:white; text-align:center; overflow:hidden;">
-        <img src="images/invisible_museum.png" alt="Neredzamais muzejs" style="width:100%; height:150px; object-fit:cover; border-radius:8px 8px 0 0;">
-        <h3>Neredzamais muzejs</h3>
-        <p>Eksponāti, kas maina formu katru reizi, kad mirkšķina acis.</p>
-        <small>Sapņu migla un vārdu putekļi</small>
+      <!-- Kartīte 2 -->
+      <div class="card" onclick="openFlickrGallery(1)">
+        <img src="https://live.staticflickr.com/65535/54486627379_6ae9fabbf2_b.jpg" alt="Klusuma spriegums" class="card-img">
+        <div class="card-content">
+          <h3 class="title">Klusuma spriegums</h3>
+          <p class="desc">Kad klusums kļūst par sprādzienu, kuru neviens nedzird.</p>
+        </div>
       </div>
 
-      <!-- 3. Kartīte -->
-      <div style="background:#222; border-radius:10px; padding:10px; color:white; text-align:center; overflow:hidden;">
-        <img src="images/time_windows.png" alt="Laika vitrīnas" style="width:100%; height:150px; object-fit:cover; border-radius:8px 8px 0 0;">
-        <h3>Laika vitrīnas</h3>
-        <p>Logi uz pagātni, kas nekad nav bijusi.</p>
-        <small>Izgaistoša gaisma</small>
-      </div>
-
-      <!-- 4. Kartīte -->
-      <div style="background:#222; border-radius:10px; padding:10px; color:white; text-align:center; overflow:hidden;">
-        <img src="images/soul_umbrella.png" alt="Dvēseļu lietussargs" style="width:100%; height:150px; object-fit:cover; border-radius:8px 8px 0 0;">
-        <h3>Dvēseļu lietussargs</h3>
-        <p>Aizsargā pret vējiem, kas nāk no sapņiem.</p>
-        <small>Stikla elpa</small>
-      </div>
-
-      <!-- 5. Kartīte -->
-      <div style="background:#222; border-radius:10px; padding:10px; color:white; text-align:center; overflow:hidden;">
-        <img src="images/flying_machine.png" alt="Lidmašīna bez spārniem" style="width:100%; height:150px; object-fit:cover; border-radius:8px 8px 0 0;">
-        <h3>Lidmašīna bez spārniem</h3>
-        <p>Kuľo caur domām, nevis caur debesīm.</p>
-        <small>Atmiņu putekļi</small>
+      <!-- Kartīte 3 -->
+      <div class="card" onclick="openFlickrGallery(2)">
+        <img src="https://live.staticflickr.com/65535/54486485361_29dce6406e_o.png" alt="Laika vitrīnas" class="card-img">
+        <div class="card-content">
+          <h3 class="title">Laika vitrīnas</h3>
+          <p class="desc">Pagātne, kas nekad nav bijusi – skatāma tikai šeit.</p>
+        </div>
       </div>
 
     </div>
-
   </div>
 </div>
+
+<style>
+  .card {
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    cursor:pointer;
+    transition:transform 0.2s;
+  }
+  .card:hover{transform:scale(1.02);}
+  .card-img{width:100%;height:180px;object-fit:cover;}
+  .card-content{padding:10px 15px;}
+  .card-content .title{font-size:1.1em;color:#111;margin:0;}
+  .card-content .desc{font-size:0.9em;color:#444;margin-top:5px;}
+</style>
+
+<!-- ==================== GAISMAS KASTE (LIGHTBOX) ==================== -->
+<div id="flickrLightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center;">
+  <div style="position:relative; width:90vw; height:90vh; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+    <img id="flickrImage" src="" style="max-width:100%; max-height:100%; border-radius:12px; object-fit:contain; box-shadow:0 0 20px rgba(0,0,0,0.8);" />
+    <div id="flickrCaption" style="margin-top:10px; color:white; font-size:1em;"></div>
+    <div style="position:absolute; top:10px; right:10px; display:flex; gap:10px;">
+      <button onclick="toggleSlideshow()" style="background:none; border:none; font-size:1.2em; color:white; cursor:pointer;">▶ / ⏸</button>
+      <button id="fsToggleBtn" onclick="toggleFullscreen()" style="background:none; border:none; font-size:1.2em; color:white; cursor:pointer;">⛶</button>
+      <button onclick="closeFlickrGallery()" style="background:none; border:none; font-size:1.5em; color:white; cursor:pointer;">&times;</button>
+    </div>
+    <button onclick="nextFlickrImage(-1)" style="position:absolute; left:10px; font-size:2em; background:none; border:none; color:white; cursor:pointer;">&#10094;</button>
+    <button onclick="nextFlickrImage(1)" style="position:absolute; right:10px; font-size:2em; background:none; border:none; color:white; cursor:pointer;">&#10095;</button>
+  </div>
+</div>
+
+<script>
+/***** 1) VISU GALERIJU DATI *****/
+const galleries = [
+  /* Galerija 0 – Nākotne pēc 300 gadiem */
+  [
+    {url:"https://live.staticflickr.com/65535/54485870913_3a4cb820c2_c.jpg", caption:"Akmens tilts Rīgā"},
+    {url:"https://live.staticflickr.com/65535/54486617090_e76bbf451e_b.jpg", caption:"Kad nākotne aprij pagātni"},
+    {url:"https://live.staticflickr.com/65535/54486670888_f8fc58cd24_b.jpg", caption:"Kandava"},
+    {url:"https://live.staticflickr.com/65535/54486395076_6a86e143d2_b.jpg", caption:"Vadi"},
+    {url:"https://live.staticflickr.com/65535/54485550737_a822dc937a_b.jpg", caption:"Latvijas Universitāte"},
+    {url:"https://live.staticflickr.com/65535/54486263081_b26cb1702c_b.jpg", caption:"Neona klusums"},
+    {url:"https://live.staticflickr.com/65535/54486539408_6202c1c9f2_b.jpg", caption:"Zibens sakriste"},
+    {url:"https://live.staticflickr.com/65535/54486539413_a7af35dd78_b.jpg", caption:"Doma laukums"},
+    {url:"https://live.staticflickr.com/65535/54486263091_655ca4d45e_b.jpg", caption:"B1"},
+    {url:"https://live.staticflickr.com/65535/54486263086_c1208180ac_b.jpg", caption:"B2"},
+    {url:"https://live.staticflickr.com/65535/54486263101_bf177aa2ce_b.jpg", caption:"B4"},
+    {url:"https://live.staticflickr.com/65535/54485550742_a1ec9eb004_b.jpg", caption:"B5"}
+  ],
+
+  /* Galerija 1 – Klusuma spriegums */
+  [
+    {url:"https://live.staticflickr.com/65535/54486627379_6ae9fabbf2_b.jpg", caption:"Klusuma spriegums"},
+    {url:"https://live.staticflickr.com/65535/54486627374_ec8d09da9c_b.jpg", caption:"B0"},
+    {url:"https://live.staticflickr.com/65535/54486780205_f7c253af8a_b.jpg", caption:"B1"},
+    {url:"https://live.staticflickr.com/65535/54486427131_c34ff8b0ce_b.jpg", caption:"B2"},
+    {url:"https://live.staticflickr.com/65535/54486627419_dcf1a3c729_b.jpg", caption:"B3"},
+    {url:"https://live.staticflickr.com/65535/54485582722_125c649a6f_b.jpg", caption:"B4"},
+    {url:"https://live.staticflickr.com/65535/54486427151_27456b4ac2_b.jpg", caption:"B5"},
+    {url:"https://live.staticflickr.com/65535/54486627469_112d1b953f_o.png", caption:"B6"},
+    {url:"https://live.staticflickr.com/65535/54486751413_8ee2999f3e_o.png", caption:"B7"},
+    {url:"https://live.staticflickr.com/65535/54486751408_51b206dec5_o.png", caption:"B8"},
+    {url:"https://live.staticflickr.com/65535/54486675014_f3b0c94efb_o.png", caption:"B9"},
+    {url:"https://live.staticflickr.com/65535/54486474371_7c376596a4_o.png", caption:"B10"}
+  
+  ],
+
+  /* Galerija 2 – Laika vitrīnas */
+  [
+    {url:"https://live.staticflickr.com/65535/54486485361_29dce6406e_o.png", caption:"Laika vitrīnas"},
+    {url:"https://live.staticflickr.com/65535/54486485391_52f6f9b4aa_o.png", caption:"B1"},
+    {url:"https://live.staticflickr.com/65535/54485640422_e11c1674f7_o.png", caption:"B2"},
+    {url:"https://live.staticflickr.com/65535/54486837290_bc5daf986f_o.png", caption:"B4"},
+    {url:"https://live.staticflickr.com/65535/54486837295_2f70cf062f_o.png", caption:"B5"},
+    {url:"https://live.staticflickr.com/65535/54485640442_db32b7915e_o.png", caption:"B6"},
+    {url:"https://live.staticflickr.com/65535/54486685969_19494c4ce9_o.png", caption:"B7"},
+    {url:"https://live.staticflickr.com/65535/54486837315_c07a07af4f_o.png", caption:"B8"},
+    {url:"https://live.staticflickr.com/65535/54486837320_695dd99753_o.png", caption:"B9"},
+    {url:"https://live.staticflickr.com/65535/54486685974_0ba1ab57b1_o.png", caption:"B10"},
+    {url:"https://live.staticflickr.com/65535/54486697084_763d152756_o.png", caption:"B11"}
+  ]
+];
+
+/***** 2) STATUSA MAINĪGIE *****/
+let currentGallery = [];
+let currentIndex   = 0;
+let slideshowInterval = null;
+let slideshowActive   = false;
+
+/***** 3) GALERIJAS ATVĒRŠANA *****/
+function openFlickrGallery(gal, startIdx=0){
+  currentGallery = galleries[gal];
+  currentIndex   = startIdx;
+  showFlickrImage();
+  document.getElementById('flickrLightbox').style.display = 'flex';
+}
+
+/***** 4) ATTĒLA RĀDĪŠANA *****/
+function showFlickrImage(){
+  const img = currentGallery[currentIndex];
+  document.getElementById('flickrImage').src = img.url;
+  document.getElementById('flickrCaption').textContent = img.caption;
+}
+
+/***** 5) NĀKAMAIS / PREV *****/
+function nextFlickrImage(dir){
+  currentIndex = (currentIndex + dir + currentGallery.length) % currentGallery.length;
+  showFlickrImage();
+}
+
+/***** 6) PILNEKRĀNA KONTROLE *****/
+function toggleFullscreen(){
+  const lb = document.getElementById('flickrLightbox');
+  if(!document.fullscreenElement){
+    lb.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen().catch(()=>{});
+  }
+}
+
+/***** 7) SLAIDŠAUS *****/
+function toggleSlideshow(){
+  slideshowActive ? stopSlideshow() : startSlideshow();
+}
+function startSlideshow(){
+  slideshowActive = true;
+  slideshowInterval = setInterval(()=>nextFlickrImage(1),5000);
+}
+function stopSlideshow(){
+  slideshowActive = false;
+  clearInterval(slideshowInterval);
+}
+
+/***** 8) LIGHTBOX SLĒPŠANA *****/
+function hideFlickrLightbox(){
+  document.getElementById('flickrLightbox').style.display = 'none';
+  stopSlideshow();
+}
+function closeFlickrGallery(){
+  if(document.fullscreenElement){
+    document.exitFullscreen().catch(()=>{}); // hide izsauks zemāk
+  }else{
+    hideFlickrLightbox();
+  }
+}
+
+/***** 9) NOTIKUMU KLAUSĪTĀJI *****/
+document.addEventListener('fullscreenchange', ()=>{
+  const lb = document.getElementById('flickrLightbox');
+  const fsBtn = document.getElementById('fsToggleBtn');
+  if(document.fullscreenElement){
+    fsBtn.textContent = '⤢';
+  }else{
+    fsBtn.textContent = '⛶';
+    if(lb.style.display==='flex') hideFlickrLightbox();
+  }
+});
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='Escape' && document.getElementById('flickrLightbox').style.display==='flex' && !document.fullscreenElement){
+    hideFlickrLightbox();
+  }
+});
+</script>
+
+
+
+
 
 <!-- ==================== CSS animācija ==================== -->
 <style>
