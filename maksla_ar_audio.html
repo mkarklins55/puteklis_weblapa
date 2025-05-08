@@ -75,7 +75,23 @@
       text-shadow: 2px 2px 4px #000;
     }
 
-        /* Modāli grāmatu sadaļai */
+    /* Audio atskaņotājs */
+    audio {
+      display: block;
+      width: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      backdrop-filter: blur(5px);
+      position: fixed;
+      bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
+
+    /* Modāli grāmatu sadaļai */
     .modal {
       display: none;
       position: fixed; 
@@ -1774,11 +1790,44 @@ setTimeout(()=>{
 
 
 
-    <script>   
+  <!-- AUDIO atskaņotājs -->
+  <audio id="background-audio" controls muted>
+    Tavs pārlūks neatbalsta audio atskaņošanu.
+  </audio> 
+
+  <script>
+    /* ========== AUDIO Playlist ========== */
+    const playlist = [
+      'music/Sous mes bottes, la poussière chante.mp3',
+      'music/Putekļi krīt.mp3',
+      'music/Where roads crumble softly underfoot.mp3'
+    ];
+    let currentSongIndex = 0;
+    const audio = document.getElementById('background-audio');
+    audio.src = playlist[currentSongIndex];
+
+    audio.addEventListener('ended', () => {
+      currentSongIndex++;
+      if (currentSongIndex >= playlist.length) currentSongIndex = 0;
+      audio.src = playlist[currentSongIndex];
+      audio.play();
+    });
+
+    function startAudio() {
+      audio.muted = false;
+      audio.play();
+      document.removeEventListener('click', startAudio);
+      document.removeEventListener('scroll', startAudio);
+  } 
+   document.addEventListener('click', startAudio);
+   document.addEventListener('scroll', startAudio); 
+
+  
 
     /* ========== GRĀMATU modāli (vecās funkcijas) ========== */
     function showLasitasGramataModal() {
-        document.getElementById('lasitasGramataModal').style.display = 'block';
+      audio.pause(); 
+      document.getElementById('lasitasGramataModal').style.display = 'block';
     }
     function closeLasitasGramataModalOutside(e){
       if(e.target.id==='lasitasGramataModal'){
@@ -1787,10 +1836,12 @@ setTimeout(()=>{
     }
     function closeLasitasGramataModalDirect(){
       document.getElementById('lasitasGramataModal').style.display='none';
-          }
+      audio.play();
+    }
 
     function showRekomendetasGramataModal() {
-            document.getElementById('rekomendetasGramataModal').style.display='block';
+      audio.pause();
+      document.getElementById('rekomendetasGramataModal').style.display='block';
     }
     function closeRekomendetasGramataModalOutside(e){
       if(e.target.id==='rekomendetasGramataModal'){
@@ -1799,10 +1850,12 @@ setTimeout(()=>{
     }
     function closeRekomendetasGramataModalDirect(){
       document.getElementById('rekomendetasGramataModal').style.display='none';
-          }
+      audio.play();
+    }
 
     function showNeizlasitsGramataModal() {
-            document.getElementById('neizlasitsGramataModal').style.display='block';
+      audio.pause();
+      document.getElementById('neizlasitsGramataModal').style.display='block';
     }
     function closeNeizlasitsGramataModalOutside(e){
       if(e.target.id==='neizlasitsGramataModal'){
@@ -1811,7 +1864,8 @@ setTimeout(()=>{
     }
     function closeNeizlasitsGramataModalDirect(){
       document.getElementById('neizlasitsGramataModal').style.display='none';
-          }
+      audio.play();
+    }
 
     /* ========== Multi-film Modal ========== */
     function showMultiFilmModal(modalId) {
@@ -1857,7 +1911,7 @@ function closeMultiFilmModal(modalId) {
     if (textDiv) textDiv.innerHTML = "<p>Šeit ielādēsies apraksts no HTML faila</p>";
   }
 
-  
+  audio.play();
 }
 
   function closeModalOutside(e, modalId){
