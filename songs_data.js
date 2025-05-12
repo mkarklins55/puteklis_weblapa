@@ -143,7 +143,7 @@ const songs = [
     "title": "Muris",
     "audio": "music/Muris.mp3",
     "lyrics": "lyrics/Muris.txt",
-    "image": "cover/Muris.png",
+    "image": "cover/muris.png",
     "style": "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave"
   },
   {
@@ -178,183 +178,183 @@ const songs = [
     "title": "I open my eyes",
     "audio": "music/I open my eyes.mp3",
     "lyrics": "lyrics/I open my eyes.txt",
-    "image": "images/I open my eyes.jpg",
-    "style": ""
+    "image": "cover/I open my eyes.png",
+    "style": "synthwave, Dark Synthwave, Industrial Darkwave, Neue Deutsche Härte, Aggrotech, Dark Electro"
   },
   {
     "title": "Ma kõnnin tolmus",
     "audio": "music/Ma kõnnin tolmus.mp3",
     "lyrics": "lyrics/Ma kõnnin tolmus.txt",
-    "image": "images/Ma kõnnin tolmus.jpg",
-    "style": ""
+    "image": "cover/Ma kõnnin tolmus.png",
+    "style": "synthwave, Dark Synthwave, Industrial Darkwave, Neue Deutsche Härte, Aggrotech, Dark Electro"
   },
   {
     "title": "Oh little Button, scared and small",
     "audio": "music/Oh little Button, scared and small.mp3",
     "lyrics": "lyrics/Oh little Button, scared and small.txt",
-    "image": "images/Oh little Button, scared and small.jpg",
-    "style": ""
+    "image": "cover/Oh little Button, scared and small.png",
+    "style": "country, americana country, western, bluegrass influences"
   },
   {
     "title": "Dust in my mouth",
     "audio": "music/Dust in my mouth.mp3",
     "lyrics": "lyrics/Dust in my mouth.txt",
-    "image": "images/Dust in my mouth.jpg",
-    "style": ""
+    "image": "cover/Dust in my mouth.png",
+    "style": "country, Americana, cowpunk"
   },
   {
     "title": "The Button",
     "audio": "music/The Button.mp3",
     "lyrics": "lyrics/The Button.txt",
-    "image": "images/The Button.jpg",
-    "style": ""
+    "image": "cover/The Button.png",
+    "style": "country, road trip country, front porch stompin"
   },
   {
     "title": "Dust and Silver",
     "audio": "music/dust_and_silver.mp3",
-    "lyrics": "lyrics/Dust and Silver.txt",
-    "image": "images/Dust and Silver.jpg",
-    "style": ""
+    "lyrics": "lyrics/dust_and_silver.txt",
+    "image": "cover/Dust and Silver.png",
+    "style": "country, Classic Country / Honky-Tonk / Storytelling Country"
   },
   {
     "title": "Old Man and a Hundred Dreams",
     "audio": "music/Old Man and a Hundred Dreams.mp3",
     "lyrics": "lyrics/Old Man and a Hundred Dreams.txt",
-    "image": "images/Old Man and a Hundred Dreams.jpg",
-    "style": ""
+    "image": "cover/Old Man and a Hundred Dreams.png",
+    "style": "country, Classic Country / Honky-Tonk / Storytelling Country"
   },
   {
     "title": "Sunday Train",
     "audio": "music/Sunday Train.mp3",
     "lyrics": "lyrics/Sunday Train.txt",
-    "image": "images/Sunday Train.jpg",
-    "style": ""
+    "image": "cover/Sunday Train.png",
+    "style": "country, Country Train Beat"
   },
   {
     "title": "Два дні їдемо крізь пил",
     "audio": "music/Два дні їдемо крізь пил.mp3",
     "lyrics": "lyrics/Два дні їдемо крізь пил.txt",
-    "image": "images/Два дні їдемо крізь пил.jpg",
-    "style": ""
+    "image": "cover/Два дні їдемо крізь пил.png",
+    "style": "rock, Ukrainian Post-Rock, Ukrainian Indie Rock, Ukrainian New Wave, Alternative folk rock"
   },
   {
     "title": "Crows return on shattered wings",
     "audio": "music/Crows return on shattered wings.mp3",
     "lyrics": "lyrics/Crows return on shattered wings.txt",
-    "image": "images/Crows return on shattered wings.jpg",
-    "style": ""
+    "image": "cover/Crows return on shattered wings.png",
+    "style": "darkwave, Coldwave, Minimal Synth, Post-Rock (very atmospheric)"
   },
   {
     "title": "After the autumn sadness",
     "audio": "music/After the autumn sadness.mp3",
     "lyrics": "lyrics/After the autumn sadness.txt",
-    "image": "images/After the autumn sadness.jpg",
-    "style": ""
+    "image": "cover/After the autumn sadness.png",
+    "style": "cabaret, Spoken Word, Dark Cabaret, Post-Punk, Experimental Poetry, Art Rock"
   },
   {
     "title": "We don’t fight wars",
     "audio": "music/We don’t fight wars.mp3",
     "lyrics": "lyrics/We don’t fight wars.txt",
-    "image": "images/We don’t fight wars.jpg",
-    "style": ""
+    "image": "cover/We don’t fight wars.png",
+    "style": "cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabaret"
   },
   {
     "title": "Lai dzīvo puritānisms",
     "audio": "music/lai dzīvo puritānisms.mp3",
     "lyrics": "lyrics/Lai dzīvo puritānisms.txt",
-    "image": "images/Lai dzīvo puritānisms.jpg",
-    "style": ""
+    "image": "cover/Lai dzīvo puritānisms.png",
+    "style": "cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabaret"
   },
   {
     "title": "When all the fucking ropes snap",
     "audio": "music/When all the fucking ropes snap.mp3",
     "lyrics": "lyrics/When all the fucking ropes snap.txt",
-    "image": "images/When all the fucking ropes snap.jpg",
-    "style": ""
+    "image": "cover/When all the fucking ropes snap.png",
+    "style": "industrial, Gothic Folk, Lo-Fi Spoken Apocalypse, Angry Industrial Beat poetry"
   },
   {
     "title": "Sanctus, sanctus, Sanctus Algorithmus",
     "audio": "music/Sanctus, sanctus, Sanctus Algorithmus.mp3",
     "lyrics": "lyrics/Sanctus, sanctus, Sanctus Algorithmus.txt",
-    "image": "images/Sanctus, sanctus, Sanctus Algorithmus.jpg",
-    "style": ""
+    "image": "cover/Sanctus, sanctus, Sanctus Algorithmus.png",
+    "style": "cabaret, Gregorian Trap, Experimental Spoken Word, Absurdist Cabaret, Minimal wave"
   },
   {
     "title": "Smoke in the mirror",
     "audio": "music/Smoke in the mirror2.mp3",
-    "lyrics": "lyrics/Smoke in the mirror.txt",
-    "image": "images/Smoke in the mirror.jpg",
-    "style": ""
+    "lyrics": "lyrics/Smoke in the mirror2.txt",
+    "image": "cover/Smoke in the mirror.png",
+    "style": "rock, Rustbelt Rock, Post-Apocalyptic Americana, Ukrainian Resistance rock"
   },
   {
     "title": "The Deal Was Clean",
     "audio": "music/The Deal Was Clean.mp3",
     "lyrics": "lyrics/The Deal Was Clean.txt",
-    "image": "images/The Deal Was Clean.jpg",
-    "style": ""
+    "image": "cover/The Deal Was Clean.png",
+    "style": "country, Dark Americana, Outlaw Folk Rock, Protest Blues, Spoken Gothic Country"
   },
   {
     "title": "I was born",
     "audio": "music/I was born.mp3",
     "lyrics": "lyrics/I was born.txt",
-    "image": "images/I was born.jpg",
-    "style": ""
+    "image": "cover/I was born.png",
+    "style": "synthpop, Industrial Synthpop, Brechtian Electro-Cabaret, Shockwave Gothic Glam"
   },
   {
     "title": "He loved the burn",
     "audio": "music/He loved the burn.mp3",
     "lyrics": "lyrics/He loved the burn.txt",
-    "image": "images/He loved the burn.jpg",
-    "style": ""
+    "image": "cover/He loved the burn.png",
+    "style": "cabaret, Industrial Doom Cabaret, Electro-Goth March, Post-Apocalyptic Torch Song"
   },
   {
     "title": "Out by the edge of the pinewood trail",
     "audio": "music/Out by the edge of the pinewood trail.mp3",
     "lyrics": "lyrics/Out by the edge of the pinewood trail.txt",
-    "image": "images/Out by the edge of the pinewood trail.jpg",
-    "style": ""
+    "image": "cover/Out by the edge of the pinewood trail.png",
+    "style": "country, Southern Gothic Country / Murder Ballad Americana"
   },
   {
     "title": "I should sort through my papers",
     "audio": "music/I should sort through my papers.mp3",
     "lyrics": "lyrics/I should sort through my papers.txt",
-    "image": "images/I should sort through my papers.jpg",
-    "style": ""
+    "image": "cover/I should sort through my papers.png",
+    "style": "country, existential country blues, slowcore folk noir, minimalist outlaw Americana"
   },
   {
     "title": "Laika ziņas",
     "audio": "music/Radio teic laika ziņas.mp3",
-    "lyrics": "lyrics/Laika ziņas.txt",
-    "image": "images/Laika ziņas.jpg",
-    "style": ""
+    "lyrics": "lyrics/Radio teic laika ziņas.txt",
+    "image": "cover/Laika ziņas.png",
+    "style": "rock, Latvian blues rock"
   },
   {
     "title": "A Little Song for Joy",
     "audio": "music/A Little Song for Joy.mp3",
     "lyrics": "lyrics/A Little Song for Joy.txt",
-    "image": "images/A Little Song for Joy.jpg",
-    "style": ""
+    "image": "cover/A Little Song for Joy.png",
+    "style": "country, country gospel, southern gothic, americana, dark folk"
   },
   {
     "title": "Broken Chain Anthem",
     "audio": "music/Broken Chain Anthem.mp3",
     "lyrics": "lyrics/Broken Chain Anthem.txt",
-    "image": "images/Broken Chain Anthem.jpg",
-    "style": ""
+    "image": "cover/Broken Chain Anthem.png",
+    "style": "synthpop, post-punk/grunge, industrial synthpop"
   },
   {
     "title": "Some fucking nature scene",
     "audio": "music/Some fucking nature scene.mp3",
     "lyrics": "lyrics/Some fucking nature scene.txt",
-    "image": "images/Some fucking nature scene.jpg",
-    "style": ""
+    "image": "cover/Some fucking nature scene.png",
+    "style": "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
   },
   {
     "title": "A Hundred Kilometres",
     "audio": "music/I started rollin’ early, sun just touchi.mp3",
-    "lyrics": "lyrics/A Hundred Kilometres.txt",
-    "image": "images/A Hundred Kilometres.jpg",
-    "style": ""
+    "lyrics": "lyrics/I started rollin’ early, sun just touchi.txt",
+    "image": "cover/A Hundred Kilometres.png",
+    "style": "country, outlaw country, Americana, folk"
   },
   {
     "title": "Ich zähle jeden Atemzug",
