@@ -360,36 +360,36 @@ const songs = [
     "title": "Ich zähle jeden Atemzug",
     "audio": "music/Ich zähle jeden Atemzug.mp3",
     "lyrics": "lyrics/Ich zähle jeden Atemzug.txt",
-    "image": "images/Ich zähle jeden Atemzug.jpg",
-    "style": ""
+    "image": "cover/Ich zähle jeden Atemzug.png",
+    "style": "industrial, industrial rock, gothic metal, dark electro"
   },
   {
-    "title": "One Last Time (Burn It Down)",
+    "title": "One Last Time - Burn It Down",
     "audio": "music/Wrong shoes, wrong night.mp3",
-    "lyrics": "lyrics/One Last Time (Burn It Down).txt",
-    "image": "images/One Last Time (Burn It Down).jpg",
-    "style": ""
+    "lyrics": "lyrics/Wrong shoes, wrong night.txt",
+    "image": "cover/One Last Time.png",
+    "style": "electro, dark electro, industrial pop, coldwave"
   },
   {
     "title": "The Old Cat Walks",
     "audio": "music/Red dusk falls on his tired face.mp3",
-    "lyrics": "lyrics/The Old Cat Walks.txt",
-    "image": "images/The Old Cat Walks.jpg",
-    "style": ""
+    "lyrics": "lyrics/Red dusk falls on his tired face.txt",
+    "image": "cover/The Old Cat Walks.png",
+    "style": "rock, melodic dark rock, industrial-infused alt rock, gritty synth rock, post-punk shading"
   },
   {
     "title": "Awake to Be Happy",
     "audio": "music/You lit me up, then walked away.mp3",
-    "lyrics": "lyrics/Awake to Be Happy.txt",
-    "image": "images/Awake to Be Happy.jpg",
-    "style": ""
+    "lyrics": "lyrics/You lit me up, then walked away.txt",
+    "image": "cover/Awake to Be Happy.png",
+    "style": "jazz, Dark Jazz, pulsing electronic beats"
   },
   {
     "title": "You fucked, you ran, you left the light",
     "audio": "music/You fucked, you ran, you left the light.mp3",
     "lyrics": "lyrics/You fucked, you ran, you left the light.txt",
-    "image": "images/You fucked, you ran, you left the light.jpg",
-    "style": ""
+    "image": "cover/You fucked, you ran, you left the light.png",
+    "style": "jazz, dirty techno-jazz, Dark Jazz, pulsing electronic beats"
   },
   {
     "title": "I’m the Fuckin’ Cat",
