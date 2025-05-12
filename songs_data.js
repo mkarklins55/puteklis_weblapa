@@ -23,23 +23,23 @@ const songs = [
   {
     "title": "We are driving",
     "audio": "music/We are driving past trees.mp3",
-    "lyrics": "lyrics/We are driving.txt",
+    "lyrics": "lyrics/We are driving past trees.txt",
     "image": "cover/We are driving.png",
     "style": "country, country like 1970's"
   },
-  {
-    "title": "Yesterday I searched for future's perfect",
+   {
+    "title": "Yesterday I searched for future's perfection",
     "audio": "music/Yesterday I searched for future's perfec.mp3",
-    "lyrics": "lyrics/Yesterday I searched for future's perfect.txt",
-    "image": "images/Yesterday I searched for future's perfect.jpg",
-    "style": ""
+    "lyrics": "lyrics/1.txt",
+    "image": "cover/Yesterday I searched for future's perfect.png",
+    "style": "metal, progresive metal"
   },
-  {
+   {
     "title": "Dziesmiņa par puteklīti",
     "audio": "music/Dziesmina par putekliti.mp3",
-    "lyrics": "lyrics/Dziesmiņa par puteklīti.txt",
-    "image": "images/Dziesmiņa par puteklīti.jpg",
-    "style": ""
+    "lyrics": "lyrics/Dziesmina par putekliti.txt",
+    "image": "cover/Dziesmiņa par puteklīti.png",
+    "style": "metal, progresive metal"
   },
   {
     "title": "Whispers fall",

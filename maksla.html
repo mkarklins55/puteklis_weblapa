@@ -1349,7 +1349,7 @@ function nextPrev(step) {
   </div>
 </div>
 
-<!-- ================= MODĀLAIS LOGS KARAOKE ================= -->
+<!-- ================= MODĀLAIS LOGS ================= -->
 <div id="karaokeModal" onclick="closeModalOutside(event,'karaokeModal')" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1001;padding:20px;overflow-y:auto;box-sizing:border-box;">
   <div onclick="event.stopPropagation();" style="background:#1c1c1c;margin:auto;max-width:1000px;border-radius:12px;padding:30px 20px;position:relative;color:#eee;">
     <button onclick="document.getElementById('karaokeModal').style.display='none'" style="position:absolute;top:12px;right:16px;font-size:2em;background:none;border:none;color:#fff;cursor:pointer;">&times;</button>
@@ -1379,9 +1379,7 @@ function nextPrev(step) {
 </div>
 
 <!-- ================= SCRIPTS ================= -->
-<script src="songs_data.js">// ===== aizvērt modāli, ja klikšķis ārpus tā =====
-function closeModalOutside(evt,id){ if(evt.target.id===id){ document.getElementById(id).style.display='none'; }}
-</script>
+<script src="songs_data.js"></script>
 <script>
 /******************** UTIL *********************/
 const cssSafe = str => str.replace(/[^a-z0-9]/gi,'_');
@@ -1394,6 +1392,7 @@ function createSongCard(song){
   card.style = 'width:280px;background:#2b2b2b;color:#eee;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,.4);overflow:hidden;';
 
   const styleText = song.style;
+  const safePath  = encodeURI(song.lyrics);
 
   card.innerHTML = `
     <img src="${song.image}" alt="${song.title}" style="width:100%;height:180px;object-fit:cover;">
@@ -1401,7 +1400,8 @@ function createSongCard(song){
       <h4 style="margin:0 0 8px 0;font-size:1.05em;">${song.title}</h4>
       <p style="margin:0 0 8px 0;font-size:.85em;color:#bbb;">${styleText}</p>
       <audio controls src="${song.audio}" style="width:100%;"></audio>
-      <button onclick="loadLyrics('${song.lyrics}','${song.title}')" style="margin-top:8px;background:#ee6c4d;border:none;color:#fff;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:.9em;">Vārdi</button>
+      <button class="lyrics-btn" data-lyrics="${safePath}" data-title="${song.title}"
+              style="margin-top:8px;background:#ee6c4d;border:none;color:#fff;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:.9em;">Vārdi</button>
       <div id="lyricsBox_${cssSafe(song.title)}" style="display:none;margin-top:8px;background:#111;color:#ddd;padding:8px;border-radius:5px;font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;"></div>
     </div>`;
   return card;
@@ -1429,14 +1429,29 @@ function filterAndRender(){
   const container = document.getElementById('songListContainer');
   container.innerHTML = '';
   list.forEach(song=>container.appendChild(createSongCard(song)));
+
+  // Pēc renderēšanas pievieno klausītājus "Vārdi" pogām
+  container.querySelectorAll('.lyrics-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      loadLyrics(btn.dataset.lyrics, btn.dataset.title);
+    });
+  });
 }
 
 /******************** LYRICS LOADER *********************/
 function loadLyrics(path,title){
-  fetch(path).then(r=>r.text()).then(txt=>{
-    const box = document.getElementById('lyricsBox_'+cssSafe(title));
-    if(box){box.textContent = txt; box.style.display = 'block';}
-  });
+  const box = document.getElementById('lyricsBox_'+cssSafe(title));
+  if(!box) return;
+
+  // Ja jau atvērts -> slēdz ciet
+  if(box.style.display==='block'){ box.style.display='none'; return; }
+
+  fetch(path).then(r=>{
+      if(!r.ok) throw new Error('404');
+      return r.text();
+    })
+    .then(txt=>{ box.textContent = txt; box.style.display = 'block'; })
+    .catch(()=>{ box.textContent = '❗ Teksts nav atrasts'; box.style.display = 'block'; });
 }
 
 /******************** POPULAR STYLE BUTTONS *********************/
@@ -1455,9 +1470,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   populateStyleSelector();
   filterAndRender();
 });
+
+/******************** MODĀĻA FONA KLIKŠĶIS *********************/
+function closeModalOutside(evt,id){ if(evt.target.id===id){ document.getElementById(id).style.display='none'; }}
 </script>
 <!-- ===================================================== -->
-
 
 <!-- ==================== MUZEJI SADAĻA ==================== -->
 <section id="muzeji" style="scroll-margin-top: 15px;">
