@@ -101,78 +101,78 @@ const songs = [
     "title": "Dusty paths wind through the rye",
     "audio": "music/Dusty paths wind through the rye.mp3",
     "lyrics": "lyrics/Dusty paths wind through the rye.txt",
-    "image": "images/Dusty paths wind through the rye.jpg",
-    "style": ""
+    "image": "cover/Dusty paths wind through the rye.png",
+    "style": "country, Americana, folk, western, bluegrass influences, Traditional Country "
   },
   {
     "title": "Rust on the rails and grass in the ties",
     "audio": "music/Rust on the rails and grass in the ties.mp3",
     "lyrics": "lyrics/Rust on the rails and grass in the ties.txt",
-    "image": "images/Rust on the rails and grass in the ties.jpg",
-    "style": ""
+    "image": "cover/Rust on the rails and grass in the ties.png",
+    "style": "country, Americana Folk with Traditional Country and Western influence"
   },
   {
     "title": "Riteņi minas pa ceļu, kas nav",
     "audio": "music/Riteņi minas pa ceļu, kas nav.mp3",
     "lyrics": "lyrics/Riteņi minas pa ceļu, kas nav.txt",
-    "image": "images/Riteņi minas pa ceļu, kas nav.jpg",
-    "style": ""
+    "image": "cover/Riteņi minas pa ceļu, kas nav.png",
+    "style": "jazz, dark acid jazz"
   },
   {
     "title": "Ridin' hard on a frozen track",
     "audio": "music/Ridin' hard on a frozen track.mp3",
     "lyrics": "lyrics/Ridin' hard on a frozen track.txt",
-    "image": "images/Ridin' hard on a frozen track.jpg",
-    "style": ""
+    "image": "cover/Ridin' hard on a frozen track.png",
+    "style": "country, icy outlaw country male singer reverb echo country band up-tempo"
   },
   {
     "title": "Ich spür’ dein Herz, es schlägt so kalt",
     "audio": "music/Ich spür’ dein Herz, es schlägt so kalt.mp3",
     "lyrics": "lyrics/Ich spür’ dein Herz, es schlägt so kalt.txt",
-    "image": "images/Ich spür’ dein Herz, es schlägt so kalt.jpg",
-    "style": ""
+    "image": "cover/Ich spür’ dein Herz, es schlägt so kalt.png",
+    "style": "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche"
   },
   {
     "title": "Die letzte Straßenbahn nach Riga",
     "audio": "music/Die letzte Straßenbahn nach Riga.mp3",
     "lyrics": "lyrics/Die letzte Straßenbahn nach Riga.txt",
-    "image": "images/Die letzte Straßenbahn nach Riga.jpg",
-    "style": ""
+    "image": "cover/Die letzte Straßenbahn nach Riga.png",
+    "style": "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial "
   },
   {
     "title": "Muris",
     "audio": "music/Muris.mp3",
     "lyrics": "lyrics/Muris.txt",
-    "image": "images/Muris.jpg",
-    "style": ""
+    "image": "cover/Muris.png",
+    "style": "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave"
   },
   {
     "title": "Sous mes bottes, la poussière chante",
     "audio": "music/Sous mes bottes, la poussière chante.mp3",
     "lyrics": "lyrics/Sous mes bottes, la poussière chante.txt",
-    "image": "images/Sous mes bottes, la poussière chante.jpg",
-    "style": ""
+    "image": "cover/Sous mes bottes, la poussière chante.png",
+    "style": "blues, Acoustic Blues Glitch Hop"
   },
   {
     "title": "In der Ecke liegt der Staub",
     "audio": "music/In der Ecke liegt der Staub.mp3",
     "lyrics": "lyrics/In der Ecke liegt der Staub.txt",
-    "image": "images/In der Ecke liegt der Staub.jpg",
-    "style": ""
+    "image": "cover/In der Ecke liegt der Staub.png",
+    "style": "blues, Dreamy Fife And Drum Blues"
   },
   {
     "title": "Steel und Blut",
     "audio": "music/Steel und Blut.mp3",
     "lyrics": "lyrics/Steel und Blut.txt",
-    "image": "images/Steel und Blut.jpg",
-    "style": ""
+    "image": "cover/Steel und Blut.png",
+    "style": "industrial, Breakstep Synthwave / Dark Electro / Industrial Fusion"
   },
   {
     "title": "Ich bin Staub",
     "audio": "music/Ich bin Staub.mp3",
     "lyrics": "lyrics/Ich bin Staub.txt",
-    "image": "images/Ich bin Staub.jpg",
-    "style": ""
+    "image": "cover/Ich bin Staub.png",
+    "style": "rock, Melancholic Neue Deutsche Härte / Dark Electro Rock / Synth-Gothic"
   },
   {
     "title": "I open my eyes",
