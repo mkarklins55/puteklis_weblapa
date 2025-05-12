@@ -45,57 +45,57 @@ const songs = [
     "title": "Whispers fall",
     "audio": "music/Whispers fall.mp3",
     "lyrics": "lyrics/Whispers fall.txt",
-    "image": "images/Whispers fall.jpg",
-    "style": ""
+    "image": "cover/Whispers fall.png",
+    "style": "jazz, dark acid jazz"
   },
   {
     "title": "Putekļi krīt",
     "audio": "music/Putekļi krīt.mp3",
     "lyrics": "lyrics/Putekļi krīt.txt",
-    "image": "images/Putekļi krīt.jpg",
-    "style": ""
+    "image": "cover/Putekļi krīt.png",
+    "style": "jazz, dark acid jazz"
   },
   {
     "title": "Where roads crumble softly underfoot",
     "audio": "music/Where roads crumble softly underfoot.mp3",
     "lyrics": "lyrics/Where roads crumble softly underfoot.txt",
-    "image": "images/Where roads crumble softly underfoot.jpg",
-    "style": ""
+    "image": "cover/Where roads crumble softly underfoot.png",
+    "style": "blues, dark blues"
   },
   {
     "title": "You swept me like ashes",
     "audio": "music/You swept me like ashes.mp3",
     "lyrics": "lyrics/You swept me like ashes.txt",
-    "image": "images/You swept me like ashes.jpg",
-    "style": ""
+    "image": "cover/You swept me like ashes.png",
+    "style": "rock, Symphonic Rock, Post-Rock, Progressive Metal, Alternative Rock, Cinematic"
   },
   {
     "title": "Organic House III",
     "audio": "music/Organic House III.mp3",
     "lyrics": "lyrics/Organic House III.txt",
-    "image": "images/Organic House III.jpg",
-    "style": ""
+    "image": "cover/Organic House III.png",
+    "style": "house, Organic House, Progressive Melodic Techno, Tech-House"
   },
   {
     "title": "Organic House VII",
     "audio": "music/Organic House VII.mp3",
     "lyrics": "lyrics/Organic House VII.txt",
-    "image": "images/Organic House VII.jpg",
-    "style": ""
+    "image": "cover/Organic House VII.png",
+    "style": "house, Organic House, Tribal Drums, Punchy Kick, Groove-focused Hi-hats, Atmospheric Pads, Afro-inspired percussion"
   },
   {
     "title": "Kurzemes_rezidence",
     "audio": "music/Kurzemes_rezidence.mp3",
     "lyrics": "lyrics/Kurzemes_rezidence.txt",
-    "image": "images/Kurzemes_rezidence.jpg",
-    "style": ""
+    "image": "cover/Kurzemes_rezidence.png",
+    "style": "country, Americana, folk, western, bluegrass influences, country storytelling, warm acoustic textures"
   },
   {
     "title": "Wheels are turning, morning's gold",
     "audio": "music/Wheels are turning, morning's gold.mp3",
     "lyrics": "lyrics/Wheels are turning, morning's gold.txt",
-    "image": "images/Wheels are turning, morning's gold.jpg",
-    "style": ""
+    "image": "cover/Wheels are turning, morning's gold.png",
+    "style": "country, Americana, folk, western, bluegrass influences, Traditional Country, Folk Country, acoustic-driven rhythm, storytelling lyrics"
   },
   {
     "title": "Dusty paths wind through the rye",
