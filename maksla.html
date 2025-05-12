@@ -1171,7 +1171,7 @@ function nextPrev(step) {
 </script>
 
 <!-- ==================== MŪZIKA SADAĻA ==================== -->
-<section id="muzika" style="scroll-margin-top: 15px;">
+<section id="muzika" style="scroll-margin-top: 15px; padding: 50px 20px;">
   <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
     <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
       Mūzika
@@ -1214,6 +1214,18 @@ function nextPrev(step) {
       <!--    <p style="font-size: 1em;">Pat putekļi reizēm grib būt kārtībā.</p> -->
         </div>
       </div>
+
+<!-- Poga, kas atver karaoke modulāro logu -->
+<div class="book-card" onclick="document.getElementById('karaokeModal').style.display='block'"
+     style="background: url('images/muzika_sinteze.jpg') center center / cover;
+            position: relative; padding: 20px; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
+            cursor: pointer; overflow: hidden;">
+  <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
+    <h3 style="margin-bottom: 10px;">Putekļa karaoke</h3>
+  </div>
+</div>
+
     </div>
   </div>
 </section>
@@ -1336,6 +1348,116 @@ function nextPrev(step) {
     <p id="puzzleResult" style="color:#ddd; text-align:center; margin-top:10px; display:none; font-size:1.5em;">Tu saliki puzli! Lieliski!</p>
   </div>
 </div>
+
+<!-- ================= MODĀLAIS LOGS KARAOKE ================= -->
+<div id="karaokeModal" onclick="closeModalOutside(event,'karaokeModal')" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1001;padding:20px;overflow-y:auto;box-sizing:border-box;">
+  <div onclick="event.stopPropagation();" style="background:#1c1c1c;margin:auto;max-width:1000px;border-radius:12px;padding:30px 20px;position:relative;color:#eee;">
+    <button onclick="document.getElementById('karaokeModal').style.display='none'" style="position:absolute;top:12px;right:16px;font-size:2em;background:none;border:none;color:#fff;cursor:pointer;">&times;</button>
+
+    <h2 style="margin-top:0;text-align:center;">Izvēlies dziesmu pēc stila vai meklē pēc nosaukuma</h2>
+
+    <!-- POPULĀRĀKO STILU POGAS -->
+    <div id="popularStyles" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:15px;">
+      <button class="style-btn" data-style="">🎶 visi stili</button>
+      <button class="style-btn" data-style="country">🤠 country</button>
+      <button class="style-btn" data-style="rock">🎸 rock</button>
+      <button class="style-btn" data-style="electro">⚡ electro</button>
+      <button class="style-btn" data-style="darkwave">🌑 darkwave</button>
+    </div>
+
+    <!-- DROPDOWN + SEARCH -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;">
+      <select id="styleSelector" style="flex:1 1 220px;padding:10px;border-radius:6px;border:1px solid #666;background:#111;color:#eee;">
+        <option value="">-- Visi stili --</option>
+      </select>
+      <input id="searchInput" placeholder="Meklē pēc nosaukuma, stila vai vārdiem" style="flex:2 1 320px;padding:10px;border-radius:6px;border:1px solid #666;background:#111;color:#eee;" />
+    </div>
+
+    <!-- DZIESMU KONTEINERIS -->
+    <div id="songListContainer" style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;"></div>
+  </div>
+</div>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="songs_data.js">// ===== aizvērt modāli, ja klikšķis ārpus tā =====
+function closeModalOutside(evt,id){ if(evt.target.id===id){ document.getElementById(id).style.display='none'; }}
+</script>
+<script>
+/******************** UTIL *********************/
+const cssSafe = str => str.replace(/[^a-z0-9]/gi,'_');
+const getMainStyle = s => (s.split(',')[0]||'').trim().toLowerCase();
+
+/******************** UI: kartīte *********************/
+function createSongCard(song){
+  const card = document.createElement('div');
+  card.className = 'song-card';
+  card.style = 'width:280px;background:#2b2b2b;color:#eee;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,.4);overflow:hidden;';
+
+  const styleText = song.style;
+
+  card.innerHTML = `
+    <img src="${song.image}" alt="${song.title}" style="width:100%;height:180px;object-fit:cover;">
+    <div style="padding:12px;">
+      <h4 style="margin:0 0 8px 0;font-size:1.05em;">${song.title}</h4>
+      <p style="margin:0 0 8px 0;font-size:.85em;color:#bbb;">${styleText}</p>
+      <audio controls src="${song.audio}" style="width:100%;"></audio>
+      <button onclick="loadLyrics('${song.lyrics}','${song.title}')" style="margin-top:8px;background:#ee6c4d;border:none;color:#fff;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:.9em;">Vārdi</button>
+      <div id="lyricsBox_${cssSafe(song.title)}" style="display:none;margin-top:8px;background:#111;color:#ddd;padding:8px;border-radius:5px;font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;"></div>
+    </div>`;
+  return card;
+}
+
+/******************** DROPDOWN STILI *********************/
+function populateStyleSelector(){
+  const sel = document.getElementById('styleSelector');
+  const mains = [...new Set(songs.map(s=>getMainStyle(s.style)).filter(Boolean))];
+  mains.forEach(st=>{
+    const opt = document.createElement('option');
+    opt.value = st; opt.textContent = st; sel.appendChild(opt);
+  });
+}
+
+/******************** FILTRS & RENDER *********************/
+function filterAndRender(){
+  const selVal = document.getElementById('styleSelector').value.toLowerCase();
+  const term   = document.getElementById('searchInput').value.toLowerCase();
+  const list = songs.filter(s=>{
+    const mainMatch = !selVal || getMainStyle(s.style) === selVal;
+    const searchMatch = s.title.toLowerCase().includes(term) || s.style.toLowerCase().includes(term);
+    return mainMatch && searchMatch;
+  });
+  const container = document.getElementById('songListContainer');
+  container.innerHTML = '';
+  list.forEach(song=>container.appendChild(createSongCard(song)));
+}
+
+/******************** LYRICS LOADER *********************/
+function loadLyrics(path,title){
+  fetch(path).then(r=>r.text()).then(txt=>{
+    const box = document.getElementById('lyricsBox_'+cssSafe(title));
+    if(box){box.textContent = txt; box.style.display = 'block';}
+  });
+}
+
+/******************** POPULAR STYLE BUTTONS *********************/
+document.querySelectorAll('#popularStyles .style-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.getElementById('styleSelector').value = btn.dataset.style;
+    filterAndRender();
+  });
+});
+
+/******************** INIT *********************/
+document.getElementById('styleSelector').addEventListener('change',filterAndRender);
+document.getElementById('searchInput').addEventListener('input',filterAndRender);
+
+document.addEventListener('DOMContentLoaded',()=>{
+  populateStyleSelector();
+  filterAndRender();
+});
+</script>
+<!-- ===================================================== -->
+
 
 <!-- ==================== MUZEJI SADAĻA ==================== -->
 <section id="muzeji" style="scroll-margin-top: 15px;">
