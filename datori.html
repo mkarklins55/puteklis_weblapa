@@ -313,6 +313,24 @@ audio {
   pointer-events:none;      /* <- bloķē klikšķu uztveri */
 }
 
+/* =========  GLOBĀLI ========= */
+
+/* lodziņš vienmēr virs visa */
+#contentBox{
+  position: fixed;          /* jau ir fixed, bet atkārto drošībai */
+  z-index: 3000;            /* augstāks par pogām un logo */
+}
+
+/* =========  MOBILAIS (≤ 600 px) ========= */
+@media (max-width: 600px){
+
+  /* pogu bloks pacelts virs logo, lai klikšķi strādā */
+  .grid-links{ z-index: 2000; }
+
+  /* logo nelasa pieskārienus – lai netraucē pirmajai pogai */
+  .logo-container{ pointer-events: none; }
+}
+
 
   </style>
 </head>
