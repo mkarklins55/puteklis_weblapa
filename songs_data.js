@@ -394,78 +394,78 @@ const songs = [
   {
     "title": "I’m the Fuckin’ Cat",
     "audio": "music/I don’t knead, I don’t purr, I don’t play.mp3",
-    "lyrics": "lyrics/I’m the Fuckin’ Cat.txt",
-    "image": "images/I’m the Fuckin’ Cat.jpg",
-    "style": ""
+    "lyrics": "lyrics/I don’t knead, I don’t purr, I don’t play.txt",
+    "image": "cover/I’m the Fuckin’ Cat.png",
+    "style": "country, dark outlaw country, murderfolk, gothic Americana"
   },
   {
     "title": "Ash and Velvet",
     "audio": "music/She stitched my name in a coat of smoke.mp3",
-    "lyrics": "lyrics/Ash and Velvet.txt",
-    "image": "images/Ash and Velvet.jpg",
-    "style": ""
+    "lyrics": "lyrics/She stitched my name in a coat of smoke.txt",
+    "image": "cover/Ash and Velvet.png",
+    "style": "rock, industrial blues rock, dark post-punk, doom folk noir, electro-goth grunge"
   },
   {
     "title": "Vēja zirdziņš",
     "audio": "music/Dipadu dapadu.mp3",
-    "lyrics": "lyrics/Vēja zirdziņš.txt",
-    "image": "images/Vēja zirdziņš.jpg",
-    "style": ""
+    "lyrics": "lyrics/Dipadu dapadu.txt",
+    "image": "cover/Vēja zirdziņš.png",
+    "style": "darkwave, synth noir ballad, electro-goth hymn, slow-burn EBM pop"
   },
   {
     "title": "Pūpoliņi",
     "audio": "music/Pūpoliņi, pūpoliņi.mp3",
-    "lyrics": "lyrics/Pūpoliņi.txt",
-    "image": "images/Pūpoliņi.jpg",
-    "style": ""
+    "lyrics": "lyrics/Pūpoliņi, pūpoliņi.txt",
+    "image": "cover/Pūpoliņi.png",
+    "style": "synth-pop, electro body music (EBM), post-industrial wave, neo-darkwave"
   },
   {
     "title": "AND THEN THEY SCREAM",
     "audio": "music/first row freaks.mp3",
-    "lyrics": "lyrics/AND THEN THEY SCREAM.txt",
-    "image": "images/AND THEN THEY SCREAM.jpg",
-    "style": ""
+    "lyrics": "lyrics/first row freaks.txt",
+    "image": "cover/AND THEN THEY SCREAM.png",
+    "style": "metal, industrial metal, alternative metal, shock rock, glam industrial, gothic"
   },
   {
     "title": "If Someone Licks the Stamp",
     "audio": "music/We got your letter.mp3",
-    "lyrics": "lyrics/If Someone Licks the Stamp.txt",
-    "image": "images/If Someone Licks the Stamp.jpg",
-    "style": ""
+    "lyrics": "lyrics/We got your letter.txt",
+    "image": "cover/If Someone Licks the Stamp.png",
+    "style": "blues, Urban Voodoo Rock, Sexualized Swamp Blues / Baritone Noir"
   },
   {
     "title": "Four Days in Paris",
     "audio": "music/Had a little money from the cow we sold.mp3",
-    "lyrics": "lyrics/Four Days in Paris.txt",
-    "image": "images/Four Days in Paris.jpg",
-    "style": ""
+    "lyrics": "lyrics/Had a little money from the cow we sold.txt",
+    "image": "cover/Four Days in Paris.png",
+    "style": "blues, outlaw country noir, desert blues, southern existentialism"
   },
   {
     "title": "WALK, MOTHERFUCKER",
     "audio": "music/Streets don’t care.mp3",
-    "lyrics": "lyrics/WALK, MOTHERFUCKER.txt",
-    "image": "images/WALK, MOTHERFUCKER.jpg",
-    "style": ""
+    "lyrics": "lyrics/Streets don’t care.txt",
+    "image": "cover/WALK.png",
+    "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence"
   },
   {
     "title": "Skolas diena",
     "audio": "music/Katru rītu agri ceļos.mp3",
-    "lyrics": "lyrics/Skolas diena.txt",
-    "image": "images/Skolas diena.jpg",
-    "style": ""
+    "lyrics": "lyrics/Katru rītu agri ceļos.txt",
+    "image": "cover/Skolas diena.png",
+    "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism"
   },
   {
     "title": "Klucis un Cena",
     "audio": "music/Alfrēds Klucis — darbā sētnieks.mp3",
-    "lyrics": "lyrics/Klucis un Cena.txt",
-    "image": "images/Klucis un Cena.jpg",
-    "style": ""
+    "lyrics": "lyrics/Alfrēds Klucis — darbā sētnieks.txt",
+    "image": "cover/Klucis un Cena.png",
+    "style": "synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica"
   },
   {
     "title": "Sidewalk of Shards",
     "audio": "music/Shiny shards in sidewalk seams.mp3",
-    "lyrics": "lyrics/Sidewalk of Shards.txt",
-    "image": "images/Sidewalk of Shards.jpg",
-    "style": ""
+    "lyrics": "lyrics/Shiny shards in sidewalk seams.txt",
+    "image": "cover/Sidewalk of Shards.png",
+    "style": "blues, outlaw country noir / desert blues"
   }
 ];

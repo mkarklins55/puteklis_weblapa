@@ -1352,16 +1352,19 @@ function nextPrev(step) {
 <!-- ================= MODĀLAIS LOGS ================= -->
 <div id="karaokeModal" onclick="closeModalOutside(event,'karaokeModal')" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1001;padding:20px;overflow-y:auto;box-sizing:border-box;">
   <div onclick="event.stopPropagation();" style="background:#1c1c1c;margin:auto;max-width:1000px;border-radius:12px;padding:30px 20px;position:relative;color:#eee;">
-    <button onclick="document.getElementById('karaokeModal').style.display='none'" style="position:absolute;top:12px;right:16px;font-size:2em;background:none;border:none;color:#fff;cursor:pointer;">&times;</button>
+    <button onclick="document.getElementById('karaokeModal').style.display='none'" aria-label="Aizvērt" style="position:absolute;top:12px;right:16px;font-size:2em;background:none;border:none;color:#fff;cursor:pointer;">&times;</button>
 
     <h2 style="margin-top:0;text-align:center;">Izvēlies dziesmu pēc stila vai meklē pēc nosaukuma</h2>
 
     <!-- POPULĀRĀKO STILU POGAS -->
     <div id="popularStyles" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:15px;">
       <button class="style-btn" data-style="">🎶 visi stili</button>
-      <button class="style-btn" data-style="country">🤠 country</button>
+      <button class="style-btn" data-style="metal">🤘 metal</button>
       <button class="style-btn" data-style="rock">🎸 rock</button>
-      <button class="style-btn" data-style="electro">⚡ electro</button>
+      <button class="style-btn" data-style="country">🤠 country</button>
+      <button class="style-btn" data-style="blues">🎷 blues</button>
+      <button class="style-btn" data-style="jazz">🎺 jazz</button>
+      <button class="style-btn" data-style="cabaret">🎭 cabaret</button>
       <button class="style-btn" data-style="darkwave">🌑 darkwave</button>
     </div>
 
@@ -1379,29 +1382,28 @@ function nextPrev(step) {
 </div>
 
 <!-- ================= SCRIPTS ================= -->
-<script src="songs_data.js"></script>
-<script>
+<script src="songs_data.js" defer></script>
+<script defer>
 /******************** UTIL *********************/
 const cssSafe = str => str.replace(/[^a-z0-9]/gi,'_');
 const getMainStyle = s => (s.split(',')[0]||'').trim().toLowerCase();
+const esc = s => s.replace(/[&<>\"]/g, t => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[t]));
 
 /******************** UI: kartīte *********************/
 function createSongCard(song){
   const card = document.createElement('div');
   card.className = 'song-card';
-  card.style = 'width:280px;background:#2b2b2b;color:#eee;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,.4);overflow:hidden;';
+  card.style.cssText = 'width:280px;background:#2b2b2b;color:#eee;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,.4);overflow:hidden;';
 
-  const styleText = song.style;
-  const safePath  = encodeURI(song.lyrics);
+  const styleText = esc(song.style);
 
   card.innerHTML = `
-    <img src="${song.image}" alt="${song.title}" style="width:100%;height:180px;object-fit:cover;">
+    <img src="${song.image}" alt="${esc(song.title)}" style="width:100%;height:180px;object-fit:cover;">
     <div style="padding:12px;">
-      <h4 style="margin:0 0 8px 0;font-size:1.05em;">${song.title}</h4>
+      <h4 style="margin:0 0 8px 0;font-size:1.05em;">${esc(song.title)}</h4>
       <p style="margin:0 0 8px 0;font-size:.85em;color:#bbb;">${styleText}</p>
-      <audio controls src="${song.audio}" style="width:100%;"></audio>
-      <button class="lyrics-btn" data-lyrics="${safePath}" data-title="${song.title}"
-              style="margin-top:8px;background:#ee6c4d;border:none;color:#fff;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:.9em;">Vārdi</button>
+      <audio controls preload="none" src="${song.audio}" style="width:100%;" onplay="handlePlay(this)"></audio>
+      <button class="lyrics-btn" data-lyrics="${encodeURI(song.lyrics)}" data-title="${esc(song.title)}" style="margin-top:8px;background:#ee6c4d;border:none;color:#fff;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:.9em;">Vārdi</button>
       <div id="lyricsBox_${cssSafe(song.title)}" style="display:none;margin-top:8px;background:#111;color:#ddd;padding:8px;border-radius:5px;font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;"></div>
     </div>`;
   return card;
@@ -1410,7 +1412,8 @@ function createSongCard(song){
 /******************** DROPDOWN STILI *********************/
 function populateStyleSelector(){
   const sel = document.getElementById('styleSelector');
-  const mains = [...new Set(songs.map(s=>getMainStyle(s.style)).filter(Boolean))];
+  if(!sel || !Array.isArray(songs)) return;
+  const mains = [...new Set(songs.map(s=>getMainStyle(s.style)).filter(Boolean))].sort();
   mains.forEach(st=>{
     const opt = document.createElement('option');
     opt.value = st; opt.textContent = st; sel.appendChild(opt);
@@ -1419,6 +1422,7 @@ function populateStyleSelector(){
 
 /******************** FILTRS & RENDER *********************/
 function filterAndRender(){
+  if(!Array.isArray(songs)) return;
   const selVal = document.getElementById('styleSelector').value.toLowerCase();
   const term   = document.getElementById('searchInput').value.toLowerCase();
   const list = songs.filter(s=>{
@@ -1428,6 +1432,10 @@ function filterAndRender(){
   });
   const container = document.getElementById('songListContainer');
   container.innerHTML = '';
+  if(list.length === 0){
+    container.innerHTML = '<p style="color:#bbb;">Nav atrasts neviens rezultāts.</p>';
+    return;
+  }
   list.forEach(song=>container.appendChild(createSongCard(song)));
 
   // Pēc renderēšanas pievieno klausītājus "Vārdi" pogām
@@ -1440,7 +1448,8 @@ function filterAndRender(){
 
 /******************** LYRICS LOADER *********************/
 function loadLyrics(path,title){
-  const box = document.getElementById('lyricsBox_'+cssSafe(title));
+  const boxId = 'lyricsBox_'+cssSafe(title);
+  const box = document.getElementById(boxId);
   if(!box) return;
 
   // Ja jau atvērts -> slēdz ciet
@@ -1455,26 +1464,52 @@ function loadLyrics(path,title){
 }
 
 /******************** POPULAR STYLE BUTTONS *********************/
-document.querySelectorAll('#popularStyles .style-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.getElementById('styleSelector').value = btn.dataset.style;
-    filterAndRender();
+function initPopularStyleButtons(){
+  document.querySelectorAll('#popularStyles .style-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.getElementById('styleSelector').value = btn.dataset.style;
+      filterAndRender();
+    });
   });
-});
+}
+
+/******************** AUDIO CONTROL LOGIC *********************/
+function handlePlay(current){
+  // nodrošinām, ka pašreizējais fails tiek aktīvi ielādēts
+  current.setAttribute('preload','auto');
+
+  // pauzē un atbrīvo resursus citiem
+  document.querySelectorAll('audio').forEach(a=>{
+    if(a!==current){
+      a.pause();
+      // atbrīvo tīkla savienojumu, saglabājot iespēju atskaņot vēlreiz
+      a.setAttribute('preload','none');
+      a.load(); // atceļ lejupielādi, nezaudējot src -> UI paliek aktīva
+    }
+  });
+}
 
 /******************** INIT *********************/
-document.getElementById('styleSelector').addEventListener('change',filterAndRender);
-document.getElementById('searchInput').addEventListener('input',filterAndRender);
-
 document.addEventListener('DOMContentLoaded',()=>{
   populateStyleSelector();
+  initPopularStyleButtons();
+  document.getElementById('styleSelector').addEventListener('change',filterAndRender);
+  document.getElementById('searchInput').addEventListener('input',filterAndRender);
   filterAndRender();
 });
 
 /******************** MODĀĻA FONA KLIKŠĶIS *********************/
-function closeModalOutside(evt,id){ if(evt.target.id===id){ document.getElementById(id).style.display='none'; }}
+function closeModalOutside(evt,id){
+  if(evt.target.id===id){
+    document.getElementById(id).style.display='none';
+  }
+}
 </script>
 <!-- ===================================================== -->
+
+
+
+
 
 <!-- ==================== MUZEJI SADAĻA ==================== -->
 <section id="muzeji" style="scroll-margin-top: 15px;">
