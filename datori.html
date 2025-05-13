@@ -264,39 +264,50 @@ audio {
   opacity: 1;
 }
 
-/* =========  MOBILAIS (<= 600 px)  ========= */
+/* =========  MOBILAIS  (≤ 600 px)  ========= */
 @media (max-width: 600px) {
 
-  /* Logo mazāks, lai neaizsedz saturu */
-  .top-logo img { height: 60px; }
+  /* LOGO mazāks */
+  .top-logo img        { height: 60px; }
 
-  /* Mazākais virsraksts un apraksts */
-  .overlay-text h1 { font-size: 1.8em; }
-  .overlay-text p  { font-size: 1em;  }
+  /* VIRSRKSTS un apraksts mazāks, noņem absolute */
+  .overlay-text        { position:static; transform:none; margin-top:2.5rem; }
+  .overlay-text h1     { font-size:2em;  }
+  .overlay-text p      { font-size:1em;  }
 
-  /* Lai viss tek lejā pēc kārtas, noņem absolūtos top */
-  .overlay-text   { position: static; transform: none; margin-top: 2.5rem; }
+  /* Ievada rindiņa nedaudz zemāk */
+  .intro-line          { top: 3.5em; font-size:0.95em; }
 
-  /* Pogu rinda kļūst par režģi 2 × n */
-  .grid-links {
-    position: static;          /* noņem absolute */
-    transform: none;
-    flex-wrap: wrap;           /* ļauj salauzties */
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem auto;
-  }
-  .grid-links a {
-    max-width: calc(50% - 1rem);   /* divas pogas rindā */
-    flex: 0 0 calc(50% - 1rem);
+  /* ─────────  POGU BLOKS  ───────── */
+  .grid-links          {
+    position:static;          /* noņem absolute */
+    transform:none;
+    flex-wrap:wrap;           /* ļauj līnijām lauzties */
+    justify-content:center;
+    gap:1rem;
+    margin:2rem auto;
+    max-width:420px;          /* lai nav “publikas platums” */
   }
 
-  /* Citāts zemāk, lai neatspiestu pogas */
-  .quote { position: static; margin: 2rem auto; max-width: 80%; }
+  /* katra poga: vairs nav maksimāli 140 px, bet “elastīga” */
+  .grid-links a        {
+    flex:1 1 calc(50% - 1rem);/* divas pogas rindā */
+    max-width:none;           /* noņem 140px ierobežojumu */
+  }
 
-  /*  ContentBox – platāks, bet drošs */
-  #contentBox { width: 90%; max-width: none; }
+  /* Pogu iekšējie attēli  */
+  .grid-links a img    { height:auto; }
+
+  /* CITĀTS zem pogām (pēc plūsmas) */
+  .quote               { position:static; margin:2rem auto; max-width:80%; }
+
+  /*  Pielāgo #contentBox platumu */
+  #contentBox          { width:90%; max-width:none; }
+
+  /* Ja animācija velk procesoru, vari paslēpt kanvu: */
+  /* canvas { display:none; } */
 }
+
 
   </style>
 </head>
@@ -885,6 +896,8 @@ audio {
     }
   });
 
+
+  
   // DZIESMU IZVĒLE (dropdown)
   function playSelectedSong() {
     var selector = document.getElementById("songSelector");
@@ -937,6 +950,9 @@ audio {
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
 <script src="assets/js/analytics.js"></script>
+
+
+
 
 </body>
 </html>
