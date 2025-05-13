@@ -1,0 +1,6 @@
+User-agent: \*
+Allow: /
+
+# Sitemap declaration
+
+Sitemap: [https://www.puteklis.com/sitemap.xml](https://www.puteklis.com/sitemap.xml)

@@ -264,6 +264,40 @@ audio {
   opacity: 1;
 }
 
+/* =========  MOBILAIS (<= 600 px)  ========= */
+@media (max-width: 600px) {
+
+  /* Logo mazāks, lai neaizsedz saturu */
+  .top-logo img { height: 60px; }
+
+  /* Mazākais virsraksts un apraksts */
+  .overlay-text h1 { font-size: 1.8em; }
+  .overlay-text p  { font-size: 1em;  }
+
+  /* Lai viss tek lejā pēc kārtas, noņem absolūtos top */
+  .overlay-text   { position: static; transform: none; margin-top: 2.5rem; }
+
+  /* Pogu rinda kļūst par režģi 2 × n */
+  .grid-links {
+    position: static;          /* noņem absolute */
+    transform: none;
+    flex-wrap: wrap;           /* ļauj salauzties */
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem auto;
+  }
+  .grid-links a {
+    max-width: calc(50% - 1rem);   /* divas pogas rindā */
+    flex: 0 0 calc(50% - 1rem);
+  }
+
+  /* Citāts zemāk, lai neatspiestu pogas */
+  .quote { position: static; margin: 2rem auto; max-width: 80%; }
+
+  /*  ContentBox – platāks, bet drošs */
+  #contentBox { width: 90%; max-width: none; }
+}
+
   </style>
 </head>
 <body>
