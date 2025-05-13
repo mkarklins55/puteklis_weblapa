@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MP3 & SoundCloud Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #111; color: #eee; padding: 20px; }
+    h2 { margin-top: 30px; }
+    .player-box { margin-bottom: 30px; background: #222; padding: 20px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>Atskaņošanas testi</h1>
+
+  <div class="player-box" id="local-player">
+    <h2>🎧 Lokālais MP3 fails</h2>
+    <audio controls>
+      <source src="music/The Lost Sock Saga.mp3" type="audio/mp3">
+      Tava pārlūkprogramma neatbalsta audio elementu.
+    </audio>
+  </div>
+
+  <div class="player-box" id="soundcloud-player">
+    <h2>🔊 SoundCloud links</h2>
+    <iframe 
+      width="100%" 
+      height="166" 
+      scrolling="no" 
+      frameborder="no" 
+      allow="autoplay" 
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maris-karklins-569414931/the-lost-sock-saga_07&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false">
+    </iframe>
+  </div>
+
+</body>
+</html>

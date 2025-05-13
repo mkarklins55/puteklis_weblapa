@@ -1389,23 +1389,77 @@ const cssSafe = str => str.replace(/[^a-z0-9]/gi,'_');
 const getMainStyle = s => (s.split(',')[0]||'').trim().toLowerCase();
 const esc = s => s.replace(/[&<>\"]/g, t => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[t]));
 
+/******************** GLOBAL ONE‑AND‑ONLY PLAYER *********************/
+const masterAudio = document.createElement('audio');
+masterAudio.controls = true;
+masterAudio.style.cssText = 'width:100%;border-radius:8px;margin-top:6px;';
+masterAudio.preload = 'none';
+masterAudio.style.display = 'none';
+document.body.appendChild(masterAudio);
+
+let currentSlot   = null; // kur atrodas masterAudio
+let currentSong   = null; // pašreizējais url
+let lastPlayBtn   = null; // iepriekšējās kartītes poga
+
 /******************** UI: kartīte *********************/
 function createSongCard(song){
   const card = document.createElement('div');
   card.className = 'song-card';
   card.style.cssText = 'width:280px;background:#2b2b2b;color:#eee;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,.4);overflow:hidden;';
 
-  const styleText = esc(song.style);
+  const slotId = 'audioSlot_'+cssSafe(song.title);
 
   card.innerHTML = `
     <img src="${song.image}" alt="${esc(song.title)}" style="width:100%;height:180px;object-fit:cover;">
-    <div style="padding:12px;">
-      <h4 style="margin:0 0 8px 0;font-size:1.05em;">${esc(song.title)}</h4>
-      <p style="margin:0 0 8px 0;font-size:.85em;color:#bbb;">${styleText}</p>
-      <audio controls preload="none" src="${song.audio}" style="width:100%;" onplay="handlePlay(this)"></audio>
-      <button class="lyrics-btn" data-lyrics="${encodeURI(song.lyrics)}" data-title="${esc(song.title)}" style="margin-top:8px;background:#ee6c4d;border:none;color:#fff;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:.9em;">Vārdi</button>
-      <div id="lyricsBox_${cssSafe(song.title)}" style="display:none;margin-top:8px;background:#111;color:#ddd;padding:8px;border-radius:5px;font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;"></div>
+    <div style="padding:12px;display:flex;flex-direction:column;gap:8px;">
+      <div>
+        <h4 style="margin:0 0 6px 0;font-size:1.05em;">${esc(song.title)}</h4>
+        <p style="margin:0;font-size:.85em;color:#bbb;">${esc(song.style)}</p>
+      </div>
+      <div id="${slotId}" class="audio-slot"></div>
+      <div style="display:flex;gap:8px;">
+        <button class="play-btn" style="flex:1;background:#ee6c4d;border:none;color:#fff;padding:6px 0;border-radius:5px;cursor:pointer;font-weight:600;">▶️ Atskaņot</button>
+        <button class="lyrics-btn" data-lyrics="${encodeURI(song.lyrics)}" data-title="${esc(song.title)}" style="flex:1;background:#555;border:none;color:#fff;padding:6px 0;border-radius:5px;cursor:pointer;">Vārdi</button>
+      </div>
+      <div id="lyricsBox_${cssSafe(song.title)}" style="display:none;background:#111;color:#ddd;padding:8px;border-radius:5px;font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;"></div>
     </div>`;
+
+  const playBtn = card.querySelector('.play-btn');
+  const slot    = card.querySelector('.audio-slot');
+
+  playBtn.addEventListener('click',()=>{
+    // ja klikšķis uz jau spēlējošo
+    if(currentSong === song.audio){
+      if(masterAudio.paused){ masterAudio.play(); playBtn.textContent = '⏸️ Pauze'; }
+      else { masterAudio.pause(); playBtn.textContent = '▶️ Atskaņot'; }
+      return;
+    }
+
+    // atjaunojam iepriekšējās pogas statusu
+    if(lastPlayBtn){ lastPlayBtn.textContent = '▶️ Atskaņot'; }
+
+    // pārslēdzamies uz jauno dziesmu
+    currentSong = song.audio;
+    masterAudio.src = song.audio;
+    masterAudio.load();
+    masterAudio.play();
+
+    // pārvietojam pleijeri vizuāli zem bildītes
+    masterAudio.style.display = 'block';
+    if(currentSlot && currentSlot !== slot){ currentSlot.innerHTML = ''; }
+    slot.appendChild(masterAudio);
+    currentSlot = slot;
+
+    // atjaunojam pogu statusus
+    playBtn.textContent = '⏸️ Pauze';
+    lastPlayBtn = playBtn;
+  });
+
+  // LYRICS
+  card.querySelector('.lyrics-btn').addEventListener('click', e=>{
+    loadLyrics(e.target.dataset.lyrics, e.target.dataset.title);
+  });
+
   return card;
 }
 
@@ -1437,30 +1491,16 @@ function filterAndRender(){
     return;
   }
   list.forEach(song=>container.appendChild(createSongCard(song)));
-
-  // Pēc renderēšanas pievieno klausītājus "Vārdi" pogām
-  container.querySelectorAll('.lyrics-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      loadLyrics(btn.dataset.lyrics, btn.dataset.title);
-    });
-  });
 }
 
 /******************** LYRICS LOADER *********************/
 function loadLyrics(path,title){
-  const boxId = 'lyricsBox_'+cssSafe(title);
-  const box = document.getElementById(boxId);
+  const box = document.getElementById('lyricsBox_'+cssSafe(title));
   if(!box) return;
-
-  // Ja jau atvērts -> slēdz ciet
   if(box.style.display==='block'){ box.style.display='none'; return; }
-
-  fetch(path).then(r=>{
-      if(!r.ok) throw new Error('404');
-      return r.text();
-    })
-    .then(txt=>{ box.textContent = txt; box.style.display = 'block'; })
-    .catch(()=>{ box.textContent = '❗ Teksts nav atrasts'; box.style.display = 'block'; });
+  fetch(path).then(r=>r.ok?r.text():Promise.reject())
+             .then(txt=>{ box.textContent = txt; box.style.display = 'block'; })
+             .catch(()=>{ box.textContent = '❗ Teksts nav atrasts'; box.style.display = 'block'; });
 }
 
 /******************** POPULAR STYLE BUTTONS *********************/
@@ -1470,22 +1510,6 @@ function initPopularStyleButtons(){
       document.getElementById('styleSelector').value = btn.dataset.style;
       filterAndRender();
     });
-  });
-}
-
-/******************** AUDIO CONTROL LOGIC *********************/
-function handlePlay(current){
-  // nodrošinām, ka pašreizējais fails tiek aktīvi ielādēts
-  current.setAttribute('preload','auto');
-
-  // pauzē un atbrīvo resursus citiem
-  document.querySelectorAll('audio').forEach(a=>{
-    if(a!==current){
-      a.pause();
-      // atbrīvo tīkla savienojumu, saglabājot iespēju atskaņot vēlreiz
-      a.setAttribute('preload','none');
-      a.load(); // atceļ lejupielādi, nezaudējot src -> UI paliek aktīva
-    }
   });
 }
 
@@ -1506,6 +1530,9 @@ function closeModalOutside(evt,id){
 }
 </script>
 <!-- ===================================================== -->
+
+
+
 
 
 
