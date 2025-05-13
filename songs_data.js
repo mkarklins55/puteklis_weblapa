@@ -84,7 +84,7 @@ const songs = [
     "style": "house, Organic House, Tribal Drums, Punchy Kick, Groove-focused Hi-hats, Atmospheric Pads, Afro-inspired percussion"
   },
   {
-    "title": "Kurzemes_rezidence",
+    "title": "Kurzemes rezidence",
     "audio": "music/Kurzemes_rezidence.mp3",
     "lyrics": "lyrics/Kurzemes_rezidence.txt",
     "image": "cover/Kurzemes_rezidence.jpg",
@@ -417,7 +417,7 @@ const songs = [
     "audio": "music/Pūpoliņi, pūpoliņi.mp3",
     "lyrics": "lyrics/Pūpoliņi, pūpoliņi.txt",
     "image": "cover/Pūpoliņi.jpg",
-    "style": "synth-pop, electro body music (EBM), post-industrial wave, neo-darkwave"
+    "style": "synthpop, electro body music (EBM), post-industrial wave, neo-darkwave"
   },
   {
     "title": "AND THEN THEY SCREAM",
