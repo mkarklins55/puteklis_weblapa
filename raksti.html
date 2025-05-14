@@ -118,19 +118,19 @@
     <h1>Putekļa pārdomas</h1>
     <div class="article-grid">
 
-<a href="raksti/burtiska-uztvere.html" class="article-card" style="background-image: url('images/raksti/burtiska.jpg');">
+<a href="raksti/burtiska-uztvere.html" class="article-card" data-date="2025-05-13" style="background-image: url('images/raksti/burtiska.jpg');">
   <h2>Burtiskā uztvere un domāšana</h2>
   <p><em>13. maijs 2025</em></p>
   <p>Par to, kā nespēja uztvert metaforas var novest pie politiskas manipulējamības un morālas panikas.</p>
 </a>
 
-<a href="raksti/eiropas_reputacija.html" class="article-card" style="background-image: url('images/raksti/reputacija.jpg');">
+<a href="raksti/eiropas_reputacija.html" class="article-card" data-date="2025-04-16" style="background-image: url('images/raksti/reputacija.jpg');">
   <h2>Eiropas reputācijas lamatas</h2>
   <p><em>16. aprīlis 2025</em></p>
   <p>Kā normatīvā kultūra kavē izaugsmi, tehnoloģijas un drošību</p>
 </a>
 
-<a href="raksti/eurovision_2025.html" class="article-card" style="background-image: url('images/raksti/eurovision_2025.jpg');">
+<a href="raksti/eurovision_2025.html" class="article-card" data-date="2025-05-14" style="background-image: url('images/raksti/eurovision_2025.jpg');">
   <h2>Eirovīzija - dziesmu konkurss vai meme šovs?</h2>
   <p><em>14. maijs 2025</em></p>
   <p>Analītisks skatiens uz Eirovīzijas evolūciju, drāmām un nākotnes iespējam</p>
@@ -140,4 +140,14 @@
     </div>
   </main>
 </body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".article-grid");
+    const cards = Array.from(container.querySelectorAll(".article-card"));
+    cards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+    cards.forEach(card => container.appendChild(card));
+  });
+</script>
+
 </html>
