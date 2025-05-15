@@ -467,5 +467,12 @@ const songs = [
     "lyrics": "lyrics/Shiny shards in sidewalk seams.txt",
     "image": "cover/Sidewalk of Shards.jpg",
     "style": "blues, outlaw country noir / desert blues"
+  },
+  {
+    "title": "I Still Boil",
+    "audio": "music/I Still Boil.mp3",
+    "lyrics": "lyrics/I Still Boil.txt",
+    "image": "cover/I Still Boil.jpg",
+    "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, post-digital crooner style, burnout wave, synthetic urban lament, stark dark electropop, aesthetic anti-ballad"
   }
 ];
