@@ -482,5 +482,12 @@ const songs = [
     "videoCover": "video/burunduki_loop.mp4",
     "image": "cover/burunduki_eurovision.png",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
+  },
+    {
+    "title": "Šķērsu dienu Saule teka",
+    "audio": "music/Šķērsu dienu Saule tek.mp3",
+    "lyrics": "lyrics/Šķērsu dienu Saule tek.txt",
+    "image": "cover/skersu_dienu.png",
+    "style": "darkwave, electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial, post-folk, ethno-rock, folk music arrangement, ambient folk, world music, Latvian mythological symbolism, minimalism, trance-folk vocal trance"
   }
 ];
