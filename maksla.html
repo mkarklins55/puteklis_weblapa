@@ -1462,12 +1462,28 @@ let lastPlayBtn   = null; // iepriekšējās kartītes poga
 function createSongCard(song){
   const card = document.createElement('div');
   card.className = 'song-card';
-  card.style.cssText = 'width:280px;background:#2b2b2b;color:#eee;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,.4);overflow:hidden;';
+  card.style.cssText = `
+     width:280px;background:#2b2b2b;color:#eee;border-radius:10px;
+     box-shadow:0 0 12px rgba(0,0,0,.4);overflow:hidden;`;
+
+  /* ——— COVER (video vai img) ——— */
+  let coverHTML = '';
+  if (song.videoCover){            // video cilpa
+    coverHTML = `
+      <video src="${song.videoCover}" 
+             autoplay muted loop playsinline
+             style="width:100%;height:180px;object-fit:cover;"></video>`;
+  } else {                         // statiska bilde
+    coverHTML = `
+      <img src="${song.image}" 
+           alt="${esc(song.title)}"
+           style="width:100%;height:180px;object-fit:cover;">`;
+  }
 
   const slotId = 'audioSlot_'+cssSafe(song.title);
 
   card.innerHTML = `
-    <img src="${song.image}" alt="${esc(song.title)}" style="width:100%;height:180px;object-fit:cover;">
+    ${coverHTML}
     <div style="padding:12px;display:flex;flex-direction:column;gap:8px;">
       <div>
         <h4 style="margin:0 0 6px 0;font-size:1.05em;">${esc(song.title)}</h4>
@@ -1475,10 +1491,23 @@ function createSongCard(song){
       </div>
       <div id="${slotId}" class="audio-slot"></div>
       <div style="display:flex;gap:8px;">
-        <button class="play-btn" style="flex:1;background:#ee6c4d;border:none;color:#fff;padding:6px 0;border-radius:5px;cursor:pointer;font-weight:600;">▶️ Atskaņot</button>
-        <button class="lyrics-btn" data-lyrics="${encodeURI(song.lyrics)}" data-title="${esc(song.title)}" style="flex:1;background:#555;border:none;color:#fff;padding:6px 0;border-radius:5px;cursor:pointer;">Vārdi</button>
+        <button class="play-btn"
+                style="flex:1;background:#ee6c4d;border:none;color:#fff;
+                       padding:6px 0;border-radius:5px;cursor:pointer;font-weight:600;">
+          ▶️ Atskaņot
+        </button>
+        <button class="lyrics-btn"
+                data-lyrics="${encodeURI(song.lyrics)}"
+                data-title="${esc(song.title)}"
+                style="flex:1;background:#555;border:none;color:#fff;
+                       padding:6px 0;border-radius:5px;cursor:pointer;">
+          Vārdi
+        </button>
       </div>
-      <div id="lyricsBox_${cssSafe(song.title)}" style="display:none;background:#111;color:#ddd;padding:8px;border-radius:5px;font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;"></div>
+      <div id="lyricsBox_${cssSafe(song.title)}"
+           style="display:none;background:#111;color:#ddd;padding:8px;border-radius:5px;
+                  font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;">
+      </div>
     </div>`;
 
   const playBtn = card.querySelector('.play-btn');
