@@ -489,5 +489,12 @@ const songs = [
     "lyrics": "lyrics/Šķērsu dienu Saule tek.txt",
     "image": "cover/skersu_dienu.png",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
+  },
+  {
+    "title": "Someday again, the paths shall cross",
+    "audio": "music/Someday again, the paths shall cross.mp3",
+    "lyrics": "lyrics/Someday again, the paths shall cross.txt",
+    "image": "cover/someday_again.png",
+    "style": "blues, Noir Lounge Psych, Baritone Blues Noir"
   }
 ];
