@@ -503,5 +503,12 @@ const songs = [
     "lyrics": "lyrics/Tumša nakte, zaļa zāle.txt",
     "image": "cover/tumsa_nakte.png",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave ballad, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
+  },
+     {
+    "title": "Rikšiem bērīti es palaidu",
+    "audio": "music/Rikšiem bērīti es palaidu.mp3",
+    "lyrics": "lyrics/Rikšiem bērīti es palaidu.txt",
+    "image": "cover/riksiem_beriti.png",
+    "style": "synthpop, train beat rhythm, outlaw country, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, post-digital crooner style, burnout wave, synthetic urban lament, stark dark electropop, aesthetic anti-ballad"
   }
 ];
