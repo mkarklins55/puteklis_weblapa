@@ -1570,14 +1570,18 @@ function filterAndRender(){
     const searchMatch = s.title.toLowerCase().includes(term) || s.style.toLowerCase().includes(term);
     return mainMatch && searchMatch;
   });
+
   const container = document.getElementById('songListContainer');
   container.innerHTML = '';
   if(list.length === 0){
     container.innerHTML = '<p style="color:#bbb;">Nav atrasts neviens rezultāts.</p>';
     return;
   }
+
+  list.reverse(); // <-- Pievieno šo rindu
   list.forEach(song=>container.appendChild(createSongCard(song)));
 }
+
 
 /******************** LYRICS LOADER *********************/
 function loadLyrics(path,title){
