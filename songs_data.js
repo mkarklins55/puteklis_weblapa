@@ -480,49 +480,49 @@ const songs = [
     "audio": "music/Bur man laimi.mp3",
     "lyrics": "lyrics/Bur man laimi.txt",
     "videoCover": "video/burunduki_loop.mp4",
-    "image": "cover/burunduki_eurovision.png",
+    "image": "cover/burunduki_eurovision.jpg",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
   },
     {
     "title": "Šķērsu dienu Saule teka",
     "audio": "music/Šķērsu dienu Saule tek.mp3",
     "lyrics": "lyrics/Šķērsu dienu Saule tek.txt",
-    "image": "cover/skersu_dienu.png",
+    "image": "cover/skersu_dienu.jpg",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
   },
   {
     "title": "Someday again, the paths shall cross",
     "audio": "music/Someday again, the paths shall cross.mp3",
     "lyrics": "lyrics/Someday again, the paths shall cross.txt",
-    "image": "cover/someday_again.png",
+    "image": "cover/someday_again.jpg",
     "style": "blues, Noir Lounge Psych, Baritone Blues Noir"
   },
     {
     "title": "Tumša nakte, zaļa zāle",
     "audio": "music/Tumša nakte, zaļa zāle.mp3",
     "lyrics": "lyrics/Tumša nakte, zaļa zāle.txt",
-    "image": "cover/tumsa_nakte.png",
+    "image": "cover/tumsa_nakte.jpg",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave ballad, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   },
      {
     "title": "Rikšiem bērīti es palaidu",
     "audio": "music/Rikšiem bērīti es palaidu.mp3",
     "lyrics": "lyrics/Rikšiem bērīti es palaidu.txt",
-    "image": "cover/riksiem_beriti.png",
+    "image": "cover/riksiem_beriti.jpg",
     "style": "synthpop, train beat rhythm, outlaw country, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, post-digital crooner style, burnout wave, synthetic urban lament, stark dark electropop, aesthetic anti-ballad"
   },
       {
     "title": "Four Wolves",
     "audio": "music/Four wolves leapt into the brush.mp3",
     "lyrics": "lyrics/Four wolves leapt into the brush.txt",
-    "image": "cover/Four_Wolves.png",
+    "image": "cover/Four_Wolves.jpg",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   },
         {
     "title": "Raganu nakts",
     "audio": "music/Tiesa, tiesa, ne meliņi, līgo, līgo.mp3",
     "lyrics": "lyrics/Tiesa, tiesa, ne meliņi, līgo, līgo.txt",
-    "image": "cover/Raganu_nakts.png",
+    "image": "cover/Raganu_nakts.jpg",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave ballad, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   }
 ];
