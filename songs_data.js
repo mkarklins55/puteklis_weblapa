@@ -517,5 +517,12 @@ const songs = [
     "lyrics": "lyrics/Four wolves leapt into the brush.txt",
     "image": "cover/Four_Wolves.png",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
+  },
+        {
+    "title": "Raganu nakts",
+    "audio": "music/Tiesa, tiesa, ne meliņi, līgo, līgo.mp3",
+    "lyrics": "lyrics/Tiesa, tiesa, ne meliņi, līgo, līgo.txt",
+    "image": "cover/Raganu_nakts.png",
+    "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave ballad, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   }
 ];
