@@ -23,7 +23,6 @@
 
     /* Dziesmu kartīte */
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:25px}
-    .card{background:#1e1e1e;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 12px rgba(0,0,0,.45)}
     .card img,.card video{width:100%;height:170px;object-fit:cover}
     .card .info{padding:12px;flex:1;display:flex;flex-direction:column;gap:8px}
     .card h4{margin:0;font-size:1.05em}
@@ -48,6 +47,34 @@
     #progressFill{height:100%;background:#1db954;border-radius:2px;width:0}
     #timestamp{width:60px;font-size:.75em;text-align:right}
     @media(max-width:600px){#playerBar img{display:none}#progressWrap{display:none}}
+
+.card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+
+.card img,
+.card video {
+  transition: transform 0.4s ease;
+}
+
+.card:hover img,
+.card:hover video {
+  transform: scale(1.06);
+}
+
   </style>
 </head>
 <body>
