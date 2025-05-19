@@ -1407,9 +1407,11 @@ function nextPrev(step) {
 </div>
 
 <!-- ================= MODĀLAIS LOGS ================= -->
-<div id="karaokeModal" onclick="closeModalOutside(event,'karaokeModal')" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1001;padding:20px;overflow-y:auto;box-sizing:border-box;">
+<div id="karaokeModal"
+     onclick="closeKaraokeOutside(event,'karaokeModal')"
+ style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1001;padding:20px;overflow-y:auto;box-sizing:border-box;">
   <div onclick="event.stopPropagation();" style="background:#1c1c1c;margin:auto;max-width:1000px;border-radius:12px;padding:30px 20px;position:relative;color:#eee;">
-    <button onclick="document.getElementById('karaokeModal').style.display='none'" aria-label="Aizvērt" style="position:absolute;top:12px;right:16px;font-size:2em;background:none;border:none;color:#fff;cursor:pointer;">&times;</button>
+    <button onclick="hideKaraokeModal()" aria-label="Aizvērt" style="position:absolute;top:12px;right:16px;font-size:2em;background:none;border:none;color:#fff;cursor:pointer;">&times;</button>
 
     <h2 style="margin-top:0;text-align:center;">Izvēlies dziesmu pēc stila vai meklē pēc nosaukuma</h2>
 
@@ -1578,10 +1580,9 @@ function filterAndRender(){
     return;
   }
 
-  list.reverse(); // <-- Pievieno šo rindu
+  list.reverse();
   list.forEach(song=>container.appendChild(createSongCard(song)));
 }
-
 
 /******************** LYRICS LOADER *********************/
 function loadLyrics(path,title){
@@ -1603,6 +1604,64 @@ function initPopularStyleButtons(){
   });
 }
 
+/******************** MODĀĻA AIZVĒRŠANAS FUNKCIJA *********************/
+function hideKaraokeModal(){
+  const modal = document.getElementById('karaokeModal');
+  if(modal) modal.style.display = 'none';
+
+  // apturam mūziku, ja skan
+  if(!masterAudio.paused){ masterAudio.pause(); }
+
+  // sakārtojam UI
+  if(lastPlayBtn){ lastPlayBtn.textContent = '▶️ Atskaņot'; }
+  if(currentSlot){ currentSlot.innerHTML = ''; }
+  masterAudio.style.display = 'none';
+
+  // atiestatām statusus
+  currentSong = null;
+  currentSlot = null;
+}
+
+function closeKaraokeOutside(e,id){
+  if(e.target.id===id) hideKaraokeModal();
+}
+
+
+/******************** MODĀĻA FONA KLIKŠĶIS *********************/
+function closeModalOutside(event, modalId) {
+  if (event.currentTarget === event.target)
+  {
+    const modal = document.getElementById(modalId);
+    if (modal) modal.style.display = 'none';
+
+    // Apklusina globālo audio pleijeri, ja tas spēlē
+    if (typeof masterAudio !== 'undefined' && !masterAudio.paused) {
+      masterAudio.pause();
+    }
+
+    // Atiestata pogas tekstu
+    if (typeof lastPlayBtn !== 'undefined' && lastPlayBtn) {
+      lastPlayBtn.textContent = '▶️ Atskaņot';
+    }
+
+    // Notīra pleijera atrašanās vietu
+    if (typeof currentSlot !== 'undefined' && currentSlot) {
+      currentSlot.innerHTML = '';
+    }
+
+    // Slēpj audio pleijeri
+    if (typeof masterAudio !== 'undefined') {
+      masterAudio.style.display = 'none';
+    }
+
+    // Atiestata statusus
+    if (typeof currentSong !== 'undefined') currentSong = null;
+    if (typeof currentSlot !== 'undefined') currentSlot = null;
+  }
+}
+
+
+
 /******************** INIT *********************/
 document.addEventListener('DOMContentLoaded',()=>{
   populateStyleSelector();
@@ -1611,13 +1670,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('searchInput').addEventListener('input',filterAndRender);
   filterAndRender();
 });
-
-/******************** MODĀĻA FONA KLIKŠĶIS *********************/
-function closeModalOutside(evt,id){
-  if(evt.target.id===id){
-    document.getElementById(id).style.display='none';
-  }
-}
 </script>
 <!-- ===================================================== -->
 

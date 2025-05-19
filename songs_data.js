@@ -261,7 +261,7 @@ const songs = [
   {
     "title": "Lai dzīvo puritānisms",
     "audio": "music/lai dzīvo puritānisms.mp3",
-    "lyrics": "lyrics/Lai dzīvo puritānisms.txt",
+    "lyrics": "lyrics/lai dzīvo puritānisms.txt",
     "image": "cover/Lai dzīvo puritānisms.jpg",
     "style": "cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabaret"
   },
