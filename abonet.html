@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>Abonēt | Puteklis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/main_puteklis.css" />
+  <style>
+    body {
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      color: #f8f8f8;
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+    .followit--follow-form-container {
+      margin-top: 2rem;
+    }
+    /* Īss reset Follow.it formām */
+    .followit--follow-form-container .form-preview {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      color: #000;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+    .followit--follow-form-container h5 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+    .followit--follow-form-container input {
+      margin-top: 15px;
+      height: 40px;
+      border-radius: 6px;
+      border: 2px solid #ccc;
+      font-size: 16px;
+      text-align: center;
+    }
+    .followit--follow-form-container button {
+      margin-top: 15px;
+      height: 42px;
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .followit--follow-form-container button:hover {
+      background: #333;
+    }
+    .powered-by-line {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #ccc;
+      text-align: center;
+    }
+    header {
+      padding: 1rem 2rem;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    header nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    header nav a {
+      color: #f8f8f8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    header nav a.active {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Manifests</a></li>
+      <li><a href="jaunumi.html">Jaunumi</a></li>
+      <li><a href="raksti.html">Raksti</a></li>
+      <li><a href="abonet.html" class="active">Abonēt</a></li>
+      <li><a href="index_en.html">EN</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>📬 Abonē Putekļa jaunumus</h1>
+  <p>Ieraksti savu e-pasta adresi un saņem jaunumus tieši savā pastkastītē.<br>Atteikties varēsi jebkurā brīdī.</p>
+
+  <!-- FOLLOW.IT FORMA -->
+  <div class="followit--follow-form-container" attr-a attr-b attr-c attr-d attr-e attr-f>
+    <form action="https://api.follow.it/subscription-form/bllhRDZ4NjUxdHlXZU14MkxHTERGdkRKRDA2bStsN0xOOHFSdDRHanVPaVpRaHN1WkxnN1NYMjAwa2hTdTNuNXdabUMvVHNCbEVqZk9vU2xpelFnN2I4ZHlrc1ByT25yZWNNbzJsK0RZNEFPakk5ZlVidm1hMGtXelo3N01BcVN8VUJTVmNaS2dNejRVSWZMVXRYMjBieXJQK0U1RXMyUzlmd1Irak9idEs5OD0=/8"
+          method="post" target="_blank">
+      <div class="form-preview">
+        <h5>Saņem jaunumus e-pastā:</h5>
+        <input type="email" name="email" required placeholder="Tavs e-pasts">
+        <button type="submit">Abonēt</button>
+      </div>
+    </form>
+    <div class="powered-by-line">
+      Powered by <a href="https://follow.it" target="_blank">
+        <img src="https://follow.it/images/colored-logo.svg" alt="Follow.it" height="16px" />
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
