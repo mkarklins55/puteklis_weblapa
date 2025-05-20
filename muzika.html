@@ -178,7 +178,9 @@ function makeCard(song,i){
   /* ---- Sociālo saišu iestatīšana ---- */
   const social = c.querySelector('.social');
   const t = encodeURIComponent(song.title);
-  const u = encodeURIComponent(song.audio);   /* mp3 (vai lapas) URL */
+  const absUrl = new URL(song.audio, location.href).href;
+  const u = encodeURIComponent(absUrl);
+
 
   social.querySelector('.fb').href = `https://www.facebook.com/sharer/sharer.php?u=${u}&t=${t}`;
   social.querySelector('.wa').href = `https://wa.me/?text=${t}%20${u}`;
