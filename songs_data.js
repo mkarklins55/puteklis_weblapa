@@ -538,5 +538,12 @@ const songs = [
     "lyrics": "lyrics/I’m the palm.txt",
     "image": "cover/the_palm.png",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
+  },
+       {
+    "title": "The wizard knocks upon my door",
+    "audio": "music/The wizard knocks upon my door.mp3",
+    "lyrics": "lyrics/The wizard knocks upon my door.txt",
+    "image": "cover/wizard.png",
+    "style": "country,alt-country, storytelling style"
   }
 ];
