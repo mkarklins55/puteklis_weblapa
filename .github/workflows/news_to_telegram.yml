@@ -1,37 +1,40 @@
-name: Post RSS item to Telegram
+name: Post latest RSS item to Telegram
 
 on:
   push:
     paths:
-      - jaunumi.json          # kad papildini jaunumu avotu
+      - jaunumi.json
       - generate_rss.js
-      - jaunumi.xml           # vai tieši RSS
+      - jaunumi.xml
 
 jobs:
   notify:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      # (1) Ģenerē RSS, ja tas nav izdarīts citā darbplūsmā
-      - name: Build RSS/HTML
-        run: |
-          node generate_rss.js
+      # (1) Instalē atkarību xmlbuilder (vai citas, ja vajag)
+      - name: Install RSS dependencies
+        run: npm install xmlbuilder
 
-      # (2) Izvelk jaunāko <item> no jaunumi.xml
+      # (2) Ģenerē RSS un HTML (ja tāds ir)
+      - name: Build RSS and HTML
+        run: node generate_rss.js
+
+      # (3) Nolasīt jaunāko ierakstu no jaunumi.xml
       - id: latest
         run: |
           title=$(xmllint --xpath "string(//item[1]/title)" jaunumi.xml)
-          link=$(xmllint --xpath "string(//item[1]/guid)"  jaunumi.xml)
-          guid=$link                                   # GUID = permalink
+          link=$(xmllint --xpath "string(//item[1]/guid)" jaunumi.xml)
+          guid=$link
           echo "title=$title" >> $GITHUB_OUTPUT
           echo "link=$link"   >> $GITHUB_OUTPUT
           echo "guid=$guid"   >> $GITHUB_OUTPUT
 
-      # (3) Pārbauda, vai jau ziņots (glabā GUID failā repo)
-      - name: Compare with previously sent GUID
-        id: check
+      # (4) Pārbauda, vai šis GUID jau ziņots (saglabāts failā)
+      - id: check
         run: |
           prev=$(cat .github/latest_guid 2>/dev/null || echo "none")
           if [ "$prev" = "${{ steps.latest.outputs.guid }}" ]; then
@@ -40,7 +43,7 @@ jobs:
             echo "send=yes" >> $GITHUB_OUTPUT
           fi
 
-      # (4) Ja jauns — nosūta uz Telegram
+      # (5) Ja jauns — sūtīt uz Telegram
       - name: Send to Telegram
         if: steps.check.outputs.send == 'yes'
         env:
@@ -51,8 +54,8 @@ jobs:
                "${{ steps.latest.outputs.title }}" \
                "${{ steps.latest.outputs.link }}"
 
-      # (5) Saglabā GUID, lai nākamreiz neatkārtotos
-      - name: Store latest GUID
+      # (6) Saglabā šo GUID, lai citreiz nesūta to pašu
+      - name: Save latest GUID
         if: steps.check.outputs.send == 'yes'
         run: |
           echo "${{ steps.latest.outputs.guid }}" > .github/latest_guid
