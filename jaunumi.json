@@ -23,5 +23,10 @@
     "date": "2025-05-21",
     "title": "Ziņu kanāls 'PUTEKLIS'",
     "description": "Izveidots jauns telegram kanāls"
+  },
+     {
+    "date": "2025-05-21",
+    "title": "Izveidots gitHUB workflow",
+    "description": "gitHUB automātiski nosūta jaunumus uz telegram kanālu 'PUTEKLIS'"
   }
  ]
