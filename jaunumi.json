@@ -38,5 +38,10 @@
     "date": "2025-05-21",
     "title": "pielabots skripts",
     "description": "send_telegram.js"
+  },
+         {
+    "date": "2025-05-21",
+    "title": "pielabots cits skripts",
+    "description": "read_latest_rss.js"
   }
  ]
