@@ -15,23 +15,18 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # (1) Instalē atkarību xmlbuilder (vai citas, ja vajag)
+      # (1) Instalē xmlbuilder (RSS ģenerēšanai) un xml2js (RSS lasīšanai)
       - name: Install RSS dependencies
-        run: npm install xmlbuilder
+        run: npm install xmlbuilder xml2js
 
       # (2) Ģenerē RSS un HTML (ja tāds ir)
       - name: Build RSS and HTML
         run: node generate_rss.js
 
-      # (3) Nolasīt jaunāko ierakstu no jaunumi.xml
-      - id: latest
-        run: |
-          title=$(xmllint --xpath "string(//item[1]/title)" jaunumi.xml)
-          link=$(xmllint --xpath "string(//item[1]/guid)" jaunumi.xml)
-          guid=$link
-          echo "title=$title" >> $GITHUB_OUTPUT
-          echo "link=$link"   >> $GITHUB_OUTPUT
-          echo "guid=$guid"   >> $GITHUB_OUTPUT
+      # (3) Nolasīt jaunāko ierakstu no jaunumi.xml (izmanto read_latest_rss.js)
+      - name: Read latest RSS item
+        id: latest
+        run: node read_latest_rss.js
 
       # (4) Pārbauda, vai šis GUID jau ziņots (saglabāts failā)
       - id: check
