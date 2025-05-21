@@ -545,5 +545,12 @@ const songs = [
     "lyrics": "lyrics/The wizard knocks upon my door.txt",
     "image": "cover/wizard.png",
     "style": "country,alt-country, storytelling style"
+  },
+         {
+    "title": "The World Keeps Turning",
+    "audio": "music/The world keeps turning, it never stops.mp3",
+    "lyrics": "lyrics/The world keeps turning, it never stops.txt",
+    "image": "cover/world_turning.png",
+    "style": "country,alt-country, storytelling style"
   }
 ];
