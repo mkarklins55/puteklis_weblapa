@@ -33,5 +33,10 @@
     "date": "2025-05-21",
     "title": "jauni skripti gitHUB",
     "description": "instalējam pakotnes"
+  },
+         {
+    "date": "2025-05-21",
+    "title": "pielabots skripts",
+    "description": "send_telegram.js"
   }
  ]
