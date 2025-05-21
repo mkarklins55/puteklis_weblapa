@@ -566,5 +566,12 @@ const songs = [
     "lyrics": "lyrics/Desmit mazi kukainīši ceļoja ar plostu.txt",
     "image": "cover/desmit_kukainisi.png",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
+  },
+              {
+    "title": "Kukainīt",
+    "audio": "music/Kukainīt (Remix).mp3",
+    "lyrics": "lyrics/Kukainīt (Remix).txt",
+    "image": "cover/kukainit.png",
+    "style": "synthwave, Breakstep Synthwave / Dark Electro / Industrial Fusion"
   }
 ];
