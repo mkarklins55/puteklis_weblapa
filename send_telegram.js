@@ -1,21 +1,41 @@
-// send_telegram.js – nosūta vienu ziņu (HTML formatā) uz Telegram
+// send_telegram.js  (Node ≥16)
 const https = require("https");
 
-const token  = process.env.BOT_TOKEN;   // no GitHub Secret
-const chatId = process.env.CHAT_ID;     // no GitHub Secret
+// -- Vidi no GitHub Secrets --
+const token  = process.env.BOT_TOKEN.trim();   // 123456:ABC...
+const chatId = process.env.CHAT_ID.trim();     // @PuteklisNews  VAI  -1001234567890
 
-// Komandrindā: node send_telegram.js "Virsraksts" "https://..."
-const [ , , title, link ] = process.argv;
+// -- Argumenti no GitHub Action --
+const [ , , title = "No title", link = "" ] = process.argv;
 
+// Ziņas saturs (HTML):
 const text = `<b>${title}</b>\n<a href="${link}">Lasīt vairāk</a>`;
 
-const url  = `/bot${token}/sendMessage`
-           + `?chat_id=${encodeURIComponent(chatId)}`
-           + `&text=${encodeURIComponent(text)}`
-           + `&parse_mode=HTML`;
+// Query string ar drošu enkodēšanu
+const params = new URLSearchParams({
+  chat_id:  chatId,          // URLSearchParams pats enkodēs @ -> %40
+  text:     text,
+  parse_mode: "HTML"
+}).toString();
 
-https.get({ host: "api.telegram.org", path: url }, res => {
-  res.statusCode === 200
-    ? console.log("Telegram OK")
-    : console.error("Telegram error", res.statusCode);
+const options = {
+  host: "api.telegram.org",
+  path: `/bot${token}/sendMessage?${params}`,
+  method: "GET"
+};
+
+https.get(options, res => {
+  let body = "";
+  res.on("data", chunk => body += chunk);
+  res.on("end", () => {
+    if (res.statusCode === 200) {
+      console.log("✅ Telegram OK");
+    } else {
+      console.error("🚫 Telegram API error", res.statusCode, body);
+      process.exit(1);
+    }
+  });
+}).on("error", err => {
+  console.error("🚫 HTTPS error:", err);
+  process.exit(1);
 });
