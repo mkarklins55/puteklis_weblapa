@@ -28,5 +28,10 @@
     "date": "2025-05-21",
     "title": "Izveidots gitHUB workflow",
     "description": "gitHUB automātiski nosūta jaunumus uz telegram kanālu 'PUTEKLIS'"
+  },
+       {
+    "date": "2025-05-21",
+    "title": "jauni skripti gitHUB",
+    "description": "instalējam pakotnes"
   }
  ]
