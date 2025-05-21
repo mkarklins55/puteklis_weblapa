@@ -1,0 +1,62 @@
+name: Post RSS item to Telegram
+
+on:
+  push:
+    paths:
+      - jaunumi.json          # kad papildini jaunumu avotu
+      - generate_rss.js
+      - jaunumi.xml           # vai tieši RSS
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # (1) Ģenerē RSS, ja tas nav izdarīts citā darbplūsmā
+      - name: Build RSS/HTML
+        run: |
+          node generate_rss.js
+
+      # (2) Izvelk jaunāko <item> no jaunumi.xml
+      - id: latest
+        run: |
+          title=$(xmllint --xpath "string(//item[1]/title)" jaunumi.xml)
+          link=$(xmllint --xpath "string(//item[1]/guid)"  jaunumi.xml)
+          guid=$link                                   # GUID = permalink
+          echo "title=$title" >> $GITHUB_OUTPUT
+          echo "link=$link"   >> $GITHUB_OUTPUT
+          echo "guid=$guid"   >> $GITHUB_OUTPUT
+
+      # (3) Pārbauda, vai jau ziņots (glabā GUID failā repo)
+      - name: Compare with previously sent GUID
+        id: check
+        run: |
+          prev=$(cat .github/latest_guid 2>/dev/null || echo "none")
+          if [ "$prev" = "${{ steps.latest.outputs.guid }}" ]; then
+            echo "send=no" >> $GITHUB_OUTPUT
+          else
+            echo "send=yes" >> $GITHUB_OUTPUT
+          fi
+
+      # (4) Ja jauns — nosūta uz Telegram
+      - name: Send to Telegram
+        if: steps.check.outputs.send == 'yes'
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID:   ${{ secrets.CHAT_ID }}
+        run: |
+          node send_telegram.js \
+               "${{ steps.latest.outputs.title }}" \
+               "${{ steps.latest.outputs.link }}"
+
+      # (5) Saglabā GUID, lai nākamreiz neatkārtotos
+      - name: Store latest GUID
+        if: steps.check.outputs.send == 'yes'
+        run: |
+          echo "${{ steps.latest.outputs.guid }}" > .github/latest_guid
+          git config user.name github-actions
+          git config user.email github@users.noreply.github.com
+          git add .github/latest_guid
+          git commit -m "Update latest_guid" && git push || true
