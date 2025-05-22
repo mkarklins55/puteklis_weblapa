@@ -587,5 +587,12 @@ const songs = [
     "lyrics": "lyrics/Ieksejas_kartibas_noteikumi.txt",
     "image": "cover/Ieksejas_kartibas_noteikumi.png",
     "style": "trance-folk, electro-noir,ritual chant-pop"
+  },
+                 {
+    "title": "The World Keeps Turning (remix)",
+    "audio": "music/The world keeps turning, it never stops (Remix).mp3",
+    "lyrics": "lyrics/The world keeps turning, it never stops (Remix).txt",
+    "image": "cover/world_turning_remix.png",
+    "style": "country, alt-country, storytelling style, erotic darkwave ballad, americana, outlaw country noir"
   }
 ];
