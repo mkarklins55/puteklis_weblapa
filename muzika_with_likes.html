@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>Mūzika | Puteklis</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- Galvenā stila lapa -->
+  <link rel="stylesheet" href="assets/css/main_puteklis.css">
+  <style>
+    /* ====== Pamatkrāsu un izkārtojuma stili ====== */
+    body{margin:0;font-family:'Helvetica Neue',sans-serif;background:#121212;color:#f8f8f8}
+    header{background:#1f1f1f;text-align:center;padding:1rem 0}
+    header nav a{color:#f8f8f8;margin:0 1rem;text-decoration:none;font-weight:bold}
+    header nav a.active{text-decoration:underline}
+    .container{max-width:1100px;margin:auto;padding:2rem}
+
+    /* Populārie stilu taustiņi */
+    #popularStyles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:1rem}
+    .style-btn{background:#444;border:none;color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.9em}
+    .style-btn:hover{background:#666}
+
+    /* Filtrs + meklētājs */
+    .controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:25px}
+    select,input[type='search']{background:#222;border:1px solid #444;color:#eee;border-radius:6px;padding:10px;min-width:220px}
+
+    /* ====== Dziesmu kartīte ====== */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:25px}
+    .card{background:#1e1e1e;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;
+          box-shadow:0 4px 12px rgba(0,0,0,.45);transition:transform .3s ease,box-shadow .3s ease}
+    .card:hover{transform:scale(1.03);box-shadow:0 6px 18px rgba(0,0,0,.6);z-index:10}
+    .card img,.card video{width:100%;height:170px;object-fit:cover;transition:transform .4s ease}
+    .card:hover img,.card:hover video{transform:scale(1.06)}
+    .card .info{padding:12px;flex:1;display:flex;flex-direction:column;gap:8px}
+    .card h4{margin:0;font-size:1.05em}
+    .card p{margin:0;color:#bbb;font-size:.85em}
+    .play-btn,.lyrics-btn{border:none;color:#fff;border-radius:6px;padding:8px 0;cursor:pointer;flex:1}
+    .play-btn{background:#ee6c4d;font-weight:600}
+    .lyrics-btn{background:#555}
+    .play-btn:hover,.lyrics-btn:hover{filter:brightness(1.1)}
+    .lyrics-box{display:none;background:#111;color:#ddd;padding:8px;border-radius:6px;font-family:monospace;white-space:pre-wrap;max-height:160px;overflow-y:auto}
+
+    /* ====== Mini‑player (apakšā) ====== */
+    #playerBar{position:fixed;bottom:0;left:0;right:0;background:#181818;display:flex;align-items:center;gap:15px;
+               padding:10px 20px;box-shadow:0 -2px 10px rgba(0,0,0,.6);z-index:2000}
+    #playerBar img{width:48px;height:48px;object-fit:cover;border-radius:4px}
+    #trackMeta{flex:1;min-width:0}
+    #trackMeta h5{margin:0;font-size:.95em}
+    #trackMeta span{font-size:.8em;color:#aaa}
+    .player-btn{background:linear-gradient(180deg,#6ec5ff,#228dff);border:none;color:#fff;font-size:1.35em;cursor:pointer;
+                border-radius:6px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;transition:filter .2s}
+    .player-btn:hover{filter:brightness(1.15)}
+    .player-btn:disabled{opacity:.3;cursor:default}
+    .player-btn.active{background:#1db954}
+    #progressWrap{flex:2;display:flex;align-items:center;gap:8px}
+    #progress{flex:1;height:4px;background:#444;border-radius:2px;cursor:pointer}
+    #progressFill{height:100%;background:#1db954;border-radius:2px;width:0}
+    #timestamp{width:60px;font-size:.75em;text-align:right}
+    @media(max-width:600px){#playerBar img{display:none}#progressWrap{display:none}}
+
+    /* ====== Sociālās pogas (kartītē) ====== */
+    .social{display:flex;gap:6px;margin-top:6px}
+    .like-btn,.share-link{background:#333;border:none;color:#fff;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:1em;line-height:1}
+    .like-btn.active{color:#1db954}
+    .like-btn.animate{transform:scale(1.35);transition:transform .15s ease}
+
+    .share-link{text-decoration:none}
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">Manifests</a>
+    <a href="maksla.html">Māksla</a>
+    <a href="muzika.html" class="active">Mūzika</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1 style="text-align:center;margin-bottom:1rem">🎧 Putekļa radio</h1>
+
+  <div id="popularStyles"></div>
+
+  <div class="controls">
+    <select id="styleSel"><option value="">-- Visi stili --</option></select>
+    <input type="search" id="search" placeholder="Meklē nosaukumu, stilu…">
+  </div>
+
+  <div class="grid" id="songGrid">Notiek ielāde…</div>
+</div>
+
+<!-- ====== Sticky player ====== -->
+<div id="playerBar" style="display:none">
+  <img id="coverMini" src="" alt="">
+  <div id="trackMeta"><h5 id="trackTitle">—</h5><span id="trackStyle">—</span></div>
+  <button id="shuffleBtn" class="player-btn" title="Shuffle">🔀</button>
+  <button id="prevBtn" class="player-btn">⏮️</button>
+  <button id="playPauseBtn" class="player-btn">▶️</button>
+  <button id="nextBtn" class="player-btn">⏭️</button>
+  <div id="progressWrap"><div id="progress"><div id="progressFill"></div></div><div id="timestamp">0:00</div></div>
+</div>
+
+<!-- Dziesmu dati -->
+<script src="songs_data.js">
+/* ---------- Ielādē like skaitu no Cosmos DB ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".like-btn").forEach(btn => {
+    const id = btn.closest(".card")?.querySelector("h4")?.textContent?.trim() ?? "";
+    const safeId = id.toLowerCase().replace(/[^a-z0-9]/g, "_");
+    fetch(`https://puteklis-functions.azurewebsites.net/api/like/${safeId}`)
+      .then(res => res.json())
+      .then(data => {
+        const count = data.count ?? 0;
+        const span = btn.nextElementSibling;
+        if (span && span.classList.contains("like-count")) {
+          span.textContent = count;
+        }
+        if (localStorage.getItem("like_" + safeId) === "1") {
+          btn.classList.add("active");
+        }
+      })
+      .catch(e => console.error("Neizdevās ielādēt like:", e));
+  });
+});
+
+</script>
+<script>
+/* ---------- Helper ---------- */
+const qs = s => document.querySelector(s);
+const cssSafe = s => s.replace(/[^a-z0-9]/gi,'_');
+const fmt = t => {t=Math.floor(t);return Math.floor(t/60)+':'+('0'+t%60).slice(-2)};
+
+/* ---------- Elements ---------- */
+const grid = qs('#songGrid'), sel = qs('#styleSel'), inp = qs('#search'), pop = qs('#popularStyles');
+const audio = new Audio(), bar = qs('#playerBar'), coverMini = qs('#coverMini');
+const trackTitle = qs('#trackTitle'), trackStyle = qs('#trackStyle');
+const playPauseBtn = qs('#playPauseBtn'), prevBtn = qs('#prevBtn'), nextBtn = qs('#nextBtn'), shuffleBtn = qs('#shuffleBtn');
+const progress = qs('#progress'), fill = qs('#progressFill'), stamp = qs('#timestamp');
+
+let list = [], current = -1, shuffleOn = false;
+
+/* ---------- Populārie stilu taustiņi ---------- */
+[['','🎶 visi'],['metal','🤘 metal'],['rock','🎸 rock'],['country','🤠 country'],['blues','🎷 blues'],['jazz','🎺 jazz'],['cabaret','🎭 cabaret'],['darkwave','🌑 darkwave']]
+  .forEach(([val,label])=>{
+    const b=document.createElement('button');
+    b.className='style-btn'; b.dataset.style=val; b.textContent=label;
+    b.onclick=()=>{sel.value=val;filterRender();};
+    pop.appendChild(b);
+  });
+
+/* ---------- Populate <select> no visiem stiliem ---------- */
+[...new Set(songs.map(s=>s.style.split(',')[0].trim().toLowerCase()))].sort()
+  .forEach(st => {const o=document.createElement('option');o.value=st;o.textContent=st;sel.appendChild(o);});
+
+/* ---------- Filtrēšana & renderēšana ---------- */
+sel.onchange = inp.oninput = filterRender;
+document.addEventListener('DOMContentLoaded', filterRender);
+
+function filterRender(){
+  const term = inp.value.toLowerCase(), st = sel.value;
+  list = songs.filter(s=>{
+    const okStyle = !st || s.style.toLowerCase().startsWith(st);
+    const okText  = s.title.toLowerCase().includes(term) || s.style.toLowerCase().includes(term);
+    return okStyle && okText;
+  }).reverse();      /* jaunākās vispirms */
+
+  grid.innerHTML = list.length ? '' : 'Nav atbilstošu dziesmu.';
+  list.forEach((song,i) => grid.appendChild(makeCard(song,i)));
+}
+
+/* ---------- Izveido kartīti ---------- */
+function makeCard(song,i){
+  const c=document.createElement('div'); c.className='card';
+  const cover = song.videoCover
+      ? `<video src="${song.videoCover}" muted autoplay loop playsinline></video>`
+      : `<img src="${song.image}" alt="">`;
+
+  /* Kartītes HTML (iekļauj sociālās pogas) */
+  c.innerHTML = `
+    ${cover}
+    <div class="info">
+      <h4>${song.title}</h4>
+      <p>${song.style}</p>
+      <div style="display:flex;gap:8px">
+        <button class="play-btn" data-idx="${i}">▶️ Atskaņot</button>
+        <button class="lyrics-btn">Vārdi</button>
+      </div>
+      <div class="lyrics-box" id="lyr_${cssSafe(song.title)}">Ielādē...</div>
+      <div class="social">\
+    <button class="like\-btn" title="Patīk">❤️</button><span class="like\-count">0</span>\
+    <a class="share\-link fb" title="Dalīties Facebook"   target="_blank">📘</a>\
+    <a class="share\-link wa" title="Dalīties WhatsApp"   target="_blank">🟢</a>\
+    <a class="share\-link ms" title="Dalīties Messenger" target="_blank">💬</a>\
+  </div>\
+</div>`;
+
+  /* Poga "Atskaņot" & "Vārdi" */
+  c.querySelector('.play-btn').onclick   = e => playIndex(+e.target.dataset.idx);
+  c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
+
+  /* ---- Sociālo saišu iestatīšana ---- */
+  const social = c.querySelector('.social');
+  const t = encodeURIComponent(song.title);
+  const u = encodeURIComponent(song.audio);   /* mp3 (vai lapas) URL */
+
+  social.querySelector('.fb').href = `https://www.facebook.com/sharer/sharer.php?u=${u}&t=${t}`;
+  social.querySelector('.wa').href = `https://wa.me/?text=${t}%20${u}`;
+  social.querySelector('.ms').href = `https://www.facebook.com/dialog/send?app_id=YOUR_APP_ID&link=${u}&redirect_uri=${location.href}`;
+
+  /* "Patīk" poga (lokāls vizuāls efekts) */
+  const likeBtn = social.querySelector('.like-btn');
+const countSpan = social.querySelector('.like-count');
+likeBtn.onclick = () => {
+  const isActive = likeBtn.classList.toggle('active');
+  let cnt = +countSpan.textContent;
+  cnt = isActive ? cnt + 1 : Math.max(0, cnt - 1);
+  countSpan.textContent = cnt;
+  /* mazs animācijas efekts */
+  likeBtn.classList.add('animate');
+  setTimeout(()=>likeBtn.classList.remove('animate'),150);
+};
+
+  return c;
+}
+
+/* ---------- Parāda / paslēpj dziesmas vārdus ---------- */
+function toggleLyrics(song){
+  const box = qs('#lyr_' + cssSafe(song.title));
+  if(box.style.display === 'block'){box.style.display='none';return;}
+  if(box.textContent === 'Ielādē...'){
+    fetch(song.lyrics).then(r=>r.ok?r.text():'❗ Teksts nav atrasts').then(t=>box.textContent=t);
+  }
+  box.style.display = 'block';
+}
+
+/* ---------- Mini‑player loģika ---------- */
+function playIndex(i){
+  current = i;
+  const song = list[i];
+  audio.src = song.audio;
+  audio.play();
+  bar.style.display='flex';
+  coverMini.src = song.image;
+  trackTitle.textContent = song.title;
+  trackStyle.textContent = song.style.split(',')[0].trim();  /* rāda 1. stilu */
+  playPauseBtn.textContent='⏸️';
+  updateButtons();
+}
+function updateButtons(){
+  prevBtn.disabled = current<=0;
+  nextBtn.disabled = current>=list.length-1;
+  shuffleBtn.classList.toggle('active', shuffleOn);
+}
+playPauseBtn.onclick = () => {
+  if(audio.paused){audio.play();playPauseBtn.textContent='⏸️';}
+  else{audio.pause();playPauseBtn.textContent='▶️';}
+};
+prevBtn.onclick = () => {if(current>0) playIndex(current-1);};
+nextBtn.onclick = playNext;
+shuffleBtn.onclick = () => {shuffleOn=!shuffleOn;updateButtons();};
+
+function playNext(){
+  if(!list.length) return;
+  shuffleOn
+    ? playIndex(Math.floor(Math.random()*list.length))
+    : (current<list.length-1 ? playIndex(current+1) : (playPauseBtn.textContent='▶️'));
+}
+audio.onended = playNext;
+
+audio.ontimeupdate = () => {
+  if(audio.duration){
+    fill.style.width = (audio.currentTime / audio.duration *100) + '%';
+    stamp.textContent = fmt(audio.currentTime);
+  }
+};
+progress.onclick = e => {
+  if(!audio.duration)return;
+  const r = progress.getBoundingClientRect();
+  const pct = (e.clientX - r.left) / r.width;
+  audio.currentTime = pct * audio.duration;
+};
+
+
+
+</script>
+
+<script src="likes.js"></script>
+
+
+</body>
+</html>
