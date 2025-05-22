@@ -1,40 +1,47 @@
 
-// ====== LIKE FUNKCIJA SAISTĪTA AR COSMOS DB ======
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".like-btn").forEach(btn => {
-    const title = btn.closest(".card")?.querySelector("h4")?.textContent?.trim() ?? "";
-    const safeId = title.toLowerCase().replace(/[^a-z0-9]/g, "_");
-    const countSpan = btn.nextElementSibling;
-    const storageKey = "like_" + safeId;
+// ====== LIKE / UNLIKE funkcionalitāte ar Cosmos DB ======
+document.addEventListener("DOMContentLoaded", attachLikeHandlers);
 
-    // Ielādē sākotnējo skaitu
-    fetch(`https://puteklis-functions.azurewebsites.net/api/like/${safeId}`)
-      .then(res => res.json())
+function attachLikeHandlers() {
+  // Pārraksta event listenerus katrai jaunai kartītei
+  document.querySelectorAll(".card").forEach(card => {
+    const btn  = card.querySelector(".like-btn");
+    const span = card.querySelector(".like-count");
+    if (!btn || !span) return;
+
+    const idRaw   = card.querySelector("h4")?.textContent.trim() ?? "";
+    const songId  = idRaw.toLowerCase().replace(/[^a-z0-9]/g, "_");
+    const keyLS   = "like_" + songId;
+
+    // Ielādēt skaitu
+    fetch(`https://puteklis-functions.azurewebsites.net/api/like/${songId}`)
+      .then(r => r.ok ? r.json() : { count: 0 })
       .then(data => {
-        countSpan.textContent = data.count ?? 0;
-        if (localStorage.getItem(storageKey) === "1") {
-          btn.classList.add("active");
-        }
+        span.textContent = data.count ?? 0;
+        if (localStorage.getItem(keyLS) === "1") btn.classList.add("active");
       })
-      .catch(e => console.error("Neizdevās ielādēt like:", e));
+      .catch(console.error);
 
-    // Noklikšķinot uz pogas
-    btn.addEventListener("click", () => {
-      const isActive = btn.classList.toggle("active");
-      const newLike = isActive;
-      fetch(`https://puteklis-functions.azurewebsites.net/api/like/${safeId}`, {
+    // Notīram iepriekšējo listeneri, ja tāds bija
+    btn.replaceWith(btn.cloneNode(true));
+    const newBtn = card.querySelector(".like-btn");
+
+    newBtn.addEventListener("click", () => {
+      const like = !newBtn.classList.contains("active"); // true = pievienot, false = atņemt
+      fetch(`https://puteklis-functions.azurewebsites.net/api/like/${songId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ like: newLike })
+        body: JSON.stringify({ like })
       })
-        .then(res => res.json())
-        .then(data => {
-          countSpan.textContent = data.count ?? "?";
-          localStorage.setItem(storageKey, newLike ? "1" : "0");
-          btn.classList.add("animate");
-          setTimeout(() => btn.classList.remove("animate"), 150);
-        })
-        .catch(err => console.error("Neizdevās saglabāt like:", err));
+      .then(r => r.json())
+      .then(data => {
+        span.textContent = data.count ?? "?";
+        newBtn.classList.toggle("active", like);
+        localStorage.setItem(keyLS, like ? "1" : "0");
+        newBtn.classList.add("animate");
+        setTimeout(()=>newBtn.classList.remove("animate"),150);
+      })
+      .catch(err => console.error("Neizdevās saglabāt like:", err));
     });
   });
-});
+}
