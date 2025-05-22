@@ -580,5 +580,12 @@ const songs = [
     "lyrics": "lyrics/četri vilki.txt",
     "image": "cover/cetri_vilki.png",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro"
+  },
+               {
+    "title": "Iekšējās kārtības noteikumi",
+    "audio": "music/Ieksejas_kartibas_noteikumi.mp3",
+    "lyrics": "lyrics/Ieksejas_kartibas_noteikumi.txt",
+    "image": "cover/Ieksejas_kartibas_noteikumi.png",
+    "style": "trance-folk, electro-noir,ritual chant-pop"
   }
 ];
