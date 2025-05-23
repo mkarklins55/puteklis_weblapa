@@ -209,16 +209,6 @@ function makeCard(song,i){
   /* "Patīk" poga (lokāls vizuāls efekts) */
   const likeBtn = social.querySelector('.like-btn');
 const countSpan = social.querySelector('.like-count');
-likeBtn.onclick = () => {
-  const isActive = likeBtn.classList.toggle('active');
-  let cnt = +countSpan.textContent;
-  cnt = isActive ? cnt + 1 : Math.max(0, cnt - 1);
-  countSpan.textContent = cnt;
-  /* mazs animācijas efekts */
-  likeBtn.classList.add('animate');
-  setTimeout(()=>likeBtn.classList.remove('animate'),150);
-};
-
   return c;
 }
 
