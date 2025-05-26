@@ -594,5 +594,12 @@ const songs = [
     "lyrics": "lyrics/The world keeps turning, it never stops (Remix).txt",
     "image": "cover/world_turning_remix.png",
     "style": "country, alt-country, storytelling style, erotic darkwave ballad, americana, outlaw country noir"
+  },
+      {
+    "title": "Coffeeshop — “Hedgehog in the Fog”",
+    "audio": "music/Coffeeshop — “Hedgehog in the Fog”.mp3",
+    "lyrics": "lyrics/Coffeeshop — “Hedgehog in the Fog”).txt",
+    "image": "cover/hedgehog.png",
+    "style": "synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   }
 ];
