@@ -622,5 +622,12 @@ const songs = [
     "lyrics": "lyrics/RUNĀ RĪGAS PARKA LAUVA.txt",
     "image": "cover/RUNĀ RĪGAS PARKA LAUVA.png",
     "style": "Country, train beat rhythm, outlaw country"
+  },
+     {
+    "title": "Žurku nams",
+    "audio": "music/zurku_nams.mp3",
+    "lyrics": "lyrics/zurku_nams.txt",
+    "image": "cover/zurku_nams.png",
+    "style": "electro, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, blues, outlaw country noir, desert blues"
   }
 ];
