@@ -601,5 +601,12 @@ const songs = [
     "lyrics": "lyrics/Coffeeshop — “Hedgehog in the Fog”.txt",
     "image": "cover/hedgehog.png",
     "style": "synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
+  },
+       {
+    "title": "Dārgie kaimiņi",
+    "audio": "music/Dārgie kaimiņi, (Remix).mp3",
+    "lyrics": "lyrics/Dārgie kaimiņi, (Remix).txt",
+    "image": "cover/dargie_kaimini.png",
+    "style": "Cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabare"
   }
 ];
