@@ -629,5 +629,12 @@ const songs = [
     "lyrics": "lyrics/zurku_nams.txt",
     "image": "cover/zurku_nams.png",
     "style": "electro, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, blues, outlaw country noir, desert blues"
+  },
+      {
+    "title": "Vilku dzejolis",
+    "audio": "music/VILKU DZEJOLIS.mp3",
+    "lyrics": "lyrics/VILKU DZEJOLIS.txt",
+    "image": "cover/VILKU DZEJOLIS.png",
+    "style": "country, train beat rhythm, outlaw country, country gospel, southern gothic, americana, dark folk, synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   }
 ];
