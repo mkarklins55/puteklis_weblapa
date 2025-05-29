@@ -615,5 +615,12 @@ const songs = [
     "lyrics": "lyrics/Zirgi sazviedzas, (Remix).txt",
     "image": "cover/kamisi.png",
     "style": "Cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabare"
+  },
+     {
+    "title": "RUNĀ RĪGAS PARKA LAUVA",
+    "audio": "music/RUNĀ RĪGAS PARKA LAUVA.mp3",
+    "lyrics": "lyrics/RUNĀ RĪGAS PARKA LAUVA.txt",
+    "image": "cover/RUNĀ RĪGAS PARKA LAUVA.png",
+    "style": "Country, train beat rhythm, outlaw country"
   }
 ];
