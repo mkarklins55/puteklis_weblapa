@@ -608,5 +608,12 @@ const songs = [
     "lyrics": "lyrics/Dārgie kaimiņi, (Remix).txt",
     "image": "cover/dargie_kaimini.png",
     "style": "Cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabare"
+  },
+      {
+    "title": "Kāmīši",
+    "audio": "music/Zirgi sazviedzas, (Remix).mp3",
+    "lyrics": "lyrics/Zirgi sazviedzas, (Remix).txt",
+    "image": "cover/kamisi.png",
+    "style": "Cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabare"
   }
 ];
