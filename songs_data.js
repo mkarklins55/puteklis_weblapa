@@ -636,5 +636,12 @@ const songs = [
     "lyrics": "lyrics/VILKU DZEJOLIS.txt",
     "image": "cover/VILKU DZEJOLIS.png",
     "style": "country, train beat rhythm, outlaw country, country gospel, southern gothic, americana, dark folk, synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
+  },
+        {
+    "title": "GAIDĪTĀJA MEŽA CŪKA",
+    "audio": "music/Vai tas ezers ir vai upe - (Remix).mp3",
+    "lyrics": "lyrics/Vai tas ezers ir vai upe - (Remix).txt",
+    "image": "cover/Vai tas ezers ir vai upe - (Remix).png",
+    "style": "synthpop, Industrial Synthpop, Brechtian Electro-Cabaret, Shockwave Gothic Glam"
   }
 ];
