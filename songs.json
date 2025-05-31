@@ -650,5 +650,12 @@
     "lyrics": "lyrics/Peles pieliekamā prot, (Remix).txt",
     "image": "cover/Peles pieliekamā prot, (Remix).png",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam"
+  },
+   {
+    "title": "Pa garo dienu (Remix)",
+    "audio": "music/Pa garo dienu (Remix).mp3",
+    "lyrics": "lyrics/Pa garo dienu (Remix).txt",
+    "image": "cover/Pa garo dienu (Remix).png",
+    "style": "country, train beat rhythm, outlaw country, country gospel"
   }
 ]
