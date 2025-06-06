@@ -664,5 +664,12 @@
     "lyrics": "lyrics/The rain’s been falling, (Remix).txt",
     "image": "cover/The rain’s been falling, (Remix).webp",
     "style": "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
+  },
+        {
+    "title": "I’m a little Don Quixote",
+    "audio": "music/I’m a little Don Quixote.mp3",
+    "lyrics": "lyrics/I’m a little Don Quixote.txt",
+    "image": "cover/I’m a little Don Quixote.webp",
+    "style": "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial"
   }
 ]
