@@ -657,5 +657,12 @@ const songs = [
     "lyrics": "lyrics/Pa garo dienu (Remix).txt",
     "image": "cover/Pa garo dienu (Remix).webp",
     "style": "country, train beat rhythm, outlaw country, country gospel"
+  },
+    {
+    "title": "The rain’s been falling, (Remix)",
+    "audio": "music/The rain’s been falling, (Remix).mp3",
+    "lyrics": "lyrics/The rain’s been falling, (Remix).txt",
+    "image": "cover/The rain’s been falling, (Remix).webp",
+    "style": "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
   }
 ];
