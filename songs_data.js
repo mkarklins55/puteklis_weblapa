@@ -671,5 +671,12 @@ const songs = [
     "lyrics": "lyrics/I’m a little Don Quixote.txt",
     "image": "cover/I’m a little Don Quixote.webp",
     "style": "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial"
+  },
+          {
+    "title": "When years ago, in silence they burned (Remix)",
+    "audio": "music/When years ago, in silence they burned (Remix).mp3",
+    "lyrics": "lyrics/When years ago, in silence they burned (Remix).txt",
+    "image": "cover/When years ago, in silence they burned (Remix).webp",
+    "style": "cabaret, Dark Cabaret, Brechtian Punk Cabaret, Macabre Folk, Circus Noir, Murder Ballads, Gothic Vaudeville, Absurdist Theater Music, Burlesque Gothic, Theatrical Falsetto Punk, Apocalyptic Cabaret, Avant-Garde Vaudeville, Dark Lyrical Theater, Expressionist Cabaret, Dark Cabaret Pop, Punk Noir, Cabaret Rock, Satirical Theater Music, Dark Chanson"
   }
 ];
