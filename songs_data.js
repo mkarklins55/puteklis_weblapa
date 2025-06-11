@@ -699,6 +699,13 @@ const songs = [
     "lyrics": "lyrics/Aprēķins (Dievs un kasiere).txt",
     "image": "cover/Aprēķins (Dievs un kasiere).webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
+  },
+         {
+    "title": "Please, observe the silence",
+    "audio": "music/Please, observe the silence.mp3",
+    "lyrics": "lyrics/Please, observe the silence.txt",
+    "image": "cover/Please, observe the silence.webp",
+    "style": "blues, Urban Voodoo Rock, Sexualized Swamp Blues / Baritone Noir"
   }
 
 ];
