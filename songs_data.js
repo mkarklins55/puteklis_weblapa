@@ -706,6 +706,13 @@ const songs = [
     "lyrics": "lyrics/Please, observe the silence.txt",
     "image": "cover/Please, observe the silence.webp",
     "style": "blues, Urban Voodoo Rock, Sexualized Swamp Blues / Baritone Noir"
+  },
+  {
+    "title": "My screen’s cluttered with half-born tho (Remix)",
+    "audio": "music/My screen’s cluttered with half-born tho (Remix).mp3",
+    "lyrics": "lyrics/My screen’s cluttered with half-born tho (Remix).txt",
+    "image": "cover/My screen’s cluttered with half-born tho (Remix).webp",
+    "style": "darkwave, alternative noir folk, art rock, avant-garde ballad, baritone post-folk, cinematic darkwave, dark americana, dark cabaret, doom folk, experimental poetry rock, gothic storytelling, indie noir, minimal post-rock, narrative drone folk, neofolk noir, post-industrial ballad"
   }
 
 ];
