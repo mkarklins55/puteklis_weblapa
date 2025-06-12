@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>Pašvaldību vēlēšanu IT fiasko | Puteklis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/main_puteklis.css" />
+  <style>
+    body {
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      color: #f8f8f8;
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 3rem 2rem;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      margin-top: 4rem;
+    }
+    h2 {
+      margin-top: 2em;
+      font-size: 1.5em;
+      color: #ffd;
+    }
+    p, li {
+      font-size: 1.05em;
+      line-height: 1.6em;
+      margin-bottom: 1em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    th, td {
+      padding: 0.6em;
+      border: 1px solid #ccc;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    th {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+   header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1rem 2rem;
+  backdrop-filter: blur(4px);
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+}
+
+header nav a {
+  color: #ffffff; /* gaišāka krāsa! */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+header nav a:hover {
+  color: #ffd700; /* zeltaina krāsa hover efektam */
+}
+
+header nav a.active {
+  text-decoration: underline;
+  color: #00ffff;
+}
+
+  </style>
+</head>
+<body>
+
+    <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Manifests</a></li>
+        <li><a href="../raksti.html" class="active">Raksti</a></li>
+        <li><a href="../index_en.html">EN</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+  <main class="container">
+       <h1>Pašvaldību vēlēšanu IT fiasko: kas nogāja greizi un ko darīt citādi</h1>
+
+    <h2>1. Kas notika un kāpēc izgāzās</h2>
+    <table>
+      <thead><tr><th>Galvenais trūkums</th><th>Ko atklāja vēlēšanu nakts</th></tr></thead>
+      <tbody>
+        <tr><td>Sasteigta nodošana</td><td>Sistēma ekspluatācijā tika iedota tikai 1 dienu pirms vēlēšanām – nebija laika pilnai slodzes un drošības pārbaudei.</td></tr>
+        <tr><td>Nepareizs “rate limiter”</td><td>Drošības slānis bloķēja likumīgus iecirkņu pieprasījumus, radot ķēdes reakciju un “karoties” serveriem.</td></tr>
+        <tr><td>Centralizēts OCR mezgls</td><td>Biļetenu attēli (≈ 100 KB × 600–800 tūkst.) gāja uz vienu galveno serveri; bez paralelizētas apstrādes tas sāka smakt pie pīķa slodzes.</td></tr>
+        <tr><td>Nav rindas/buferēšanas</td><td>Iecirkņu dati “piedzina” backendu, jo netika izmantoti prioritāri job-queue vai message-brokeri (RabbitMQ/Kafka).</td></tr>
+        <tr><td>Formāls atbalsts</td><td>Incidentu eskalācija risinājās WhatsApp čatā, nevis ar 24/7 SOC/monitoringu.</td></tr>
+        <tr><td>Nereāls budžets</td><td>Piešķirtie 1,81 M EUR atļāva MVP, bet ne valsts mēroga, kļūmēm noturīgu sistēmu.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>2. Nauda: cik bija un cik objektīvi vajadzēja</h2>
+    <table>
+      <thead><tr><th>Pozīcija</th><th>Izlietots (2025)</th><th>Adekvāti kritiskai infrastruktūrai</th></tr></thead>
+      <tbody>
+        <tr><td>Analīze + dizains</td><td>≈ 0,18 M</td><td>0,30 M</td></tr>
+        <tr><td>Izstrāde (OCR, API, UI)</td><td>≈ 0,45 M</td><td>0,90 M</td></tr>
+        <tr><td>Serveri + glabātuve</td><td>≈ 0,27 M</td><td>0,60 M</td></tr>
+        <tr><td>Drošības/slodzes testi</td><td>≈ 0,18 M</td><td>0,30 M</td></tr>
+        <tr><td>Apmācība + dokumenti</td><td>≈ 0,18 M</td><td>0,25 M</td></tr>
+        <tr><td>24/7 atbalsts</td><td>(ietilpa kopbudžetā)</td><td>0,20 M</td></tr>
+        <tr><td>Vadība + audits</td><td>≈ 0,27 M</td><td>0,40 M</td></tr>
+        <tr><th>Kopā</th><th>1,81 M EUR</th><th>≈ 3,5–4,0 M EUR</th></tr>
+      </tbody>
+    </table>
+    <p>Tipiska peļņas marža pie valsts iepirkumiem: 15–30 %. Pie 4 M EUR budžeta uzņēmumam (vai konsorcijam) paliktu 0,6–1,0 M EUR pēc algu un infrastruktūras izmaksu segšanas.</p>
+
+    <h2>3. Tehniskais skats “kā bija” vs. “kā vajadzēja”</h2>
+    <table>
+      <thead><tr><th>Komponents</th><th>Faktiski (iespējams)</th><th>Ieteicamā prakse</th></tr></thead>
+      <tbody>
+        <tr><td>DB</td><td>Viena PostgreSQL/SQL Server instance, bez klasterēšanas</td><td>Klasterēts PostgreSQL vai Oracle RAC + Redis buferis</td></tr>
+        <tr><td>Failu glabāšana</td><td>NFS diskos, nekompresēti JPG/PDF</td><td>Ceph/S3 ar gzip/zip, checksum + verzionēšana</td></tr>
+        <tr><td>OCR</td><td>ABBYY/Tesseract uz viena 32 vCPU servera</td><td>Docker mikropakalpojumi × 10–20 mezgli (auto-scale)</td></tr>
+        <tr><td>Rate limiting</td><td>IP-balstīts slieksnis</td><td>Token-balstīta kvota, adaptīvs uz slodzi</td></tr>
+        <tr><td>Monitoring</td><td>Sistēmlogi + manuāls WhatsApp</td><td>Prometheus + Grafana + Alertmanager, SOC komanda</td></tr>
+        <tr><td>CI/CD</td><td>Manuāla deploy, vēls integrācijas posms</td><td>GitLab CI, IaC (Terraform/Ansible), staging + prod vides</td></tr>
+        <tr><td>Tests</td><td>Ierobežoti JMeter skripti</td><td>Gatling/JMeter simulējot 1000 iecirkņu, ≥ 2k requests/s</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4. Cik laika vajadzēja</h2>
+    <ul>
+      <li>Minimāli uzticams grafiks: 8–12 mēneši</li>
+      <ul>
+        <li>1–2 mēn. analīze</li>
+        <li>4 mēn. izstrāde</li>
+        <li>2 mēn. integrācija + slodzes/drošības testi</li>
+        <li>1 mēn. ģenerālmēģinājumi, apmācība</li>
+      </ul>
+      <li>Latvijā reālā izstrāde praktiski “saspiesta” <6 mēnešos, ar nodošanu dienu pirms vēlēšanām.</li>
+    </ul>
+
+    <h2>5. Galvenā atbildība</h2>
+    <table>
+      <thead><tr><th>Loma</th><th>Par ko atbild</th><th>Piezīme</th></tr></thead>
+      <tbody>
+        <tr><td>VDAA (Valsts digitālās attīstības aģentūra)</td><td>Iepirkums, projektu pārraudzība, ekspluatācijas nodošana</td><td>Kritiski novērtēja slodzes riskus un termiņus par zemu</td></tr>
+        <tr><td>VARAM (politiskā uzraudzība)</td><td>Budžets, termiņu kontrole, starpinstitucionālā koordinācija</td><td>Akceptēja nodošanu pēdējā brīdī</td></tr>
+        <tr><td>CVK (Centrālā vēlēšanu komisija)</td><td>Lietotāja prasības, sistēmas pieņemšana</td><td>Pieņēma sistēmu bez pilna ģenerālmēģinājuma validācijas</td></tr>
+        <tr><td>Galvenais līgumizpildītājs (nosaukums publiski slēpts)</td><td>Izstrāde, testēšana, atbalsts</td><td>Pieļāva arhitektūras un slodzes dizaina nepilnības</td></tr>
+        <tr><td>Apakšuzņēmēji (OCR, hosting)</td><td>Specializētie moduļi, datu centrs</td><td>Noslēgti “melno kastu” līgumi, trūkst caurspīdības</td></tr>
+      </tbody>
+    </table>
+
+    <h2>6. Pieci konkrēti padomi nākamajām vēlēšanām</h2>
+    <ol>
+      <li>Budžets ≥ 4 M EUR, ar 20 % rezervi neparedzētam infrastruktūras pieaugumam vēlēšanu nedēļā.</li>
+      <li>Atvērt mikroservisu arhitektūru, balstītu uz Docker + Kubernetes, lai varētu horizontāli mērogot OCR un API mezglus dažu minūšu laikā.</li>
+      <li>Pilna slodzes simulācija (≥ 2 k pieprasījumi/s) vismaz 60 dienas pirms vēlēšanām; atkārtot pēc katra koda “major” laidiena.</li>
+      <li>Neatkarīgs drošības audits un “red-team” tests ar DDoS, SQL-injection, identificācijas zādzību scenārijiem.</li>
+      <li>24/7 incidentu pārvaldības centrs ar reālu “runbook”: restarti automatizēti, push-paziņojumi iecirkņiem, nevis WhatsApp improvizācija.</li>
+    </ol>
+
+  </main>
+</body>
+</html>
