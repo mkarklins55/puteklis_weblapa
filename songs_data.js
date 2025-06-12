@@ -708,7 +708,7 @@ const songs = [
     "style": "blues, Urban Voodoo Rock, Sexualized Swamp Blues / Baritone Noir"
   },
   {
-    "title": "My screen’s cluttered with half-born tho (Remix)",
+    "title": "My screen’s cluttered with half-born thoughts",
     "audio": "music/My screen’s cluttered with half-born tho (Remix).mp3",
     "lyrics": "lyrics/My screen’s cluttered with half-born tho (Remix).txt",
     "image": "cover/My screen’s cluttered with half-born tho (Remix).webp",
