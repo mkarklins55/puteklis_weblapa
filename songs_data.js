@@ -734,6 +734,13 @@ const songs = [
     "lyrics": "lyrics/NO KURIENES.txt",
     "image": "cover/NO KURIENES.webp",
     "style": "electro, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, blues, outlaw country noir, desert blues"
+  },
+       {
+    "title": "Muļķu spēles",
+    "audio": "music/Kā ar puļķi (Remix).mp3",
+    "lyrics": "lyrics/Kā ar puļķi (Remix).txt",
+    "image": "cover/Kā ar puļķi (Remix).webp",
+    "style": "synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   }
 
 ];
