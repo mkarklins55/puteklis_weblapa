@@ -741,6 +741,13 @@ const songs = [
     "lyrics": "lyrics/Kā ar puļķi (Remix).txt",
     "image": "cover/Kā ar puļķi (Remix).webp",
     "style": "synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
+  },
+          {
+    "title": "Dievs, ko tu iesāksi bez mums",
+    "audio": "music/Dievs, ko tu iesāksi bez mums (Remix).mp3",
+    "lyrics": "lyrics/Dievs, ko tu iesāksi bez mums (Remix).txt",
+    "image": "cover/Dievs, ko tu iesāksi bez mums (Remix).webp",
+    "style": "blues, outlaw country noir, desert blues, southern existentialism, Noir Lounge Psych, Baritone Blues Noir"
   }
 
 ];
