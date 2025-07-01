@@ -748,5 +748,12 @@
     "lyrics": "lyrics/Dievs, ko tu iesāksi bez mums (Remix).txt",
     "image": "cover/Dievs, ko tu iesāksi bez mums (Remix).webp",
     "style": "blues, outlaw country noir, desert blues, southern existentialism, Noir Lounge Psych, Baritone Blues Noir"
+  },
+    {
+    "title": "Ādams",
+    "audio": "music/Ādams.mp3",
+    "lyrics": "lyrics/Ādams.txt",
+    "image": "cover/Ādams.webp",
+    "style": "blues, desert blues, southern existentialism, Noir Lounge Psych, erotic darkwave ballad, sleazy synth noir, cinematic fetish pop, folk polyphony, cracked and nicotine-drenched voice"
   }
 ]
