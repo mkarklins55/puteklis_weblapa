@@ -755,5 +755,12 @@
     "lyrics": "lyrics/Ādams.txt",
     "image": "cover/Ādams.webp",
     "style": "blues, desert blues, southern existentialism, Noir Lounge Psych, erotic darkwave ballad, sleazy synth noir, cinematic fetish pop, folk polyphony, cracked and nicotine-drenched voice"
+  },
+      {
+    "title": "zālīte pa riņķi",
+    "audio": "music/zālīte pa riņķi.mp3",
+    "lyrics": "lyrics/zālīte pa riņķi.txt",
+    "image": "cover/zālīte pa riņķi.webp",
+    "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
   }
 ]
