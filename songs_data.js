@@ -790,6 +790,13 @@ const songs = [
     "lyrics": "lyrics/Lips stitched in velvet law, (Remix).txt",
     "image": "cover/Lips stitched in velvet law, (Remix).webp",
     "style": "rock, Erotic allegorical rock, trenchcoat jazz, dirty glitter-punk, industrial burlesque (no cabaret vocals), electro-sleaze ballad, bondage gospel, psychedelic strip-poetry, decadent art-punk, urban torch song"
+  },
+      {
+    "title": "Dust for Dinner",
+    "audio": "music/Dust for Dinner.mp3",
+    "lyrics": "lyrics/Dust for Dinner.txt",
+    "image": "cover/Dust for Dinner.webp",
+    "style": "rock, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial"
   }
 
 ];
