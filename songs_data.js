@@ -811,6 +811,13 @@ const songs = [
     "lyrics": "lyrics/Stick me like a Sunday candle, (Remix).txt",
     "image": "cover/Stick me like a Sunday candle, (Remix).webp",
     "style": "rock, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial, Witch-Glam Blues / Sludge Cabaret, Neo-sad folk-postindustrial blues with Baltic electro-twist and decadent saxafon, Industrial Shock Rock, Erotic Anti-Gospel, Glam Horror Ballad, Martyr Electro-Goth, Ritual Darkwave, Post-Sacramental Rock, Sinister Synth Rock, Doom-Pop Sermoncore, Fetish Cathedral Noir, Neon Crucifixion Wave"
+  },
+    {
+    "title": "Ēnas veselas",
+    "audio": "music/Ēnas veselas.mp3",
+    "lyrics": "lyrics/Ēnas veselas.txt",
+    "image": "cover/Ēnas veselas.webp",
+    "style": "rock, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, trance-folk, erotic darkwave, loungecore, sarcastic electronic slapstick, anarcho-pop drama, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   }
 
 ];
