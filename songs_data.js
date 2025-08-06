@@ -804,6 +804,13 @@ const songs = [
     "lyrics": "lyrics/Time cracks like cheap porcelain — (Remix) (1).txt",
     "image": "cover/Time cracks like cheap porcelain — (Remix) (1).webp",
     "style": "punk, erotic darkwave, cinematic fetish pop, Gothic electro-punk with acoustic threats, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, sleazy synth noir, melodic electro-decadence, Industrial glam rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial, Neo-Schlager Remix, Soft Neue Deutsche Härte meets absurdist gospel"
+  },
+   {
+    "title": "Fleischmaschine - (Flesh Machine)",
+    "audio": "music/Stick me like a Sunday candle, (Remix).mp3",
+    "lyrics": "lyrics/Stick me like a Sunday candle, (Remix).txt",
+    "image": "cover/Stick me like a Sunday candle, (Remix).webp",
+    "style": "rock, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial, Witch-Glam Blues / Sludge Cabaret, Neo-sad folk-postindustrial blues with Baltic electro-twist and decadent saxafon, Industrial Shock Rock, Erotic Anti-Gospel, Glam Horror Ballad, Martyr Electro-Goth, Ritual Darkwave, Post-Sacramental Rock, Sinister Synth Rock, Doom-Pop Sermoncore, Fetish Cathedral Noir, Neon Crucifixion Wave"
   }
 
 ];
