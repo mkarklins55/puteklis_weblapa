@@ -818,5 +818,12 @@
     "lyrics": "lyrics/Ēnas veselas.txt",
     "image": "cover/Ēnas veselas.webp",
     "style": "rock, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, trance-folk, erotic darkwave, loungecore, sarcastic electronic slapstick, anarcho-pop drama, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
+  },
+       {
+    "title": "Between engines and neon lights, (Remix)",
+    "audio": "music/Between engines and neon lights, (Remix).mp3",
+    "lyrics": "lyrics/Between engines and neon lights, (Remix).txt",
+    "image": "cover/Between engines and neon lights, (Remix).webp",
+    "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore"
   }
 ]
