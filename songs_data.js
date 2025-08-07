@@ -825,6 +825,13 @@ const songs = [
     "lyrics": "lyrics/Between engines and neon lights, (Remix).txt",
     "image": "cover/Between engines and neon lights, (Remix).webp",
     "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore"
+  },
+   {
+    "title": "Tin Soldiers",
+    "audio": "music/Tin Soldiers.mp3",
+    "lyrics": "lyrics/Tin Soldiers.txt",
+    "image": "cover/Tin Soldiers.webp",
+    "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
   }
 
 ];
