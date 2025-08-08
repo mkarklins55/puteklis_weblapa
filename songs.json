@@ -832,5 +832,12 @@
     "lyrics": "lyrics/Tin Soldiers.txt",
     "image": "cover/Tin Soldiers.webp",
     "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
+  },
+    {
+    "title": "Under the White Acacias",
+    "audio": "music/The sky split open, soft and numb, (Remix).mp3",
+    "lyrics": "lyrics/The sky split open, soft and numb, (Remix).txt",
+    "image": "cover/The sky split open, soft and numb, (Remix).webp",
+    "style": "ethno, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   }
 ]
