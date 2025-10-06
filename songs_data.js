@@ -846,6 +846,13 @@ const songs = [
     "lyrics": "lyrics/Zirgs, kas naktī dzied.txt",
     "image": "cover/Zirgs, kas naktī dzied.webp",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
+  },
+   {
+    "title": "Zirgs, kas naktī dzied (techno)",
+    "audio": "music/zirgs kas naktī dzied - rock & techno.mp3",
+    "lyrics": "lyrics/zirgs kas naktī dzied - rock & techno.txt",
+    "image": "cover/zirgs kas naktī dzied - rock & techno.webp",
+    "style": "techno, Deep Melodic Techno & Trance Mix, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad"
   }
 
 ];
