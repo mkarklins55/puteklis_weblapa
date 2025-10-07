@@ -860,6 +860,13 @@ const songs = [
     "lyrics": "lyrics/Eight little creatures.txt",
     "image": "cover/Eight little creatures.webp",
     "style": "techno, Deep Melodic Techno & Trance Mix, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad"
+  },
+  {
+    "title": "Eight little creatures (ambient)",
+    "audio": "music/Eight little creatures (ambient).mp3",
+    "lyrics": "lyrics/Eight little creatures (ambient).txt",
+    "image": "cover/Eight little creatures (ambient).webp",
+    "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
   }
 
 ];
