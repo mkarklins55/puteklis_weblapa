@@ -867,6 +867,13 @@ const songs = [
     "lyrics": "lyrics/Eight little creatures (ambient).txt",
     "image": "cover/Eight little creatures (ambient).webp",
     "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
+  },
+   {
+    "title": "Puteklītes luteklites",
+    "audio": "music/Puteklītes luteklites.mp3",
+    "lyrics": "lyrics/Puteklītes luteklites.txt",
+    "image": "cover/Puteklītes luteklites.webp",
+    "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
   }
 
 ];
