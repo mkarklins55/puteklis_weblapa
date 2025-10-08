@@ -881,6 +881,13 @@ const songs = [
     "lyrics": "lyrics/Kitty Park.txt",
     "image": "cover/Kitty Park.webp",
     "style": "electro, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
+  },
+  {
+    "title": "Silent Lindens",
+    "audio": "music/Silent Lindens.mp3",
+    "lyrics": "lyrics/Silent Lindens.txt",
+    "image": "cover/Silent Lindens.webp",
+    "style": "rock, Erotic allegorical rock, trenchcoat jazz, dirty glitter-punk, industrial burlesque (no cabaret vocals), electro-sleaze ballad, bondage gospel, psychedelic strip-poetry, decadent art-punk, urban torch song"
   }
 
 ];
