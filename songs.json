@@ -902,5 +902,19 @@
     "lyrics": "lyrics/Ko Tu ar mani dari! (Cover by PUTEKLIS).txt",
     "image": "cover/Ko Tu ar mani dari! (Cover by PUTEKLIS).webp",
     "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
+  },
+    {
+    "title": "Dons - Tuvums (Cover by PUTEKLIS)",
+    "audio": "music/Dons - Tuvums.mp3",
+    "lyrics": "lyrics/Dons - Tuvums.txt",
+    "image": "cover/Dons - Tuvums.webp",
+    "style": "rock, Soft Neue Deutsche Härte"
+  },
+   {
+    "title": "Running Up That Hill (Cover)",
+    "audio": "music/Running Up That Hill (Cover).mp3",
+    "lyrics": "lyrics/Running Up That Hill (Cover).txt",
+    "image": "cover/Running Up That Hill (Cover).webp",
+    "style": "blues, desert blues, southern existentialism, Noir Lounge Psych, erotic darkwave ballad, sleazy synth noir, cinematic fetish pop, folk polyphony, cracked and nicotine-drenched voice"
   }
 ]
