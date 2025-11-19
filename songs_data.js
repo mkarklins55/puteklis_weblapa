@@ -916,6 +916,13 @@ const songs = [
     "lyrics": "lyrics/Running Up That Hill (Cover).txt",
     "image": "cover/Running Up That Hill (Cover).webp",
     "style": "blues, desert blues, southern existentialism, Noir Lounge Psych, erotic darkwave ballad, sleazy synth noir, cinematic fetish pop, folk polyphony, cracked and nicotine-drenched voice"
+  },
+   {
+    "title": "Desert wind in my teeth",
+    "audio": "music/Desert wind in my teeth.mp3",
+    "lyrics": "lyrics/Desert wind in my teeth.txt",
+    "image": "cover/Desert wind in my teeth.webp",
+    "style": "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
   }
 
 ];
