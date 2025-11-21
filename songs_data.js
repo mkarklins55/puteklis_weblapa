@@ -923,6 +923,13 @@ const songs = [
     "lyrics": "lyrics/Desert wind in my teeth.txt",
     "image": "cover/Desert wind in my teeth.webp",
     "style": "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
+  },
+   {
+    "title": "Stand By Me - (Cover by PUTEKLIS)",
+    "audio": "music/Stand By Me - (Cover).mp3",
+    "lyrics": "lyrics/Stand By Me - (Cover).txt",
+    "image": "cover/Stand By Me - (Cover).webp",
+    "style": "country, americana country, western, bluegrass influences"
   }
 
 ];
