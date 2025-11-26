@@ -937,6 +937,13 @@ const songs = [
     "lyrics": "lyrics/Imants Daksis - Krupis (Cover).txt",
     "image": "cover/Imants Daksis - Krupis (Cover).webp",
     "style": "rock, rural surreal noir folk rock, vintage psych blues, nicotine-cracked baritone, coughing whisper vocal texture, desert minimal blues guitar riffs, tremolo-drenched electric guitar, spring-reverb western guitar twang, detuned upright piano clang, broken harmonium drones, wheezing Farfisa organ ghosts, dusty analog monosynth bass fog, tape-warped vintage synth pads, cracked drum brush shuffle, rusted tom pulse, folkloric uncanny valley mood, rural occult psychedelia, twilight gate mysticism, domestic surreal noir atmosphere, waiting-horror folk tension, false prophet visitor mythos, damp wood and cold milk aesthetics, slow burning cinematic rural darkness"
+  },
+         {
+    "title": "Still Corners - Far Rider (Cover by PUTEKLIS)",
+    "audio": "music/Still Corners - Far Rider (Cover).mp3",
+    "lyrics": "lyrics/Still Corners - Far Rider (Cover).txt",
+    "image": "cover/Still Corners - Far Rider (Cover).webp",
+    "style": "rock, moody acoustic folk rock drive, gravelly baritone with nervous edge, pulsing arpeggiated acoustic guitar, jangling electric guitar shadows, walking bassline under tension, brushed snare shuffle rhythm, light tambourine ghost hits, minor-key cinematic lift, dusty analog warmth, tape-saturated drum room, late-evening roadside energy, flickering lantern mood, restless rural melancholy, shadowed melodic hooks"
   }
 
 ];
