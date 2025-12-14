@@ -951,6 +951,13 @@ const songs = [
     "lyrics": "lyrics/Another Brick In The Wall [Pink Floyd] (Cover).txt",
     "image": "cover/Another Brick In The Wall [Pink Floyd] (Cover).webp",
     "style": "rock, nocturnal folk rock cinematic drive, gently pulsing rhythm undercurrent, foggy reverb-washed environment, subtle tape-worn ambience, shimmering tremolo guitar ghosts, tense walking bass movement, restrained kick-snare heartbeat, expansive spatial width, dark industrial baritone vocal character, emotionally cracked vocal edge, controlled rasp intensity, warm-distorted throat-supported tone, slow but urgent phrasing, cold plate reverb tail, subtle rhythmic delay echoes"
+  },
+           {
+    "title": "Apkal Manu Kumeliņu (Cover by PUTEKLIS)",
+    "audio": "music/Apkal Manu Kumeliņu.mp3",
+    "lyrics": "lyrics/Apkal Manu Kumeliņu.txt",
+    "image": "cover/Apkal Manu Kumeliņu.webp",
+    "style": "jazz, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
   }
 
 ];
