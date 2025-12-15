@@ -958,6 +958,13 @@ const songs = [
     "lyrics": "lyrics/Apkal Manu Kumeliņu.txt",
     "image": "cover/Apkal Manu Kumeliņu.webp",
     "style": "jazz, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
+  },
+                {
+    "title": "Lights of Euphoria - Here comes the Rain (Cover by PUTEKLIS)",
+    "audio": "music/Lights of Euphoria - Here comes the Rain -  (Cover).mp3",
+    "lyrics": "lyrics/Lights of Euphoria - Here comes the Rain -  (Cover).txt",
+    "image": "cover/Lights of Euphoria - Here comes the Rain -  (Cover).webp",
+    "style": "rock, Urban nocturnal rock–jazz crossover with a sharper, more angular edge, mid-tempo driving pulse built on tight, slightly accentuated drums and a firm, restless bassline, clean electric guitars used percussively with muted chops, dry stabs, and restrained tremolo flashes, occasional gritty harmonic swells cutting through the mix, minimal but pointed piano or Rhodes figures adding tension rather than warmth, spacious yet controlled production with darker reverb tails and subtle tape grit, vocal duet centered on a focused, unsentimental male lead paired with a cool, distant counter-voice, less blend and more contrast, verses delivered with clipped phrasing and quiet intensity, chorus opening rhythmically rather than melodically, widening the stereo field with layered but taut harmonies, understated lift driven by groove and accents instead of sentiment, modern, cinematic, slightly abrasive winter-night atmosphere, reflective but alert"
   }
 
 ];
