@@ -965,6 +965,13 @@ const songs = [
     "lyrics": "lyrics/Lights of Euphoria - Here comes the Rain -  (Cover).txt",
     "image": "cover/Lights of Euphoria - Here comes the Rain -  (Cover).webp",
     "style": "rock, Urban nocturnal rock–jazz crossover with a sharper, more angular edge, mid-tempo driving pulse built on tight, slightly accentuated drums and a firm, restless bassline, clean electric guitars used percussively with muted chops, dry stabs, and restrained tremolo flashes, occasional gritty harmonic swells cutting through the mix, minimal but pointed piano or Rhodes figures adding tension rather than warmth, spacious yet controlled production with darker reverb tails and subtle tape grit, vocal duet centered on a focused, unsentimental male lead paired with a cool, distant counter-voice, less blend and more contrast, verses delivered with clipped phrasing and quiet intensity, chorus opening rhythmically rather than melodically, widening the stereo field with layered but taut harmonies, understated lift driven by groove and accents instead of sentiment, modern, cinematic, slightly abrasive winter-night atmosphere, reflective but alert"
+  },
+     {
+    "title": "Wham! - Last Christmas (Country) (Cover by PUTEKLIS)",
+    "audio": "music/Wham! - Last Christmas (Country).mp3",
+    "lyrics": "lyrics/Wham! - Last Christmas (Country).txt",
+    "image": "cover/Wham! - Last Christmas (Country).webp",
+    "style": "country, Urban outlaw country crossover with a nocturnal, cinematic edge, mid-tempo train-beat rhythm driven by a steady, rolling drum pattern (kick–snare like wheels on tracks) and a firm, forward-pulling bassline that never fully rests, electric guitars used percussively and narratively with muted strums, dry stabs, restrained tremolo and occasional gritty swells cutting through like passing lights, subtle slide or bent-note textures replacing jazz phrasing, minimal piano or Rhodes figures kept sharp and tense rather than warm, spacious but controlled production with darker reverb tails, room tone and light tape grit adding dust and motion, vocal duet built around a grounded, unsentimental male lead with a road-worn, authoritative delivery paired with a cooler, distant counter-voice, contrast over blend, verses delivered with clipped, story-driven phrasing and quiet resolve, chorus opening through rhythmic momentum and repetition rather than melody, widening the stereo field with tight"
   }
 
 ];
