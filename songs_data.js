@@ -1000,6 +1000,13 @@ const songs = [
     "lyrics": "lyrics/I’m on my way home for Christmas.txt",
     "image": "cover/I’m on my way home for Christmas.webp",
     "style": "rock, Urban nocturnal rock–jazz crossover with a sharper, more angular edge, mid-tempo driving pulse built on tight, slightly accentuated drums and a firm, restless bassline, clean electric guitars used percussively with muted chops, dry stabs, and restrained tremolo flashes, occasional gritty harmonic swells cutting through the mix, minimal but pointed piano or Rhodes figures adding tension rather than warmth, spacious yet controlled production with darker reverb tails and subtle tape grit, vocal duet centered on a focused, unsentimental male lead paired with a cool, distant counter-voice, less blend and more contrast, verses delivered with clipped phrasing and quiet intensity, chorus opening rhythmically rather than melodically, widening the stereo field with layered but taut harmonies, understated lift driven by groove and accents instead of sentiment, modern, cinematic, slightly abrasive winter-night atmosphere, reflective but alert"
+  },
+       {
+    "title": "Holding the Lane",
+    "audio": "music/Holding the Lane.mp3",
+    "lyrics": "lyrics/Holding the Lane.txt",
+    "image": "cover/Holding the Lane.webp",
+    "style": "rock, A contemporary art-rock / modern jazz crossover with a cold, nocturnal edge, driven by a mid-tempo pulse that moves forward without comfort. Brushed and lightly accented drums lock into a tight, unsmiling groove with a restless walking bass that refuses resolution. Clean electric guitars cut sharply through the mix with muted chops, dry stabs, and clipped tremolo flashes, joined only occasionally by abrasive harmonic swells that add friction rather than color. Piano or Rhodes figures are sparse and functional, used to underline tension instead of emotion. Production is spacious but deliberately unforgiving, marked by darker reverb tails, subtle tape grit, and controlled dynamics that keep everything exposed. Vocal duets center on a flat, unsentimental male lead paired with a cool, detached counter-voice; the interaction feels measured and ironic rather than blended"
   }
 
 ];
