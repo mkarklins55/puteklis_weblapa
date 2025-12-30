@@ -217,7 +217,7 @@ function makeCard(song,i){
           </div>
         </div>
       </div>
-      <div class='lyrics-box' id='lyr_${cssSafe(song.title)}'>Ielade...</div>
+      <div class='lyrics-box' id='lyr_${cssSafe(song.title)}'>Ielāde...</div>
     </div>`;
   c.querySelector('.play-btn').onclick = e => playIndex(+e.currentTarget.dataset.idx);
   c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
@@ -236,7 +236,7 @@ function toggleLyrics(song){
   const box = qs('#lyr_' + cssSafe(song.title));
   if(!box) return;
   if(box.style.display === 'block') { box.style.display = 'none'; return; }
-  if(box.textContent.trim() === 'Ielade...'){
+  if(box.textContent.trim() === 'Ielāde...'){
     fetch(encodeURI(song.lyrics))
       .then(r => r.ok ? r.text() : Promise.reject())
       .then(t => box.textContent = t)
@@ -370,37 +370,22 @@ async function copySongLink(song, copyBtn){
     ta.focus();
     ta.select();
     let ok = false;
-    try{
-      ok = document.execCommand('copy');
-    }catch(err){ ok = false; }
+    try{ ok = document.execCommand('copy'); }catch(err){ ok = false; }
     document.body.removeChild(ta);
     return ok;
   };
+  const copyViaPrompt = () => { window.prompt('Nokopē saiti:', text); };
   try{
-    if(navigator.clipboard && window.ClipboardItem){
-      const items = { 'text/plain': new Blob([text], {type:'text/plain'}) };
-      try{
-        const blob = await fetchCoverBlob(song);
-        const type = blob.type || 'image/png';
-        items[type] = blob;
-      }catch(err){ console.warn('Vaku nevar pievienot starpliktuvei:', err); }
-      await navigator.clipboard.write([new ClipboardItem(items)]);
-    } else if(navigator.clipboard){
+    if(navigator.clipboard && navigator.clipboard.writeText){
       await navigator.clipboard.writeText(text);
-    } else {
-      if(!copyViaTextarea()) throw new Error('Clipboard API nav pieejams');
+    } else if(!copyViaTextarea()){
+      copyViaPrompt();
+      return;
     }
   }catch(err){
-    console.warn('Rich copy failed, trying plain text', err);
-    try{
-      if(navigator.clipboard){
-        await navigator.clipboard.writeText(text);
-      } else if(!copyViaTextarea()){
-        throw err;
-      }
-    }catch(err2){
-      console.error(err2);
-      alert('Neizdevās nokopēt saiti');
+    console.warn('Clipboard write failed, trying fallbacks', err);
+    if(!copyViaTextarea()){
+      copyViaPrompt();
       return;
     }
   }
@@ -442,6 +427,15 @@ async function shareNative(song){
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 
