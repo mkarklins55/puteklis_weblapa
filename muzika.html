@@ -361,6 +361,21 @@ async function fetchCoverBlob(song){
 async function copySongLink(song, copyBtn){
   const shareUrl = songShareUrl(song);
   const text = `${shareUrl}`;
+  const copyViaTextarea = () => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    let ok = false;
+    try{
+      ok = document.execCommand('copy');
+    }catch(err){ ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  };
   try{
     if(navigator.clipboard && window.ClipboardItem){
       const items = { 'text/plain': new Blob([text], {type:'text/plain'}) };
@@ -373,21 +388,25 @@ async function copySongLink(song, copyBtn){
     } else if(navigator.clipboard){
       await navigator.clipboard.writeText(text);
     } else {
-      throw new Error('Clipboard API nav pieejams');
+      if(!copyViaTextarea()) throw new Error('Clipboard API nav pieejams');
     }
   }catch(err){
     console.warn('Rich copy failed, trying plain text', err);
     try{
-      await navigator.clipboard.writeText(text);
+      if(navigator.clipboard){
+        await navigator.clipboard.writeText(text);
+      } else if(!copyViaTextarea()){
+        throw err;
+      }
     }catch(err2){
       console.error(err2);
-      alert('Failed to copy link');
+      alert('Neizdevās nokopēt saiti');
       return;
     }
   }
   if(copyBtn){
     const old = copyBtn.textContent;
-    copyBtn.textContent = 'Copied!';
+    copyBtn.textContent = 'Kopēts!';
     setTimeout(() => copyBtn.textContent = old, 1400);
   }
 }
