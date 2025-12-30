@@ -1,0 +1,18 @@
+      <div class='action-row'>
+        <button class='play-btn' data-idx='${i}'>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l11-7-11-7Z" fill="currentColor"/></svg>
+          <span>Atskanot</span>
+        </button>
+        <button class='lyrics-btn'>Vardi</button>
+        <div class='share-wrap'>
+          <button class='share-btn'>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v3H8v4h4v3l6-5-6-5Z" fill="currentColor"/></svg>
+            <span>Dalities</span>
+          </button>
+          <div class='share-menu'>
+            <button class='copy-link'>Kopet saiti</button>
+            <button class='native-share'>Dalities ar...</button>
+          </div>
+        </div>
+      </div>
+      <div class='lyrics-box' id='lyr_${cssSafe(song.title)}'>Ielade...</div>
