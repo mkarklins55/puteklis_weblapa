@@ -32,15 +32,16 @@
     .card .info{padding:12px;flex:1;display:flex;flex-direction:column;gap:8px;position:relative;overflow:visible}
     .card h4{margin:0;font-size:1.05em}
     .card p{margin:0;color:#bbb;font-size:.85em}
-    .play-btn,.lyrics-btn{border:none;color:#fff;border-radius:6px;padding:8px 0;cursor:pointer;flex:1}
-    .play-btn{background:#ee6c4d;font-weight:600}
+    .action-row{display:flex;gap:8px;align-items:stretch}
+    .play-btn,.lyrics-btn,.share-btn{border:none;color:#fff;border-radius:6px;padding:10px 0;cursor:pointer;flex:1 1 0;min-width:0;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px}
+    .play-btn{background:#ee6c4d}
     .lyrics-btn{background:#555}
-    .play-btn:hover,.lyrics-btn:hover{filter:brightness(1.1)}
+    .share-btn{background:#2c2c2c;border:1px solid #444}
+    .play-btn:hover,.lyrics-btn:hover,.share-btn:hover{filter:brightness(1.1)}
     .lyrics-box{display:none;background:#111;color:#ddd;padding:8px;border-radius:6px;font-family:monospace;white-space:pre-wrap;max-height:160px;overflow-y:auto}
     .share-row{display:flex;justify-content:flex-start;margin-top:4px}
-    .share-wrap{position:relative}
-    .share-btn{background:#2c2c2c;border:1px solid #444;color:#eee;border-radius:6px;padding:8px 12px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:8px}
-    .share-btn:hover{background:#363636}
+    .share-wrap{position:relative;flex:1}
+    .share-btn svg{width:16px;height:16px;fill:currentColor}
     .share-menu{position:absolute;top:105%;right:0;background:#1d1d1d;border:1px solid #333;border-radius:10px;padding:8px;display:none;flex-direction:column;gap:6px;box-shadow:0 6px 18px rgba(0,0,0,.5);z-index:50;width:190px}
     .share-menu.open{display:flex}
     .share-menu button{background:#2f2f2f;border:1px solid #444;color:#eee;border-radius:6px;padding:8px;cursor:pointer;text-align:left;font-weight:600}
@@ -194,43 +195,35 @@ function makeCard(song,i){
     <div class='info'>
       <h4>${song.title}</h4>
       <p>${song.style}</p>
-      <div style='display:flex;gap:8px'>
-        <button class='play-btn' data-idx='${i}'>▶️ Atskaņot</button>
-        <button class='lyrics-btn'>Vārdi</button>
+      <div class='action-row'>
+        <button class='play-btn' data-idx='${i}'>Atskanot</button>
+        <button class='lyrics-btn'>Vardi</button>
+        <div class='share-wrap'>
+          <button class='share-btn'>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a3 3 0 1 0-2.82-4h-.38a1 1 0 0 0-.67.26l-6.2 5.6A3 3 0 0 0 6 10a3 3 0 0 0 .83 2.06l6.3 5.67a1 1 0 0 0 .67.27h.38A3 3 0 1 0 18 16a3 3 0 0 0-.83-2.06l-5.1-4.6 5.1-4.6A3 3 0 0 0 18 8Z"/></svg>
+            <span>Dalities</span>
+          </button>
+          <div class='share-menu'>
+            <button class='copy-link'>Kopet saiti</button>
+            <button class='native-share'>Dalities ar...</button>
+          </div>
+        </div>
       </div>
-      <div class='lyrics-box' id='lyr_${cssSafe(song.title)}'>Ielādē...</div>
+      <div class='lyrics-box' id='lyr_${cssSafe(song.title)}'>Ielade...</div>
     </div>`;
   c.querySelector('.play-btn').onclick = e => playIndex(+e.currentTarget.dataset.idx);
   c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
-  const info = c.querySelector('.info');
-  const shareRow = document.createElement('div');
-  shareRow.className = 'share-row';
-  const shareWrap = document.createElement('div');
-  shareWrap.className = 'share-wrap';
-  shareRow.appendChild(shareWrap);
-
-  const shareBtn = document.createElement('button');
-  shareBtn.className = 'share-btn';
-  shareBtn.textContent = 'Dalīties';
-  shareWrap.appendChild(shareBtn);
-
-  const menu = document.createElement('div');
-  menu.className = 'share-menu';
-  menu.innerHTML = `
-    <button class='copy-link'>Kopēt saiti</button>
-    <button class='native-share'>Dalīties ar...</button>`;
-  shareWrap.appendChild(menu);
-
+  const shareWrap = c.querySelector('.share-wrap');
+  const shareBtn = shareWrap.querySelector('.share-btn');
+  const menu = shareWrap.querySelector('.share-menu');
   const copyBtn = menu.querySelector('.copy-link');
   const nativeBtn = menu.querySelector('.native-share');
   shareBtn.onclick = ev => { ev.stopPropagation(); toggleShareMenu(menu, shareBtn); };
   menu.onclick = ev => ev.stopPropagation();
   copyBtn.onclick = ev => { ev.stopPropagation(); closeShareMenus(); copySongLink(song, copyBtn); };
   nativeBtn.onclick = ev => { ev.stopPropagation(); closeShareMenus(); shareNative(song); };
-  info.appendChild(shareRow);
   return c;
 }
-
 function toggleLyrics(song){
   const box = qs('#lyr_' + cssSafe(song.title));
   if(box.style.display === 'block') { box.style.display = 'none'; return; }
@@ -412,6 +405,7 @@ async function shareNative(song){
 
 </body>
 </html>
+
 
 
 
