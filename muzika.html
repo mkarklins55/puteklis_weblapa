@@ -453,32 +453,41 @@ async function copySongLink(song, copyBtn){
 async function shareNative(song){
   const shareUrl = songShareUrl(song);
   const base = { title: song.title, text: song.style, url: shareUrl };
+
+  const fallbackCopy = async (msg = 'Dalīšana nav pieejama; saite nokopēta.') => {
+    try { await copySongLink(song); } catch(err){ console.warn('Copy link failed:', err); }
+    alert(msg);
+  };
+
   if(!navigator.share){
-    await copySongLink(song);
-    alert('Dal??ana nav pieejama uz ??s ier?ces; saite nokop?ta.');
+    await fallbackCopy('Dalīšana nav pieejama uz šīs ierīces; saite nokopēta.');
     return;
   }
+
   const shareWithFile = async () => {
     if(!navigator.canShare) return false;
     try{
       const blob = await fetchCoverBlob(song);
       const ext = (blob.type.split('/')[1] || 'png');
-      const file = new File([blob], 'cover.' + ext, {type: blob.type});
+      const file = new File([blob], `cover.${ext}`, {type: blob.type});
       const data = {...base, files:[file]};
-      if(navigator.canShare(data)){
+      if(navigator.canShare(data))
+      {
         await navigator.share(data);
         return true;
       }
-    }catch(err){ console.warn('Native share ar v?ku neizdev?s:', err); }
+    }catch(err){ console.warn('Native share ar vāku neizdevās:', err); }
     return false;
   };
+
   try{
     await navigator.share(base); // URL+text first to surface socials
     return;
-  }catch(err){ console.warn('Native share (url/text) neizdev?s vai atcelts:', err); }
+  }catch(err){ console.warn('Native share (url/text) neizdevās vai atcelts:', err); }
+
   if(await shareWithFile()) return;
-  await copySongLink(song);
-  alert('Dal??ana nav pieejama; saite nokop?ta.');
+
+  await fallbackCopy();
 }
 
 </script>
