@@ -32,8 +32,13 @@
     .card .info{padding:12px;flex:1;display:flex;flex-direction:column;gap:8px;position:relative;overflow:visible}
     .card h4{margin:0;font-size:1.05em}
     .card p{margin:0;color:#bbb;font-size:.85em}
-    .desc{max-height:1.35em;overflow:hidden;transition:max-height .3s ease;line-height:1.35em}
-    .card:hover .desc,.card.playing .desc{max-height:160px;overflow:auto}
+    .desc{position:relative;overflow:hidden;white-space:nowrap;line-height:1.35em;max-width:100%}
+    .desc span{display:inline-block;transform:translateX(0);padding-right:40px}
+    .card:hover .desc span,.card.playing .desc span{animation: marquee 12s linear infinite}
+    @keyframes marquee{
+      0%{transform:translateX(0)}
+      100%{transform:translateX(-100%)}
+    }
     .action-row{display:flex;gap:8px;align-items:stretch}
     .play-btn,.lyrics-btn,.share-btn{border:none;color:#fff;border-radius:8px;padding:12px 10px;cursor:pointer;flex:1 1 0;min-width:0;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;line-height:1.1;white-space:nowrap}
     .play-btn svg{width:16px;height:16px}
@@ -199,7 +204,7 @@ function makeCard(song,i){
     ${cover}
     <div class='info'>
       <h4>${song.title}</h4>
-      <p class='desc'>${song.style}</p>
+      <p class='desc'><span>${song.style}</span></p>
       <div class='action-row'>
         <button class='play-btn' data-idx='${i}'>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5-10-6.5Z" fill="currentColor"/></svg>
