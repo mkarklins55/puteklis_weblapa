@@ -52,7 +52,7 @@
     .share-menu button:hover{background:#3a3a3a}
     .share-note{font-size:.8em;color:#aaa;margin-top:6px}
 
-    /* Mini‑player */
+     /* Mini‑player */
     #playerBar{position:fixed;bottom:0;left:0;right:0;background:#181818;display:flex;align-items:center;gap:15px;padding:10px 20px;box-shadow:0 -2px 10px rgba(0,0,0,.6);z-index:2000}
     #playerBar img{width:48px;height:48px;object-fit:cover;border-radius:4px}
     #trackMeta{flex:1;min-width:0}
@@ -85,10 +85,10 @@
 
   <div class="controls">
     <select id="styleSel"><option value="">-- Visi stili --</option></select>
-    <input type="search" id="search" placeholder="Meklē nosaukumu, stilu…">
+    <input type="search" id="search" placeholder="Meklē nosaukumu, stilu">
   </div>
 
-  <div class="grid" id="songGrid">Notiek ielāde…</div>
+  <div class="grid" id="songGrid">Notiek ielāde...</div>
 </div>
 
 <!-- Sticky player -->
@@ -234,14 +234,17 @@ function makeCard(song,i){
 }
 function toggleLyrics(song){
   const box = qs('#lyr_' + cssSafe(song.title));
+  if(!box) return;
   if(box.style.display === 'block') { box.style.display = 'none'; return; }
-  if(box.textContent === 'Ielādē...'){
-    fetch(song.lyrics)
-      .then(r => r.ok ? r.text() : '❗ Teksts nav atrasts')
-      .then(t => box.textContent = t);
+  if(box.textContent.trim() === 'Ielade...'){
+    fetch(encodeURI(song.lyrics))
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(t => box.textContent = t)
+      .catch(() => box.textContent = 'Teksts nav atrasts');
   }
   box.style.display = 'block';
 }
+
 
 /* ---------- Atskaņotājs ---------- */
 function playIndex(i){
@@ -256,7 +259,6 @@ function playIndex(i){
   trackStyle.textContent = song.style.split(',')[0].trim();
   playPauseBtn.textContent = '⏸️';
   updateButtons();
-  highlightPlayingCard(i);
 }
 
 function updateButtons(){
@@ -283,7 +285,7 @@ audio.onended = playNext;
 function playNext(){
   if(!list.length) return;
   shuffleOn ? playIndex(Math.floor(Math.random()*list.length))
-            : (current < list.length - 1 ? playIndex(current + 1) : (playPauseBtn.textContent = '▶️'));
+            : (current < list.length - 1 ? playIndex(current + 1) : (playPauseBtn.textContent = 'â–¶ï¸'));
 }
 
 audio.ontimeupdate = () => {
@@ -307,7 +309,7 @@ function highlightPlayingCard(i){
 
 
 
-/* ---------- Dalīšanās ---------- */
+/* ---------- Dalīšana ---------- */
 function songShareUrl(song){
   const url = new URL(window.location.href);
   url.search = '';
@@ -352,7 +354,7 @@ function closeShareMenus(leaveOpen){
 async function fetchCoverBlob(song){
   const imgUrl = new URL(song.image, window.location.href).href;
   const res = await fetch(imgUrl);
-  if(!res.ok) throw new Error('Neizdevās ielādēt vāku');
+  if(!res.ok) throw new Error('NeizdevÄs ielÄdÄ“t vÄku');
   return await res.blob();
 }
 
@@ -402,7 +404,7 @@ async function shareNative(song){
         await navigator.share(data);
         return;
       }
-    }catch(err){ console.warn('Native share ar vāku neizdevās:', err); }
+    }catch(err){ console.warn('Native share ar vÄku neizdevÄs:', err); }
   }
   if(navigator.share){
     try{
@@ -416,11 +418,23 @@ async function shareNative(song){
 </script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G‑RKRHBD6CN4"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=Gâ€‘RKRHBD6CN4"></script>
 <script src="assets/js/analytics.js"></script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
