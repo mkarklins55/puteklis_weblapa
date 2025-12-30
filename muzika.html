@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="lv">
 <head>
   <meta charset="UTF-8">
@@ -223,7 +223,7 @@ function makeCard(song,i){
 
   const copyBtn = menu.querySelector('.copy-link');
   const nativeBtn = menu.querySelector('.native-share');
-  shareBtn.onclick = ev => { ev.stopPropagation(); toggleShareMenu(menu); };
+  shareBtn.onclick = ev => { ev.stopPropagation(); toggleShareMenu(menu, shareBtn); };
   menu.onclick = ev => ev.stopPropagation();
   copyBtn.onclick = ev => { ev.stopPropagation(); closeShareMenus(); copySongLink(song, copyBtn); };
   nativeBtn.onclick = ev => { ev.stopPropagation(); closeShareMenus(); shareNative(song); };
@@ -307,12 +307,29 @@ function songShareUrl(song){
   return url.toString();
 }
 
-function toggleShareMenu(menu){
+function toggleShareMenu(menu, trigger){
   const isOpen = !menu.classList.contains('open');
   closeShareMenus();
   if(isOpen){
     menu.classList.add('open');
+    positionShareMenu(menu, trigger);
     shareMenus.add(menu);
+  }
+}
+function positionShareMenu(menu, trigger){
+  if(!menu) return;
+  menu.style.left = '';
+  menu.style.right = '0';
+  const pad = 8;
+  let rect = menu.getBoundingClientRect();
+  if(rect.left < pad){
+    menu.style.right = 'auto';
+    menu.style.left = '0';
+    rect = menu.getBoundingClientRect();
+  }
+  if(rect.right > window.innerWidth - pad){
+    menu.style.left = 'auto';
+    menu.style.right = '0';
   }
 }
 function closeShareMenus(leaveOpen){
@@ -332,7 +349,7 @@ async function fetchCoverBlob(song){
 
 async function copySongLink(song, copyBtn){
   const shareUrl = songShareUrl(song);
-  const text = `${song.title}\n${shareUrl}`;
+  const text = `${shareUrl}`;
   try{
     if(navigator.clipboard && window.ClipboardItem){
       const items = { 'text/plain': new Blob([text], {type:'text/plain'}) };
@@ -349,22 +366,17 @@ async function copySongLink(song, copyBtn){
     }
   }catch(err){
     console.warn('Rich copy failed, trying plain text', err);
-    if(navigator.clipboard){
-      try{
-        await navigator.clipboard.writeText(text);
-      }catch(err2){
-        console.error(err2);
-        alert('Neizdevās nokopēt saiti');
-        return;
-      }
-    } else {
-      alert('Neizdevās nokopēt saiti');
+    try{
+      await navigator.clipboard.writeText(text);
+    }catch(err2){
+      console.error(err2);
+      alert('Failed to copy link');
       return;
     }
   }
   if(copyBtn){
     const old = copyBtn.textContent;
-    copyBtn.textContent = 'Nokopēts!';
+    copyBtn.textContent = 'Copied!';
     setTimeout(() => copyBtn.textContent = old, 1400);
   }
 }
@@ -400,6 +412,7 @@ async function shareNative(song){
 
 </body>
 </html>
+
 
 
 
