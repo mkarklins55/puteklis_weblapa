@@ -24,12 +24,12 @@
 
     /* Dziesmu kartīte */
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:25px}
-    .card{background:#1e1e1e;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 12px rgba(0,0,0,.45);transition:transform .3s ease,box-shadow .3s ease}
+    .card{background:#1e1e1e;border-radius:12px;overflow:visible;display:flex;flex-direction:column;box-shadow:0 4px 12px rgba(0,0,0,.45);transition:transform .3s ease,box-shadow .3s ease}
     .card:hover{transform:scale(1.03);box-shadow:0 6px 18px rgba(0,0,0,.6);z-index:10}
     .card.highlight{outline:2px solid #ee6c4d}
     .card img,.card video{width:100%;height:170px;object-fit:cover;transition:transform .4s ease}
     .card:hover img,.card:hover video{transform:scale(1.06)}
-    .card .info{padding:12px;flex:1;display:flex;flex-direction:column;gap:8px}
+    .card .info{padding:12px;flex:1;display:flex;flex-direction:column;gap:8px;position:relative;overflow:visible}
     .card h4{margin:0;font-size:1.05em}
     .card p{margin:0;color:#bbb;font-size:.85em}
     .play-btn,.lyrics-btn{border:none;color:#fff;border-radius:6px;padding:8px 0;cursor:pointer;flex:1}
@@ -41,7 +41,7 @@
     .share-wrap{position:relative}
     .share-btn{background:#2c2c2c;border:1px solid #444;color:#eee;border-radius:6px;padding:8px 12px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:8px}
     .share-btn:hover{background:#363636}
-    .share-menu{position:absolute;top:105%;right:0;background:#1d1d1d;border:1px solid #333;border-radius:10px;padding:8px;display:none;flex-direction:column;gap:6px;box-shadow:0 6px 18px rgba(0,0,0,.5);z-index:30;width:190px}
+    .share-menu{position:absolute;top:105%;right:0;background:#1d1d1d;border:1px solid #333;border-radius:10px;padding:8px;display:none;flex-direction:column;gap:6px;box-shadow:0 6px 18px rgba(0,0,0,.5);z-index:50;width:190px}
     .share-menu.open{display:flex}
     .share-menu button{background:#2f2f2f;border:1px solid #444;color:#eee;border-radius:6px;padding:8px;cursor:pointer;text-align:left;font-weight:600}
     .share-menu button:hover{background:#3a3a3a}
@@ -221,11 +221,6 @@ function makeCard(song,i){
     <button class='native-share'>Dalīties ar...</button>`;
   shareWrap.appendChild(menu);
 
-  const note = document.createElement('div');
-  note.className = 'share-note';
-  note.textContent = 'Kopē saiti ar dziesmas vāku';
-  shareWrap.appendChild(note);
-
   const copyBtn = menu.querySelector('.copy-link');
   const nativeBtn = menu.querySelector('.native-share');
   shareBtn.onclick = ev => { ev.stopPropagation(); toggleShareMenu(menu); };
@@ -345,24 +340,34 @@ async function copySongLink(song, copyBtn){
         const blob = await fetchCoverBlob(song);
         const type = blob.type || 'image/png';
         items[type] = blob;
-      }catch(err){ console.warn('Vāku nevar pievienot starpliktuvei:', err); }
+      }catch(err){ console.warn('Vaku nevar pievienot starpliktuvei:', err); }
       await navigator.clipboard.write([new ClipboardItem(items)]);
     } else if(navigator.clipboard){
       await navigator.clipboard.writeText(text);
     } else {
       throw new Error('Clipboard API nav pieejams');
     }
-    if(copyBtn){
-      const old = copyBtn.textContent;
-      copyBtn.textContent = 'Nokopēts!';
-      setTimeout(() => copyBtn.textContent = old, 1400);
-    }
   }catch(err){
-    console.error(err);
-    alert('Neizdevās nokopēt saiti');
+    console.warn('Rich copy failed, trying plain text', err);
+    if(navigator.clipboard){
+      try{
+        await navigator.clipboard.writeText(text);
+      }catch(err2){
+        console.error(err2);
+        alert('Neizdevās nokopēt saiti');
+        return;
+      }
+    } else {
+      alert('Neizdevās nokopēt saiti');
+      return;
+    }
+  }
+  if(copyBtn){
+    const old = copyBtn.textContent;
+    copyBtn.textContent = 'Nokopēts!';
+    setTimeout(() => copyBtn.textContent = old, 1400);
   }
 }
-
 async function shareNative(song){
   const shareUrl = songShareUrl(song);
   const base = { title: song.title, text: song.style, url: shareUrl };
@@ -395,3 +400,9 @@ async function shareNative(song){
 
 </body>
 </html>
+
+
+
+
+
+
