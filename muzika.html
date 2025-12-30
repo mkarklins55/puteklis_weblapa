@@ -26,6 +26,7 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:25px}
     .card{background:#1e1e1e;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 12px rgba(0,0,0,.45);transition:transform .3s ease,box-shadow .3s ease}
     .card:hover{transform:scale(1.03);box-shadow:0 6px 18px rgba(0,0,0,.6);z-index:10}
+    .card.highlight{outline:2px solid #ee6c4d}
     .card img,.card video{width:100%;height:170px;object-fit:cover;transition:transform .4s ease}
     .card:hover img,.card:hover video{transform:scale(1.06)}
     .card .info{padding:12px;flex:1;display:flex;flex-direction:column;gap:8px}
@@ -36,6 +37,15 @@
     .lyrics-btn{background:#555}
     .play-btn:hover,.lyrics-btn:hover{filter:brightness(1.1)}
     .lyrics-box{display:none;background:#111;color:#ddd;padding:8px;border-radius:6px;font-family:monospace;white-space:pre-wrap;max-height:160px;overflow-y:auto}
+    .share-row{display:flex;justify-content:flex-start;margin-top:4px}
+    .share-wrap{position:relative}
+    .share-btn{background:#2c2c2c;border:1px solid #444;color:#eee;border-radius:6px;padding:8px 12px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:8px}
+    .share-btn:hover{background:#363636}
+    .share-menu{position:absolute;top:105%;right:0;background:#1d1d1d;border:1px solid #333;border-radius:10px;padding:8px;display:none;flex-direction:column;gap:6px;box-shadow:0 6px 18px rgba(0,0,0,.5);z-index:30;width:190px}
+    .share-menu.open{display:flex}
+    .share-menu button{background:#2f2f2f;border:1px solid #444;color:#eee;border-radius:6px;padding:8px;cursor:pointer;text-align:left;font-weight:600}
+    .share-menu button:hover{background:#3a3a3a}
+    .share-note{font-size:.8em;color:#aaa;margin-top:6px}
 
     /* Mini‑player */
     #playerBar{position:fixed;bottom:0;left:0;right:0;background:#181818;display:flex;align-items:center;gap:15px;padding:10px 20px;box-shadow:0 -2px 10px rgba(0,0,0,.6);z-index:2000}
@@ -105,6 +115,11 @@ let songs = []; // tiks piepildīts ar fetch
 let list = [];
 let current = -1;
 let shuffleOn = false;
+let focusTrack = new URLSearchParams(window.location.search).get('track');
+let focusApplied = false;
+if(focusTrack) focusTrack = focusTrack.toLowerCase();
+const shareMenus = new Set();
+document.addEventListener('click', () => closeShareMenus());
 
 /* ---------- Ielādē songs.json ---------- */
 async function loadSongs(){
@@ -157,7 +172,15 @@ function filterRender(){
   });
   list.reverse(); // newest first
   grid.innerHTML = list.length ? '' : 'Nav atbilstošu dziesmu.';
-  list.forEach((song,i) => grid.appendChild(makeCard(song,i)));
+  list.forEach((song,i) => {
+    const card = makeCard(song,i);
+    grid.appendChild(card);
+    if(focusTrack && !focusApplied && song.title.toLowerCase() === focusTrack){
+      card.classList.add('highlight');
+      card.scrollIntoView({behavior:'smooth', block:'center'});
+      focusApplied = true;
+    }
+  });
 }
 
 function makeCard(song,i){
@@ -179,6 +202,37 @@ function makeCard(song,i){
     </div>`;
   c.querySelector('.play-btn').onclick = e => playIndex(+e.currentTarget.dataset.idx);
   c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
+  const info = c.querySelector('.info');
+  const shareRow = document.createElement('div');
+  shareRow.className = 'share-row';
+  const shareWrap = document.createElement('div');
+  shareWrap.className = 'share-wrap';
+  shareRow.appendChild(shareWrap);
+
+  const shareBtn = document.createElement('button');
+  shareBtn.className = 'share-btn';
+  shareBtn.textContent = 'Dalīties';
+  shareWrap.appendChild(shareBtn);
+
+  const menu = document.createElement('div');
+  menu.className = 'share-menu';
+  menu.innerHTML = `
+    <button class='copy-link'>Kopēt saiti</button>
+    <button class='native-share'>Dalīties ar...</button>`;
+  shareWrap.appendChild(menu);
+
+  const note = document.createElement('div');
+  note.className = 'share-note';
+  note.textContent = 'Kopē saiti ar dziesmas vāku';
+  shareWrap.appendChild(note);
+
+  const copyBtn = menu.querySelector('.copy-link');
+  const nativeBtn = menu.querySelector('.native-share');
+  shareBtn.onclick = ev => { ev.stopPropagation(); toggleShareMenu(menu); };
+  menu.onclick = ev => ev.stopPropagation();
+  copyBtn.onclick = ev => { ev.stopPropagation(); closeShareMenus(); copySongLink(song, copyBtn); };
+  nativeBtn.onclick = ev => { ev.stopPropagation(); closeShareMenus(); shareNative(song); };
+  info.appendChild(shareRow);
   return c;
 }
 
@@ -248,6 +302,91 @@ progress.onclick = e => {
   const pct = (e.clientX - r.left) / r.width;
   audio.currentTime = pct * audio.duration;
 };
+
+/* ---------- Dalīšanās ---------- */
+function songShareUrl(song){
+  const url = new URL(window.location.href);
+  url.search = '';
+  url.hash = '';
+  url.searchParams.set('track', song.title);
+  return url.toString();
+}
+
+function toggleShareMenu(menu){
+  const isOpen = !menu.classList.contains('open');
+  closeShareMenus();
+  if(isOpen){
+    menu.classList.add('open');
+    shareMenus.add(menu);
+  }
+}
+function closeShareMenus(leaveOpen){
+  [...shareMenus].forEach(m => {
+    if(leaveOpen && m === leaveOpen){ return; }
+    m.classList.remove('open');
+    shareMenus.delete(m);
+  });
+}
+
+async function fetchCoverBlob(song){
+  const imgUrl = new URL(song.image, window.location.href).href;
+  const res = await fetch(imgUrl);
+  if(!res.ok) throw new Error('Neizdevās ielādēt vāku');
+  return await res.blob();
+}
+
+async function copySongLink(song, copyBtn){
+  const shareUrl = songShareUrl(song);
+  const text = `${song.title}\n${shareUrl}`;
+  try{
+    if(navigator.clipboard && window.ClipboardItem){
+      const items = { 'text/plain': new Blob([text], {type:'text/plain'}) };
+      try{
+        const blob = await fetchCoverBlob(song);
+        const type = blob.type || 'image/png';
+        items[type] = blob;
+      }catch(err){ console.warn('Vāku nevar pievienot starpliktuvei:', err); }
+      await navigator.clipboard.write([new ClipboardItem(items)]);
+    } else if(navigator.clipboard){
+      await navigator.clipboard.writeText(text);
+    } else {
+      throw new Error('Clipboard API nav pieejams');
+    }
+    if(copyBtn){
+      const old = copyBtn.textContent;
+      copyBtn.textContent = 'Nokopēts!';
+      setTimeout(() => copyBtn.textContent = old, 1400);
+    }
+  }catch(err){
+    console.error(err);
+    alert('Neizdevās nokopēt saiti');
+  }
+}
+
+async function shareNative(song){
+  const shareUrl = songShareUrl(song);
+  const base = { title: song.title, text: song.style, url: shareUrl };
+  if(navigator.canShare){
+    try{
+      const blob = await fetchCoverBlob(song);
+      const ext = (blob.type.split('/')[1] || 'png');
+      const file = new File([blob], 'cover.' + ext, {type: blob.type});
+      const data = {...base, files:[file]};
+      if(navigator.canShare(data)){
+        await navigator.share(data);
+        return;
+      }
+    }catch(err){ console.warn('Native share ar vāku neizdevās:', err); }
+  }
+  if(navigator.share){
+    try{
+      await navigator.share(base);
+      return;
+    }catch(err){ console.warn('Native share atcelts:', err); }
+  }
+  await copySongLink(song);
+  alert('Dalīšana nav pieejama; saite nokopēta.');
+}
 </script>
 
 <!-- Google tag (gtag.js) -->
