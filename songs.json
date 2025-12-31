@@ -1001,11 +1001,18 @@
     "image": "cover/I’m on my way home for Christmas.webp",
     "style": "rock, Urban nocturnal rock–jazz crossover with a sharper, more angular edge, mid-tempo driving pulse built on tight, slightly accentuated drums and a firm, restless bassline, clean electric guitars used percussively with muted chops, dry stabs, and restrained tremolo flashes, occasional gritty harmonic swells cutting through the mix, minimal but pointed piano or Rhodes figures adding tension rather than warmth, spacious yet controlled production with darker reverb tails and subtle tape grit, vocal duet centered on a focused, unsentimental male lead paired with a cool, distant counter-voice, less blend and more contrast, verses delivered with clipped phrasing and quiet intensity, chorus opening rhythmically rather than melodically, widening the stereo field with layered but taut harmonies, understated lift driven by groove and accents instead of sentiment, modern, cinematic, slightly abrasive winter-night atmosphere, reflective but alert"
   },
-       {
+     {
     "title": "Holding the Lane",
     "audio": "music/Holding the Lane.mp3",
     "lyrics": "lyrics/Holding the Lane.txt",
     "image": "cover/Holding the Lane.webp",
     "style": "rock, A contemporary art-rock / modern jazz crossover with a cold, nocturnal edge, driven by a mid-tempo pulse that moves forward without comfort. Brushed and lightly accented drums lock into a tight, unsmiling groove with a restless walking bass that refuses resolution. Clean electric guitars cut sharply through the mix with muted chops, dry stabs, and clipped tremolo flashes, joined only occasionally by abrasive harmonic swells that add friction rather than color. Piano or Rhodes figures are sparse and functional, used to underline tension instead of emotion. Production is spacious but deliberately unforgiving, marked by darker reverb tails, subtle tape grit, and controlled dynamics that keep everything exposed. Vocal duets center on a flat, unsentimental male lead paired with a cool, detached counter-voice; the interaction feels measured and ironic rather than blended"
+  },
+   {
+    "title": "Igo - Dziesma Sniegbaltītei (Cover by PUTEKLIS)",
+    "audio": "music/Igo - Dziesma Sniegbaltītei (Cover).mp3",
+    "lyrics": "lyrics/Igo - Dziesma Sniegbaltītei (Cover).txt",
+    "image": "cover/Igo - Dziesma Sniegbaltītei (Cover).webp",
+    "style": "rock, soft high-register male vocal, airy emotional tenor, fragile romantic tone, breathy phrasing with intimacy, gentle vibrato restraint, moody acoustic folk rock drive, atmospheric folk rock, cinematic indie folk, nocturnal romantic Americana, pulsing arpeggiated acoustic guitar, shimmering electric guitar shadows, delayed guitar halos, warm walking bassline under tension, brushed snare shuffle rhythm, subtle tambourine ghost hits, minor-key cinematic lift, slow-burn dynamic build, dusk-lit road song energy, flickering lantern ambience, restless rural melancholy, intimate late-evening mood, shadowed melodic hooks, analog warmth, dusty tape saturation, spacious reverb tails, wide stereo air, emotional restraint, romantic melancholy, atmospheric storytelling, quiet intensity"
   }
 ]

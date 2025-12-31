@@ -1007,6 +1007,13 @@ const songs = [
     "lyrics": "lyrics/Holding the Lane.txt",
     "image": "cover/Holding the Lane.webp",
     "style": "rock, A contemporary art-rock / modern jazz crossover with a cold, nocturnal edge, driven by a mid-tempo pulse that moves forward without comfort. Brushed and lightly accented drums lock into a tight, unsmiling groove with a restless walking bass that refuses resolution. Clean electric guitars cut sharply through the mix with muted chops, dry stabs, and clipped tremolo flashes, joined only occasionally by abrasive harmonic swells that add friction rather than color. Piano or Rhodes figures are sparse and functional, used to underline tension instead of emotion. Production is spacious but deliberately unforgiving, marked by darker reverb tails, subtle tape grit, and controlled dynamics that keep everything exposed. Vocal duets center on a flat, unsentimental male lead paired with a cool, detached counter-voice; the interaction feels measured and ironic rather than blended"
+  },
+       {
+    "title": "Igo - Dziesma Sniegbaltītei (Cover by PUTEKLIS)",
+    "audio": "music/Igo - Dziesma Sniegbaltītei (Cover).mp3",
+    "lyrics": "lyrics/Igo - Dziesma Sniegbaltītei (Cover).txt",
+    "image": "cover/Igo - Dziesma Sniegbaltītei (Cover).webp",
+    "style": "rock, soft high-register male vocal, airy emotional tenor, fragile romantic tone, breathy phrasing with intimacy, gentle vibrato restraint, moody acoustic folk rock drive, atmospheric folk rock, cinematic indie folk, nocturnal romantic Americana, pulsing arpeggiated acoustic guitar, shimmering electric guitar shadows, delayed guitar halos, warm walking bassline under tension, brushed snare shuffle rhythm, subtle tambourine ghost hits, minor-key cinematic lift, slow-burn dynamic build, dusk-lit road song energy, flickering lantern ambience, restless rural melancholy, intimate late-evening mood, shadowed melodic hooks, analog warmth, dusty tape saturation, spacious reverb tails, wide stereo air, emotional restraint, romantic melancholy, atmospheric storytelling, quiet intensity"
   }
 
 ];
