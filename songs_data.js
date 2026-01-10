@@ -1014,6 +1014,13 @@ const songs = [
     "lyrics": "lyrics/Igo - Dziesma Sniegbaltītei (Cover).txt",
     "image": "cover/Igo - Dziesma Sniegbaltītei (Cover).webp",
     "style": "rock, soft high-register male vocal, airy emotional tenor, fragile romantic tone, breathy phrasing with intimacy, gentle vibrato restraint, moody acoustic folk rock drive, atmospheric folk rock, cinematic indie folk, nocturnal romantic Americana, pulsing arpeggiated acoustic guitar, shimmering electric guitar shadows, delayed guitar halos, warm walking bassline under tension, brushed snare shuffle rhythm, subtle tambourine ghost hits, minor-key cinematic lift, slow-burn dynamic build, dusk-lit road song energy, flickering lantern ambience, restless rural melancholy, intimate late-evening mood, shadowed melodic hooks, analog warmth, dusty tape saturation, spacious reverb tails, wide stereo air, emotional restraint, romantic melancholy, atmospheric storytelling, quiet intensity"
+  },
+  {
+    "title": "Oda priekam (Cover by PUTEKLIS)",
+    "audio": "music/Oda priekam (Cover).mp3",
+    "lyrics": "lyrics/Oda priekam (Cover).txt",
+    "image": "cover/Oda priekam (Cover).webp",
+    "style": "rock, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
   }
 
 ];
