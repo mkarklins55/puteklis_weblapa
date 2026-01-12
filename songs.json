@@ -27,14 +27,14 @@
     "image": "cover/We are driving.webp",
     "style": "country, country like 1970's"
   },
-   {
+  {
     "title": "Yesterday I searched for future's perfection",
     "audio": "music/Yesterday I searched for future's perfec.mp3",
     "lyrics": "lyrics/1.txt",
     "image": "cover/Yesterday I searched for future's perfect.webp",
     "style": "metal, progresive metal"
   },
-   {
+  {
     "title": "Dziesmiņa par puteklīti",
     "audio": "music/Dziesmina par putekliti.mp3",
     "lyrics": "lyrics/Dziesmina par putekliti.txt",
@@ -475,7 +475,7 @@
     "image": "cover/I Still Boil.webp",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, post-digital crooner style, burnout wave, synthetic urban lament, stark dark electropop, aesthetic anti-ballad"
   },
-   {
+  {
     "title": "Bur man laimi",
     "audio": "music/Bur man laimi.mp3",
     "lyrics": "lyrics/Bur man laimi.txt",
@@ -483,7 +483,7 @@
     "image": "cover/burunduki_eurovision.webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
   },
-    {
+  {
     "title": "Šķērsu dienu Saule teka",
     "audio": "music/Šķērsu dienu Saule tek.mp3",
     "lyrics": "lyrics/Šķērsu dienu Saule tek.txt",
@@ -497,308 +497,308 @@
     "image": "cover/someday_again.webp",
     "style": "blues, Noir Lounge Psych, Baritone Blues Noir"
   },
-    {
+  {
     "title": "Tumša nakte, zaļa zāle",
     "audio": "music/Tumša nakte, zaļa zāle.mp3",
     "lyrics": "lyrics/Tumša nakte, zaļa zāle.txt",
     "image": "cover/tumsa_nakte.webp",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave ballad, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   },
-     {
+  {
     "title": "Rikšiem bērīti es palaidu",
     "audio": "music/Rikšiem bērīti es palaidu.mp3",
     "lyrics": "lyrics/Rikšiem bērīti es palaidu.txt",
     "image": "cover/riksiem_beriti.webp",
     "style": "synthpop, train beat rhythm, outlaw country, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, post-digital crooner style, burnout wave, synthetic urban lament, stark dark electropop, aesthetic anti-ballad"
   },
-      {
+  {
     "title": "Four Wolves",
     "audio": "music/Four wolves leapt into the brush.mp3",
     "lyrics": "lyrics/Four wolves leapt into the brush.txt",
     "image": "cover/Four_Wolves.webp",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   },
-        {
+  {
     "title": "Raganu nakts",
     "audio": "music/Tiesa, tiesa, ne meliņi, līgo, līgo.mp3",
     "lyrics": "lyrics/Tiesa, tiesa, ne meliņi, līgo, līgo.txt",
     "image": "cover/Raganu_nakts.webp",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave ballad, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   },
-        {
+  {
     "title": "Katra vieta klāt savs smukums",
     "audio": "music/Katra vieta klāt savs smukums.mp3",
     "lyrics": "lyrics/Katra vieta klāt savs smukums.txt",
     "image": "cover/katra_vieta.webp",
     "style": "synthpop, train beat rhythm, outlaw country, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, post-digital crooner style, burnout wave, synthetic urban lament, stark dark electropop, aesthetic anti-ballad"
   },
-      {
+  {
     "title": "I’m the palm",
     "audio": "music/I’m the palm.mp3",
     "lyrics": "lyrics/I’m the palm.txt",
     "image": "cover/the_palm.webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
   },
-       {
+  {
     "title": "The wizard knocks upon my door",
     "audio": "music/The wizard knocks upon my door.mp3",
     "lyrics": "lyrics/The wizard knocks upon my door.txt",
     "image": "cover/wizard.webp",
     "style": "country,alt-country, storytelling style"
   },
-         {
+  {
     "title": "The World Keeps Turning",
     "audio": "music/The world keeps turning, it never stops.mp3",
     "lyrics": "lyrics/The world keeps turning, it never stops.txt",
     "image": "cover/world_turning.webp",
     "style": "country,alt-country, storytelling style"
   },
-           {
+  {
     "title": "Vainagu deja",
     "audio": "music/Es saviju vainadziņu, līgo, Jānīti.mp3",
     "lyrics": "lyrics/Es saviju vainadziņu, līgo, Jānīti.txt",
     "image": "cover/vainagu_deja.webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
   },
-            {
+  {
     "title": "Desmit mazi kukainīši",
     "audio": "music/Desmit mazi kukainīši ceļoja ar plostu.mp3",
     "lyrics": "lyrics/Desmit mazi kukainīši ceļoja ar plostu.txt",
     "image": "cover/desmit_kukainisi.webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
   },
-              {
+  {
     "title": "Kukainīt",
     "audio": "music/Kukainīt (Remix).mp3",
     "lyrics": "lyrics/Kukainīt (Remix).txt",
     "image": "cover/kukainit.webp",
     "style": "synthwave, Breakstep Synthwave / Dark Electro / Industrial Fusion"
   },
-                {
+  {
     "title": "Uijā, uijā, nikni vilki",
     "audio": "music/četri vilki.mp3",
     "lyrics": "lyrics/četri vilki.txt",
     "image": "cover/cetri_vilki.webp",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro"
   },
-               {
+  {
     "title": "Iekšējās kārtības noteikumi",
     "audio": "music/Ieksejas_kartibas_noteikumi.mp3",
     "lyrics": "lyrics/Ieksejas_kartibas_noteikumi.txt",
     "image": "cover/Ieksejas_kartibas_noteikumi.webp",
     "style": "trance-folk, electro-noir,ritual chant-pop"
   },
-                 {
+  {
     "title": "The World Keeps Turning (remix)",
     "audio": "music/The world keeps turning, it never stops (Remix).mp3",
     "lyrics": "lyrics/The world keeps turning, it never stops (Remix).txt",
     "image": "cover/world_turning_remix.webp",
     "style": "country, alt-country, storytelling style, erotic darkwave ballad, americana, outlaw country noir"
   },
-      {
+  {
     "title": "Coffeeshop — “Hedgehog in the Fog”",
     "audio": "music/Coffeeshop — “Hedgehog in the Fog”.mp3",
     "lyrics": "lyrics/Coffeeshop — “Hedgehog in the Fog”.txt",
     "image": "cover/hedgehog.webp",
     "style": "synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   },
-       {
+  {
     "title": "Dārgie kaimiņi",
     "audio": "music/Dārgie kaimiņi, (Remix).mp3",
     "lyrics": "lyrics/Dārgie kaimiņi, (Remix).txt",
     "image": "cover/dargie_kaimini.webp",
     "style": "Cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabare"
   },
-      {
+  {
     "title": "Kāmīši",
     "audio": "music/Zirgi sazviedzas, (Remix).mp3",
     "lyrics": "lyrics/Zirgi sazviedzas, (Remix).txt",
     "image": "cover/kamisi.webp",
     "style": "Cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabare"
   },
-     {
+  {
     "title": "RUNĀ RĪGAS PARKA LAUVA",
     "audio": "music/RUNĀ RĪGAS PARKA LAUVA.mp3",
     "lyrics": "lyrics/RUNĀ RĪGAS PARKA LAUVA.txt",
     "image": "cover/RUNĀ RĪGAS PARKA LAUVA.webp",
     "style": "Country, train beat rhythm, outlaw country"
   },
-     {
+  {
     "title": "Žurku nams",
     "audio": "music/zurku_nams.mp3",
     "lyrics": "lyrics/zurku_nams.txt",
     "image": "cover/zurku_nams.webp",
     "style": "electro, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, blues, outlaw country noir, desert blues"
   },
-      {
+  {
     "title": "Vilku dzejolis",
     "audio": "music/VILKU DZEJOLIS.mp3",
     "lyrics": "lyrics/VILKU DZEJOLIS.txt",
     "image": "cover/VILKU DZEJOLIS.webp",
     "style": "country, train beat rhythm, outlaw country, country gospel, southern gothic, americana, dark folk, synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   },
-        {
+  {
     "title": "GAIDĪTĀJA MEŽA CŪKA",
     "audio": "music/Vai tas ezers ir vai upe - (Remix).mp3",
     "lyrics": "lyrics/Vai tas ezers ir vai upe - (Remix).txt",
     "image": "cover/Vai tas ezers ir vai upe - (Remix).webp",
     "style": "synthpop, Industrial Synthpop, Brechtian Electro-Cabaret, Shockwave Gothic Glam"
   },
-   {
+  {
     "title": "KO PROT PELES PIELIEKAMĀ",
     "audio": "music/Peles pieliekamā prot, (Remix).mp3",
     "lyrics": "lyrics/Peles pieliekamā prot, (Remix).txt",
     "image": "cover/Peles pieliekamā prot, (Remix).webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam"
   },
-   {
+  {
     "title": "Pa garo dienu (Remix)",
     "audio": "music/Pa garo dienu (Remix).mp3",
     "lyrics": "lyrics/Pa garo dienu (Remix).txt",
     "image": "cover/Pa garo dienu (Remix).webp",
     "style": "country, train beat rhythm, outlaw country, country gospel"
   },
-      {
+  {
     "title": "The rain’s been falling, (Remix)",
     "audio": "music/The rain’s been falling, (Remix).mp3",
     "lyrics": "lyrics/The rain’s been falling, (Remix).txt",
     "image": "cover/The rain’s been falling, (Remix).webp",
     "style": "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
   },
-        {
+  {
     "title": "I’m a little Don Quixote",
     "audio": "music/I’m a little Don Quixote.mp3",
     "lyrics": "lyrics/I’m a little Don Quixote.txt",
     "image": "cover/I’m a little Don Quixote.webp",
     "style": "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial"
   },
-          {
+  {
     "title": "When years ago, in silence they burned (Remix)",
     "audio": "music/When years ago, in silence they burned (Remix).mp3",
     "lyrics": "lyrics/When years ago, in silence they burned (Remix).txt",
     "image": "cover/When years ago, in silence they burned (Remix).webp",
     "style": "cabaret, Dark Cabaret, Brechtian Punk Cabaret, Macabre Folk, Circus Noir, Murder Ballads, Gothic Vaudeville, Absurdist Theater Music, Burlesque Gothic, Theatrical Falsetto Punk, Apocalyptic Cabaret, Avant-Garde Vaudeville, Dark Lyrical Theater, Expressionist Cabaret, Dark Cabaret Pop, Punk Noir, Cabaret Rock, Satirical Theater Music, Dark Chanson"
   },
-          {
+  {
     "title": "Enough of good and evil – enough. (Remix)",
     "audio": "music/Enough of good and evil – enough. (Remix).mp3",
     "lyrics": "lyrics/Enough of good and evil – enough. (Remix).txt",
     "image": "cover/Enough of good and evil – enough. (Remix).webp",
     "style": "blues, Noir Lounge Psych, Baritone Blues Noir"
   },
-         {
+  {
     "title": "Metaphysical barbarism",
     "audio": "music/metaphysical barbarism.mp3",
     "lyrics": "lyrics/metaphysical barbarism.txt",
     "image": "cover/metaphysical barbarism.webp",
     "style": "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
   },
-          {
+  {
     "title": "Aprēķins (Dievs un kasiere)",
     "audio": "music/Aprēķins (Dievs un kasiere).mp3",
     "lyrics": "lyrics/Aprēķins (Dievs un kasiere).txt",
     "image": "cover/Aprēķins (Dievs un kasiere).webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
   },
-           {
+  {
     "title": "Please, observe the silence",
     "audio": "music/Please, observe the silence.mp3",
     "lyrics": "lyrics/Please, observe the silence.txt",
     "image": "cover/Please, observe the silence.webp",
     "style": "blues, Urban Voodoo Rock, Sexualized Swamp Blues / Baritone Noir"
   },
-    {
+  {
     "title": "My screen’s cluttered with half-born thoughts",
     "audio": "music/My screen’s cluttered with half-born tho (Remix).mp3",
     "lyrics": "lyrics/My screen’s cluttered with half-born tho (Remix).txt",
     "image": "cover/My screen’s cluttered with half-born tho (Remix).webp",
     "style": "darkwave, alternative noir folk, art rock, avant-garde ballad, baritone post-folk, cinematic darkwave, dark americana, dark cabaret, doom folk, experimental poetry rock, gothic storytelling, indie noir, minimal post-rock, narrative drone folk, neofolk noir, post-industrial ballad"
   },
-     {
+  {
     "title": "TERRIBLE WORDS",
     "audio": "music/TERRIBLE WORDS.mp3",
     "lyrics": "lyrics/TERRIBLE WORDS.txt",
     "image": "cover/TERRIBLE WORDS.webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
   },
-     {
+  {
     "title": "Kaķuzeme",
     "audio": "music/Kur piesaulē žogs, (Remix).mp3",
     "lyrics": "lyrics/Kur piesaulē žogs, (Remix).txt",
     "image": "cover/Kur piesaulē žogs, (Remix).webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
   },
-     {
+  {
     "title": "NO KURIENES?",
     "audio": "music/NO KURIENES.mp3",
     "lyrics": "lyrics/NO KURIENES.txt",
     "image": "cover/NO KURIENES.webp",
     "style": "electro, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, blues, outlaw country noir, desert blues"
   },
-         {
+  {
     "title": "Muļķu spēles",
     "audio": "music/Kā ar puļķi (Remix).mp3",
     "lyrics": "lyrics/Kā ar puļķi (Remix).txt",
     "image": "cover/Kā ar puļķi (Remix).webp",
     "style": "synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   },
-          {
+  {
     "title": "Dievs, ko tu iesāksi bez mums",
     "audio": "music/Dievs, ko tu iesāksi bez mums (Remix).mp3",
     "lyrics": "lyrics/Dievs, ko tu iesāksi bez mums (Remix).txt",
     "image": "cover/Dievs, ko tu iesāksi bez mums (Remix).webp",
     "style": "blues, outlaw country noir, desert blues, southern existentialism, Noir Lounge Psych, Baritone Blues Noir"
   },
-    {
+  {
     "title": "Ādams",
     "audio": "music/Ādams.mp3",
     "lyrics": "lyrics/Ādams.txt",
     "image": "cover/Ādams.webp",
     "style": "blues, desert blues, southern existentialism, Noir Lounge Psych, erotic darkwave ballad, sleazy synth noir, cinematic fetish pop, folk polyphony, cracked and nicotine-drenched voice"
   },
-      {
+  {
     "title": "zālīte pa riņķi",
     "audio": "music/zālīte pa riņķi.mp3",
     "lyrics": "lyrics/zālīte pa riņķi.txt",
     "image": "cover/zālīte pa riņķi.webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
   },
-      {
+  {
     "title": "labi ka diena ar nakti vēl mainās (Remix)",
     "audio": "music/labi ka diena ar nakti vēl mainās (Remix) (Remastered x2) (Remix).mp3",
     "lyrics": "lyrics/labi ka diena ar nakti vēl mainās (Remix) (Remastered x2) (Remix).txt",
     "image": "cover/labi ka diena ar nakti vēl mainās (Remix) (Remastered x2) (Remix).webp",
     "style": "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
   },
-        {
+  {
     "title": "Man nepatīk vārds “iecietība” — (Remix)",
     "audio": "music/Man nepatīk vārds iecietība — (Remix).mp3",
     "lyrics": "lyrics/Man nepatīk vārds iecietība — (Remix).txt",
     "image": "cover/Man nepatīk vārds iecietība — (Remix).webp",
     "style": "blues, Urban Voodoo Rock, Sexualized Swamp Blues / Baritone Noir"
   },
-    {
+  {
     "title": "Velvet Guillotine",
     "audio": "music/Whiskers sharp, high heels click (Remix).mp3",
     "lyrics": "lyrics/Whiskers sharp, high heels click (Remix).txt",
     "image": "cover/Whiskers sharp, high heels click (Remix).webp",
     "style": "darkwave, trance-folk, erotic darkwave, loungecore, sarcastic electronic slapstick, anarcho-pop drama, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   },
-      {
+  {
     "title": "Thighs Like Thrones",
     "audio": "music/Lips stitched in velvet law, (Remix).mp3",
     "lyrics": "lyrics/Lips stitched in velvet law, (Remix).txt",
     "image": "cover/Lips stitched in velvet law, (Remix).webp",
     "style": "rock, Erotic allegorical rock, trenchcoat jazz, dirty glitter-punk, industrial burlesque (no cabaret vocals), electro-sleaze ballad, bondage gospel, psychedelic strip-poetry, decadent art-punk, urban torch song"
   },
-    {
+  {
     "title": "Dust for Dinner",
     "audio": "music/Dust for Dinner.mp3",
     "lyrics": "lyrics/Dust for Dinner.txt",
     "image": "cover/Dust for Dinner.webp",
     "style": "rock, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial"
   },
-   {
+  {
     "title": "The Soup Can Fuck Itself",
     "audio": "music/Time cracks like cheap porcelain — (Remix) (1).mp3",
     "lyrics": "lyrics/Time cracks like cheap porcelain — (Remix) (1).txt",
@@ -812,14 +812,14 @@
     "image": "cover/Stick me like a Sunday candle, (Remix).webp",
     "style": "rock, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial, Witch-Glam Blues / Sludge Cabaret, Neo-sad folk-postindustrial blues with Baltic electro-twist and decadent saxafon, Industrial Shock Rock, Erotic Anti-Gospel, Glam Horror Ballad, Martyr Electro-Goth, Ritual Darkwave, Post-Sacramental Rock, Sinister Synth Rock, Doom-Pop Sermoncore, Fetish Cathedral Noir, Neon Crucifixion Wave"
   },
-      {
+  {
     "title": "Ēnas veselas",
     "audio": "music/Ēnas veselas.mp3",
     "lyrics": "lyrics/Ēnas veselas.txt",
     "image": "cover/Ēnas veselas.webp",
     "style": "rock, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, trance-folk, erotic darkwave, loungecore, sarcastic electronic slapstick, anarcho-pop drama, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
   },
-       {
+  {
     "title": "Between engines and neon lights, (Remix)",
     "audio": "music/Between engines and neon lights, (Remix).mp3",
     "lyrics": "lyrics/Between engines and neon lights, (Remix).txt",
@@ -833,42 +833,42 @@
     "image": "cover/Tin Soldiers.webp",
     "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
   },
-    {
+  {
     "title": "Under the White Acacias",
     "audio": "music/The sky split open, soft and numb, (Remix).mp3",
     "lyrics": "lyrics/The sky split open, soft and numb, (Remix).txt",
     "image": "cover/The sky split open, soft and numb, (Remix).webp",
     "style": "ethno, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   },
-      {
+  {
     "title": "Zirgs, kas naktī dzied",
     "audio": "music/Zirgs, kas naktī dzied.mp3",
     "lyrics": "lyrics/Zirgs, kas naktī dzied.txt",
     "image": "cover/Zirgs, kas naktī dzied.webp",
     "style": "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
   },
-     {
+  {
     "title": "Zirgs, kas naktī dzied (techno)",
     "audio": "music/zirgs kas naktī dzied - rock & techno.mp3",
     "lyrics": "lyrics/zirgs kas naktī dzied - rock & techno.txt",
     "image": "cover/zirgs kas naktī dzied - rock & techno.webp",
     "style": "techno, Deep Melodic Techno & Trance Mix, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad"
   },
-   {
+  {
     "title": "Eight little creatures",
     "audio": "music/Eight little creatures.mp3",
     "lyrics": "lyrics/Eight little creatures.txt",
     "image": "cover/Eight little creatures.webp",
     "style": "techno, Deep Melodic Techno & Trance Mix, Industrial glam rock, Baltic ethno-electro, Melodic Industrial Rock, Dark Ballad"
   },
-    {
+  {
     "title": "Eight little creatures (ambient)",
     "audio": "music/Eight little creatures (ambient).mp3",
     "lyrics": "lyrics/Eight little creatures (ambient).txt",
     "image": "cover/Eight little creatures (ambient).webp",
     "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
   },
-   {
+  {
     "title": "Puteklītes luteklites",
     "audio": "music/Puteklītes luteklites.mp3",
     "lyrics": "lyrics/Puteklītes luteklites.txt",
@@ -889,7 +889,7 @@
     "image": "cover/Silent Lindens.webp",
     "style": "rock, Erotic allegorical rock, trenchcoat jazz, dirty glitter-punk, industrial burlesque (no cabaret vocals), electro-sleaze ballad, bondage gospel, psychedelic strip-poetry, decadent art-punk, urban torch song"
   },
-    {
+  {
     "title": "APVEDCEĻŠ - ZEMENES  (cover by PUTEKLIS)",
     "audio": "music/APVEDCEĻŠ - ZEMENES  (cover by PUTEKLIS).mp3",
     "lyrics": "lyrics/APVEDCEĻŠ - ZEMENES  (cover by PUTEKLIS).txt",
@@ -903,70 +903,70 @@
     "image": "cover/Ko Tu ar mani dari! (Cover by PUTEKLIS).webp",
     "style": "pop, dream pop, ambient pop, slowcore, shoegaze, lo-fi, melancholic indie, romantic synthwave, atmospheric minimalism, nostalgic bedroom pop, cinematic sadcore, Gothic Western, Alt-Country Noir, Latvian Industrial Americana"
   },
-    {
+  {
     "title": "Dons - Tuvums (Cover by PUTEKLIS)",
     "audio": "music/Dons - Tuvums.mp3",
     "lyrics": "lyrics/Dons - Tuvums.txt",
     "image": "cover/Dons - Tuvums.webp",
     "style": "rock, Soft Neue Deutsche Härte"
   },
-   {
+  {
     "title": "Running Up That Hill (Cover)",
     "audio": "music/Running Up That Hill (Cover).mp3",
     "lyrics": "lyrics/Running Up That Hill (Cover).txt",
     "image": "cover/Running Up That Hill (Cover).webp",
     "style": "blues, desert blues, southern existentialism, Noir Lounge Psych, erotic darkwave ballad, sleazy synth noir, cinematic fetish pop, folk polyphony, cracked and nicotine-drenched voice"
   },
-   {
+  {
     "title": "Desert wind in my teeth",
     "audio": "music/Desert wind in my teeth.mp3",
     "lyrics": "lyrics/Desert wind in my teeth.txt",
     "image": "cover/Desert wind in my teeth.webp",
     "style": "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
   },
-     {
+  {
     "title": "Stand By Me - (Cover by PUTEKLIS)",
     "audio": "music/Stand By Me - (Cover).mp3",
     "lyrics": "lyrics/Stand By Me - (Cover).txt",
     "image": "cover/Stand By Me - (Cover).webp",
     "style": "country, americana country, western, bluegrass influences"
   },
-     {
+  {
     "title": "Imants Daksis - Krupis (Cover by PUTEKLIS)",
     "audio": "music/Imants Daksis - Krupis (Cover).mp3",
     "lyrics": "lyrics/Imants Daksis - Krupis (Cover).txt",
     "image": "cover/Imants Daksis - Krupis (Cover).webp",
     "style": "rock, rural surreal noir folk rock, vintage psych blues, nicotine-cracked baritone, coughing whisper vocal texture, desert minimal blues guitar riffs, tremolo-drenched electric guitar, spring-reverb western guitar twang, detuned upright piano clang, broken harmonium drones, wheezing Farfisa organ ghosts, dusty analog monosynth bass fog, tape-warped vintage synth pads, cracked drum brush shuffle, rusted tom pulse, folkloric uncanny valley mood, rural occult psychedelia, twilight gate mysticism, domestic surreal noir atmosphere, waiting-horror folk tension, false prophet visitor mythos, damp wood and cold milk aesthetics, slow burning cinematic rural darkness"
   },
-       {
+  {
     "title": "Still Corners - Far Rider (Cover by PUTEKLIS)",
     "audio": "music/Still Corners - Far Rider (Cover).mp3",
     "lyrics": "lyrics/Still Corners - Far Rider (Cover).txt",
     "image": "cover/Still Corners - Far Rider (Cover).webp",
     "style": "rock, moody acoustic folk rock drive, gravelly baritone with nervous edge, pulsing arpeggiated acoustic guitar, jangling electric guitar shadows, walking bassline under tension, brushed snare shuffle rhythm, light tambourine ghost hits, minor-key cinematic lift, dusty analog warmth, tape-saturated drum room, late-evening roadside energy, flickering lantern mood, restless rural melancholy, shadowed melodic hooks"
   },
-          {
+  {
     "title": "Another Brick In The Wall [Pink Floyd] (Cover by PUTEKLIS)",
     "audio": "music/Another Brick In The Wall [Pink Floyd] (Cover).mp3",
     "lyrics": "lyrics/Another Brick In The Wall [Pink Floyd] (Cover).txt",
     "image": "cover/Another Brick In The Wall [Pink Floyd] (Cover).webp",
     "style": "rock, nocturnal folk rock cinematic drive, gently pulsing rhythm undercurrent, foggy reverb-washed environment, subtle tape-worn ambience, shimmering tremolo guitar ghosts, tense walking bass movement, restrained kick-snare heartbeat, expansive spatial width, dark industrial baritone vocal character, emotionally cracked vocal edge, controlled rasp intensity, warm-distorted throat-supported tone, slow but urgent phrasing, cold plate reverb tail, subtle rhythmic delay echoes"
   },
-             {
+  {
     "title": "Apkal Manu Kumeliņu (Cover by PUTEKLIS)",
     "audio": "music/Apkal Manu Kumeliņu.mp3",
     "lyrics": "lyrics/Apkal Manu Kumeliņu.txt",
     "image": "cover/Apkal Manu Kumeliņu.webp",
     "style": "jazz, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
   },
-              {
+  {
     "title": "Lights of Euphoria - Here comes the Rain (Cover by PUTEKLIS)",
     "audio": "music/Lights of Euphoria - Here comes the Rain -  (Cover).mp3",
     "lyrics": "lyrics/Lights of Euphoria - Here comes the Rain -  (Cover).txt",
     "image": "cover/Lights of Euphoria - Here comes the Rain -  (Cover).webp",
     "style": "rock, Urban nocturnal rock–jazz crossover with a sharper, more angular edge, mid-tempo driving pulse built on tight, slightly accentuated drums and a firm, restless bassline, clean electric guitars used percussively with muted chops, dry stabs, and restrained tremolo flashes, occasional gritty harmonic swells cutting through the mix, minimal but pointed piano or Rhodes figures adding tension rather than warmth, spacious yet controlled production with darker reverb tails and subtle tape grit, vocal duet centered on a focused, unsentimental male lead paired with a cool, distant counter-voice, less blend and more contrast, verses delivered with clipped phrasing and quiet intensity, chorus opening rhythmically rather than melodically, widening the stereo field with layered but taut harmonies, understated lift driven by groove and accents instead of sentiment, modern, cinematic, slightly abrasive winter-night atmosphere, reflective but alert"
   },
-   {
+  {
     "title": "Wham! - Last Christmas (Country) (Cover by PUTEKLIS)",
     "audio": "music/Wham! - Last Christmas (Country).mp3",
     "lyrics": "lyrics/Wham! - Last Christmas (Country).txt",
@@ -980,35 +980,35 @@
     "image": "cover/Tell me where you’ve been tonight.webp",
     "style": "dance, Urban Noir Dance, Dark Dance Pop, Electro Noir, Provocative Club Pop, Minimal Dark Disco, Contemporary Art-Rock Crossover, Modern Jazz-Inflected Pop, Cinematic Night-Drive Pop, Tension-Driven Dance Music, Dominance-Focused Vocal Duet Pop, Cold Urban Electronic, Runway Noir Pop"
   },
-   {
+  {
     "title": "Baltā dziesma (Cover by PUTEKLIS)",
     "audio": "music/Baltā dziesma (Cover).mp3",
     "lyrics": "lyrics/Baltā dziesma (Cover).txt",
     "image": "cover/Baltā dziesma (Cover).webp",
     "style": "dance, Urban Noir Dance with Art-Rock Undertones, Dark Dance / Modern Jazz Crossover, Electro-Noir with Minimal Art-Rock, Night-Drive Noir Dance with Jazz Harmonic Color, Minimal Dark Disco infused with Contemporary Art-Rock, Tension-Driven Dance Music with Jazz-Informed Groove, Cinematic Noir Dance with Brushed-Drum Sensibility, Cold Urban Electronica with Modern Jazz Harmony, Provocative Club Noir with Art-Rock Guitar Textures, Body-Driven Dark Dance with Subtle Jazz Piano and Rhodes Accents"
   },
-    {
+  {
     "title": "EZERS (Cover by PUTEKLIS)",
     "audio": "music/EZERS (Cover).mp3",
     "lyrics": "lyrics/EZERS (Cover).txt",
     "image": "cover/EZERS (Cover).webp",
     "style": "rock, An intimate, acoustic-rooted song shaped by post-rock sensibilities and a contemporary art-rock / modern jazz crossover, infused with rural surreal noir folk-rock and vintage psych-blues textures, A steady, lightly propulsive mid-tempo groove built on brushed drums and a supple bass line carries a cracked shuffle feel, grounded yet uneasy, Electric guitars shift between muted rhythmic stabs, tremolo-drenched swells, and desert-leaning blues riffs with a faint western twang, while detuned upright piano hits, broken harmonium drones, and ghostly organ tones add an uncanny, folkloric edge, The vocal core is a nicotine-worn baritone—physically present, restrained, and tense—paired with a secondary voice that enters as whispers or strained falsetto fragments, blending like inner echoes rather than contrasts, Analog tape character, light saturation, and airy reverb create a dusty, nocturnal soundscape that feels cinematic and slow-burning, balancing urban elegance with rural darkness"
   },
-     {
+  {
     "title": "I’m on my way home for Christmas",
     "audio": "music/I’m on my way home for Christmas.mp3",
     "lyrics": "lyrics/I’m on my way home for Christmas.txt",
     "image": "cover/I’m on my way home for Christmas.webp",
     "style": "rock, Urban nocturnal rock–jazz crossover with a sharper, more angular edge, mid-tempo driving pulse built on tight, slightly accentuated drums and a firm, restless bassline, clean electric guitars used percussively with muted chops, dry stabs, and restrained tremolo flashes, occasional gritty harmonic swells cutting through the mix, minimal but pointed piano or Rhodes figures adding tension rather than warmth, spacious yet controlled production with darker reverb tails and subtle tape grit, vocal duet centered on a focused, unsentimental male lead paired with a cool, distant counter-voice, less blend and more contrast, verses delivered with clipped phrasing and quiet intensity, chorus opening rhythmically rather than melodically, widening the stereo field with layered but taut harmonies, understated lift driven by groove and accents instead of sentiment, modern, cinematic, slightly abrasive winter-night atmosphere, reflective but alert"
   },
-     {
+  {
     "title": "Holding the Lane",
     "audio": "music/Holding the Lane.mp3",
     "lyrics": "lyrics/Holding the Lane.txt",
     "image": "cover/Holding the Lane.webp",
     "style": "rock, A contemporary art-rock / modern jazz crossover with a cold, nocturnal edge, driven by a mid-tempo pulse that moves forward without comfort. Brushed and lightly accented drums lock into a tight, unsmiling groove with a restless walking bass that refuses resolution. Clean electric guitars cut sharply through the mix with muted chops, dry stabs, and clipped tremolo flashes, joined only occasionally by abrasive harmonic swells that add friction rather than color. Piano or Rhodes figures are sparse and functional, used to underline tension instead of emotion. Production is spacious but deliberately unforgiving, marked by darker reverb tails, subtle tape grit, and controlled dynamics that keep everything exposed. Vocal duets center on a flat, unsentimental male lead paired with a cool, detached counter-voice; the interaction feels measured and ironic rather than blended"
   },
-   {
+  {
     "title": "Igo - Dziesma Sniegbaltītei (Cover by PUTEKLIS)",
     "audio": "music/Igo - Dziesma Sniegbaltītei (Cover).mp3",
     "lyrics": "lyrics/Igo - Dziesma Sniegbaltītei (Cover).txt",
@@ -1020,6 +1020,13 @@
     "audio": "music/Oda priekam (Cover).mp3",
     "lyrics": "lyrics/Oda priekam (Cover).txt",
     "image": "cover/Oda priekam (Cover).webp",
+    "style": "rock, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
+  },
+  {
+    "title": "Pilns Smaržu Un Pilns Žūžu (Cover by PUTEKLIS)",
+    "audio": "music/Pilns_Smaržu_Un_Pilns_Žūžu.mp3",
+    "lyrics": "lyrics/Pilns_Smaržu_Un_Pilns_Žūžu.txt",
+    "image": "cover/Pilns_Smaržu_Un_Pilns_Žūžu.webp",
     "style": "rock, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
   }
 ]
