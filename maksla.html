@@ -2559,25 +2559,14 @@ document.addEventListener('DOMContentLoaded', () => {
           const dateKey = formatTodayKey();
           const target = document.getElementById('namedayNames');
           try {
-            const [tradResp, paplResp] = await Promise.all([
-              fetch('varda_dienas/latv_trad.csv', { cache: 'no-store' }),
-              fetch('varda_dienas/latv_papl.csv', { cache: 'no-store' }),
-            ]);
-            let tradNames = '';
-            let paplNames = '';
-            if (tradResp.ok) {
-              const tradText = await tradResp.text();
-              tradNames = findNamesForDate(parseCsvLines(tradText), dateKey);
-            }
-            if (paplResp.ok) {
-              const paplText = await paplResp.text();
-              paplNames = findNamesForDate(parseCsvLines(paplText), dateKey);
-            }
-            if (tradNames && paplNames) {
-              target.textContent = `${tradNames} (papildus: ${paplNames})`;
+            const tradResp = await fetch('varda_dienas/latv_trad.csv', { cache: 'no-store' });
+            if (!tradResp.ok) {
+              target.textContent = 'Nav datu';
               return;
             }
-            target.textContent = tradNames || paplNames || 'Nav datu';
+            const tradText = await tradResp.text();
+            const tradNames = findNamesForDate(parseCsvLines(tradText), dateKey);
+            target.textContent = tradNames || 'Nav datu';
           } catch (err) {
             target.textContent = 'Neizdevās ielādēt';
           }
