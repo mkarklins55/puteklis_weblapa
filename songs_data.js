@@ -1028,5 +1028,12 @@ const songs = [
     "lyrics": "lyrics/Pilns_Smaržu_Un_Pilns_Žūžu.txt",
     "image": "cover/Pilns_Smaržu_Un_Pilns_Žūžu.webp",
     "style": "rock, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
+  },
+  {
+    "title": "Viņi dejoja vienu vasaru (Cover by PUTEKLIS)",
+    "audio": "music/Viņi dejoja vienu vasaru  (Cover).mp3",
+    "lyrics": "lyrics/Viņi dejoja vienu vasaru  (Cover).txt",
+    "image": "cover/Viņi dejoja vienu vasaru  (Cover).webp",
+    "style": "cabaret, Dark Cabaret, Brechtian Punk Cabaret, Macabre Folk, Circus Noir, Murder Ballads, Gothic Vaudeville, Absurdist Theater Music, Burlesque Gothic, Theatrical Falsetto Punk, Apocalyptic Cabaret, Avant-Garde Vaudeville, Dark Lyrical Theater, Expressionist Cabaret, Dark Cabaret Pop, Punk Noir, Cabaret Rock, Satirical Theater Music, Dark Chanson"
   }
 ];
