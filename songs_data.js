@@ -1042,5 +1042,12 @@ const songs = [
     "lyrics": "lyrics/Meitene Zeltene - igauniski.txt",
     "image": "cover/Meitene Zeltene - igauniski.webp",
     "style": "folk, Upbeat folk-pop song with a lively, danceable rhythm in 4/4 time at approximately 124 BPM, The arrangement features a prominent accordion playing melodic riffs and rhythmic accompaniment, supported by an acoustic guitar and a driving drum kit with a crisp snare and steady kick, The lead vocals are performed by a male singer with a clear, energetic baritone delivery, joined by a female vocalist for harmonized choruses, The song structure follows a traditional verse-chorus-verse-chorus-bridge-chorus pattern, The melody is catchy and diatonic, rooted in a major key with a folk-inspired cadence, Production is clean and balanced, emphasizing the organic textures of the acoustic instruments with a light reverb on the vocals to create a live, festive atmosphere"
+  },
+    {
+    "title": "Rumbas Kvartets - Kuldīgas dziesma (Cover by PUTEKLIS)",
+    "audio": "music/Rumbas Kvartets - Kuldīgas dziesma - estonian version.mp3",
+    "lyrics": "lyrics/Rumbas Kvartets - Kuldīgas dziesma - estonian version.txt",
+    "image": "cover/Rumbas Kvartets - Kuldīgas dziesma - estonian version.webp",
+    "style": "folk, Up-tempo folk-pop tune bursting with playful energy, propelled by a lively accordion that trades riffs with a bright fiddle and punchy acoustic guitar, The rhythm section features a driving drum groove with added hand percussion, tambourine, and foot-stomp accents that push the dance feel forward, A bouncing bass line locks in tightly with the kick, giving the song a joyful, rolling momentum, Vocals sit on top as another rhythmic element, with spirited call-and-response exchanges between male and female singers, while loose group harmonies enhance the festive, slightly chaotic party atmosphere, The track feels exuberant and kinetic — instruments laughing, dancing, and competing for attention"
   }
 ];
