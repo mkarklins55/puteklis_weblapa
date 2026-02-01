@@ -1063,5 +1063,12 @@ const songs = [
     "lyrics": "lyrics/Depeche Mode - Enjoy The Silence (Remix 2026).txt",
     "image": "cover/Depeche Mode - Enjoy The Silence (Remix 2026).webp",
     "style": "techno, High-tech cinematic industrial techno track built on a precise, machine-tight 4/4 framework at 128–130 BPM, The kick is clean, deep, and surgically controlled, paired with a smooth, low-distortion rumble bass shaped through tight sidechain compression and precise EQ, creating a polished, high-pressure low end, Harmonic elements are minimal and calculated, formed from cold minor-key pads, glassy synth layers, and slowly shifting drones with subtle spectral movement, Industrial character is expressed through refined metallic percussive hits, digitally sculpted impacts, and clean machine-like textures rather than raw noise, Percussion is sharp and deliberate, featuring crisp transients, minimal decay, and wide stereo placement that reinforces a futuristic spatial image, Vocal material, if used, is abstract and dehumanized—short synthetic phrases, vocoded whispers, or tonal fragments processed to blend seamlessly into the texture, The arrangement unfolds gradually with long, controlled"
+  },
+       {
+    "title": "Depeche Mode - Enjoy The Silence (cover by PUTEKLIS)",
+    "audio": "music/DDepeche Mode - Enjoy The Silence (cover by PUTEKLIS).mp3",
+    "lyrics": "lyrics/DDepeche Mode - Enjoy The Silence (cover by PUTEKLIS).txt",
+    "image": "cover/Depeche Mode - Enjoy The Silence (cover by PUTEKLIS).webp",
+    "style": "jazz, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
   }
 ];
