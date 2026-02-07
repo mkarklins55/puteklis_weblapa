@@ -1066,9 +1066,16 @@
   },
         {
     "title": "Depeche Mode - Enjoy The Silence (cover by PUTEKLIS)",
-    "audio": "music/DDepeche Mode - Enjoy The Silence (cover by PUTEKLIS).mp3",
-    "lyrics": "lyrics/DDepeche Mode - Enjoy The Silence (cover by PUTEKLIS).txt",
+    "audio": "music/Depeche Mode - Enjoy The Silence (cover by PUTEKLIS).mp3",
+    "lyrics": "lyrics/Depeche Mode - Enjoy The Silence (cover by PUTEKLIS).txt",
     "image": "cover/Depeche Mode - Enjoy The Silence (cover by PUTEKLIS).webp",
     "style": "jazz, Contemporary art-rock / modern jazz crossover with an atmospheric, nocturnal feel, mid-tempo groove shaped by brushed or lightly accented drums and a supple walking bass, clean electric guitar lines using muted stabs, tremolo shimmer, and occasional harmonic swells, subtle piano or Rhodes accents adding warmth, spacious and airy production with restrained reverb and analog-soft tape character, vocal duets built on a clear, gentle male lead paired with a lighter, floating counter-voice, smooth blend rather than contrast, verses intimate and conversational with overlapping phrases, chorus expanding into open, layered harmonies and melodic interplay, understated rhythmic lift instead of force, elegant modern sound, reflective and slightly bittersweet, urban and cinematic without harshness"
+  },
+           {
+    "title": "Suzanna - Cilvēkam (cover by PUTEKLIS)",
+    "audio": "music/Suzanna - Cilvēkam (cover).mp3",
+    "lyrics": "lyrics/Suzanna - Cilvēkam (cover).txt",
+    "image": "cover/Suzanna - Cilvēkam (cover).webp",
+    "style": "rock, Mid-tempo alternative rock track infused with subtle Neue Deutsche Härte influence, combining a driving, disciplined rhythm with melodic structure, The arrangement is anchored by a prominent overdriven electric guitar delivering tight, palm-muted power chords and assertive melodic figures, supported by a clean electric guitar adding sharp, industrial-leaning texture, The bass guitar is thick and rigid, closely locked to the kick drum, reinforcing a controlled, almost mechanical low-end pulse, Drums maintain a steady 4/4 beat with punchy, precise snare hits and deliberate cymbal accents, emphasizing weight and repetition rather than swing, The male lead vocal is firm and commanding, delivered in a focused mid-range baritone with restrained grit and a stern, controlled tone, especially prominent in the chorus, Vocal phrasing is direct and rhythmic, occasionally bordering on spoken intensity, The song follows a classic verse–chorus–verse–chorus–bridge–chorus structure"
   }
 ]
