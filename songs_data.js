@@ -1084,5 +1084,12 @@ const songs = [
     "lyrics": "lyrics/ZEĻĻI - DZĒRVES (cover).txt",
     "image": "cover/ZEĻĻI - DZĒRVES (cover).webp",
     "style": "rock, Mid-tempo urban  rock track infused with sexualized swamp blues, seamlessly blended with contemporary art-rock and modern jazz sensibilities. The groove remains slow-burning and hypnotic, shaped by brushed or lightly accented drums and a supple, walking bass that carries both physical presence and fluid swing. Clean electric guitars replace distortion with attitude, using muted stabs, tremolo shimmer, and subtle harmonic swells to suggest tension and desire without aggression. Occasional piano or Rhodes accents add warmth and a smoky glow, reinforcing the nocturnal, after-hours atmosphere. Vocals unfold as a restrained duet: a clear, intimate male lead delivered in a higher tenor register, agile and breath-forward, close to the microphone, paired with a lighter, floating counter-voice that weaves above and around the lead, creating a sensual, airy call-and-response. Verses feel hushed and conversational, focused on phrasing and breath"
+  },
+                 {
+    "title": "Vēl viens dolārs (cover by PUTEKLIS)",
+    "audio": "music/Vēl viens dolārs (cover by PUTEKLIS).mp3",
+    "lyrics": "lyrics/Vēl viens dolārs (cover by PUTEKLIS).txt",
+    "image": "cover/Vēl viens dolārs (cover by PUTEKLIS).webp",
+    "style": "cabaret, Dark Cabaret, Brechtian Punk Cabaret, Macabre Folk, Circus Noir, Murder Ballads, Gothic Vaudeville, Absurdist Theater Music, Burlesque Gothic, Theatrical Falsetto Punk, Apocalyptic Cabaret, Avant-Garde Vaudeville, Dark Lyrical Theater, Expressionist Cabaret, Dark Cabaret Pop, Punk Noir, Cabaret Rock, Satirical Theater Music, Dark Chanson"
   }
 ];
