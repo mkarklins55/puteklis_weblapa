@@ -1091,5 +1091,12 @@ const songs = [
     "lyrics": "lyrics/Vēl viens dolārs (cover by PUTEKLIS).txt",
     "image": "cover/Vēl viens dolārs (cover by PUTEKLIS).webp",
     "style": "cabaret, Dark Cabaret, Brechtian Punk Cabaret, Macabre Folk, Circus Noir, Murder Ballads, Gothic Vaudeville, Absurdist Theater Music, Burlesque Gothic, Theatrical Falsetto Punk, Apocalyptic Cabaret, Avant-Garde Vaudeville, Dark Lyrical Theater, Expressionist Cabaret, Dark Cabaret Pop, Punk Noir, Cabaret Rock, Satirical Theater Music, Dark Chanson"
+  },
+                   {
+    "title": "On the Rails",
+    "audio": "music/On the Rails.mp3",
+    "lyrics": "lyrics/On the Rails.txt",
+    "image": "cover/On the Rails.webp",
+    "style": "deep house, Deep house, melodic deep house, emotional house, chill house, vocal house, nu-disco, dreamy house, melancholic house, lounge house, late-night house, modern house vibes"
   }
 ];
