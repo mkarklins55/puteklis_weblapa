@@ -1098,5 +1098,12 @@ const songs = [
     "lyrics": "lyrics/On the Rails.txt",
     "image": "cover/On the Rails.webp",
     "style": "deep house, Deep house, melodic deep house, emotional house, chill house, vocal house, nu-disco, dreamy house, melancholic house, lounge house, late-night house, modern house vibes"
+  },
+                     {
+    "title": "Dūdieviņš (Cover by PUTEKLIS)",
+    "audio": "music/Dūdieviņš (Cover by PUTEKLIS).mp3",
+    "lyrics": "lyrics/Dūdieviņš (Cover by PUTEKLIS).txt",
+    "image": "cover/Dūdieviņš (Cover by PUTEKLIS).webp",
+    "style": "deep house, A modern deep house sound shaped by melodic sensitivity and emotional depth, blending chilled grooves with subtle club energy, The music flows through warm, rolling basslines and clean, side-chained kicks, supported by smooth deep house rhythms that sit comfortably between lounge listening and late-night dancefloor moods, Melodic elements are gentle yet memorable, built from airy synth leads, soft pads, and nostalgic nu-disco textures that add warmth and movement without overpowering the groove, Vocals play a central role — expressive, soulful, and intimate — floating above the mix to enhance the emotional pull, often evoking feelings of longing, calm, and quiet euphoria, The overall atmosphere is dreamy, slightly melancholic, and immersive, designed for night drives, relaxed club sessions, summer evenings, or introspective moments, capturing the essence of modern deep house vibes"
   }
 ];
