@@ -29,8 +29,8 @@
     .hero-content p{font-size:1.15rem;max-width:600px;margin:0 auto 2rem}
     .button{display:inline-block;padding:.8rem 1.5rem;border-radius:5px;background:#ffc107;color:#000;letter-spacing:1px;font-weight:700;text-transform:uppercase;transition:background .3s}
     .button:hover{background:#ff9800}
-    .radio-float{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(17,17,17,.72);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(2px);z-index:30;transition:background .2s,border-color .2s,transform .2s;animation:radioFloat 2.8s ease-in-out infinite}
-    .radio-float::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,193,7,.32);opacity:0;animation:radioPulse 2.8s ease-out infinite;pointer-events:none}
+    .radio-float{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(17,17,17,.72);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(2px);z-index:60;transition:background .2s,border-color .2s,transform .2s;animation:radioFloat 2.8s ease-in-out infinite,radioGlow 1.9s ease-in-out infinite}
+    .radio-float::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,193,7,.42);opacity:0;animation:radioPulse 2.2s ease-out infinite;pointer-events:none}
     .radio-float:hover{background:rgba(34,34,34,.92);border-color:#ffc107;transform:translateY(-50%) scale(1.06)}
     .radio-float svg{width:24px;height:24px;fill:#fff}
     .radio-float::after{content:"Dust Radio";position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(17,17,17,.92);border:1px solid rgba(255,255,255,.45);padding:.38rem .62rem;border-radius:7px;color:#fff;font-size:.84rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s}
@@ -41,9 +41,13 @@
     }
     @keyframes radioPulse{
       0%{transform:scale(.95);opacity:.0}
-      18%{opacity:.52}
-      75%{opacity:.08}
-      100%{transform:scale(1.22);opacity:0}
+      20%{opacity:.62}
+      80%{opacity:.1}
+      100%{transform:scale(1.3);opacity:0}
+    }
+    @keyframes radioGlow{
+      0%,100%{box-shadow:0 0 0 rgba(255,193,7,0),0 0 0 rgba(255,255,255,.15) inset}
+      50%{box-shadow:0 0 18px rgba(255,193,7,.38),0 0 0 rgba(255,255,255,.28) inset}
     }
     @keyframes letterGlow{
       0%,11%,100%{filter:brightness(1);transform:translateY(0) scale(1)}
@@ -80,9 +84,10 @@
       .hero-content p{font-size:.95rem}
       .button{padding:.65rem 1.2rem;font-size:.9rem}
       .about-section{padding:2.5rem 1rem}
-      .radio-float{right:.7rem;bottom:.9rem;top:auto;transform:none;animation:radioFloatMobile 2.8s ease-in-out infinite}
+      .radio-float{right:max(.7rem, env(safe-area-inset-right));bottom:calc(env(safe-area-inset-bottom) + 5.2rem);top:auto;transform:none;width:58px;height:58px;animation:radioFloatMobile 2.5s ease-in-out infinite,radioGlow 1.7s ease-in-out infinite}
       .radio-float:hover{transform:scale(1.06)}
-      .radio-float::after{right:60px;top:50%;transform:translateY(-50%)}
+      .radio-float::before{inset:-7px}
+      .radio-float::after{display:none}
     }
     @keyframes radioFloatMobile{
       0%,100%{transform:translateY(0)}
