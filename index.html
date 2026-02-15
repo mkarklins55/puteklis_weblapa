@@ -31,6 +31,11 @@
     .hero-content p{font-size:1.15rem;max-width:600px;margin:0 auto 2rem}
     .button{display:inline-block;padding:.8rem 1.5rem;border-radius:5px;background:#ffc107;color:#000;letter-spacing:1px;font-weight:700;text-transform:uppercase;transition:background .3s}
     .button:hover{background:#ff9800}
+    .radio-float{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(17,17,17,.72);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(2px);z-index:30;transition:background .2s,border-color .2s,transform .2s}
+    .radio-float:hover{background:rgba(34,34,34,.92);border-color:#ffc107;transform:translateY(-50%) scale(1.04)}
+    .radio-float svg{width:24px;height:24px;fill:#fff}
+    .radio-float::after{content:"Putekļa radio";position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(17,17,17,.92);border:1px solid rgba(255,255,255,.45);padding:.38rem .62rem;border-radius:7px;color:#fff;font-size:.84rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s}
+    .radio-float:hover::after{opacity:1}
 
     /* ---------- ABOUT ----------*/
     .about-section{padding:4rem 2rem;max-width:1000px;margin:0 auto}
@@ -59,6 +64,9 @@
       .hero-content p{font-size:.95rem}
       .button{padding:.65rem 1.2rem;font-size:.9rem}
       .about-section{padding:2.5rem 1rem}
+      .radio-float{right:.7rem;bottom:.9rem;top:auto;transform:none}
+      .radio-float:hover{transform:scale(1.04)}
+      .radio-float::after{right:60px;top:50%;transform:translateY(-50%)}
     }
   </style>
 </head>
@@ -74,6 +82,7 @@
         <li><a href="datori.html">Datori</a></li>
         <li><a href="politika_new.html">Politika</a></li>
         <li><a href="maksla.html">Māksla</a></li>
+        <li><a href="muzika.html">Mūzika</a></li>
         <li><a href="raksti.html">Raksti</a></li>
         <li><a href="jaunumi.html">Jaunumi</a></li>
         <li><a href="index_en.html">EN</a></li>
@@ -92,6 +101,12 @@
       <a href="#about" class="button">Uzzināt vairāk</a>
     </div>
   </section>
+
+  <a href="muzika.html" class="radio-float" aria-label="Atvērt Putekļa radio">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 6H9.3l4.6-3.3L12.7 1 6 5.8V6H4a2 2 0 0 0-2 2v9a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4V8a2 2 0 0 0-2-2zm-9 12a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm7-5h-3v-2h3v2z"/>
+    </svg>
+  </a>
 
   <section class="about-section" id="about">
     <h2>Par Putekli...</h2>
