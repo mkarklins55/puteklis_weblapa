@@ -24,16 +24,27 @@
     .hero-content h1{font-size:4.2rem;margin-bottom:1rem;background:linear-gradient(to right,#ffe259,#ffa751);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase;letter-spacing:3px;font-weight:900}
     .animated-title{display:inline-flex;flex-direction:column;align-items:center;row-gap:.05em;filter:drop-shadow(0 0 0 rgba(255,194,7,0));animation:titleBreath 4.8s ease-in-out infinite}
     .animated-title .word{display:flex;justify-content:center;column-gap:.03em;white-space:nowrap}
-    .animated-title .char{display:inline-block;background:inherit;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:letterGlow 5.2s linear infinite;animation-delay:calc(var(--i) * .15s);transform-origin:center bottom;will-change:filter,transform}
+    .animated-title .char{display:inline-block;background:linear-gradient(to right,#ffe259,#ffa751);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:letterGlow 5.2s linear infinite;animation-delay:calc(var(--i) * .15s);transform-origin:center bottom;will-change:filter,transform}
     .hero-content h3{font-size:1.7rem;font-weight:300;margin-bottom:1rem;opacity:.9}
     .hero-content p{font-size:1.15rem;max-width:600px;margin:0 auto 2rem}
     .button{display:inline-block;padding:.8rem 1.5rem;border-radius:5px;background:#ffc107;color:#000;letter-spacing:1px;font-weight:700;text-transform:uppercase;transition:background .3s}
     .button:hover{background:#ff9800}
-    .radio-float{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(17,17,17,.72);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(2px);z-index:30;transition:background .2s,border-color .2s,transform .2s}
-    .radio-float:hover{background:rgba(34,34,34,.92);border-color:#ffc107;transform:translateY(-50%) scale(1.04)}
+    .radio-float{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(17,17,17,.72);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(2px);z-index:30;transition:background .2s,border-color .2s,transform .2s;animation:radioFloat 2.8s ease-in-out infinite}
+    .radio-float::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,193,7,.32);opacity:0;animation:radioPulse 2.8s ease-out infinite;pointer-events:none}
+    .radio-float:hover{background:rgba(34,34,34,.92);border-color:#ffc107;transform:translateY(-50%) scale(1.06)}
     .radio-float svg{width:24px;height:24px;fill:#fff}
     .radio-float::after{content:"Dust Radio";position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(17,17,17,.92);border:1px solid rgba(255,255,255,.45);padding:.38rem .62rem;border-radius:7px;color:#fff;font-size:.84rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s}
     .radio-float:hover::after{opacity:1}
+    @keyframes radioFloat{
+      0%,100%{transform:translateY(-50%)}
+      50%{transform:translateY(calc(-50% - 4px))}
+    }
+    @keyframes radioPulse{
+      0%{transform:scale(.95);opacity:.0}
+      18%{opacity:.52}
+      75%{opacity:.08}
+      100%{transform:scale(1.22);opacity:0}
+    }
     @keyframes letterGlow{
       0%,11%,100%{filter:brightness(1);transform:translateY(0) scale(1)}
       5%{filter:brightness(1.62) drop-shadow(0 0 12px rgba(255,196,40,.75));transform:translateY(-2px) scale(1.03)}
@@ -69,9 +80,16 @@
       .hero-content p{font-size:.95rem}
       .button{padding:.65rem 1.2rem;font-size:.9rem}
       .about-section{padding:2.5rem 1rem}
-      .radio-float{right:.7rem;bottom:.9rem;top:auto;transform:none}
-      .radio-float:hover{transform:scale(1.04)}
+      .radio-float{right:.7rem;bottom:.9rem;top:auto;transform:none;animation:radioFloatMobile 2.8s ease-in-out infinite}
+      .radio-float:hover{transform:scale(1.06)}
       .radio-float::after{right:60px;top:50%;transform:translateY(-50%)}
+    }
+    @keyframes radioFloatMobile{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-4px)}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .radio-float,.radio-float::before{animation:none}
     }
   </style>
 </head>
@@ -100,7 +118,7 @@
     <div class="dark-overlay"></div>
     <div class="color-overlay"></div>
     <div class="hero-content">
-      <h1 class="animated-title" data-text="Dust Manifesto" aria-label="Dust Manifesto"></h1>
+      <h1 class="animated-title" data-text="Dust Manifesto" aria-label="Dust Manifesto">Dust Manifesto</h1>
       <h3>Dust was so small that even a thought could blow it away</h3>
       <p>The most unimaginable storms begin with the smallest speck of dust</p>
       <a href="#about" class="button">Learn more</a>
