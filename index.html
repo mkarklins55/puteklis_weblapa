@@ -25,8 +25,11 @@
     .background-image{position:absolute;inset:0;background:url('images/puteklis.jpg') center/cover no-repeat;filter:brightness(.9)}
     .dark-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55)}
     .color-overlay{position:absolute;inset:0;background:linear-gradient(45deg,rgba(255,0,150,.3),rgba(0,150,255,.3));mix-blend-mode:screen}
-    .hero-content{position:relative;z-index:2;text-align:center;max-width:800px;padding:2rem}
+    .hero-content{position:relative;z-index:2;text-align:center;max-width:800px;padding:2rem;animation:heroReveal 1.15s ease both}
     .hero-content h1{font-size:4.2rem;margin-bottom:1rem;background:linear-gradient(to right,#ffe259,#ffa751);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase;letter-spacing:3px;font-weight:900}
+    .animated-title{display:inline-flex;justify-content:center;flex-wrap:wrap;column-gap:.03em;filter:drop-shadow(0 0 0 rgba(255,194,7,0));animation:titleBreath 4.8s ease-in-out infinite}
+    .animated-title .char{display:inline-block;animation:letterGlow 5.2s linear infinite;animation-delay:calc(var(--i) * .15s);transform-origin:center bottom;will-change:filter,transform}
+    .animated-title .char.space{width:.32em}
     .hero-content h3{font-size:1.7rem;font-weight:300;margin-bottom:1rem;opacity:.9}
     .hero-content p{font-size:1.15rem;max-width:600px;margin:0 auto 2rem}
     .button{display:inline-block;padding:.8rem 1.5rem;border-radius:5px;background:#ffc107;color:#000;letter-spacing:1px;font-weight:700;text-transform:uppercase;transition:background .3s}
@@ -36,6 +39,18 @@
     .radio-float svg{width:24px;height:24px;fill:#fff}
     .radio-float::after{content:"Putekļa radio";position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(17,17,17,.92);border:1px solid rgba(255,255,255,.45);padding:.38rem .62rem;border-radius:7px;color:#fff;font-size:.84rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s}
     .radio-float:hover::after{opacity:1}
+    @keyframes letterGlow{
+      0%,11%,100%{filter:brightness(1);transform:translateY(0) scale(1)}
+      5%{filter:brightness(1.62) drop-shadow(0 0 12px rgba(255,196,40,.75));transform:translateY(-2px) scale(1.03)}
+    }
+    @keyframes titleBreath{
+      0%,100%{filter:drop-shadow(0 0 0 rgba(255,194,7,0))}
+      50%{filter:drop-shadow(0 0 16px rgba(255,194,7,.22))}
+    }
+    @keyframes heroReveal{
+      from{opacity:0;transform:translateY(16px)}
+      to{opacity:1;transform:translateY(0)}
+    }
 
     /* ---------- ABOUT ----------*/
     .about-section{padding:4rem 2rem;max-width:1000px;margin:0 auto}
@@ -95,7 +110,7 @@
     <div class="dark-overlay"></div>
     <div class="color-overlay"></div>
     <div class="hero-content">
-      <h1>Putekļa manifests</h1>
+      <h1 class="animated-title" data-text="Putekļa manifests" aria-label="Putekļa manifests"></h1>
       <h3>Puteklis bija tik mazs, ka viņu varēja aizpūst pat doma</h3>
       <p>Visneiedomājamākās vētras sākas ar vismazāko putekli</p>
       <a href="#about" class="button">Uzzināt vairāk</a>
@@ -119,6 +134,18 @@
   </section>
 
   <script>
+    document.querySelectorAll('.animated-title').forEach((title)=>{
+      const text = title.dataset.text || title.textContent || '';
+      title.textContent = '';
+      [...text].forEach((ch, i)=>{
+        const span = document.createElement('span');
+        span.className = ch === ' ' ? 'char space' : 'char';
+        span.style.setProperty('--i', i);
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        title.appendChild(span);
+      });
+    });
+
     const navToggle = document.getElementById('navToggle');
     navToggle.addEventListener('click',()=>{
       document.querySelector('.site-header nav').classList.toggle('open');
