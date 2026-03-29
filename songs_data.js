@@ -1105,5 +1105,12 @@ const songs = [
     "lyrics": "lyrics/Dūdieviņš (Cover by PUTEKLIS).txt",
     "image": "cover/Dūdieviņš (Cover by PUTEKLIS).webp",
     "style": "deep house, A modern deep house sound shaped by melodic sensitivity and emotional depth, blending chilled grooves with subtle club energy, The music flows through warm, rolling basslines and clean, side-chained kicks, supported by smooth deep house rhythms that sit comfortably between lounge listening and late-night dancefloor moods, Melodic elements are gentle yet memorable, built from airy synth leads, soft pads, and nostalgic nu-disco textures that add warmth and movement without overpowering the groove, Vocals play a central role — expressive, soulful, and intimate — floating above the mix to enhance the emotional pull, often evoking feelings of longing, calm, and quiet euphoria, The overall atmosphere is dreamy, slightly melancholic, and immersive, designed for night drives, relaxed club sessions, summer evenings, or introspective moments, capturing the essence of modern deep house vibes"
+  },
+                      {
+    "title": "Pirmskara nams",
+    "audio": "music/Chrome Alley Pulse.mp3",
+    "lyrics": "lyrics/Chrome Alley Pulse.txt",
+    "image": "cover/Chrome Alley Pulse.webp",
+    "style": "Dark hypertechno / deep house hybrid, male vocals, Pounding sidechained kick and gritty bass groove under glassy, atmospheric pads and metallic arps, Verses ride a low, tense murmur; chorus opens wider with airy reverb tails and a hypnotic lead hook, Subby low end, crisp hats, and whispered ad-libs drifting in the stereo field for late-night, underground energy, deep"
   }
 ];
