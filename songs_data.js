@@ -1119,5 +1119,12 @@ const songs = [
     "lyrics": "lyrics/Two Quiet Strangers.txt",
     "image": "cover/Two Quiet Strangers.webp",
     "style": "gospel, Up-tempo blues gospel with accordion, blues guitar and piano, Female vocal, soulful and powerful, with call-and-response backing vocals, Groovy rhythm, emotional but energetic feel"
+  },
+  {
+    "title": "Uzticības tālrunis",
+    "audio": "music/Uzticības tālrunis.mp3",
+    "lyrics": "lyrics/Uzticības tālrunis.txt",
+    "image": "cover/Uzticības tālrunis.webp",
+    "style": "country, americana country, western, bluegrass influences"
   }
 ];
