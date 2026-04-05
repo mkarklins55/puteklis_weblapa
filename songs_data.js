@@ -1126,5 +1126,12 @@ const songs = [
     "lyrics": "lyrics/Uzticības tālrunis.txt",
     "image": "cover/Uzticības tālrunis.webp",
     "style": "country, americana country, western, bluegrass influences"
+  },
+  {
+    "title": "Vij, Dieviņi, zelta viju",
+    "audio": "music/Zelta Viju.mp3",
+    "lyrics": "lyrics/Zelta Viju.txt",
+    "image": "cover/Zelta Viju.webp",
+    "style": "folk, Modern Baltic folk with female vocal ensemble, traditional Latvian folk influences blended with subtle electronic elements, Layered female harmonies, strong rhythmic pulse, ethnic percussion, kokle-like textures and atmospheric sound, Energetic, mystical and hypnotic mood, nature-inspired, ritualistic feel with clean modern production"
   }
 ];
