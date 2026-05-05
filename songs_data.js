@@ -1140,5 +1140,12 @@ const songs = [
     "lyrics": "lyrics/Pink Mickey Mouse.txt",
     "image": "cover/Pink Mickey Mouse.webp",
     "style": "country, Upbeat bluegrass americana, playful and rhythmic, Female vocal, clear and storytelling, Banjo, fiddle, acoustic guitar, upright bass, Medium-fast tempo, light swing feel, slightly humorous and lively"
+  },
+    {
+    "title": "Nenormali gribas",
+    "audio": "music/Nenormali gribas.mp3",
+    "lyrics": "lyrics/Nenormali gribas.txt",
+    "image": "cover/Nenormali gribas.webp",
+    "style": "moody acoustic folk rock drive, gravelly baritone with nervous edge, pulsing arpeggiated acoustic guitar, jangling electric guitar shadows, walking bassline under tension, brushed snare shuffle rhythm, light tambourine ghost hits, minor-key cinematic lift, dusty analog warmth, tape-saturated drum room, late-evening roadside energy, flickering lantern mood, restless rural melancholy, shadowed melodic hooks"
   }
 ];
