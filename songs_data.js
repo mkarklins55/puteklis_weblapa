@@ -1147,5 +1147,12 @@ const songs = [
     "lyrics": "lyrics/Nenormali gribas.txt",
     "image": "cover/Nenormali gribas.webp",
     "style": "moody acoustic folk rock drive, gravelly baritone with nervous edge, pulsing arpeggiated acoustic guitar, jangling electric guitar shadows, walking bassline under tension, brushed snare shuffle rhythm, light tambourine ghost hits, minor-key cinematic lift, dusty analog warmth, tape-saturated drum room, late-evening roadside energy, flickering lantern mood, restless rural melancholy, shadowed melodic hooks"
+  },
+      {
+    "title": "Zied ievas Siguldā",
+    "audio": "music/Zied ievas Siguldā.mp3",
+    "lyrics": "lyrics/Zied ievas Siguldā.txt",
+    "image": "cover/Zied ievas Siguldā.webp",
+    "style": "Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, blues, outlaw country noir, desert blues"
   }
 ];
