@@ -1175,5 +1175,12 @@ const songs = [
     "lyrics": "lyrics/dzīvoklis.txt",
     "image": "cover/dzīvoklis.webp",
     "style": "Carnival noir, dark cabaret folk, Balkan brass accents, male and female duet, upright bass groove, brushed drums, accordion swells, playful theatrical vocals, surreal urban storytelling, smoky apartment atmosphere, bittersweet humor, wandering cat energy, cinematic folk cabaret"
+  },
+       {
+    "title": "4 meitenes",
+    "audio": "music/4 meitenes.mp3",
+    "lyrics": "lyrics/4 meitenes.txt",
+    "image": "cover/4 meitenes.webp",
+    "style": "Math-pop cabaret, absurdist folk theatre, male and female duet, playful spoken-word verses, accordion, clarinet, upright bass, beachside surrealism, literary humor, ironic academic atmosphere, whimsical storytelling, catchy sing-along chorus, European art-pop, cinematic summer melancholy, intellectual nonsense, quirky festival energy"
   }
 ];
