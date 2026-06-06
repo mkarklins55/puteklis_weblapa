@@ -1168,5 +1168,12 @@
     "lyrics": "lyrics/Stacijas Skābeklis.txt",
     "image": "cover/Stacijas Skābeklis.webp",
     "style": "Baltic folk noir-pop, male and female duet, playful call-and-response vocals, warm acoustic guitars, subtle blues influences, desert wind textures, light trance-folk pulse, atmospheric electronics, poetic urban storytelling, moonlit railway station mood, bittersweet humor, dreamlike imagery, catchy sing-along chorus, intimate yet cinematic, earthy and human, nostalgic but alive"
+  },
+   {
+    "title": "dzīvoklis",
+    "audio": "music/dzīvoklis.mp3",
+    "lyrics": "lyrics/dzīvoklis.txt",
+    "image": "cover/dzīvoklis.webp",
+    "style": "Carnival noir, dark cabaret folk, Balkan brass accents, male and female duet, upright bass groove, brushed drums, accordion swells, playful theatrical vocals, surreal urban storytelling, smoky apartment atmosphere, bittersweet humor, wandering cat energy, cinematic folk cabaret"
   }
 ]
