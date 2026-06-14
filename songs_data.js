@@ -1189,5 +1189,12 @@ const songs = [
     "lyrics": "lyrics/Pārdaugava.txt",
     "image": "cover/Pārdaugava.webp",
     "style": "erotic darkwave, cinematic fetish pop, Gothic electro-punk with acoustic threats, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, sleazy synth noir, melodic electro-decadence, Industrial glam rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial, Neo-Schlager Remix, Soft Neue Deutsche Härte meets absurdist gospel"
+  },
+     {
+    "title": "Cypress Drawer",
+    "audio": "music/Cypress Drawer.mp3",
+    "lyrics": "lyrics/Cypress Drawer.txt",
+    "image": "cover/Cypress Drawer.webp",
+    "style": "Neue Deutsche Härte, Industrial Noir, Darkwave, Apocalyptic Cabaret elements, deep male baritone, spoken-word verses and melodic choruses, heavy distorted guitars, dark synths, melancholic saxophone, underground cinema atmosphere, religious imagery, decadent and intimate, haunted Eastern European nightscap"
   }
 ];
