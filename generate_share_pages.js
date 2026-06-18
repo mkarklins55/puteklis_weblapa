@@ -44,10 +44,10 @@ for (const song of songs) {
   <meta name="twitter:title" content="${esc(song.title)}" />
   <meta name="twitter:description" content="${esc(song.style)}" />
   <meta name="twitter:image" content="${esc(image)}" />
-  <meta http-equiv="refresh" content="0; url=${esc(musicUrl)}" />
 </head>
 <body>
   <script>window.location.replace(${JSON.stringify(musicUrl)});</script>
+  <noscript><meta http-equiv="refresh" content="0; url=${esc(musicUrl)}" /></noscript>
 </body>
 </html>`;
 
