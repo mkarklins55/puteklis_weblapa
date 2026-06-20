@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="lv">
 <head>
   <meta charset="UTF-8" />
   <title>Jaunumi | Puteklis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="assets/css/main_puteklis.css" />
+  <link rel="alternate" type="application/rss+xml" title="Putekļa Jaunumi" href="https://puteklis.com/jaunumi.xml" />
   <style>
     body {
       background: linear-gradient(to right, #2c3e50, #4ca1af);
@@ -152,8 +153,6 @@
     </nav>
   </header>
 
-<link rel="alternate" type="application/rss+xml" title="Putekļa Jaunumi" href="https://puteklis.com/jaunumi.xml">
-
 
   <div class="container">
     <h1>Putekļa jaunumi</h1>
@@ -170,11 +169,15 @@
         data.forEach(entry => {
           const card = document.createElement("div");
           card.className = "news-card";
-          card.innerHTML = `
-            <h2>${entry.title}</h2>
-            <p><em>${entry.date}</em></p>
-            <p>${entry.description}</p>
-          `;
+          const h2 = document.createElement("h2");
+          h2.textContent = entry.title;
+          const pDate = document.createElement("p");
+          const em = document.createElement("em");
+          em.textContent = entry.date;
+          pDate.appendChild(em);
+          const pDesc = document.createElement("p");
+          pDesc.textContent = entry.description;
+          card.append(h2, pDate, pDesc);
           container.appendChild(card);
         });
       })
@@ -185,7 +188,7 @@
   </script>
 
  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G‑RKRHBD6CN4"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
   <script src="assets/js/analytics.js"></script>
 
 </body>

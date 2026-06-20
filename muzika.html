@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+﻿﻿﻿<!DOCTYPE html>
 <html lang="lv">
 <head>
   <meta charset="UTF-8">
   <title>Mūzika | Puteklis</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta property="og:title" content="Putekļa radio" />
+  <meta property="og:description" content="Latvijas neatkarīgā mūzika — Puteklis" />
   <meta property="og:image" content="https://puteklis.com/images/share/muzika.jpg" />
+  <meta property="og:url" content="https://puteklis.com/muzika.html" />
+  <meta property="og:type" content="website" />
   <link rel="stylesheet" href="assets/css/main_puteklis.css">
   <style>
     body{margin:0;font-family:'Helvetica Neue',sans-serif;background:#121212;color:#f8f8f8}
@@ -302,7 +306,7 @@ audio.onended = playNext;
 function playNext(){
   if(!list.length) return;
   shuffleOn ? playIndex(Math.floor(Math.random()*list.length))
-            : (current < list.length - 1 ? playIndex(current + 1) : (playPauseBtn.textContent = 'â–¶ï¸'));
+            : (current < list.length - 1 ? playIndex(current + 1) : (playPauseBtn.textContent = '▶️'));
 }
 
 audio.ontimeupdate = () => {
@@ -435,7 +439,7 @@ async function shareNative(song){
 </script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=Gâ€‘RKRHBD6CN4"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
 <script src="assets/js/analytics.js"></script>
 
 </body>
