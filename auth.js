@@ -4,6 +4,7 @@ async function initAuth() {
   const { data: { session } } = await sb.auth.getSession();
   currentUser = session?.user ?? null;
   updateAuthUI();
+  if (currentUser && typeof renderPlaylists === 'function') renderPlaylists();
 
   sb.auth.onAuthStateChange((event, session) => {
     currentUser = session?.user ?? null;
