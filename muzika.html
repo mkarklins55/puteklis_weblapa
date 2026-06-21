@@ -119,7 +119,11 @@
     .sb-back-btn{background:none;border:none;color:#aaa;font-size:1.2em;cursor:pointer;padding:0}
     .sb-back-btn:hover{color:#fff}
     .sb-detail-header h4{flex:1;margin:0;font-size:.95em}
-    .sb-detail-song{display:flex;align-items:center;gap:8px;padding:8px 6px;border-bottom:1px solid #2a2a2a}
+    .sb-detail-song{display:flex;align-items:center;gap:8px;padding:8px 6px;border-bottom:1px solid #2a2a2a;cursor:default}
+    .sb-drag-handle{cursor:grab;color:#555;font-size:1.1em;flex-shrink:0;user-select:none;padding:0 2px}
+    .sb-drag-handle:active{cursor:grabbing}
+    .sb-detail-song.sb-dragging{opacity:.3}
+    .sb-detail-song.sb-drag-over{border-top:2px solid #4ba3ff}
     .sb-song-num{color:#555;font-size:.8em;width:18px;text-align:right;flex-shrink:0}
     .sb-song-title{flex:1;font-size:.85em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 

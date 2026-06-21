@@ -91,12 +91,17 @@ async function openPlaylistDetail(pl) {
   data.forEach((row, idx) => {
     const div = document.createElement('div');
     div.className = 'sb-detail-song';
-    div.innerHTML = `<span class="sb-song-num">${idx + 1}</span>
+    div.draggable = true;
+    div.dataset.rowId = row.id;
+    div.dataset.songId = row.song_id;
+    div.innerHTML = `<span class="sb-drag-handle" title="Vilkt lai pārkārtotu">⠿</span>
+      <span class="sb-song-num">${idx + 1}</span>
       <span class="sb-song-title">${_esc(row.song_id)}</span>
       <button class="sb-icon-btn sb-del-btn" title="Noņemt">✕</button>`;
     div.querySelector('.sb-icon-btn').onclick = () => removeSongFromPlaylist(row.id, pl.id);
     container.appendChild(div);
   });
+  setupDragReorder(container, pl);
 }
 
 function closePlaylistDetail() {
@@ -162,6 +167,45 @@ function showAddToPlaylistPopup(songId, anchorBtn) {
     }
     document.addEventListener('click', closePopup);
   }, 10);
+}
+
+function setupDragReorder(container, pl) {
+  let dragSrc = null;
+
+  container.querySelectorAll('.sb-detail-song').forEach(row => {
+    row.addEventListener('dragstart', function(e) {
+      dragSrc = this;
+      e.dataTransfer.effectAllowed = 'move';
+      setTimeout(() => this.classList.add('sb-dragging'), 0);
+    });
+    row.addEventListener('dragend', function() {
+      this.classList.remove('sb-dragging');
+      container.querySelectorAll('.sb-detail-song').forEach(r => r.classList.remove('sb-drag-over'));
+    });
+    row.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      if (this !== dragSrc) {
+        container.querySelectorAll('.sb-detail-song').forEach(r => r.classList.remove('sb-drag-over'));
+        this.classList.add('sb-drag-over');
+      }
+    });
+    row.addEventListener('drop', async function(e) {
+      e.preventDefault();
+      if (!dragSrc || dragSrc === this) return;
+      const allRows = [...container.querySelectorAll('.sb-detail-song')];
+      const srcIdx = allRows.indexOf(dragSrc);
+      const dstIdx = allRows.indexOf(this);
+      if (srcIdx < dstIdx) this.after(dragSrc); else this.before(dragSrc);
+      container.querySelectorAll('.sb-song-num').forEach((el, i) => el.textContent = i + 1);
+      const updates = [...container.querySelectorAll('.sb-detail-song')].map((r, i) => ({
+        id: r.dataset.rowId,
+        playlist_id: pl.id,
+        song_id: r.dataset.songId,
+        position: i
+      }));
+      await sb.from('playlist_songs').upsert(updates);
+    });
+  });
 }
 
 function openSidebar()  { document.getElementById('playlist-sidebar')?.classList.remove('sb-closed'); }
