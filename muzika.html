@@ -45,7 +45,7 @@
     }
     .action-row{display:flex;gap:8px;align-items:stretch}
     .play-btn,.lyrics-btn,.share-btn{border:none;color:#fff;border-radius:8px;padding:12px 10px;cursor:pointer;flex:1 1 0;min-width:0;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;line-height:1.1;white-space:nowrap}
-    .play-btn svg,.share-btn svg{width:20px;height:20px}
+    .share-btn svg{width:20px;height:20px}
     .share-btn{min-width:120px}
     .play-btn{background:#ee6c4d}
     .lyrics-btn{background:#555}
@@ -223,13 +223,7 @@ function makeCard(song,i){
 
 
       <div class='action-row'>
-        <button class='play-btn' data-idx='${i}'>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="1" y="1" width="22" height="22" rx="4" fill="#4ba3ff"/>
-            <path d="M9 7v10l8-5-8-5Z" fill="#ffffff"/>
-          </svg>
-          <span>Atskaņot</span>
-        </button>
+        <button class='play-btn' data-idx='${i}'>▶ Atskaņot</button>
         <button class='lyrics-btn'>Vārdi</button>
         <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}">
           <span class='like-heart'>♡</span>
