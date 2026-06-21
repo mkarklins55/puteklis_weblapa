@@ -10,6 +10,7 @@
   <meta property="og:url" content="https://puteklis.com/muzika.html" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="assets/css/main_puteklis.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <style>
     body{margin:0;font-family:'Helvetica Neue',sans-serif;background:#121212;color:#f8f8f8}
     header{background:#1f1f1f;text-align:center;padding:1rem 0}
@@ -43,11 +44,11 @@
       0%{transform:translateX(0)}
       100%{transform:translateX(-100%)}
     }
-    .action-row{display:flex;gap:8px;align-items:stretch}
-    .play-btn,.lyrics-btn,.share-btn{border:none;color:#fff;border-radius:8px;padding:12px 10px;cursor:pointer;flex:1 1 0;min-width:0;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;line-height:1.1;white-space:nowrap}
+    .action-row{display:flex;gap:6px;align-items:stretch}
+    .play-btn,.lyrics-btn,.share-btn{border:none;color:#fff;border-radius:8px;padding:10px 8px;cursor:pointer;flex:1 1 0;min-width:0;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;line-height:1.1;white-space:nowrap;font-size:.88em}
     .share-btn svg{width:20px;height:20px}
-    .share-btn{min-width:120px}
-    .play-btn{background:#ee6c4d}
+    .share-btn{min-width:0}
+    .play-btn{background:#ee6c4d;flex:0 0 auto;padding:10px 16px;font-size:1.15em}
     .lyrics-btn{background:#555}
     .share-btn{background:#2c2c2c;border:1px solid #444}
     .play-btn:hover,.lyrics-btn:hover,.share-btn:hover{filter:brightness(1.1)}
@@ -66,6 +67,70 @@
     .like-btn:disabled{opacity:.5;cursor:default}
     .like-heart{font-size:1.05em;line-height:1}
     .like-count{font-size:.85em;font-weight:600}
+
+    /* Pielikšanas popup */
+    .sb-add-btn{background:#2c2c2c;border:1px solid #444;color:#aaa;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:1.1em;font-weight:700;transition:color .2s,border-color .2s;flex:0 0 auto;line-height:1}
+    .sb-add-btn:hover{border-color:#4ba3ff;color:#4ba3ff}
+    .sb-add-popup{position:absolute;bottom:calc(100% + 6px);right:0;background:#1d1d1d;border:1px solid #333;border-radius:10px;padding:8px;z-index:200;min-width:180px;box-shadow:0 6px 20px rgba(0,0,0,.7);display:flex;flex-direction:column;gap:4px}
+    .sb-pop-item{background:#2f2f2f;border:1px solid #444;color:#eee;border-radius:6px;padding:8px 10px;cursor:pointer;text-align:left;font-size:.9em;width:100%}
+    .sb-pop-item:hover{background:#3a3a3a}
+    .sb-pop-empty{color:#aaa;font-size:.85em;padding:6px;text-align:center}
+
+    /* Playlist sānjosla */
+    .sb-sidebar{position:fixed;top:0;right:0;width:300px;height:100vh;background:#1a1a1a;border-left:1px solid #333;z-index:3000;display:flex;flex-direction:column;transition:transform .3s ease;box-shadow:-4px 0 20px rgba(0,0,0,.6)}
+    .sb-sidebar.sb-closed{transform:translateX(100%)}
+    .sb-top{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid #333;background:#111}
+    .sb-top h3{margin:0;font-size:1em;color:#fff}
+    .sb-close-btn{background:none;border:none;color:#aaa;font-size:1.5em;cursor:pointer;line-height:1;padding:0}
+    .sb-close-btn:hover{color:#fff}
+    .sb-inner{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px}
+
+    /* Login form */
+    #sb-login{display:flex;flex-direction:column;gap:8px}
+    .sb-google-btn{background:#fff;color:#333;border:none;border-radius:8px;padding:10px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-size:.9em}
+    .sb-google-btn:hover{background:#f0f0f0}
+    .sb-divider{text-align:center;color:#555;font-size:.8em;margin:4px 0}
+    #sb-email,#sb-pass{background:#2c2c2c;border:1px solid #444;color:#eee;border-radius:8px;padding:10px;width:100%;box-sizing:border-box;font-size:.9em}
+    .sb-btn{background:#4ba3ff;border:none;color:#fff;border-radius:8px;padding:10px;cursor:pointer;font-weight:700;font-size:.9em;width:100%}
+    .sb-btn:hover{background:#3a92ee}
+    .sb-btn-link{background:none;border:none;color:#aaa;cursor:pointer;font-size:.82em;text-decoration:underline;text-align:left;padding:0}
+    .sb-btn-link:hover{color:#fff}
+    #sb-auth-msg{font-size:.82em;min-height:1.2em}
+
+    /* User bar */
+    #sb-user{display:none;align-items:center;justify-content:space-between;gap:8px;background:#2a2a2a;border-radius:8px;padding:10px}
+    #sb-user-email{font-size:.8em;color:#ccc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+
+    /* Playlist section */
+    #sb-playlists{display:none}
+    .sb-new-pl{display:flex;gap:6px}
+    #sb-new-pl-name{background:#2c2c2c;border:1px solid #444;color:#eee;border-radius:8px;padding:8px;flex:1;font-size:.9em}
+    .sb-icon-btn{background:#2c2c2c;border:1px solid #444;color:#ccc;border-radius:6px;padding:5px 8px;cursor:pointer;font-size:.85em;line-height:1}
+    .sb-icon-btn:hover{background:#3a3a3a;color:#fff}
+    .sb-del-btn:hover{border-color:#e74c3c;color:#e74c3c}
+    .sb-pl-item{background:#222;border-radius:8px;padding:10px 10px 10px 12px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:background .2s}
+    .sb-pl-item:hover{background:#2a2a2a}
+    .sb-pl-name{flex:1;font-size:.9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .sb-pl-btns{display:flex;gap:4px;flex-shrink:0}
+    .sb-empty{color:#666;font-size:.85em;text-align:center;margin:12px 0}
+
+    /* Detail view */
+    .sb-detail-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+    .sb-back-btn{background:none;border:none;color:#aaa;font-size:1.2em;cursor:pointer;padding:0}
+    .sb-back-btn:hover{color:#fff}
+    .sb-detail-header h4{flex:1;margin:0;font-size:.95em}
+    .sb-detail-song{display:flex;align-items:center;gap:8px;padding:8px 6px;border-bottom:1px solid #2a2a2a}
+    .sb-song-num{color:#555;font-size:.8em;width:18px;text-align:right;flex-shrink:0}
+    .sb-song-title{flex:1;font-size:.85em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+    /* Sidebar toggle */
+    .sb-toggle-btn{position:fixed;right:0;top:50%;transform:translateY(-50%);background:#1a1a1a;border:1px solid #333;border-right:none;color:#aaa;cursor:pointer;padding:12px 8px;border-radius:8px 0 0 8px;z-index:2999;font-size:1.1em;line-height:1;transition:background .2s,color .2s}
+    .sb-toggle-btn:hover{background:#2a2a2a;color:#fff}
+    @media(max-width:600px){.sb-sidebar{width:100%}}
+
+    /* Playlist mode josla */
+    #pl-mode-bar{display:none;background:#1a3a1a;border-bottom:2px solid #1db954;padding:8px 20px;text-align:center;font-size:.88em;gap:12px;align-items:center;justify-content:center}
+    #pl-mode-bar.visible{display:flex}
 
      /* Mini‑player */
     #playerBar{position:fixed;bottom:0;left:0;right:0;background:#181818;display:flex;align-items:center;gap:15px;padding:10px 20px;box-shadow:0 -2px 10px rgba(0,0,0,.6);z-index:2000}
@@ -92,6 +157,63 @@
     <a href="muzika.html" class="active">Mūzika</a>
   </nav>
 </header>
+
+<!-- Playlist režīma josla -->
+<div id="pl-mode-bar">
+  <span id="pl-mode-name">Saraksts</span>
+  <button onclick="exitPlaylistMode()" style="background:#c0392b;border:none;color:#fff;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:.85em">✕ Iziet</button>
+</div>
+
+<!-- Sānjosla -->
+<aside id="playlist-sidebar" class="sb-sidebar sb-closed">
+  <div class="sb-top">
+    <h3>📋 Mani saraksti</h3>
+    <button class="sb-close-btn" onclick="closeSidebar()">×</button>
+  </div>
+  <div class="sb-inner">
+    <!-- Login -->
+    <div id="sb-login">
+      <button class="sb-google-btn" onclick="signInWithGoogle()">
+        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Ielogoties ar Google
+      </button>
+      <div class="sb-divider">vai ar e-pastu</div>
+      <input type="email" id="sb-email" placeholder="E-pasts" autocomplete="email">
+      <input type="password" id="sb-pass" placeholder="Parole" autocomplete="current-password">
+      <button class="sb-btn" onclick="signInWithEmail()">Ielogoties</button>
+      <button class="sb-btn-link" onclick="signUpWithEmail()">Reģistrēties</button>
+      <div id="sb-auth-msg"></div>
+    </div>
+
+    <!-- Ielogojies -->
+    <div id="sb-user">
+      <span id="sb-user-email"></span>
+      <button class="sb-btn-link" onclick="signOut()">Iziet</button>
+    </div>
+
+    <!-- Saraksti -->
+    <div id="sb-playlists">
+      <div id="sb-pl-list-view">
+        <div class="sb-new-pl">
+          <input type="text" id="sb-new-pl-name" placeholder="Jauna saraksta nosaukums">
+          <button class="sb-icon-btn" onclick="createNewPlaylist()" title="Izveidot">+</button>
+        </div>
+        <div id="sb-playlist-list" style="margin-top:10px"></div>
+      </div>
+      <div id="sb-pl-detail-view" style="display:none">
+        <div class="sb-detail-header">
+          <button class="sb-back-btn" onclick="closePlaylistDetail()">←</button>
+          <h4 id="sb-detail-name"></h4>
+          <button class="sb-icon-btn" onclick="if(activePl) playPlaylist(activePl.id)" title="Atskaņot visu">▶</button>
+        </div>
+        <div id="sb-detail-songs"></div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Sānjoslas toggle -->
+<button class="sb-toggle-btn" onclick="toggleSidebar()" title="Mani saraksti">📋</button>
 
 <div class="container">
   <h1 style="text-align:center;margin-bottom:1rem">🎧 Putekļa radio</h1>
@@ -153,6 +275,26 @@ async function loadSongs(){
     console.error(err);
     grid.textContent = '❗ Neizdevās ielādēt dziesmu datus.';
   }
+}
+
+function startPlaylistMode(songTitles) {
+  list = songs.filter(s => songTitles.includes(s.title));
+  list.sort((a,b) => songTitles.indexOf(a.title) - songTitles.indexOf(b.title));
+  if(!list.length){ alert('Dziesmas nav atrastas.'); return; }
+  grid.innerHTML = '';
+  list.forEach((song,i) => grid.appendChild(makeCard(song,i)));
+  if(typeof initLikes === 'function') initLikes();
+  const bar = document.getElementById('pl-mode-bar');
+  const nameEl = document.getElementById('pl-mode-name');
+  if(bar){ bar.classList.add('visible'); }
+  if(nameEl && activePl){ nameEl.textContent = '▶ ' + activePl.name; }
+  playIndex(0);
+  closeSidebar();
+}
+
+function exitPlaylistMode() {
+  document.getElementById('pl-mode-bar')?.classList.remove('visible');
+  filterRender();
 }
 
 document.addEventListener('DOMContentLoaded', loadSongs);
@@ -223,8 +365,9 @@ function makeCard(song,i){
 
 
       <div class='action-row'>
-        <button class='play-btn' data-idx='${i}'>▶ Atskaņot</button>
+        <button class='play-btn' data-idx='${i}' title='Atskaņot'>▶</button>
         <button class='lyrics-btn'>Vārdi</button>
+        <button class='sb-add-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" title="Pievienot sarakstam">+</button>
         <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}">
           <span class='like-heart'>♡</span>
           <span class='like-count'>…</span>
@@ -245,6 +388,8 @@ function makeCard(song,i){
   c.querySelector('.play-btn').onclick = e => playIndex(+e.currentTarget.dataset.idx);
   c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
   if(typeof attachLikeHandler === 'function') attachLikeHandler(c.querySelector('.like-btn'));
+  const addBtn = c.querySelector('.sb-add-btn');
+  if(addBtn) addBtn.onclick = e => { e.stopPropagation(); if(typeof showAddToPlaylistPopup === 'function') showAddToPlaylistPopup(song.title, addBtn); };
   const shareWrap = c.querySelector('.share-wrap');
   const shareBtn = shareWrap.querySelector('.share-btn');
   const menu = shareWrap.querySelector('.share-menu');
@@ -444,7 +589,10 @@ async function shareNative(song){
 
 </script>
 
+<script src="supabase-client.js"></script>
 <script src="likes.js"></script>
+<script src="auth.js"></script>
+<script src="playlists.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
 <script src="assets/js/analytics.js"></script>
