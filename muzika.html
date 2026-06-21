@@ -60,6 +60,12 @@
     .share-menu button{background:#2f2f2f;border:1px solid #444;color:#eee;border-radius:6px;padding:8px;cursor:pointer;text-align:left;font-weight:600}
     .share-menu button:hover{background:#3a3a3a}
     .share-note{font-size:.8em;color:#aaa;margin-top:6px}
+    .like-btn{background:#2c2c2c;border:1px solid #444;color:#aaa;border-radius:8px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;gap:5px;font-size:.9em;transition:color .2s,border-color .2s,background .2s;white-space:nowrap;flex:0 0 auto}
+    .like-btn:hover{border-color:#e74c3c;color:#e74c3c}
+    .like-btn.liked{color:#e74c3c;border-color:#e74c3c;background:#2c1a1a}
+    .like-btn:disabled{opacity:.5;cursor:default}
+    .like-heart{font-size:1.05em;line-height:1}
+    .like-count{font-size:.85em;font-weight:600}
 
      /* Mini‑player */
     #playerBar{position:fixed;bottom:0;left:0;right:0;background:#181818;display:flex;align-items:center;gap:15px;padding:10px 20px;box-shadow:0 -2px 10px rgba(0,0,0,.6);z-index:2000}
@@ -197,6 +203,7 @@ function filterRender(){
       focusApplied = true;
     }
   });
+  if(typeof initLikes === 'function') initLikes();
 }
 
 function makeCard(song,i){
@@ -224,6 +231,10 @@ function makeCard(song,i){
           <span>Atskaņot</span>
         </button>
         <button class='lyrics-btn'>Vārdi</button>
+        <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}">
+          <span class='like-heart'>♡</span>
+          <span class='like-count'>…</span>
+        </button>
         <div class='share-wrap'>
           <button class='share-btn'>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v3H8v4h4v3l6-5-6-5Z" fill="currentColor"/></svg>
@@ -239,6 +250,7 @@ function makeCard(song,i){
     </div>`;
   c.querySelector('.play-btn').onclick = e => playIndex(+e.currentTarget.dataset.idx);
   c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
+  if(typeof attachLikeHandler === 'function') attachLikeHandler(c.querySelector('.like-btn'));
   const shareWrap = c.querySelector('.share-wrap');
   const shareBtn = shareWrap.querySelector('.share-btn');
   const menu = shareWrap.querySelector('.share-menu');
@@ -438,6 +450,7 @@ async function shareNative(song){
 
 </script>
 
+<script src="likes.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
 <script src="assets/js/analytics.js"></script>
