@@ -316,6 +316,18 @@ function exitPlaylistMode() {
   filterRender();
 }
 
+function syncGridToOrder(songTitles) {
+  const gridEl = document.getElementById('songGrid');
+  if (!gridEl) return;
+  const cards = [...gridEl.querySelectorAll('.card')];
+  songTitles.forEach(title => {
+    const card = cards.find(c => c.dataset.songTitle === title);
+    if (card) gridEl.appendChild(card);
+  });
+  gridEl.querySelectorAll('.card').forEach((c, i) => c.dataset.cardIdx = i);
+  list = songTitles.map(t => songs.find(s => s.title === t)).filter(Boolean);
+}
+
 function enableGridDragReorder() {
   if (typeof activePl === 'undefined' || !activePl) return;
   let dragSrc = null;
@@ -350,6 +362,7 @@ function enableGridDragReorder() {
       if (typeof sb !== 'undefined' && activePl) {
         const updates = newOrder.map((title, pos) => ({ playlist_id: activePl.id, song_id: title, position: pos }));
         await sb.from('playlist_songs').upsert(updates, { onConflict: 'playlist_id,song_id' });
+        if (typeof openPlaylistDetail === 'function') openPlaylistDetail(activePl);
       }
     });
   });

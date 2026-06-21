@@ -197,13 +197,15 @@ function setupDragReorder(container, pl) {
       const dstIdx = allRows.indexOf(this);
       if (srcIdx < dstIdx) this.after(dragSrc); else this.before(dragSrc);
       container.querySelectorAll('.sb-song-num').forEach((el, i) => el.textContent = i + 1);
-      const updates = [...container.querySelectorAll('.sb-detail-song')].map((r, i) => ({
+      const rows = [...container.querySelectorAll('.sb-detail-song')];
+      const updates = rows.map((r, i) => ({
         id: r.dataset.rowId,
         playlist_id: pl.id,
         song_id: r.dataset.songId,
         position: i
       }));
       await sb.from('playlist_songs').upsert(updates);
+      if (typeof syncGridToOrder === 'function') syncGridToOrder(rows.map(r => r.dataset.songId));
     });
   });
 }
