@@ -25,6 +25,8 @@ let _ctx = null, _analyser = null, _src = null, _raf = null, _glow = '#4ba3ff';
 function initVisualizer(audioEl) {
   try {
     if (_ctx) { if (_ctx.state === 'suspended') _ctx.resume(); return; }
+    const src = audioEl.src || '';
+    try { if (src && new URL(src).origin !== location.origin) return; } catch(e) {}
     _ctx = new (window.AudioContext || window.webkitAudioContext)();
     _ctx.resume();
     _analyser = _ctx.createAnalyser();
