@@ -26,7 +26,8 @@ function initVisualizer(audioEl) {
   try {
     if (_ctx) { if (_ctx.state === 'suspended') _ctx.resume(); return; }
     const src = audioEl.src || '';
-    try { if (src && new URL(src).origin !== location.origin) return; } catch(e) {}
+    const isCross = src && (() => { try { return new URL(src).origin !== location.origin; } catch(e) { return false; } })();
+    if (isCross && !audioEl.crossOrigin) return;
     _ctx = new (window.AudioContext || window.webkitAudioContext)();
     _ctx.resume();
     _analyser = _ctx.createAnalyser();

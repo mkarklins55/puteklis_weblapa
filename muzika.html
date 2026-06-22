@@ -263,7 +263,7 @@ const fmt = t => { t = Math.floor(t); return Math.floor(t/60) + ':' + ('0' + t %
 
 /* ---------- Elements ---------- */
 const grid = qs('#songGrid'), sel = qs('#styleSel'), inp = qs('#search'), pop = qs('#popularStyles');
-const audio = new Audio();
+const audio = new Audio(); audio.crossOrigin = 'anonymous';
 const bar = qs('#playerBar'), coverMini = qs('#coverMini');
 const trackTitle = qs('#trackTitle'), trackStyle = qs('#trackStyle');
 const playPauseBtn = qs('#playPauseBtn'), prevBtn = qs('#prevBtn'), nextBtn = qs('#nextBtn'), shuffleBtn = qs('#shuffleBtn');
