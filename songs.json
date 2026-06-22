@@ -147,7 +147,7 @@
         "style":  "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave"
     },
     {
-        "title":  "Sous mes bottes, la poussiC�re chante",
+        "title":  "Sous mes bottes, la poussière chante",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Sous mes bottes, la poussière chante.mp3",
         "lyrics":  "lyrics/Sous mes bottes, la poussière chante.txt",
         "image":  "cover/Sous mes bottes, la poussière chante.webp",
@@ -252,7 +252,7 @@
         "style":  "cabaret, Spoken Word, Dark Cabaret, Post-Punk, Experimental Poetry, Art Rock"
     },
     {
-        "title":  "We don\u0027t fight wars",
+        "title":  "We don’t fight wars",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/We don’t fight wars.mp3",
         "lyrics":  "lyrics/We don’t fight wars.txt",
         "image":  "cover/We don’t fight wars.webp",
@@ -357,7 +357,7 @@
         "style":  "country, outlaw country, Americana, folk"
     },
     {
-        "title":  "Ich z�hle jeden Atemzug",
+        "title":  "Ich zähle jeden Atemzug",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Ich zähle jeden Atemzug.mp3",
         "lyrics":  "lyrics/Ich zähle jeden Atemzug.txt",
         "image":  "cover/Ich zähle jeden Atemzug.webp",
@@ -392,7 +392,7 @@
         "style":  "jazz, dirty techno-jazz, Dark Jazz, pulsing electronic beats"
     },
     {
-        "title":  "I don\u0027t knead, I don\u0027t purr, I don\u0027t play",
+        "title":  "I’m the Fuckin’ Cat",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/I don’t knead, I don’t purr, I don’t play.mp3",
         "lyrics":  "lyrics/I don’t knead, I don’t purr, I don’t play.txt",
         "image":  "cover/I’m the Fuckin’ Cat.webp",
@@ -498,14 +498,14 @@
         "style":  "blues, Noir Lounge Psych, Baritone Blues Noir"
     },
     {
-        "title":  "tumsa_nakte",
+        "title":  "Tumša nakte, zaļa zāle",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Tumša nakte, zaļa zāle.mp3",
         "lyrics":  "lyrics/Tum�?a nakte, zaļa zāle.txt",
         "image":  "cover/tumsa_nakte.webp",
         "style":  "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave ballad, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
     },
     {
-        "title":  "riksiem_beriti",
+        "title":  "Rikšiem bērīti es palaidu",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Rikšiem bērīti es palaidu.mp3",
         "lyrics":  "lyrics/Rik�?iem bērīti es palaidu.txt",
         "image":  "cover/riksiem_beriti.webp",
@@ -533,7 +533,7 @@
         "style":  "synthpop, train beat rhythm, outlaw country, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, post-digital crooner style, burnout wave, synthetic urban lament, stark dark electropop, aesthetic anti-ballad"
     },
     {
-        "title":  "I\u0027m the palm",
+        "title":  "I’m the palm",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/I’m the palm.mp3",
         "lyrics":  "lyrics/Ia��m the palm.txt",
         "image":  "cover/the_palm.webp",
@@ -561,7 +561,7 @@
         "style":  "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
     },
     {
-        "title":  "desmit_kukainisi",
+        "title":  "Desmit mazi kukainīši",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Desmit mazi kukainīši ceļoja ar plostu.mp3",
         "lyrics":  "lyrics/Desmit mazi kukainīši ceļoja ar plostu.txt",
         "image":  "cover/desmit_kukainisi.webp",
@@ -582,7 +582,7 @@
         "style":  "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro"
     },
     {
-        "title":  "Ieksejas_kartibas_noteikumi",
+        "title":  "Iekšējās kārtības noteikumi",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Ieksejas_kartibas_noteikumi.mp3",
         "lyrics":  "lyrics/Ieksejas_kartibas_noteikumi.txt",
         "image":  "cover/Ieksejas_kartibas_noteikumi.webp",
@@ -596,7 +596,7 @@
         "style":  "country, alt-country, storytelling style, erotic darkwave ballad, americana, outlaw country noir"
     },
     {
-        "title":  "hedgehog",
+        "title":  "Coffeeshop — “Hedgehog in the Fog”",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Coffeeshop — “Hedgehog in the Fog”.mp3",
         "lyrics":  "lyrics/Coffeeshop a�� a�?Hedgehog in the Foga��.txt",
         "image":  "cover/hedgehog.webp",
@@ -610,7 +610,7 @@
         "style":  "Cabaret, Theatrical Falsetto Punk, Dark Cabaret, Brechtian Punk Cabare"
     },
     {
-        "title":  "kamisi",
+        "title":  "Kāmīši",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Zirgi sazviedzas, (Remix).mp3",
         "lyrics":  "lyrics/Zirgi sazviedzas, (Remix).txt",
         "image":  "cover/kamisi.webp",
@@ -638,7 +638,7 @@
         "style":  "country, train beat rhythm, outlaw country, country gospel, southern gothic, americana, dark folk, synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
     },
     {
-        "title":  "GAID�RTĀJA MEŽA C�RKA",
+        "title":  "GAIDĪTĀJA MEŽA CŪKA",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Vai tas ezers ir vai upe - (Remix).mp3",
         "lyrics":  "lyrics/Vai tas ezers ir vai upe - (Remix).txt",
         "image":  "cover/Vai tas ezers ir vai upe - (Remix).webp",
@@ -659,14 +659,14 @@
         "style":  "country, train beat rhythm, outlaw country, country gospel"
     },
     {
-        "title":  "The rain\u0027s been falling, (Remix)",
+        "title":  "The rain’s been falling, (Remix)",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/The rain’s been falling, (Remix).mp3",
         "lyrics":  "lyrics/The rain’s been falling, (Remix).txt",
         "image":  "cover/The rain’s been falling, (Remix).webp",
         "style":  "blues, Dirty noir-blues, slow-burning tempo, baritone snarl, cracked and nicotine-drenched voice"
     },
     {
-        "title":  "I\u0027m a little Don Quixote",
+        "title":  "I’m a little Don Quixote",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/I’m a little Don Quixote.mp3",
         "lyrics":  "lyrics/I’m a little Don Quixote.txt",
         "image":  "cover/I’m a little Don Quixote.webp",
@@ -680,7 +680,7 @@
         "style":  "cabaret, Dark Cabaret, Brechtian Punk Cabaret, Macabre Folk, Circus Noir, Murder Ballads, Gothic Vaudeville, Absurdist Theater Music, Burlesque Gothic, Theatrical Falsetto Punk, Apocalyptic Cabaret, Avant-Garde Vaudeville, Dark Lyrical Theater, Expressionist Cabaret, Dark Cabaret Pop, Punk Noir, Cabaret Rock, Satirical Theater Music, Dark Chanson"
     },
     {
-        "title":  "Enough of good and evil a�� enough. (Remix)",
+        "title":  "Enough of good and evil – enough. (Remix)",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Enough of good and evil – enough. (Remix).mp3",
         "lyrics":  "lyrics/Enough of good and evil – enough. (Remix).txt",
         "image":  "cover/Enough of good and evil – enough. (Remix).webp",
@@ -708,7 +708,7 @@
         "style":  "blues, Urban Voodoo Rock, Sexualized Swamp Blues / Baritone Noir"
     },
     {
-        "title":  "My screen\u0027s cluttered with half-born tho (Remix)",
+        "title":  "My screen’s cluttered with half-born thoughts",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/My screen’s cluttered with half-born tho (Remix).mp3",
         "lyrics":  "lyrics/My screen’s cluttered with half-born tho (Remix).txt",
         "image":  "cover/My screen’s cluttered with half-born tho (Remix).webp",
@@ -729,7 +729,7 @@
         "style":  "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
     },
     {
-        "title":  "NO KURIENES",
+        "title":  "NO KURIENES?",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/NO KURIENES.mp3",
         "lyrics":  "lyrics/NO KURIENES.txt",
         "image":  "cover/NO KURIENES.webp",
@@ -771,7 +771,7 @@
         "style":  "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony"
     },
     {
-        "title":  "Man nepatīk vārds iecietība — (Remix)",
+        "title":  "Man nepatīk vārds “iecietība” — (Remix)",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Man nepatīk vārds iecietība — (Remix).mp3",
         "lyrics":  "lyrics/Man nepatīk vārds iecietība — (Remix).txt",
         "image":  "cover/Man nepatīk vārds iecietība — (Remix).webp",
@@ -974,7 +974,7 @@
         "style":  "country, Urban outlaw country crossover with a nocturnal, cinematic edge, mid-tempo train-beat rhythm driven by a steady, rolling drum pattern (kicka��snare like wheels on tracks) and a firm, forward-pulling bassline that never fully rests, electric guitars used percussively and narratively with muted strums, dry stabs, restrained tremolo and occasional gritty swells cutting through like passing lights, subtle slide or bent-note textures replacing jazz phrasing, minimal piano or Rhodes figures kept sharp and tense rather than warm, spacious but controlled production with darker reverb tails, room tone and light tape grit adding dust and motion, vocal duet built around a grounded, unsentimental male lead with a road-worn, authoritative delivery paired with a cooler, distant counter-voice, contrast over blend, verses delivered with clipped, story-driven phrasing and quiet resolve, chorus opening through rhythmic momentum and repetition rather than melody, widening the stereo field with tight"
     },
     {
-        "title":  "Tell me where youa��ve been tonight",
+        "title":  "Tell me where you’ve been tonight",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Tell me where you’ve been tonight.mp3",
         "lyrics":  "lyrics/Tell me where you’ve been tonight.txt",
         "image":  "cover/Tell me where you’ve been tonight.webp",
@@ -995,7 +995,7 @@
         "style":  "rock, An intimate, acoustic-rooted song shaped by post-rock sensibilities and a contemporary art-rock / modern jazz crossover, infused with rural surreal noir folk-rock and vintage psych-blues textures, A steady, lightly propulsive mid-tempo groove built on brushed drums and a supple bass line carries a cracked shuffle feel, grounded yet uneasy, Electric guitars shift between muted rhythmic stabs, tremolo-drenched swells, and desert-leaning blues riffs with a faint western twang, while detuned upright piano hits, broken harmonium drones, and ghostly organ tones add an uncanny, folkloric edge, The vocal core is a nicotine-worn baritonea��physically present, restrained, and tensea��paired with a secondary voice that enters as whispers or strained falsetto fragments, blending like inner echoes rather than contrasts, Analog tape character, light saturation, and airy reverb create a dusty, nocturnal soundscape that feels cinematic and slow-burning, balancing urban elegance with rural darkness"
     },
     {
-        "title":  "I\u0027m on my way home for Christmas",
+        "title":  "I’m on my way home for Christmas",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/I’m on my way home for Christmas.mp3",
         "lyrics":  "lyrics/I’m on my way home for Christmas.txt",
         "image":  "cover/I’m on my way home for Christmas.webp",
