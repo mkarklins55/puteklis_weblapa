@@ -26,6 +26,7 @@ function initVisualizer(audioEl) {
   try {
     if (_ctx) { if (_ctx.state === 'suspended') _ctx.resume(); return; }
     _ctx = new (window.AudioContext || window.webkitAudioContext)();
+    _ctx.resume();
     _analyser = _ctx.createAnalyser();
     _analyser.fftSize = 128;
     _analyser.smoothingTimeConstant = 0.82;

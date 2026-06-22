@@ -263,7 +263,8 @@ const fmt = t => { t = Math.floor(t); return Math.floor(t/60) + ':' + ('0' + t %
 
 /* ---------- Elements ---------- */
 const grid = qs('#songGrid'), sel = qs('#styleSel'), inp = qs('#search'), pop = qs('#popularStyles');
-const audio = new Audio(), bar = qs('#playerBar'), coverMini = qs('#coverMini');
+const audio = new Audio();
+const bar = qs('#playerBar'), coverMini = qs('#coverMini');
 const trackTitle = qs('#trackTitle'), trackStyle = qs('#trackStyle');
 const playPauseBtn = qs('#playPauseBtn'), prevBtn = qs('#prevBtn'), nextBtn = qs('#nextBtn'), shuffleBtn = qs('#shuffleBtn');
 const progress = qs('#progress'), fill = qs('#progressFill'), stamp = qs('#timestamp');
