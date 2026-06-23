@@ -84,3 +84,15 @@ function startViz() {
 function stopViz() {
   if (_raf) { cancelAnimationFrame(_raf); _raf = null; }
 }
+
+// Kad telefons atgriežas no fona/slēgta ekrāna, atsāk AudioContext
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && _ctx && _ctx.state === 'suspended') {
+    _ctx.resume();
+  }
+});
+
+// iOS: AudioContext bieži suspended pēc klusuma perioda — atsāk pie katra play
+document.addEventListener('play', () => {
+  if (_ctx && _ctx.state === 'suspended') _ctx.resume();
+}, true);

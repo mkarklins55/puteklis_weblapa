@@ -532,6 +532,23 @@ shuffleBtn.onclick = () => { shuffleOn = !shuffleOn; shuffleBtn.classList.toggle
 
 audio.onended = playNext;
 
+// Ja audio apstājas tīkla dēļ — mēģina atsākt no tās pašas pozīcijas
+let _stallTimer = null;
+function _handleStall() {
+  clearTimeout(_stallTimer);
+  _stallTimer = setTimeout(() => {
+    if (!audio.paused && audio.readyState < 3) {
+      const t = audio.currentTime;
+      audio.load();
+      audio.currentTime = t;
+      audio.play().catch(() => {});
+    }
+  }, 3000);
+}
+audio.addEventListener('stalled', _handleStall);
+audio.addEventListener('waiting', _handleStall);
+audio.addEventListener('playing', () => clearTimeout(_stallTimer));
+
 function playNext(){
   if(!list.length) return;
   shuffleOn ? playIndex(Math.floor(Math.random()*list.length))
