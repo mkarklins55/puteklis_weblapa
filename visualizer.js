@@ -51,34 +51,58 @@ function setAmbientStyle(styleStr) {
 }
 
 function startViz() {
-  if (!_analyser) return;
   const canvas = document.getElementById('viz-canvas');
   if (!canvas) return;
-  const ctx2d = canvas.getContext('2d');
-  const data = new Uint8Array(_analyser.frequencyBinCount);
   if (_raf) cancelAnimationFrame(_raf);
 
-  function draw() {
-    _raf = requestAnimationFrame(draw);
-    const W = canvas.width  = canvas.offsetWidth;
-    const H = canvas.height = canvas.offsetHeight;
-    _analyser.getByteFrequencyData(data);
-    ctx2d.clearRect(0, 0, W, H);
-
-    const n = data.length;
-    const barW = W / n;
-    for (let i = 0; i < n; i++) {
-      const v  = data[i] / 255;
-      const bH = v * H;
-      const a  = Math.round((0.25 + v * 0.75) * 255).toString(16).padStart(2, '0');
-      const grad = ctx2d.createLinearGradient(0, H, 0, H - bH);
-      grad.addColorStop(0, _glow + '55');
-      grad.addColorStop(1, _glow + a);
-      ctx2d.fillStyle = grad;
-      ctx2d.fillRect(i * barW, H - bH, Math.max(barW - 1, 1), bH);
+  if (_analyser) {
+    // Īstā vizualizācija — frekvenču dati no AudioContext
+    const ctx2d = canvas.getContext('2d');
+    const data = new Uint8Array(_analyser.frequencyBinCount);
+    function draw() {
+      _raf = requestAnimationFrame(draw);
+      const W = canvas.width  = canvas.offsetWidth;
+      const H = canvas.height = canvas.offsetHeight;
+      _analyser.getByteFrequencyData(data);
+      ctx2d.clearRect(0, 0, W, H);
+      const n = data.length, barW = W / n;
+      for (let i = 0; i < n; i++) {
+        const v = data[i] / 255, bH = v * H;
+        const a = Math.round((0.25 + v * 0.75) * 255).toString(16).padStart(2, '0');
+        const grad = ctx2d.createLinearGradient(0, H, 0, H - bH);
+        grad.addColorStop(0, _glow + '55');
+        grad.addColorStop(1, _glow + a);
+        ctx2d.fillStyle = grad;
+        ctx2d.fillRect(i * barW, H - bH, Math.max(barW - 1, 1), bH);
+      }
     }
+    draw();
+  } else {
+    // Animēta vizualizācija bez AudioContext (sinusa viļņi žanra krāsā)
+    const ctx2d = canvas.getContext('2d');
+    const N = 32;
+    function drawFake() {
+      _raf = requestAnimationFrame(drawFake);
+      const W = canvas.width  = canvas.offsetWidth;
+      const H = canvas.height = canvas.offsetHeight;
+      ctx2d.clearRect(0, 0, W, H);
+      const t = Date.now() / 1000;
+      const barW = W / N;
+      for (let i = 0; i < N; i++) {
+        const v = 0.15 + 0.6 * Math.abs(
+          Math.sin(t * 2.1 + i * 0.45) * Math.cos(t * 1.7 + i * 0.3)
+        );
+        const bH = v * H;
+        const a = Math.round((0.25 + v * 0.75) * 255).toString(16).padStart(2, '0');
+        const grad = ctx2d.createLinearGradient(0, H, 0, H - bH);
+        grad.addColorStop(0, _glow + '55');
+        grad.addColorStop(1, _glow + a);
+        ctx2d.fillStyle = grad;
+        ctx2d.fillRect(i * barW, H - bH, Math.max(barW - 1, 1), bH);
+      }
+    }
+    drawFake();
   }
-  draw();
 }
 
 function stopViz() {

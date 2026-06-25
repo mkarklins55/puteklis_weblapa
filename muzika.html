@@ -263,7 +263,7 @@ const fmt = t => { t = Math.floor(t); return Math.floor(t/60) + ':' + ('0' + t %
 
 /* ---------- Elements ---------- */
 const grid = qs('#songGrid'), sel = qs('#styleSel'), inp = qs('#search'), pop = qs('#popularStyles');
-const audio = new Audio(); audio.crossOrigin = 'anonymous';
+const audio = new Audio();
 const bar = qs('#playerBar'), coverMini = qs('#coverMini');
 const trackTitle = qs('#trackTitle'), trackStyle = qs('#trackStyle');
 const playPauseBtn = qs('#playPauseBtn'), prevBtn = qs('#prevBtn'), nextBtn = qs('#nextBtn'), shuffleBtn = qs('#shuffleBtn');
@@ -531,23 +531,6 @@ nextBtn.onclick = () => playNext();
 shuffleBtn.onclick = () => { shuffleOn = !shuffleOn; shuffleBtn.classList.toggle('active', shuffleOn); };
 
 audio.onended = playNext;
-
-// Ja audio apstājas tīkla dēļ — mēģina atsākt no tās pašas pozīcijas
-let _stallTimer = null;
-function _handleStall() {
-  clearTimeout(_stallTimer);
-  _stallTimer = setTimeout(() => {
-    if (!audio.paused && audio.readyState < 3) {
-      const t = audio.currentTime;
-      audio.load();
-      audio.currentTime = t;
-      audio.play().catch(() => {});
-    }
-  }, 3000);
-}
-audio.addEventListener('stalled', _handleStall);
-audio.addEventListener('waiting', _handleStall);
-audio.addEventListener('playing', () => clearTimeout(_stallTimer));
 
 function playNext(){
   if(!list.length) return;
