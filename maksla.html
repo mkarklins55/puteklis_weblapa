@@ -310,9 +310,7 @@
   <section id="gramatas" style="scroll-margin-top: 15px;">
     <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
       <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);" data-i18n="maksla.gramatas.h2">Grāmatas</h2>
-      <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
-        Putekļi starp lappusēm. Vārdi, kas elpo. Domu ceļi, kas ved uz citām pasaulēm.
-      </p>
+      <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);" data-i18n="maksla.gramatas.sub">Putekļi starp lappusēm. Vārdi, kas elpo. Domu ceļi, kas ved uz citām pasaulēm.</p>
 
       <!-- 3 grāmatu 'kartiņas' -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
@@ -323,7 +321,7 @@
                     box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                     cursor: pointer; overflow: hidden;">
           <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-            <h3 style="margin-bottom: 10px;">Lasītās grāmatas</h3>
+            <h3 style="margin-bottom: 10px;" data-i18n="maksla.gramatas.read">Lasītās grāmatas</h3>
             <p style="font-size: 1em;"></p>
           </div>
         </div>
@@ -334,7 +332,7 @@
                     box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                     cursor: pointer; overflow: hidden;">
           <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-            <h3 style="margin-bottom: 10px;">Rekomendācijas</h3>
+            <h3 style="margin-bottom: 10px;" data-i18n="maksla.gramatas.recommended">Rekomendācijas</h3>
             <p style="font-size: 1em;"></p>
           </div>
         </div>
@@ -345,7 +343,7 @@
                     box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                     cursor: pointer; overflow: hidden;">
           <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-            <h3 style="margin-bottom: 10px;">Neizlasīts</h3>
+            <h3 style="margin-bottom: 10px;" data-i18n="maksla.gramatas.unread">Neizlasīts</h3>
             <p style="font-size: 1em;"></p>
           </div>
         </div>
@@ -522,41 +520,39 @@
   <section id="filmas" style="scroll-margin-top: 15px; padding: 50px 20px;">
     <div style="max-width:1000px; margin:auto;">
       <h2 style="font-size:3em; margin-bottom:20px; color:#fff;" data-i18n="maksla.filmas.h2">Filmas</h2>
-      <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;">
-        Šeit ir sadaļas par dažādiem filmu žanriem. Klikšķini, lai atvērtu detalizētu sarakstu.
-      </p>
+      <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;" data-i18n="maksla.filmas.sub">Šeit ir sadaļas par dažādiem filmu žanriem. Klikšķini, lai atvērtu detalizētu sarakstu.</p>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
         <div class="book-card"
              style="background:url('images/sci_fi.jpg') center center / cover; padding:20px; border-radius:16px;
                     box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
              onclick="showMultiFilmModal('sciFiModal')">
-          <h3 style="margin-bottom:10px;">Pazudušās gaismas</h3>
-          <p>Tikai tumsā var ieraudzīt zvaigznes</p> 
+          <h3 style="margin-bottom:10px;" data-i18n="maksla.filmas.lost">Pazudušās gaismas</h3>
+          <p data-i18n="maksla.filmas.lost.p">Tikai tumsā var ieraudzīt zvaigznes</p>
         </div>
 
         <div class="book-card"
              style="background:url('images/teatris_filmas.jpg') center center / cover; padding:20px; border-radius:16px;
                     box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
              onclick="showMultiFilmModal('mistyPathsModal')">
-          <h3 style="margin-bottom:10px;">Dūmakainie ceļi</h3>
-          <p>Psiholoģisks ceļojums miglā, kur nekas nav skaidrs.</p>
+          <h3 style="margin-bottom:10px;" data-i18n="maksla.filmas.misty">Dūmakainie ceļi</h3>
+          <p data-i18n="maksla.filmas.misty.p">Psiholoģisks ceļojums miglā, kur nekas nav skaidrs.</p>
         </div>
 
         <div class="book-card"
              style="background:url('images/music_films.jpg') center center / cover; padding:20px; border-radius:16px;
                     box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
              onclick="showMultiFilmModal('dustBornModal')">
-          <h3 style="margin-bottom:10px;">Putekļos dzimušie</h3>
-          <p>No putekļiem — uz gaismu.</p>
+          <h3 style="margin-bottom:10px;" data-i18n="maksla.filmas.dust">Putekļos dzimušie</h3>
+          <p data-i18n="maksla.filmas.dust.p">No putekļiem — uz gaismu.</p>
         </div>
 
         <div class="book-card"
              style="background:url('images/poetry_films.jpg') center center / cover; padding:20px; border-radius:16px;
                     box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
              onclick="showMultiFilmModal('windWillCarryModal')">
-          <h3 style="margin-bottom:10px;">Vējš nesīs tālāk</h3>
-          <p>Mēs esam tikai vēja stāsti nākotnes tukšumā.</p>
+          <h3 style="margin-bottom:10px;" data-i18n="maksla.filmas.wind">Vējš nesīs tālāk</h3>
+          <p data-i18n="maksla.filmas.wind.p">Mēs esam tikai vēja stāsti nākotnes tukšumā.</p>
         </div>
       </div>
     </div>
@@ -827,25 +823,23 @@
 <section id="teatris" style="scroll-margin-top: 15px; padding: 50px 20px;">
   <div style="max-width:1000px; margin:auto;">
     <h2 style="font-size:3em; margin-bottom:20px; color:#fff;" data-i18n="maksla.teatris.h2">Teātris</h2>
-    <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;">
-      Aktieri, teksti, klusuma spriedze. Skatuve kā spogulis.
-    </p>
+    <p style="font-size:1.2em; margin-bottom:40px; color:#f0f0f0;" data-i18n="maksla.teatris.sub">Aktieri, teksti, klusuma spriedze. Skatuve kā spogulis.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
       <div class="book-card"
            style="background:url('images/teatris_dust.jpg') center center / cover; padding:20px; border-radius:16px;
                   box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
            onclick="showMultiFilmModal('dustTheatreModal')">
-        <h3 style="margin-bottom:10px;">Putekļos iededzinātās ainas</h3>
-        <p>Kad skatuve kļūst par telpu, kur valoda deg klusumā.</p> 
+        <h3 style="margin-bottom:10px;" data-i18n="maksla.teatris.scenes">Putekļos iededzinātās ainas</h3>
+        <p data-i18n="maksla.teatris.scenes.p">Kad skatuve kļūst par telpu, kur valoda deg klusumā.</p>
       </div>
 
       <div class="book-card"
       style="background:url('images/absurds.jpg') center center / cover; padding:20px; border-radius:16px;
              box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
       onclick="showMultiFilmModal('putekluDirigentiModal')">
-   <h3 style="margin-bottom:10px;">Putekļu diriģenti</h3>
-   <p>Tēli, kas nerunā, bet atstāj pēdas uz skatuves sirdsapziņas.</p>
+   <h3 style="margin-bottom:10px;" data-i18n="maksla.teatris.conductors">Putekļu diriģenti</h3>
+   <p data-i18n="maksla.teatris.conductors.p">Tēli, kas nerunā, bet atstāj pēdas uz skatuves sirdsapziņas.</p>
  </div>
 
 
@@ -853,8 +847,8 @@
            style="background:url('images/masks.jpg') center center / cover; padding:20px; border-radius:16px;
                   box-shadow:0 4px 20px rgba(0,0,0,0.5); color:white; cursor:pointer;"
            onclick="showMultiFilmModal('masksTheatreModal')">
-        <h3 style="margin-bottom:10px;">Klusuma semiotika</h3>
-        <p>Estētika, simboli, kustība un absurds – skatuves valoda ārpus teksta.</p>
+        <h3 style="margin-bottom:10px;" data-i18n="maksla.teatris.semiotics">Klusuma semiotika</h3>
+        <p data-i18n="maksla.teatris.semiotics.p">Estētika, simboli, kustība un absurds – skatuves valoda ārpus teksta.</p>
       </div>
     </div>
   </div>
@@ -1259,9 +1253,7 @@ function nextPrev(step) {
 <section id="muzika" style="scroll-margin-top: 15px; padding: 50px 20px;">
   <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
     <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);" data-i18n="maksla.muzika.h2">Mūzika</h2>
-    <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
-      Skaņas, kas dzied klusumā. Dziesmas, kas elpo starp rindiņām.
-    </p>
+    <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);" data-i18n="maksla.muzika.sub">Skaņas, kas dzied klusumā. Dziesmas, kas elpo starp rindiņām.</p>
 
     <!-- 3 mūzikas 'kartiņas' -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
@@ -1271,7 +1263,7 @@ function nextPrev(step) {
                   box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                   cursor: pointer; overflow: hidden;">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Putekļu hronikas</h3>
+          <h3 style="margin-bottom: 10px;" data-i18n="maksla.muzika.chronicles">Putekļu hronikas</h3>
     <!--      <p style="font-size: 1em;">Dziesmas, kas dzimušas digitālā dūmakā.</p> -->
         </div>
       </div>
@@ -1282,7 +1274,7 @@ function nextPrev(step) {
                   box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                   cursor: pointer; overflow: hidden;">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Putekļa ausis</h3>
+          <h3 style="margin-bottom: 10px;" data-i18n="maksla.muzika.ears">Putekļa ausis</h3>
       <!--    <p style="font-size: 1em;">Ko klausās Puteklis, kad nerunā?</p> -->
         </div>
       </div>
@@ -1293,7 +1285,7 @@ function nextPrev(step) {
                   box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white; 
                   cursor: pointer; overflow: hidden;">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Putekļa mozaīkas</h3>
+          <h3 style="margin-bottom: 10px;" data-i18n="maksla.muzika.mosaic">Putekļa mozaīkas</h3>
       <!--    <p style="font-size: 1em;">Pat putekļi reizēm grib būt kārtībā.</p> -->
         </div>
       </div>
@@ -1305,7 +1297,7 @@ function nextPrev(step) {
             box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
             cursor: pointer; overflow: hidden;">
   <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-    <h3 style="margin-bottom: 10px;">Putekļa karaoke</h3>
+    <h3 style="margin-bottom: 10px;" data-i18n="maksla.muzika.karaoke">Putekļa karaoke</h3>
   </div>
 </div>
 
@@ -1315,7 +1307,7 @@ function nextPrev(step) {
             box-shadow: 0 4px 20px rgba(0,0,0,0.5); color: white;
             cursor: pointer; overflow: hidden;">
   <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-    <h3 style="margin-bottom: 10px;">Putekļa radio</h3>
+    <h3 style="margin-bottom: 10px;" data-i18n="maksla.muzika.radio">Putekļa radio</h3>
   </div>
 </div>
 
@@ -1741,9 +1733,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <section id="muzeji" style="scroll-margin-top: 15px;">
   <div style="max-width: 1000px; margin: auto; padding-top: 50px; padding-bottom: 50px;">
     <h2 style="font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);" data-i18n="maksla.muzeji.h2">Muzeji</h2>
-    <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
-      Pēdas, kas dzīvo starp mums. Atmiņas, kas elpo cauri laikam.
-    </p>
+    <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0f0f0; text-shadow: 1px 1px 6px rgba(0,0,0,0.7);" data-i18n="maksla.muzeji.sub">Pēdas, kas dzīvo starp mums. Atmiņas, kas elpo cauri laikam.</p>
 
     <!-- 3 muzeju 'kartiņas' -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;">
@@ -1754,7 +1744,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                   cursor: pointer; overflow: hidden;"  
            onclick="showFantasyMuseumModal()">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Fantāziju galerija</h3>
+          <h3 style="margin-bottom: 10px;" data-i18n="maksla.muzeji.gallery">Fantāziju galerija</h3>
                   </div>
       </div>
     
@@ -1768,7 +1758,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                   cursor: pointer; overflow: hidden;"
                   onclick="showThoughtsModal()">
         <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px;">
-          <h3 style="margin-bottom: 10px;">Laikmetīgā doma</h3>
+          <h3 style="margin-bottom: 10px;" data-i18n="maksla.muzeji.thought">Laikmetīgā doma</h3>
   <!--        <p style="font-size: 1em;">Māksla, kas izaicina telpu un laiku.</p> -->
         </div>
       </div>
@@ -1780,7 +1770,7 @@ document.addEventListener('DOMContentLoaded',()=>{
              box-shadow:0 4px 20px rgba(0,0,0,0.5);color:white;
              cursor:pointer;overflow:hidden;">
    <div style="background:rgba(0,0,0,0.5);padding:20px;border-radius:16px;">
-     <h3 style="margin-bottom:10px;">Zinātnes pasaule</h3>
+     <h3 style="margin-bottom:10px;" data-i18n="maksla.muzeji.science">Zinātnes pasaule</h3>
      <!-- <p>No mikroskopa lēcām līdz Visuma robežām.</p> -->
    </div>
  </div>
@@ -2517,7 +2507,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
          <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
-  <script src="assets/js/lang.js?v=2"></script>
+  <script src="assets/js/lang.js?v=3"></script>
   <script src="assets/js/analytics.js"></script>
 
   <script>
