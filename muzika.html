@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="/images/logo_small.png" type="image/png">
-  <title>Mūzika | Puteklis</title>
+  <title data-i18n="page.muzika">Mūzika | Puteklis</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta property="og:title" content="Putekļa radio" />
   <meta property="og:description" content="Latvijas neatkarīgā mūzika — Puteklis" />
@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://puteklis.com/muzika.html" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="assets/css/main_puteklis.css">
+  <script src="assets/js/lang.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <style>
     body{margin:0;font-family:'Helvetica Neue',sans-serif;background:#121212;color:#f8f8f8}
@@ -168,22 +169,22 @@
 <body>
 <header>
   <nav>
-    <a href="index.html">Manifests</a>
-    <a href="maksla.html">Māksla</a>
-    <a href="muzika.html" class="active">Mūzika</a>
+    <a href="index.html" data-i18n="nav.manifests">Manifests</a>
+    <a href="maksla.html" data-i18n="nav.maksla">Māksla</a>
+    <a href="muzika.html" class="active" data-i18n="nav.muzika">Mūzika</a>
   </nav>
 </header>
 
 <!-- Playlist režīma josla -->
 <div id="pl-mode-bar">
-  <span id="pl-mode-name">Saraksts</span>
-  <button onclick="exitPlaylistMode()" style="background:#c0392b;border:none;color:#fff;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:.85em">✕ Iziet</button>
+  <span id="pl-mode-name" data-i18n="pl.name">Saraksts</span>
+  <button onclick="exitPlaylistMode()" style="background:#c0392b;border:none;color:#fff;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:.85em" data-i18n="pl.exit">✕ Iziet</button>
 </div>
 
 <!-- Sānjosla -->
 <aside id="playlist-sidebar" class="sb-sidebar sb-closed">
   <div class="sb-top">
-    <h3>📋 Mani saraksti</h3>
+    <h3 data-i18n="sb.title">📋 Mani saraksti</h3>
     <button class="sb-close-btn" onclick="closeSidebar()">×</button>
   </div>
   <div class="sb-inner">
@@ -191,28 +192,28 @@
     <div id="sb-login">
       <button class="sb-google-btn" onclick="signInWithGoogle()">
         <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-        Ielogoties ar Google
+        <span data-i18n="sb.google">Ielogoties ar Google</span>
       </button>
-      <div class="sb-divider">vai ar e-pastu</div>
-      <input type="email" id="sb-email" placeholder="E-pasts" autocomplete="email">
-      <input type="password" id="sb-pass" placeholder="Parole" autocomplete="current-password">
-      <button class="sb-btn" onclick="signInWithEmail()">Ielogoties</button>
-      <button class="sb-btn-link" onclick="signUpWithEmail()">Reģistrēties</button>
+      <div class="sb-divider" data-i18n="sb.or-email">vai ar e-pastu</div>
+      <input type="email" id="sb-email" placeholder="E-pasts" autocomplete="email" data-i18n-ph="sb.email">
+      <input type="password" id="sb-pass" placeholder="Parole" autocomplete="current-password" data-i18n-ph="sb.password">
+      <button class="sb-btn" onclick="signInWithEmail()" data-i18n="sb.login">Ielogoties</button>
+      <button class="sb-btn-link" onclick="signUpWithEmail()" data-i18n="sb.register">Reģistrēties</button>
       <div id="sb-auth-msg"></div>
     </div>
 
     <!-- Ielogojies -->
     <div id="sb-user">
       <span id="sb-user-email"></span>
-      <button class="sb-btn-link" onclick="signOut()">Iziet</button>
+      <button class="sb-btn-link" onclick="signOut()" data-i18n="sb.logout">Iziet</button>
     </div>
 
     <!-- Saraksti -->
     <div id="sb-playlists">
       <div id="sb-pl-list-view">
         <div class="sb-new-pl">
-          <input type="text" id="sb-new-pl-name" placeholder="Jauna saraksta nosaukums">
-          <button class="sb-icon-btn" onclick="createNewPlaylist()" title="Izveidot">+</button>
+          <input type="text" id="sb-new-pl-name" placeholder="Jauna saraksta nosaukums" data-i18n-ph="main.new-pl-ph">
+          <button class="sb-icon-btn" onclick="createNewPlaylist()" title="Izveidot" data-i18n-title="sb.create">+</button>
         </div>
         <div id="sb-playlist-list" style="margin-top:10px"></div>
       </div>
@@ -220,7 +221,7 @@
         <div class="sb-detail-header">
           <button class="sb-back-btn" onclick="closePlaylistDetail()">←</button>
           <h4 id="sb-detail-name"></h4>
-          <button class="sb-icon-btn" onclick="if(activePl) playPlaylist(activePl.id)" title="Atskaņot visu">▶</button>
+          <button class="sb-icon-btn" onclick="if(activePl) playPlaylist(activePl.id)" title="Atskaņot visu" data-i18n-title="sb.play-all">▶</button>
         </div>
         <div id="sb-detail-songs"></div>
       </div>
@@ -229,19 +230,19 @@
 </aside>
 
 <!-- Sānjoslas toggle -->
-<button class="sb-toggle-btn" onclick="toggleSidebar()" title="Mani saraksti">📋</button>
+<button class="sb-toggle-btn" onclick="toggleSidebar()" title="Mani saraksti" data-i18n-title="sb.toggle-title">📋</button>
 
 <div class="container">
-  <h1 style="text-align:center;margin-bottom:1rem">🎧 Putekļa radio</h1>
+  <h1 style="text-align:center;margin-bottom:1rem" data-i18n="main.title">🎧 Putekļa radio</h1>
 
   <div id="popularStyles"></div>
 
   <div class="controls">
-    <select id="styleSel"><option value="">-- Visi stili --</option></select>
-    <input type="search" id="search" placeholder="Meklē nosaukumu, stilu">
+    <select id="styleSel"><option value="" data-i18n="main.all-styles">-- Visi stili --</option></select>
+    <input type="search" id="search" placeholder="Meklē nosaukumu, stilu" data-i18n-ph="main.search-ph">
   </div>
 
-  <div class="grid" id="songGrid">Notiek ielāde...</div>
+  <div class="grid" id="songGrid" data-i18n="main.loading">Notiek ielāde...</div>
 </div>
 
 <!-- Sticky player -->
@@ -440,8 +441,8 @@ function makeCard(song,i){
 
       <div class='action-row'>
         <button class='play-btn' data-idx='${i}' title='Atskaņot'>▶</button>
-        <button class='lyrics-btn'>Vārdi</button>
-        <button class='sb-add-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" title="Pievienot sarakstam">+</button>
+        <button class='lyrics-btn' data-i18n='card.lyrics'>${t('card.lyrics')}</button>
+        <button class='sb-add-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" title="${t('card.add-title')}" data-i18n-title='card.add-title'>+</button>
         <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}">
           <span class='like-heart'>♡</span>
           <span class='like-count'>…</span>
@@ -449,15 +450,15 @@ function makeCard(song,i){
         <div class='share-wrap'>
           <button class='share-btn'>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v3H8v4h4v3l6-5-6-5Z" fill="currentColor"/></svg>
-            <span>Dalīties</span>
+            <span data-i18n='card.share'>${t('card.share')}</span>
           </button>
           <div class='share-menu'>
-            <button class='copy-link'>Kopēt saiti</button>
-            <button class='native-share'>Dalīties ar...</button>
+            <button class='copy-link' data-i18n='card.copy-link'>${t('card.copy-link')}</button>
+            <button class='native-share' data-i18n='card.share-via'>${t('card.share-via')}</button>
           </div>
         </div>
       </div>
-      <div class='lyrics-box' id='lyr_${cssSafe(song.title)}'>Ielāde...</div>
+      <div class='lyrics-box' id='lyr_${cssSafe(song.title)}' data-i18n='card.lyrics-loading'>${t('card.lyrics-loading')}</div>
     </div>`;
   c.querySelector('.play-btn').onclick = e => playIndex(+e.currentTarget.dataset.idx);
   c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
