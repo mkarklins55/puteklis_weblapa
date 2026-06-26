@@ -1,0 +1,54 @@
+# Puteklis — Latvijas neatkarīgā mūzika un personīgais blogs
+
+> Puteklis ir Latvijas mākslinieka Mārtiņš Karklins personīgā vietne ar oriģinālu mūziku, foto, ceļojumu žurnāliem un kultūras rakstiem latviešu un angļu valodā.
+
+## Par Putekli
+
+Puteklis (latviski: puteklis — dust) ir Latvijas eksperimentāls mūzikas projekts. Visas 171 dziesmas ir oriģinālas un brīvi klausāmas vietnē puteklis.com. Mūzika aptver plašu žanru spektru — no latviešu folk un darkwave līdz blues, metal, country un ambient. Daļa dziesmu ir latviešu valodā, pārējās angļu, vācu un citās valodās.
+
+## Mūzika (puteklis.com/muzika.html)
+
+171 oriģināla dziesma, brīvi klausāma tiešsaistē. Galvenie žanri:
+- **Darkwave / Gothic**: Die letzte Straßenbahn nach Riga, Muris, I open my eyes, Vēja zirdziņš, Pūpoliņi
+- **Country / Folk**: The Lost Sock Saga, We are driving, Kurzemes rezidence, Tumša nakte zaļa zāle
+- **Blues / Jazz**: Whispers fall, Putekļi krīt, Where roads crumble softly underfoot
+- **Metal / Rock**: Un mēs braucam, Dziesmiņa par puteklīti, Yesterday I searched for future's perfection
+- **Synthpop / Electro**: Baltic ethno-electro, industrial crooner pop, sleazy synth noir
+- **Latviešu dziesmas**: Un mēs braucam, Dziesmiņa par puteklīti, Putekļi krīt, Riteņi minas pa ceļu kas nav, Lai dzīvo puritānisms, Laika ziņas, Pūpoliņi, Šķērsu dienu Saule teka
+
+Mūziku var filtrēt pēc žanra, meklēt pēc nosaukuma, pievienot personīgajos sarakstos (nepieciešama reģistrācija).
+
+## Ceļojumi un velozurnāli (puteklis.com/piedzivojumi.html)
+
+Ceļojumu apraksti ar velosipēdu un citādi. PDF velozurnāli:
+- [Armēnija](https://www.puteklis.com/pdf/velozurnals_nr4_Armenija.pdf) — velobrauciens caur Armēniju
+- [Alpi 2024](https://www.puteklis.com/pdf/velozurnals_Alpi_2024_SMALL.pdf) — kalnu velobrauciens Alpos
+- [Maroka](https://www.puteklis.com/pdf/velozurnals_nr6_Maroka.pdf) — velobrauciens Marokā
+- [Lofotu salas 2024](https://www.puteklis.com/pdf/Velozurnals_Lofotu_salas_2024.pdf) — Norvēģija, Lofoti
+- [Transilvānija](https://www.puteklis.com/pdf/Velozurnals_transilvanija_small.pdf) — Rumānija, Transilvānija
+- [100 km Latvijā](https://www.puteklis.com/pdf/100_km_Latvijas_s.pdf) — velobrauciens Latvijā
+- [Viena diena Rīgā](https://www.puteklis.com/pdf/viena_diena_riga_SMALL.pdf) — foto stāsts par Rīgu
+
+## Foto un AI portfolio (puteklis.com/foto.html)
+
+AI ģenerētas un oriģinālas fotogrāfijas. AI portfolio PDF:
+- [AI Portfolio](https://www.puteklis.com/pdf/AI_portfolio.pdf)
+- [AI Portfolio 4](https://www.puteklis.com/pdf/AI_portfolio_4_upd.pdf)
+
+## Raksti (puteklis.com/raksti.html)
+
+Kultūras un sabiedrības raksti latviešu valodā:
+- [Burtiskā uztvere](https://www.puteklis.com/raksti/burtiska-uztvere.html)
+- [Eiropas reputācija](https://www.puteklis.com/raksti/eiropas_reputacija.html)
+- [Eirovīzijas kods](https://www.puteklis.com/raksti/eirovizijas_kods.html)
+- [Industrija vs Eurovision](https://www.puteklis.com/raksti/industrija_vs_eurovision.html)
+- [Eurovision 2025](https://www.puteklis.com/raksti/eurovision_2025.html)
+- [Pašvaldību vēlēšanu IT neveiksmes](https://www.puteklis.com/raksti/pasvaldību_velesanas_IT_neveiksmes.html)
+
+## Māksla (puteklis.com/maksla.html)
+
+Vizuālā māksla, AI mākslas projekti un izstāžu katalogi.
+
+## Kontakti un sociālie tīkli
+
+Vietne: https://www.puteklis.com
