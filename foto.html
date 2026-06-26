@@ -4,13 +4,14 @@
   <meta charset="utf-8" />
   <link rel="icon" href="/images/logo_small.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Foto — Putekļa pasaule</title>
+  <title data-i18n="page.foto">Foto — Putekļa pasaule</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
   <!-- Lightbox2 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
+  <script src="assets/js/lang.js"></script>
 
   <style>
     :root {
@@ -226,7 +227,7 @@
 
   <header>
     <h1>Foto</h1>
-    <p>No putekļiem rodas stāsti. No gaismas — attēli.</p>
+    <p data-i18n="foto.h1">No putekļiem rodas stāsti. No gaismas — attēli.</p>
   </header>
 
   <!-- SLIDESHOW -->
@@ -239,12 +240,12 @@
   </div>
 
   <div class="filters">
-    <button class="active" onclick="filter('all', this)">Visi</button>
-    <button onclick="filter('mi', this)">MI</button>
-    <button onclick="filter('daba', this)">Daba</button>
-    <button onclick="filter('cilveks', this)">Cilvēks</button>
-    <button onclick="filter('sabiedriba', this)">Sabiedrība</button>
-    <button onclick="filter('putekli', this)">Putekļi</button>
+    <button class="active" onclick="filter('all', this)" data-i18n="foto.filter.all">Visi</button>
+    <button onclick="filter('mi', this)">AI</button>
+    <button onclick="filter('daba', this)" data-i18n="foto.filter.daba">Daba</button>
+    <button onclick="filter('cilveks', this)" data-i18n="foto.filter.cilveks">Cilvēks</button>
+    <button onclick="filter('sabiedriba', this)" data-i18n="foto.filter.sabiedriba">Sabiedrība</button>
+    <button onclick="filter('putekli', this)" data-i18n="foto.filter.putekli">Putekļi</button>
   </div>
 
   <div class="grid" id="gallery">
@@ -255,8 +256,8 @@
         </a>
         <div class="content">
           <div class="title">Portfolio</div>
-          <div class="desc">Putekļi ir kā klusais ceļš starp redzamo un nojaušamo</div>
-          <a href="pdf/AI_portfolio.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+          <div class="desc" data-i18n="foto.portfolio.desc">Putekļi ir kā klusais ceļš starp redzamo un nojaušamo</div>
+          <a href="pdf/AI_portfolio.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;" data-i18n="foto.view-pdf">📄 Skatīt PDF</a>
         </div>
       </div>
     
@@ -265,9 +266,9 @@
           <img src="images/previews/MI2_preview.jpg" alt="MI preview">
         </a>
         <div class="content">
-          <div class="title">Nojauta</div>
-          <div class="desc">Ceļo cauri gaismas un ēnas stāstiem — vietai, kur atmiņas, sajūtas un laiks saplūst vienā bezgalīgā mirklī</div>
-          <a href="pdf/Indesign Photo Album AI .pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+          <div class="title" data-i18n="foto.nojauta">Nojauta</div>
+          <div class="desc" data-i18n="foto.nojauta.desc">Ceļo cauri gaismas un ēnas stāstiem — vietai, kur atmiņas, sajūtas un laiks saplūst vienā bezgalīgā mirklī</div>
+          <a href="pdf/Indesign Photo Album AI .pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;" data-i18n="foto.view-pdf">📄 Skatīt PDF</a>
         </div>
       </div>
   
@@ -276,9 +277,9 @@
             <img src="images/previews/MI3_preview.jpg" alt="MI preview">
           </a>
           <div class="content">
-            <div class="title">Ēnas</div>
-            <div class="desc">Noslēpumainā urbānā noskaņa satiekas ar ēterisku skaistumu</div>
-            <a href="pdf/AI_portfolio_3.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+            <div class="title" data-i18n="foto.enas">Ēnas</div>
+            <div class="desc" data-i18n="foto.enas.desc">Noslēpumainā urbānā noskaņa satiekas ar ēterisku skaistumu</div>
+            <a href="pdf/AI_portfolio_3.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;" data-i18n="foto.view-pdf">📄 Skatīt PDF</a>
           </div>
         </div>
   
@@ -287,9 +288,9 @@
             <img src="images/previews/MI4_preview.jpg" alt="MI preview">
           </a>
           <div class="content">
-            <div class="title">Nākotne</div>
-            <div class="desc">Fotogrāfija tver mirkli, māksla – izjūtu, bet kopā ar MI tās veido nākotnes redzējumu.</div>
-            <a href="pdf/AI_portfolio_4_upd.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+            <div class="title" data-i18n="foto.nakotne">Nākotne</div>
+            <div class="desc" data-i18n="foto.nakotne.desc">Fotogrāfija tver mirkli, māksla – izjūtu, bet kopā ar MI tās veido nākotnes redzējumu.</div>
+            <a href="pdf/AI_portfolio_4_upd.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;" data-i18n="foto.view-pdf">📄 Skatīt PDF</a>
           </div>
         </div>
   
@@ -299,8 +300,8 @@
           </a>
           <div class="content">
             <div class="title">Liepāja</div>
-            <div class="desc">Katru foto vēro divi skatītāji — cilvēks un MI.</div>
-            <a href="pdf/Elegant Photo Album_Liepaja.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;">📄 Skatīt PDF</a>
+            <div class="desc" data-i18n="foto.liepaja.desc">Katru foto vēro divi skatītāji — cilvēks un MI.</div>
+            <a href="pdf/Elegant Photo Album_Liepaja.pdf" target="_blank" style="display: inline-block; margin-top: 0.7em; padding: 0.4em 0.8em; background: var(--accent); color: white; border-radius: 5px; text-decoration: none;" data-i18n="foto.view-pdf">📄 Skatīt PDF</a>
           </div>
         </div>
 
@@ -308,10 +309,10 @@
 <div class="card" data-tags="daba" onclick="openFlickrGallery(0)">
   <img src="https://live.staticflickr.com/65535/54528404712_59756b3cdb_b.jpg" alt="Daba">
   <div class="content">
-    <div class="title">Daba neskrien</div>
-    <div class="desc">Un tomēr tā vienmēr ir priekšā.</div>
+    <div class="title" data-i18n="foto.daba.title">Daba neskrien</div>
+    <div class="desc" data-i18n="foto.daba.desc">Un tomēr tā vienmēr ir priekšā.</div>
      <!-- JAUNĀ POGA – atver Flickr -->
-    <div class="show-thumbs-btn" onclick="openFlickrGallery(0)">
+    <div class="show-thumbs-btn" onclick="openFlickrGallery(0)" data-i18n="foto.view-gallery">
       📷 Skatīt galeriju
     </div>
   </div>
@@ -321,10 +322,10 @@
 <div class="card" data-tags="cilveks" onclick="openFlickrGallery(1)">
   <img src="https://live.staticflickr.com/65535/54528070910_8e33c75dbf_b.jpg" alt="Cilvēks">
   <div class="content">
-    <div class="title">Sejas mainās</div>
-    <div class="desc">Cilvēks — vienīgais zīdītājs, kas fotografē ēdienu.</div>
+    <div class="title" data-i18n="foto.sejas">Sejas mainās</div>
+    <div class="desc" data-i18n="foto.sejas.desc">Cilvēks — vienīgais zīdītājs, kas fotografē ēdienu.</div>
      <!-- JAUNĀ POGA – atver Flickr -->
-    <div class="show-thumbs-btn" onclick="openFlickrGallery(1)">
+    <div class="show-thumbs-btn" onclick="openFlickrGallery(1)" data-i18n="foto.view-gallery">
       📷 Skatīt galeriju
     </div>
   </div>
@@ -334,10 +335,10 @@
 <div class="card" data-tags="sabiedriba" onclick="openFlickrGallery(2)">
   <img src="https://live.staticflickr.com/65535/54529646575_f641fbfaf8_b.jpg" alt="Sabiedrība">
   <div class="content">
-    <div class="title">Kultūra kvadrātmetros</div>
-    <div class="desc">Sabiedrība kļuva civilizēta, kad iemācījās dalīt sienas, bet ne klusumu.</div>
+    <div class="title" data-i18n="foto.kultura">Kultūra kvadrātmetros</div>
+    <div class="desc" data-i18n="foto.kultura.desc">Sabiedrība kļuva civilizēta, kad iemācījās dalīt sienas, bet ne klusumu.</div>
      <!-- JAUNĀ POGA – atver Flickr -->
-    <div class="show-thumbs-btn" onclick="openFlickrGallery(2)">
+    <div class="show-thumbs-btn" onclick="openFlickrGallery(2)" data-i18n="foto.view-gallery">
       📷 Skatīt galeriju
     </div>
   </div>
@@ -346,10 +347,10 @@
 <div class="card" data-tags="sabiedriba" onclick="openFlickrGallery(3)">
   <img src="https://live.staticflickr.com/65535/54542795167_c30bbb4b5b_b.jpg" alt="Sabiedrība">
   <div class="content">
-    <div class="title">Viena diena Rīgā</div>
-    <div class="desc">Teātris no rīta, streetfoto vakarā</div>
+    <div class="title" data-i18n="foto.riga">Viena diena Rīgā</div>
+    <div class="desc" data-i18n="foto.riga.desc">Teātris no rīta, streetfoto vakarā</div>
      <!-- JAUNĀ POGA – atver Flickr -->
-    <div class="show-thumbs-btn" onclick="openFlickrGallery(3)">
+    <div class="show-thumbs-btn" onclick="openFlickrGallery(3)" data-i18n="foto.view-gallery">
       📷 Skatīt galeriju
     </div>
   </div>
@@ -358,10 +359,10 @@
 <div class="card" data-tags="sabiedriba" onclick="openFlickrGallery(4)">
   <img src="https://live.staticflickr.com/65535/54597976708_26ed3dfcaa_b.jpg" alt="Sabiedrība">
   <div class="content">
-    <div class="title">Nedēļa Liepājā</div>
-    <div class="desc">Zemenes no rīta, krogs vakarā</div>
+    <div class="title" data-i18n="foto.liepajaDays">Nedēļa Liepājā</div>
+    <div class="desc" data-i18n="foto.liepajaDays.desc">Zemenes no rīta, krogs vakarā</div>
      <!-- JAUNĀ POGA – atver Flickr -->
-    <div class="show-thumbs-btn" onclick="openFlickrGallery(4)">
+    <div class="show-thumbs-btn" onclick="openFlickrGallery(4)" data-i18n="foto.view-gallery">
       📷 Skatīt galeriju
     </div>
   </div>
@@ -371,10 +372,10 @@
 <div class="card" data-tags="putekli" onclick="openFlickrGallery(5)">
   <img src="https://live.staticflickr.com/65535/54529324156_c2316b57fc_b.jpg" alt="Putekļi">
   <div class="content">
-    <div class="title">Kosmosa daļiņas</div>
-    <div class="desc">Puteklis — vienīgā lieta, kas vienlaikus ir gan senatnes liecība, gan šodienas problēma.</div>
+    <div class="title" data-i18n="foto.kosmos">Kosmosa daļiņas</div>
+    <div class="desc" data-i18n="foto.kosmos.desc">Puteklis — vienīgā lieta, kas vienlaikus ir gan senatnes liecība, gan šodienas problēma.</div>
      <!-- JAUNĀ POGA – atver Flickr -->
-    <div class="show-thumbs-btn" onclick="openFlickrGallery(5)">
+    <div class="show-thumbs-btn" onclick="openFlickrGallery(5)" data-i18n="foto.view-gallery">
       📷 Skatīt galeriju
     </div>
   </div>
@@ -384,8 +385,8 @@
   </div>
 
   <footer>
-    &copy; Putekļa pasaule · Ar mīlestību pret fotogrāfiju ·
-    <a href="#" style="color: #ee6c4d; text-decoration: none;">Uz augšu</a>
+    &copy; Putekļa pasaule · <span data-i18n="foto.footer">Ar mīlestību pret fotogrāfiju</span> ·
+    <a href="#" style="color: #ee6c4d; text-decoration: none;" data-i18n="foto.totop">Uz augšu</a>
   </footer>
 
   <script>

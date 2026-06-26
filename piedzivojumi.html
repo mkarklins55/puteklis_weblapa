@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="/images/logo_small.png" type="image/png">
-  <title>Ceļojumi un piedzīvojumi – Jaunais card slider izkārtojums</title>
+  <title data-i18n="page.piedzivojumi">Ceļojumi un piedzīvojumi – Jaunais card slider izkārtojums</title>
   <style>
     /* Pamatkonteksts */
     * {
@@ -334,13 +334,14 @@
     }
 
   </style>
+  <script src="assets/js/lang.js"></script>
 </head>
 <body>
 
   <!-- Hero virsraksts -->
   <header class="hero">
-    <h1>Ceļojumi un piedzīvojumi</h1>
-    <p>Filtrē pēc kategorijas vai izvēlies konkrētu ceļojumu no sadaļas</p>
+    <h1 data-i18n="adv.h1">Ceļojumi un piedzīvojumi</h1>
+    <p data-i18n="adv.subtext">Filtrē pēc kategorijas vai izvēlies konkrētu ceļojumu no sadaļas</p>
   </header>
 
   <!-- Logo stūrī -->
@@ -353,17 +354,17 @@
 
   <!-- Augšējā navigācija (ikonas/pogas katrai kategorijai) -->
   <nav class="top-nav">
-    <a href="#latvija-pargajiens"><span>🥾</span> Piedzīvojumi dabā</a>
-    <a href="#latvija-velo"><span>🚲</span> Ar velo Latvijā</a>
-    <a href="#arzemes-velo"><span>🌍</span> Ar velo ārzemēs</a>
-    <a href="#auto"><span>🚗</span> Ar auto</a>
-    <a href="#sapnis"><span>🌀</span> MI un citi</a>
+    <a href="#latvija-pargajiens"><span>🥾</span> <span data-i18n="adv.nav.pargajieni">Piedzīvojumi dabā</span></a>
+    <a href="#latvija-velo"><span>🚲</span> <span data-i18n="adv.nav.latvija">Ar velo Latvijā</span></a>
+    <a href="#arzemes-velo"><span>🌍</span> <span data-i18n="adv.nav.arzemes">Ar velo ārzemēs</span></a>
+    <a href="#auto"><span>🚗</span> <span data-i18n="adv.nav.auto">Ar auto</span></a>
+    <a href="#sapnis"><span>🌀</span> <span data-i18n="adv.nav.mi">MI un citi</span></a>
   </nav>
 
     <!-- SADAĻA: pārgājieni -->
   <section class="category-section" id="latvija-pargajiens">
-    <h2>🥾 Piedzīvojumi dabā</h2>
-    <p>Pārgājieni, laivu braucieni un uz slēpēm</p>
+    <h2 data-i18n="adv.pargajieni.h2">🥾 Piedzīvojumi dabā</h2>
+    <p data-i18n="adv.pargajieni.p">Pārgājieni, laivu braucieni un uz slēpēm</p>
     <div class="carousel-wrapper">
 
       <!-- Bultiņas (ja gribi) -->
@@ -484,8 +485,8 @@
 
   <!-- SADAĻA: Velo Latvijā -->
   <section class="category-section" id="latvija-velo">
-    <h2>🚲 Ar velo Latvijā</h2>
-    <p>Šeit ir mana dzimtene ...</p>
+    <h2 data-i18n="adv.latvija.h2">🚲 Ar velo Latvijā</h2>
+    <p data-i18n="adv.latvija.p">Šeit ir mana dzimtene ...</p>
     <div class="carousel-wrapper">
 
       <!-- Bultiņas (ja gribi) -->
@@ -711,8 +712,8 @@
 
   <!-- SADAĻA: Velo ārzemes -->
   <section class="category-section" id="arzemes-velo">
-    <h2>🌍 Velo ārzemēs</h2>
-    <p>Kas gan var būt labāks par šo</p>
+    <h2 data-i18n="adv.arzemes.h2">🌍 Velo ārzemēs</h2>
+    <p data-i18n="adv.arzemes.p">Kas gan var būt labāks par šo</p>
     <div class="carousel-wrapper">
 
       <!-- Bultiņas (ja gribi) -->
@@ -961,7 +962,7 @@
 
 <!-- SADAĻA: Ar auto -->
 <section class="category-section" id="auto">
-    <h2>🚗 Ar auto</h2>
+    <h2 data-i18n="adv.auto.h2">🚗 Ar auto</h2>
     <p>šurpu turpu</p>
     <div class="carousel-wrapper">
 
@@ -1439,7 +1440,7 @@
 
 <!-- SADAĻA: sapnis -->
 <section class="category-section" id="sapnis">
-    <h2>🌀 MI un citi</h2>
+    <h2 data-i18n="adv.mi.h2">🌀 MI un citi</h2>
     <p>Mākslīgais intelekts un citi</p>
     <div class="carousel-wrapper">
 
