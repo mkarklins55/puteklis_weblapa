@@ -161,7 +161,7 @@
 
   <!-- Popup saturs -->
   <div id="contentBox"></div>
-  <div class="quote" id="quoteBox">"Katrs bits ir sapņa atblāzma."</div>
+  <div class="quote" id="quoteBox"></div>
 
   <!-- ======= SCRIPTS (saīsināti; tava loģika paliek) ======= -->
   <script src="assets/js/lang.js?v=3"></script>
@@ -241,16 +241,25 @@
     draw();
 
     // 2) Rotējošās citāti
-    const quotes = [
+    const quotesLv = [
       "Katrs bits ir sapņa atblāzma.",
       "Mikroskēmas čuksti kļūst par domām.",
       "Nospied klaviatūras taustiņu — un dzimst pasaule.",
       "Signāli — mūsdienu valoda."
     ];
-    setInterval(() => {
-      const box = document.getElementById('quoteBox');
-      box.textContent = quotes[Math.floor(Math.random() * quotes.length)];
-    }, 6000);
+    const quotesEn = [
+      "Every bit is the reflection of a dream.",
+      "Whispers of microchips become thoughts.",
+      "Press a key — and a world is born.",
+      "Signals — the language of today."
+    ];
+    function getQuotes() { return (typeof getLang === 'function' && getLang() === 'en') ? quotesEn : quotesLv; }
+    function showRandomQuote() {
+      const q = getQuotes();
+      document.getElementById('quoteBox').textContent = q[Math.floor(Math.random() * q.length)];
+    }
+    setInterval(showRandomQuote, 6000);
+    document.addEventListener('langchange', showRandomQuote);
 
     // 3) Satura atvēršana -> #contentBox
     const contentBox = document.getElementById('contentBox');
