@@ -90,7 +90,9 @@ const TRANSLATIONS = {
     'adv.arzemes.h2': '🌍 Velo ārzemēs',
     'adv.arzemes.p': 'Kas gan var būt labāks par šo',
     'adv.auto.h2': '🚗 Ar auto',
+    'adv.auto.p': 'šurpu turpu',
     'adv.mi.h2': '🌀 MI un citi',
+    'adv.mi.p': 'Mākslīgais intelekts un citi',
     /* --- raksti.html --- */
     'raksti.h1': 'Putekļa pārdomas',
     'raksti.burtiska.h2': 'Burtiskā uztvere un domāšana',
@@ -254,7 +256,9 @@ const TRANSLATIONS = {
     'adv.arzemes.h2': '🌍 Cycling Abroad',
     'adv.arzemes.p': 'What could be better than this',
     'adv.auto.h2': '🚗 By Car',
+    'adv.auto.p': 'back and forth',
     'adv.mi.h2': '🌀 AI and Others',
+    'adv.mi.p': 'Artificial intelligence and others',
     /* --- raksti.html --- */
     'raksti.h1': 'Puteklis Thoughts',
     'raksti.burtiska.h2': 'Literal Perception and Thinking',
