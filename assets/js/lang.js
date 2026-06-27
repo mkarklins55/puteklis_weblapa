@@ -360,6 +360,8 @@ function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem('puteklis-lang', lang);
   document.documentElement.lang = lang;
+  document.body.classList.remove('lang-lv', 'lang-en');
+  document.body.classList.add('lang-' + lang);
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const v = t(el.dataset.i18n);

@@ -19,87 +19,48 @@
       margin: auto;
       padding: 3rem 2rem;
     }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    }
-    h2 {
-      margin-top: 2em;
-      font-size: 1.4em;
-      color: #ffe;
-    }
-    p {
-      font-size: 1.05em;
-      line-height: 1.6em;
-      margin-bottom: 1em;
-    }
-    .emoji {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-    }
-
+    h1 { font-size: 2.5em; margin-bottom: 1rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+    h2 { margin-top: 2em; font-size: 1.4em; color: #ffe; }
+    p { font-size: 1.05em; line-height: 1.6em; margin-bottom: 1em; }
+    .emoji { font-size: 1.2em; margin-right: 0.3em; }
     header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
-  backdrop-filter: blur(4px);
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-}
-
-header nav a {
-  color: #ffffff; /* gaišāka krāsa! */
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s;
-}
-
-header nav a:hover {
-  color: #ffd700; /* zeltaina krāsa hover efektam */
-}
-
-header nav a.active {
-  text-decoration: underline;
-  color: #00ffff;
-}
-
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background-color: rgba(0,0,0,0.6); padding: 1rem 2rem; backdrop-filter: blur(4px);
+    }
+    header nav ul { list-style:none; padding:0; display:flex; justify-content:center; gap:2rem; margin:0; }
+    header nav a { color:#fff; text-decoration:none; font-weight:bold; transition:color .2s; }
+    header nav a:hover { color:#ffd700; }
+    header nav a.active { text-decoration:underline; color:#00ffff; }
+    .lang-en { display: none; }
+    body.lang-en .lang-lv { display: none; }
+    body.lang-en .lang-en { display: block; }
   </style>
 </head>
 <body>
+<script>document.body.classList.add('lang-'+(localStorage.getItem('puteklis-lang')||'lv'));</script>
+
   <header>
     <nav>
       <ul>
-        <li><a href="../index.html">Manifests</a></li>
-        <li><a href="../raksti.html" class="active">Raksti</a></li>
-        <li><a href="../index_en.html">EN</a></li>
+        <li><a href="../index.html" data-i18n="nav.manifests">Manifests</a></li>
+        <li><a href="../raksti.html" class="active" data-i18n="nav.raksti">Raksti</a></li>
       </ul>
     </nav>
   </header>
 
-<main class="container">
+<!-- ========== LATVIAN ========== -->
+<main class="container lang-lv">
   <h1>1. Burtiskā uztvere un abstraktās domāšanas trūkums</h1>
 
   <h2>1. Individuālā līmenī:</h2>
 
   <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; align-items: center;">
     <img src="../images/raksti/melnbalts-cilveks.jpg" alt="Melnbalts cilvēks, kas simbolizē burtisko uztveri" style="max-width: 300px; height: auto; border: 2px solid #fff; margin-top: 1.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.4);">
-
     <div style="flex: 1; min-width: 250px;">
       <p>Cilvēks, kurš mākslā meklē morāli, nevis noskaņu vai metaforu, nereti uztver pasauli melnbaltu: pareizi/nepareizi, labs/slikts, svēts/nešķīsts.</p>
-      <p>Viņam “FUCK” ir tikai lamuvārds – nevis emocionāla kodēta ekspresija vai grotesks stils, kas uzrāda sabiedrības trulo izmisumu.</p>
-      <p>Šādam cilvēkam māksla nevar būt “tīkls starp sajūtām un domām” – tā kļūst par tiesnesi vai katehismu.</p>
-      <p>Katehisms šeit nozīmē nevis reliģijas grāmatu, bet domāšanas veidu, kas pieprasa vienu “pareizo” atbildi bez interpretācijas vai emocionālām niansēm.</p>
+      <p>Viņam "FUCK" ir tikai lamuvārds – nevis emocionāla kodēta ekspresija vai grotesks stils, kas uzrāda sabiedrības trulo izmisumu.</p>
+      <p>Šādam cilvēkam māksla nevar būt "tīkls starp sajūtām un domām" – tā kļūst par tiesnesi vai katehismu.</p>
+      <p>Katehisms šeit nozīmē nevis reliģijas grāmatu, bet domāšanas veidu, kas pieprasa vienu "pareizo" atbildi bez interpretācijas vai emocionālām niansēm.</p>
       <p>Tas neliecina obligāti par zemiem intelekta koeficientiem, bet bieži:</p>
       <ul>
         <li>par vāju spēju abstrahēt un pārnest nozīmi no tiešā uz simbolisko;</li>
@@ -109,62 +70,113 @@ header nav a.active {
     </div>
   </div>
 
-
-<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-  <div style="flex: 1; min-width: 250px;">
-    <h2><span class="emoji">📖</span> 2. Puritānisms, morālais formālisms un bailes no haosa</h2>
-    <p>Puritānisms uzskata, ka mākslai jākalpo kārtībai, morālei vai garīgai attīrīšanai.</p>
-    <p>Tāda domāšana noraida haosu kā pieredzes daļu, tā vietā meklējot tīrību un skaidrību.</p>
-    <p>Bet haoss ir mākslas dzinējspēks – bez tā nav katarse, nav sabrukuma, kas ļauj uzcelt jaunu.</p>
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+    <div style="flex: 1; min-width: 250px;">
+      <h2><span class="emoji">📖</span> 2. Puritānisms, morālais formālisms un bailes no haosa</h2>
+      <p>Puritānisms uzskata, ka mākslai jākalpo kārtībai, morālei vai garīgai attīrīšanai.</p>
+      <p>Tāda domāšana noraida haosu kā pieredzes daļu, tā vietā meklējot tīrību un skaidrību.</p>
+      <p>Bet haoss ir mākslas dzinējspēks – bez tā nav katarse, nav sabrukuma, kas ļauj uzcelt jaunu.</p>
+    </div>
+    <img src="../images/raksti/haosa-konflikts.jpg" alt="Puritānisms un haoss mākslā" style="max-width: 200px; margin-top: 3rem; height: auto; border: 2px solid #fff; box-shadow: 0 0 8px rgba(0,0,0,0.3); flex-shrink: 0;">
   </div>
-  <img src="../images/raksti/haosa-konflikts.jpg" alt="Puritānisms un haoss mākslā" style="max-width: 200px;  margin-top: 3rem; height: auto; border: 2px solid #fff; box-shadow: 0 0 8px rgba(0,0,0,0.3); flex-shrink: 0;">
-</div>
 
+  <h2><span class="emoji">🌍</span> 3. Un kā tas saistās ar politiku un karu?</h2>
 
-<h2><span class="emoji">🌍</span> 3. Un kā tas saistās ar politiku un karu?</h2>
-
-<div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1rem;">
-  <!-- Attēls pa kreisi -->
-  <img src="../images/raksti/politika-un-karš.jpg" alt="Simboli un ideoloģija: karš un politika" style="max-width: 250px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); flex-shrink: 0;">
-
-  <!-- Teksts pa labi no bildes -->
-  <div style="flex: 1; min-width: 260px;">
-    <p>Eiropa (daļēji) ir balstīta uz apgaismības ideālu: diskusija, pluralitāte, simboliska tolerance, tēlainums (piemēram, ironiska postmodernisma māksla, kas pārveido pat Bībeles tēlus).</p>
-    <p>Tomēr arī Eiropā bieži parādās bailes no “nešķīstā”, no haotiskā, kas rada ultrakonservatīvus un populistiskus strāvojumus (skat. Šlesers, Orbāns, Meloni u.c.)</p>
+  <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1rem;">
+    <img src="../images/raksti/politika-un-karš.jpg" alt="Simboli un ideoloģija: karš un politika" style="max-width: 250px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); flex-shrink: 0;">
+    <div style="flex: 1; min-width: 260px;">
+      <p>Eiropa (daļēji) ir balstīta uz apgaismības ideālu: diskusija, pluralitāte, simboliska tolerance, tēlainums (piemēram, ironiska postmodernisma māksla, kas pārveido pat Bībeles tēlus).</p>
+      <p>Tomēr arī Eiropā bieži parādās bailes no "nešķīstā", no haotiskā, kas rada ultrakonservatīvus un populistiskus strāvojumus (skat. Šlesers, Orbāns, Meloni u.c.)</p>
+    </div>
   </div>
-</div>
 
-<!-- Tālāk zem attēla -->
-<div style="margin-left: 1rem;">
-  <p><strong>Krievija un karš:</strong><br>
-  Putina režīma naratīvs balstās burtiskā simbolismā, mistificētā vēsturē, morālās attīrīšanas retorikā.</p>
+  <div style="margin-left: 1rem;">
+    <p><strong>Krievija un karš:</strong><br>
+    Putina režīma naratīvs balstās burtiskā simbolismā, mistificētā vēsturē, morālās attīrīšanas retorikā.</p>
+    <p>Viņi "cīnās pret izvirtību", "glābj tradicionālo" – bet šie lozungi ir burtiskas, agresīvas reakcijas uz daudzveidību, brīvību, tēlainu neskaidrību.</p>
+    <p>Tā ir pasaules uztvere bez ironijas. Bez divdomības. Bez dekonstrukcijas.</p>
+    <p>Simboli tiek padarīti burtiski – "krusts" ir ierocis, "ģimene" ir politisks ierocis, "Rietumi" ir sātans.</p>
+  </div>
 
-  <p>Viņi “cīnās pret izvirtību”, “glābj tradicionālo” – bet šie lozungi ir burtiskas, agresīvas reakcijas uz daudzveidību, brīvību, tēlainu neskaidrību.</p>
+  <h2><span class="emoji">🔥</span> Tātad — jā, tas ir saistīts:</h2>
+  <p>Cilvēks, kurš nespēj uztvert metaforu bez morālas panikas, ir viegli ietekmējams totalitārām ideoloģijām, jo tās piedāvā:</p>
+  <ul>
+    <li>Vienkāršus simbolus: "Mēs labi, viņi ļauni."</li>
+    <li>Vienkāršas komandas: "Ej!", "Cīnies!", "Notici!"</li>
+    <li>Nespēju izturēt domu: "Varbūt šis nav par mani. Varbūt šis ir logs, nevis spogulis."</li>
+  </ul>
 
-  <p>Tā ir pasaules uztvere bez ironijas. Bez divdomības. Bez dekonstrukcijas.</p>
+  <div style="margin-top: 2rem;">
+    <img src="../images/raksti/nobeiguma-attels.jpg" alt="Simbolu un ideoloģijas noslēgums" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 0 12px rgba(0,0,0,0.5);">
+  </div>
+</main>
 
-  <p>Simboli tiek padarīti burtiski – “krusts” ir ierocis, “ģimene” ir politisks ierocis, “Rietumi” ir sātans.</p>
-</div>
+<!-- ========== ENGLISH ========== -->
+<main class="container lang-en">
+  <h1>1. Literal Perception and the Absence of Abstract Thinking</h1>
 
+  <h2>1. At the individual level:</h2>
 
+  <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; align-items: center;">
+    <img src="../images/raksti/melnbalts-cilveks.jpg" alt="Black-and-white person symbolising literal perception" style="max-width: 300px; height: auto; border: 2px solid #fff; margin-top: 1.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.4);">
+    <div style="flex: 1; min-width: 250px;">
+      <p>A person who looks for morality in art rather than mood or metaphor tends to perceive the world in black and white: right/wrong, good/bad, sacred/impure.</p>
+      <p>For them, "FUCK" is just a swear word — not an emotionally coded expression or a grotesque style that exposes the blunt despair of society.</p>
+      <p>Such a person cannot allow art to be "a net between feelings and thoughts" — it becomes a judge or a catechism.</p>
+      <p>Catechism here doesn't mean a religious book, but a way of thinking that demands one "correct" answer with no room for interpretation or emotional nuance.</p>
+      <p>This doesn't necessarily indicate a low IQ, but often signals:</p>
+      <ul>
+        <li>a weak ability to abstract and transfer meaning from the literal to the symbolic;</li>
+        <li>limited empathy towards the different, the chaotic, the ugly;</li>
+        <li>the effects of upbringing, education or trauma that drive a search for rigid boundaries.</li>
+      </ul>
+    </div>
+  </div>
 
-    <h2><span class="emoji">🔥</span> Tātad — jā, tas ir saistīts:</h2>
-    <p>Cilvēks, kurš nespēj uztvert metaforu bez morālas panikas, ir viegli ietekmējams totalitārām ideoloģijām, jo tās piedāvā:</p>
-    <ul>
-      <li>Vienkāršus simbolus: “Mēs labi, viņi ļauni.”</li>
-      <li>Vienkāršas komandas: “Ej!”, “Cīnies!”, “Notici!”</li>
-      <li>Nespēju izturēt domu: “Varbūt šis nav par mani. Varbūt šis ir logs, nevis spogulis.”</li>
-    </ul>
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+    <div style="flex: 1; min-width: 250px;">
+      <h2><span class="emoji">📖</span> 2. Puritanism, Moral Formalism and Fear of Chaos</h2>
+      <p>Puritanism holds that art must serve order, morality or spiritual purification.</p>
+      <p>Such thinking rejects chaos as part of experience, seeking purity and clarity instead.</p>
+      <p>But chaos is the driving force of art — without it there is no catharsis, no collapse that allows something new to be built.</p>
+    </div>
+    <img src="../images/raksti/haosa-konflikts.jpg" alt="Puritanism and chaos in art" style="max-width: 200px; margin-top: 3rem; height: auto; border: 2px solid #fff; box-shadow: 0 0 8px rgba(0,0,0,0.3); flex-shrink: 0;">
+  </div>
 
-    <div style="margin-top: 2rem;">
-  <img src="../images/raksti/nobeiguma-attels.jpg" alt="Simbolu un ideoloģijas noslēgums" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 0 12px rgba(0,0,0,0.5);">
-</div>
+  <h2><span class="emoji">🌍</span> 3. And how does this relate to politics and war?</h2>
 
-  </main>
+  <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1rem;">
+    <img src="../images/raksti/politika-un-karš.jpg" alt="Symbols and ideology: war and politics" style="max-width: 250px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); flex-shrink: 0;">
+    <div style="flex: 1; min-width: 260px;">
+      <p>Europe (in part) is built on Enlightenment ideals: debate, plurality, symbolic tolerance, figurative thinking (for example, ironic postmodern art that transforms even Biblical images).</p>
+      <p>Yet even in Europe, fear of the "impure" and the chaotic regularly surfaces — generating ultra-conservative and populist currents (see Šlesers, Orbán, Meloni etc.).</p>
+    </div>
+  </div>
 
- <!-- Google tag (gtag.js) -->
+  <div style="margin-left: 1rem;">
+    <p><strong>Russia and war:</strong><br>
+    Putin's regime narrative is built on literal symbolism, mystified history and a rhetoric of moral purification.</p>
+    <p>They "fight against depravity", they "save tradition" — but these slogans are literal, aggressive reactions to diversity, freedom and figurative ambiguity.</p>
+    <p>It is a worldview without irony. Without ambiguity. Without deconstruction.</p>
+    <p>Symbols are made literal — "the cross" is a weapon, "the family" is a political weapon, "the West" is Satan.</p>
+  </div>
+
+  <h2><span class="emoji">🔥</span> So — yes, it is connected:</h2>
+  <p>A person who cannot perceive a metaphor without moral panic is easily influenced by totalitarian ideologies, because they offer:</p>
+  <ul>
+    <li>Simple symbols: "We are good, they are evil."</li>
+    <li>Simple commands: "Go!", "Fight!", "Believe!"</li>
+    <li>An inability to endure the thought: "Maybe this isn't about me. Maybe this is a window, not a mirror."</li>
+  </ul>
+
+  <div style="margin-top: 2rem;">
+    <img src="../images/raksti/nobeiguma-attels.jpg" alt="Conclusion on symbols and ideology" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 0 12px rgba(0,0,0,0.5);">
+  </div>
+</main>
+
+  <script src="../assets/js/lang.js?v=5"></script>
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
-  <script src="assets/js/analytics.js"></script>
-
+  <script src="../assets/js/analytics.js"></script>
 </body>
 </html>

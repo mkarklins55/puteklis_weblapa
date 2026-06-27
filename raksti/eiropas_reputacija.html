@@ -4,402 +4,326 @@
   <meta charset="UTF-8">
   <link rel="icon" href="/images/logo_small.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Analītisks pārskats par Eiropas reputācijas, tehnoloģiju un drošības problēmām un Latvijas korektuma kultūru">
-  <title>Eiropas reputācijas lamatas</title>
+  <meta name="description" content="Analītisks pārskats par Eiropas reputācijas, tehnoloģiju un drošības problēmām">
+  <title>Eiropas reputācijas lamatas | Puteklis</title>
   <style>
-    body {
-      background: linear-gradient(to right, #2c3e50, #4ca1af);
-      color: #f8f8f8;
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 3rem 2rem;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    }
-    h2 {
-      margin-top: 2em;
-      font-size: 1.4em;
-      color: #ffe;
-    }
-    p {
-      font-size: 1.05em;
-      line-height: 1.6em;
-      margin-bottom: 1em;
-    }
-    .emoji {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-    }
-
-    header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
-  backdrop-filter: blur(4px);
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-}
-
-header nav a {
-  color: #ffffff; /* gaišāka krāsa! */
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s;
-}
-
-header nav a:hover {
-  color: #ffd700; /* zeltaina krāsa hover efektam */
-}
-
-header nav a.active {
-  text-decoration: underline;
-  color: #00ffff;
-}
-
+    body { background: linear-gradient(to right, #2c3e50, #4ca1af); color: #f8f8f8; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: auto; padding: 3rem 2rem; }
+    h1 { font-size: 2.5em; margin-bottom: 1rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+    h2 { margin-top: 2em; font-size: 1.4em; color: #ffe; }
+    p { font-size: 1.05em; line-height: 1.6em; margin-bottom: 1em; }
+    .emoji { font-size: 1.2em; margin-right: 0.3em; }
+    header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: rgba(0,0,0,0.6); padding: 1rem 2rem; backdrop-filter: blur(4px); }
+    header nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 2rem; margin: 0; }
+    header nav a { color: #fff; text-decoration: none; font-weight: bold; transition: color .2s; }
+    header nav a:hover { color: #ffd700; }
+    header nav a.active { text-decoration: underline; color: #00ffff; }
+    .lang-en { display: none; }
+    body.lang-en .lang-lv { display: none; }
+    body.lang-en .lang-en { display: block; }
   </style>
 </head>
 <body>
- <header>
+<script>document.body.classList.add('lang-'+(localStorage.getItem('puteklis-lang')||'lv'));</script>
+
+  <header>
     <nav>
       <ul>
-        <li><a href="../index.html">Manifests</a></li>
-        <li><a href="../raksti.html" class="active">Raksti</a></li>
-        <li><a href="../index_en.html">EN</a></li>
+        <li><a href="../index.html" data-i18n="nav.manifests">Manifests</a></li>
+        <li><a href="../raksti.html" class="active" data-i18n="nav.raksti">Raksti</a></li>
       </ul>
     </nav>
   </header>
- <main class="container">
 
-    <h1>Eiropas reputācijas lamatas: Kā normatīvā kultūra kavē izaugsmi, tehnoloģijas un drošību</h1>
-<h2>Ievads</h2>
-<p>Eiropa rūpīgi sargā sabiedrības tēlu, iekļaujošas vērtības, normatīvo kārtību un atbildību par savu vēsturisko mantojumu. Mēs sevi redzam kā civilizētu sabiedrību, kas noraida ekstrēmus soļus, bet vēl joprojām tic vērtībām. Tomēr 21. gadsimta realitāte rāda, ka tieši šīs &quot;maigās varas&quot; iezīmes var kļūt par Eiropas vājuma sakni.</p>
-<p>Šī ir analīze par to, kā reputācijas un &quot;nepārmešanas&quot; kultūra kavē drošību, inovāciju un skaidru rīcību gan tehnoloģiju attīstībā, gan drošībā, gan idejiskajā telpā.</p>
-<div style="width: 100%; height: 280px; overflow: hidden; position: relative; margin-top: 2rem;">
-  <img src="../images/raksti/eiropas-lamatas-strip.jpg"
-       alt="Eiropas reputācijas metafora"
-       style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
-</div>
-<hr>
-<h2>1. Reputācija sabiedrībā</h2>
-<p>Eiropā valda dziļa iekšēja &quot;nekā nedarīšanas&quot; kultūra: labāk neriskēt, lai nenonāktu uzmanības centrā ar nepareiziem izteicieniem vai rīcību. Politiskā korektuma, iekļaušanas un &quot;uzmanības pret visiem&quot; piegājiena rezultātā publiskā telpa kļuva piesardzīga, bailīga, samākslota. Cilvēki bieži nerīkojās nevis tāpēc, ka trūkst ideju, bet tāpēc, ka bail no reputācijas riskiem.</p>
-<hr>
-
-
-<h2>2. Tehnoloģijas: Eiropas klusā kapitulācija</h2>
-
-<div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1.5rem;">
-
-  <!-- Teksts pa kreisi -->
-  <div style="flex: 1; min-width: 260px;">
-    <p><strong>AI un inovācija</strong></p>
-    <p>Kamēr ASV un Ķīna investē desmitiem miljardu eiro gadā AI attīstībā, Eiropa galvenokārt raksta regulas. Piemēram:</p>
+<!-- ========== LATVIAN ========== -->
+<main class="container lang-lv">
+  <h1>Eiropas reputācijas lamatas: Kā normatīvā kultūra kavē izaugsmi, tehnoloģijas un drošību</h1>
+  <h2>Ievads</h2>
+  <p>Eiropa rūpīgi sargā sabiedrības tēlu, iekļaujošas vērtības, normatīvo kārtību un atbildību par savu vēsturisko mantojumu. Mēs sevi redzam kā civilizētu sabiedrību, kas noraida ekstrēmus soļus, bet vēl joprojām tic vērtībām. Tomēr 21. gadsimta realitāte rāda, ka tieši šīs "maigās varas" iezīmes var kļūt par Eiropas vājuma sakni.</p>
+  <p>Šī ir analīze par to, kā reputācijas un "nepārmešanas" kultūra kavē drošību, inovāciju un skaidru rīcību gan tehnoloģiju attīstībā, gan drošībā, gan idejiskajā telpā.</p>
+  <div style="width: 100%; height: 280px; overflow: hidden; position: relative; margin-top: 2rem;">
+    <img src="../images/raksti/eiropas-lamatas-strip.jpg" alt="Eiropas reputācijas metafora" style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
+  </div>
+  <hr>
+  <h2>1. Reputācija sabiedrībā</h2>
+  <p>Eiropā valda dziļa iekšēja "nekā nedarīšanas" kultūra: labāk neriskēt, lai nenonāktu uzmanības centrā ar nepareiziem izteicieniem vai rīcību. Politiskā korektuma, iekļaušanas un "uzmanības pret visiem" piegājiena rezultātā publiskā telpa kļuva piesardzīga, bailīga, samākslota. Cilvēki bieži nerīkojās nevis tāpēc, ka trūkst ideju, bet tāpēc, ka bail no reputācijas riskiem.</p>
+  <hr>
+  <h2>2. Tehnoloģijas: Eiropas klusā kapitulācija</h2>
+  <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1.5rem;">
+    <div style="flex: 1; min-width: 260px;">
+      <p><strong>AI un inovācija</strong></p>
+      <p>Kamēr ASV un Ķīna investē desmitiem miljardu eiro gadā AI attīstībā, Eiropa galvenokārt raksta regulas. Piemēram:</p>
+      <ul>
+        <li>2023. gadā ASV AI investīcijas pārsniedza 50 miljardus dolāru.</li>
+        <li>Ķīnā valsts un privātais sektors iegulda ap 30–40 miljardiem dolāru gadā.</li>
+        <li>ES (2022. g.) AI attīstības finansējums bija tikai <strong>3–5 miljardi eiro</strong>, galvenokārt caur Horizon programmu.</li>
+      </ul>
+    </div>
+    <img src="../images/raksti/ai-klusa-kapitulacija.jpg" alt="AI regulēšana Eiropā" style="max-width: 280px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); flex-shrink: 0;">
+  </div>
+  <div style="margin-top: 1rem;">
+    <p>Tā nav tikai finansiālā atšķirība. Tā ir <strong>attieksmes un drosmes starpība</strong>. Kamēr Silīcija ieleja testē jaunas lietas ar principu "dari vispirms, regulē vēlāk", Eiropa baidās no skandāla, tiesvedības vai "sabiedrības nosodījuma".</p>
+    <p><strong>Sekas:</strong></p>
     <ul>
-      <li>2023. gadā ASV AI investīcijas pārsniedza 50 miljardus dolāru.</li>
-      <li>Ķīnā valsts un privātais sektors iegulda ap 30–40 miljardiem dolāru gadā.</li>
-      <li>ES (2022. g.) AI attīstības finansējums bija tikai <strong>3–5 miljardi eiro</strong>, galvenokārt caur Horizon programmu.</li>
+      <li>Eiropā nav izveidojies neviens vadošais AI rīks (pretstatā ChatGPT, Claude, Gemini, Midjourney).</li>
+      <li>Lielākie smadzeņu centri (piemēram, ETH Zürich, TU Delft) zaudē jaunos prātus, kas dodas uz ASV.</li>
+      <li>Startapi no Berlīnes vai Amsterdamas pārceļas uz Kaliforniju, kur nav jāgaida 18 mēnešus uz datu piekrišanas saskaņojumu.</li>
     </ul>
   </div>
-
-  <!-- Attēls pa labi -->
-  <img src="../images/raksti/ai-klusa-kapitulacija.jpg" alt="AI regulēšana Eiropā" style="max-width: 280px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); flex-shrink: 0;">
-
-</div>
-
-<!-- Turpinājums zem attēla, pa visu platumu -->
-<div style="margin-top: 1rem;">
-  <p>Tā nav tikai finansiālā atšķirība. Tā ir <strong>attieksmes un drosmes starpība</strong>. Kamēr Silīcija ieleja testē jaunas lietas ar principu "dari vispirms, regulē vēlāk", Eiropa baidās no skandāla, tiesvedības vai "sabiedrības nosodījuma".</p>
-
-  <p><strong>Sekas:</strong></p>
+  <h2>3. Krievija un rīcībnespēja</h2>
+  <p>Gadiem ilgi Eiropa baidījās nosaukt Krieviju par draudu. No Merkeles Nord Stream 2 "pragmatisma" līdz Makrona "jāuzklausa Krievijas bailes" — reputācija bija svarīgāka par realitāti.</p>
+  <p>Rezultātā:</p>
   <ul>
-    <li>Eiropā nav izveidojies neviens vadošais AI rīks (pretstatā ChatGPT, Claude, Gemini, Midjourney).</li>
-    <li>Lielākie smadzeņu centri (piemēram, ETH Zürich, TU Delft) zaudē jaunos prātus, kas dodas uz ASV.</li>
-    <li>Startapi no Berlīnes vai Amsterdamas pārceļas uz Kaliforniju, kur nav jāgaida 18 mēnešus uz datu piekrišanas saskaņojumu.</li>
+    <li>Ukraina palika viena līdz pilna mēroga iebrukumam.</li>
+    <li>Līdz 2022. gadam ES katru gadu samaksāja Krievijai ap 100 miljardiem eiro par fosilo kurināmo.</li>
+    <li>Maskava to ieguldīja tankos un raķetēs.</li>
   </ul>
-</div>
-
-
-<h2>3. Krievija un rīcībnespēja</h2>
-<p>Gadiem ilgi Eiropa **baidījās nosaukt Krieviju par draudu**. No Merkeles Nord Stream 2 &quot;pragmatisma&quot; līdz Makrona &quot;jāuzklausa Krievijas bailes&quot; — reputācija bija svarīgāka par realitāti.</p>
-<p>Rezultātā:</p>
-<ul>
-<li>**Ukraina palika viena** līdz pilna mēroga iebrukumam.</li>
-<li>Līdz 2022. gadam ES katru gadu **samaksāja Krievijai ap 100 miljardiem eiro** par fosilo kurināmo.</li>
-<li>Maskava to ieguldīja tankos un raķetēs.</li>
-</ul>
-<p>Tā ir reputācijas ilūzija — &quot;mēs neizskatīsimies kā agresori&quot;, tāpēc nerīkosimies. Bet tas noveda pie smagākā kara Eiropā kopš Otrā pasaules kara.</p>
-<hr>
-<h2>4. Brīvības trauslums</h2>
-<p>Kamēr Eiropa sevi uzskata par brīvības bastionu, tā **neievēro, cik trausla ir pati brīvība**, ja tai nav drosmīgu aizstāvju. Cenzūra nav vajadzīga — pietiek ar reputācijas bailēm. Cilvēki paši klusē, paši pielāgojas, paši atliek.</p>
-<p>Un šāda sabiedrība nevar uzvarēt cīņā ar totalitāru sistēmu, kas nebaidās no &quot;nekorektuma&quot;, bet tikai no vājuma.</p>
-<hr>
-<h2>5. Ekonomiskā cena</h2>
-<p>#### AI un inovācija:</p>
-<ul>
-<li>Ja Eiropa būtu investējusi AI attīstībā tikpat cik ASV (50 miljardi gadā), pēdējo 5 gadu laikā būtu **ieguldīti 250 miljardi eiro**.</li>
-<li>Realitātē ieguldījumi bijuši tikai ap **15-20 miljardiem eiro**.</li>
-<li>Zaudējums: **230+ miljardi eiro**, nemaz nerunājot par zinātnieku aizplūšanu un tehnoloģiju importu no ASV/Ķīnas.</li>
-</ul>
-<p>#### Enerģētiskā atkarība:</p>
-<ul>
-<li>Līdz 2022. gadam ES maksāja **~1 miljardu eiro nedēļā Krievijas enerģijai**.</li>
-<li>Kopā ap 100 miljardi eiro gadā, 10 gadu laikā — **1 triljons eiro**.</li>
-<li>Un tikai tāpēc, ka reputācijas dēļ nevēlējāmies konfrontēties.</li>
-</ul>
-<hr>
-<h2>Nobeigums: kas jāmaina?</h2>
-<p>Eiropai nav jāatsakās no vērtībām, bet **jāatsakās no bailēm**. Reputācijas bailes nedrīkst būt svarīgākas par rīcību, viedokļu daudzveidība nevar būt padarīta par draudu, un drosme pieņemt lēmumus nedrīkst tikt kavēta tikai tāpēc, ka kāds twiterī var nesaprast.</p>
-<p>Mūsu reputācija nav svarīgāka par mūsu brīvību.</p>
-<p>Un ja mēs to aizmirstam, tad vēl bīstamāk — mēs to pazaudēsim.</p>
-
-<div style="width: 100%; height: 280px; overflow: hidden; position: relative; margin-top: 2rem;">
-  <img src="../images/raksti/nobeiguma-strip.jpg"
-       alt="Noslēguma metafora par drosmi un brīvību"
-       style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
-</div>
-
-
-<h1>Kāpēc Eiropā izveidojusies reputācijas un piesardzības kultūra?</h1>
-<ul>
-  <li><strong>1. Vēsturiskā vainas apziņa un pārkompensācija</strong></li>
-<div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-
-  <!-- Mazais attēls pa kreisi -->
-  <img src="../images/raksti/vainas-apziņa.jpg" alt="Eiropas vēsturiskā vaina" style="width: 100px; height: auto; margin-top: 4rem; border: 1px solid #ccc; box-shadow: 0 0 6px rgba(0,0,0,0.2); flex-shrink: 0;">
-
-  <!-- Teksts pa labi -->
-  <div style="flex: 1; min-width: 250px;">
-    <ul>
-       </ul>
-    <p>Pēc 20. gs. traģēdijām – diviem pasaules kariem, holokausta, koloniālisma, totalitārisma – Eiropa attīstīja vērtību bāzētu pašidentitāti: mieru, cilvēktiesības, tolerance, starptautisku sadarbību.</p>
-    <p>Vācijas vainas kultūra veidoja modeli: “nekad vairs” → pārmērīga piesardzība, arī retorikā, aizsardzībā, attiecībās ar Krieviju.</p>
-    <p>Postkoloniālā Rietumeiropa kļuva ļoti jūtīga pret apspiešanas, diskriminācijas, hegemonijas jēdzieniem.</p>
-    <p>Eiropas Savienības projekts pēc būtības ir birokrātisks izlīgums, nevis vīzija par spēku vai drosmi.</p>
+  <p>Tā ir reputācijas ilūzija — "mēs neizskatīsimies kā agresori", tāpēc nerīkosimies. Bet tas noveda pie smagākā kara Eiropā kopš Otrā pasaules kara.</p>
+  <hr>
+  <h2>4. Brīvības trauslums</h2>
+  <p>Kamēr Eiropa sevi uzskata par brīvības bastionu, tā neievēro, cik trausla ir pati brīvība, ja tai nav drosmīgu aizstāvju. Cenzūra nav vajadzīga — pietiek ar reputācijas bailēm. Cilvēki paši klusē, paši pielāgojas, paši atliek.</p>
+  <p>Un šāda sabiedrība nevar uzvarēt cīņā ar totalitāru sistēmu, kas nebaidās no "nekorektuma", bet tikai no vājuma.</p>
+  <hr>
+  <h2>5. Ekonomiskā cena</h2>
+  <p>AI un inovācija:</p>
+  <ul>
+    <li>Ja Eiropa būtu investējusi AI attīstībā tikpat cik ASV (50 miljardi gadā), pēdējo 5 gadu laikā būtu ieguldīti 250 miljardi eiro.</li>
+    <li>Realitātē ieguldījumi bijuši tikai ap 15-20 miljardiem eiro.</li>
+    <li>Zaudējums: 230+ miljardi eiro, nemaz nerunājot par zinātnieku aizplūšanu un tehnoloģiju importu no ASV/Ķīnas.</li>
+  </ul>
+  <p>Enerģētiskā atkarība:</p>
+  <ul>
+    <li>Līdz 2022. gadam ES maksāja ~1 miljardu eiro nedēļā Krievijas enerģijai.</li>
+    <li>Kopā ap 100 miljardi eiro gadā, 10 gadu laikā — 1 triljons eiro.</li>
+    <li>Un tikai tāpēc, ka reputācijas dēļ nevēlējāmies konfrontēties.</li>
+  </ul>
+  <hr>
+  <h2>Nobeigums: kas jāmaina?</h2>
+  <p>Eiropai nav jāatsakās no vērtībām, bet jāatsakās no bailēm. Reputācijas bailes nedrīkst būt svarīgākas par rīcību, viedokļu daudzveidība nevar būt padarīta par draudu, un drosme pieņemt lēmumus nedrīkst tikt kavēta tikai tāpēc, ka kāds twiterī var nesaprast.</p>
+  <p>Mūsu reputācija nav svarīgāka par mūsu brīvību.</p>
+  <p>Un ja mēs to aizmirstam, tad vēl bīstamāk — mēs to pazaudēsim.</p>
+  <div style="width: 100%; height: 280px; overflow: hidden; position: relative; margin-top: 2rem;">
+    <img src="../images/raksti/nobeiguma-strip.jpg" alt="Noslēguma metafora par drosmi un brīvību" style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
   </div>
-</div>
-
-<li>2. Sistēmiska pārvaldības kultūra</li>
-</ul>
-<p>Eiropa (īpaši Rietumeiropa) attīstīja ļoti formālu, regulējumu piesātinātu sabiedrību, kur:</p>
-<p>normas &gt; rīcība</p>
-<p>institūcijas &gt; iniciatīva</p>
-<p>konsenss &gt; pretruna</p>
-<p>Tas palīdzēja garantēt stabilitāti, bet iznīcināja elastību. Inovācijām, drosmei un riska uzņemšanai šāda vide ir nelabvēlīga.</p>
-<ul>
-<li>3. Vājas robežas starp publisko un privāto sfēru</li>
-</ul>
-<p>Reputācija Eiropā bieži ir saistīta ar uzvedību publiskajā telpā, nevis ar rezultātu vai kompetenci. Tā rodas situācijas, kur:</p>
-<p>cilvēku vērtē pēc “pareizās” valodas, nevis domas.</p>
-<p>amatpersonas baidās rīkoties, lai “neizskatītos slikti”.</p>
-<p>tiek uzskatīts: būt neitrālam un korektam = būt labam.</p>
-
-<h2>🧨 Kas no tā iegūst?</h2>
-<div style="display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem;">
-
-  <!-- Teksts pa kreisi -->
-  <div style="flex: 1; min-width: 260px;">
-
-    <ul>
-      <li><strong>1. Birokrātiskās un juridiskās struktūras</strong></li>
-    </ul>
-    <p>Tās nostiprina savu varu, jo viss kļūst atkarīgs no regulām, interpretācijām, saskaņojumiem.</p>
-    <p>Briseles aparāts kļūst pašpietiekams, nevis sabiedrības kalps.</p>
-
-    <ul>
-      <li><strong>2. Valstis un uzņēmumi ārpus Eiropas</strong></li>
-    </ul>
-    <p>ASV un Ķīna iegūst, jo viņi var:</p>
-    <ul>
-      <li>ātrāk rīkoties (AI, enerģija, militārā joma),</li>
-      <li>pārpirkt Eiropas inovācijas,</li>
-      <li>izmantot ES vājumu savos ģeopolitiskajos aprēķinos.</li>
-    </ul>
-
-    <ul>
-      <li><strong>3. Demagoģija un populisms Eiropas iekšienē</strong></li>
-    </ul>
-    <p>Kad sabiedrība jūt, ka “īstās problēmas netiek risinātas”, parādās populisti, kas sola “beigt čīkstēt un darīt”, piemēram, Meloni, Orbāns, Le Pens, Šlesers.</p>
-
+  <h1>Kāpēc Eiropā izveidojusies reputācijas un piesardzības kultūra?</h1>
+  <ul>
+    <li><strong>1. Vēsturiskā vainas apziņa un pārkompensācija</strong></li>
+  </ul>
+  <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+    <img src="../images/raksti/vainas-apziņa.jpg" alt="Eiropas vēsturiskā vaina" style="width: 100px; height: auto; margin-top: 4rem; border: 1px solid #ccc; box-shadow: 0 0 6px rgba(0,0,0,0.2); flex-shrink: 0;">
+    <div style="flex: 1; min-width: 250px;">
+      <p>Pēc 20. gs. traģēdijām – diviem pasaules kariem, holokausta, koloniālisma, totalitārisma – Eiropa attīstīja vērtību bāzētu pašidentitāti: mieru, cilvēktiesības, tolerance, starptautisku sadarbību.</p>
+      <p>Vācijas vainas kultūra veidoja modeli: "nekad vairs" → pārmērīga piesardzība, arī retorikā, aizsardzībā, attiecībās ar Krieviju.</p>
+      <p>Postkoloniālā Rietumeiropa kļuva ļoti jūtīga pret apspiešanas, diskriminācijas, hegemonijas jēdzieniem.</p>
+      <p>Eiropas Savienības projekts pēc būtības ir birokrātisks izlīgums, nevis vīzija par spēku vai drosmi.</p>
+    </div>
   </div>
+  <ul><li>2. Sistēmiska pārvaldības kultūra</li></ul>
+  <p>Eiropa (īpaši Rietumeiropa) attīstīja ļoti formālu, regulējumu piesātinātu sabiedrību, kur normas &gt; rīcība, institūcijas &gt; iniciatīva, konsenss &gt; pretruna. Tas palīdzēja garantēt stabilitāti, bet iznīcināja elastību.</p>
+  <ul><li>3. Vājas robežas starp publisko un privāto sfēru</li></ul>
+  <p>Reputācija Eiropā bieži ir saistīta ar uzvedību publiskajā telpā, nevis ar rezultātu vai kompetenci. Tā rodas situācijas, kur cilvēku vērtē pēc "pareizās" valodas, nevis domas; amatpersonas baidās rīkoties, lai "neizskatītos slikti"; tiek uzskatīts: būt neitrālam un korektam = būt labam.</p>
+  <h2>🧨 Kas no tā iegūst?</h2>
+  <div style="display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem;">
+    <div style="flex: 1; min-width: 260px;">
+      <ul><li><strong>1. Birokrātiskās un juridiskās struktūras</strong></li></ul>
+      <p>Tās nostiprina savu varu, jo viss kļūst atkarīgs no regulām, interpretācijām, saskaņojumiem. Briseles aparāts kļūst pašpietiekams, nevis sabiedrības kalps.</p>
+      <ul><li><strong>2. Valstis un uzņēmumi ārpus Eiropas</strong></li></ul>
+      <p>ASV un Ķīna iegūst, jo viņi var: ātrāk rīkoties (AI, enerģija, militārā joma), pārpirkt Eiropas inovācijas, izmantot ES vājumu savos ģeopolitiskajos aprēķinos.</p>
+      <ul><li><strong>3. Demagoģija un populisms Eiropas iekšienē</strong></li></ul>
+      <p>Kad sabiedrība jūt, ka "īstās problēmas netiek risinātas", parādās populisti, kas sola "beigt čīkstēt un darīt", piemēram, Meloni, Orbāns, Le Pens, Šlesers.</p>
+    </div>
+    <img src="../images/raksti/eiropas-krizes-faktori.jpg" alt="Eiropas iekšējie un ārējie faktori" style="width: 160px; height: auto; border: 1px solid #ccc; box-shadow: 0 0 6px rgba(0,0,0,0.2); flex-shrink: 0;">
+  </div>
+  <h2>📉 Kas zaudē visvairāk?</h2>
+  <ul>
+    <li>Jaunie radošie cilvēki un inovatori — viņi aizbrauc uz ASV, Kanādu, Izraēlu, Ķīnu, jo tur ir telpa riskam, mēģinājumiem, izgāšanās pieņemšanai.</li>
+    <li>Demokrātiskās vērtības pašas par sevi — kad vārda brīvība kļūst par tukšu formalitāti, brīvība kļūst nedzīva.</li>
+    <li>Mazās valstis — tās, kas paļaujas uz "Eiropas vienoto atbildi" (piemēram, Baltijas valstis), bieži cieš no lēnas, izvairīgas, piesardzīgas rīcības.</li>
+  </ul>
+  <h2>🛠️ Ko darīt tieši tagad?</h2>
+  <ul>
+    <li>Pārskatīt, kam mēs patiesi kalpojam: reputācijai vai realitātei? Brīžiem jāsaka skaidri: labāk kļūdīties, nekā vispār nerīkoties.</li>
+    <li>Mazāk normatīvisma, vairāk atbildīgas rīcības — atļaut eksperimentēt, pat ja tas nozīmē radīt kļūdas.</li>
+    <li>Atzīt, ka konfrontācija ne vienmēr ir slikta — ar autoritāriem spēkiem nevar runāt reputācijas valodā.</li>
+    <li>Aizstāvēt brīvību ne tikai vārdos, bet arī telpā — stiprināt vārda brīvību bez "atcelšanas" draudiem.</li>
+  </ul>
+  <h2>🧾 Noslēgums:</h2>
+  <p>Eiropa ir morāli izsmalcināta, bet praktiski paralizēta. Ja reputācija paliek svarīgāka par realitāti, mēs būsim nevis civilizācijas sirdsapziņa, bet tās iestrēgušais spogulis. Un tajā laikā citi vienkārši rīkosies.</p>
+  <p>"Mēs vēl rakstīsim vadlīnijas, kamēr citi jau būvēs pasauli, kurā mums būs jākalpo."</p>
+  <div style="width: 100%; height: 370px; overflow: hidden; position: relative; margin-top: 2rem;">
+    <img src="../images/raksti/noslegums-final.jpg" alt="Eiropas noslēguma metafora" style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
+  </div>
+  <h1>🧭 Vai Eiropā viss ir slikti?</h1>
+  <p>Nē, pavisam noteikti nē. Daudzas Eiropas reputācijas kultūras iezīmes ir gudras, vēsturiski pamatotas un sociāli vērtīgas.</p>
+  <h2>🌿 Kas Eiropā ir labi:</h2>
+  <ul>
+    <li>Sociālā stabilitāte — aizsardzība, veselības aprūpe, izglītība rada drošības sajūtu.</li>
+    <li>Vērtību pamatotība — tiesību sistēma, kas aizsargā privātumu, minoritātes, vārda brīvību.</li>
+    <li>Vide un pilsētvides kvalitāte — pilsētas ir dzīvojamas, cilvēkam draudzīgas.</li>
+    <li>Klimata kurss — Eiropa cenšas konsekventi veidot Zaļo kursu.</li>
+  </ul>
+  <h2>✅ Ko mēs varētu mācīties viens no otra?</h2>
+  <p>Ideālais modelis nav ne Brisele, ne Texas, bet veselīgs balanss starp drosmi un atbildību. Starp vārda brīvību un empātiju. Starp reputāciju un rīcību.</p>
+  <h2>✏️ Noslēguma doma:</h2>
+  <p>Eiropas reputācija nav slikta — bet tai nevajadzētu būt cietumam.</p>
+  <h1>🧠 Latvijas korektuma kultūras saknes:</h1>
+  <ul>
+    <li>Padomju mantojums: klusēšana = izdzīvošana — desmitgadēm cilvēkiem iemācīja nedomāt skaļi, nerunāt, neriskēt.</li>
+    <li>Mazs tirgus + šaura profesionālā vide — "visi visus pazīst", un viena bilde vai ieraksts var izplatīties zibensātrumā.</li>
+    <li>Oficiālās runas un publiskā tēla bailes — amatpersonas ļoti piesargās, pat ja viņiem ir interesanti un drosmīgi viedokļi.</li>
+  </ul>
+  <h2>🕊️ Vai tam ir izeja?</h2>
+  <p>Jā – un tā sākas ar cilvēkiem, kas tomēr runā, pat ja "varētu būt neērti": tiem, kas uzraksta ironiskas rindas par dzīvi; tiem, kas uzdod jautājumus, nevis mācās deklamēt pareizās frāzes.</p>
+  <h2>✏️ Noslēgums:</h2>
+  <p>Latvijā korektums dažreiz nozīmē klusumu tur, kur vajadzētu dzirdēt balsi. Mēs esam pietiekami izglītoti, lai domātu kritiski — bet vai pietiekami drosmīgi, lai to pateiktu skaļi?</p>
+</main>
 
-  <!-- Attēls pa labi -->
-  <img src="../images/raksti/eiropas-krizes-faktori.jpg"
-       alt="Eiropas iekšējie un ārējie faktori"
-       style="width: 160px; height: auto; border: 1px solid #ccc; box-shadow: 0 0 6px rgba(0,0,0,0.2); flex-shrink: 0;">
-</div>
+<!-- ========== ENGLISH ========== -->
+<main class="container lang-en">
+  <h1>Europe's Reputation Trap: How Normative Culture Hinders Growth, Technology and Security</h1>
+  <h2>Introduction</h2>
+  <p>Europe carefully guards its public image, inclusive values, normative order and responsibility for its historical legacy. We see ourselves as a civilised society that rejects extreme steps, yet still believes in values. However, 21st-century reality shows that these very "soft power" traits can become the root of Europe's weakness.</p>
+  <p>This is an analysis of how a culture of reputation and "not rocking the boat" hinders security, innovation and clear action — in technology development, in defence, and in the realm of ideas.</p>
+  <div style="width: 100%; height: 280px; overflow: hidden; position: relative; margin-top: 2rem;">
+    <img src="../images/raksti/eiropas-lamatas-strip.jpg" alt="Europe's reputation metaphor" style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
+  </div>
+  <hr>
+  <h2>1. Reputation in society</h2>
+  <p>Europe is dominated by a deep internal culture of "doing nothing": better not to risk anything, lest you end up in the spotlight with the wrong words or actions. Political correctness, inclusion and a "be careful with everyone" approach have made the public sphere cautious, fearful and contrived. People often failed to act not because they lacked ideas, but because they feared reputational risk.</p>
+  <hr>
+  <h2>2. Technology: Europe's quiet capitulation</h2>
+  <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1.5rem;">
+    <div style="flex: 1; min-width: 260px;">
+      <p><strong>AI and innovation</strong></p>
+      <p>While the USA and China invest tens of billions of euros per year in AI development, Europe is mainly writing regulations. For example:</p>
+      <ul>
+        <li>In 2023, US AI investment exceeded 50 billion dollars.</li>
+        <li>In China, the public and private sectors invest around 30–40 billion dollars per year.</li>
+        <li>The EU's (2022) AI development funding was only <strong>3–5 billion euros</strong>, mainly through the Horizon programme.</li>
+      </ul>
+    </div>
+    <img src="../images/raksti/ai-klusa-kapitulacija.jpg" alt="AI regulation in Europe" style="max-width: 280px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); flex-shrink: 0;">
+  </div>
+  <div style="margin-top: 1rem;">
+    <p>This is not merely a financial difference. It is a <strong>difference in attitude and courage</strong>. While Silicon Valley tests new things on the principle of "build first, regulate later", Europe fears scandal, litigation or "public condemnation".</p>
+    <p><strong>Consequences:</strong></p>
+    <ul>
+      <li>No leading AI tool has emerged from Europe (in contrast to ChatGPT, Claude, Gemini, Midjourney).</li>
+      <li>Major brain centres (e.g. ETH Zürich, TU Delft) are losing young minds who head to the USA.</li>
+      <li>Start-ups from Berlin or Amsterdam relocate to California, where they don't have to wait 18 months for data-consent clearance.</li>
+    </ul>
+  </div>
+  <h2>3. Russia and paralysis</h2>
+  <p>For years, Europe was afraid to call Russia a threat. From Merkel's Nord Stream 2 "pragmatism" to Macron's "we must listen to Russia's fears" — reputation mattered more than reality.</p>
+  <p>The result:</p>
+  <ul>
+    <li>Ukraine was left alone until the full-scale invasion.</li>
+    <li>Until 2022, the EU paid Russia around 100 billion euros per year for fossil fuels.</li>
+    <li>Moscow invested it in tanks and missiles.</li>
+  </ul>
+  <p>That is the illusion of reputation — "we won't look like aggressors", so we won't act. But it led to the worst war in Europe since the Second World War.</p>
+  <hr>
+  <h2>4. The fragility of freedom</h2>
+  <p>While Europe sees itself as a bastion of freedom, it fails to notice how fragile freedom is without courageous defenders. Censorship is unnecessary — the fear of reputational damage suffices. People silence themselves, adapt themselves, defer themselves.</p>
+  <p>And such a society cannot prevail in conflict with a totalitarian system that does not fear "incorrectness" — only weakness.</p>
+  <hr>
+  <h2>5. The economic cost</h2>
+  <p>AI and innovation:</p>
+  <ul>
+    <li>Had Europe invested in AI development on the same scale as the USA (50 billion per year), the past 5 years would have seen 250 billion euros invested.</li>
+    <li>In reality, investment has been only around 15–20 billion euros.</li>
+    <li>Loss: 230+ billion euros, not counting the brain drain and technology imports from the USA/China.</li>
+  </ul>
+  <p>Energy dependence:</p>
+  <ul>
+    <li>Until 2022, the EU paid ~1 billion euros per week for Russian energy.</li>
+    <li>Around 100 billion euros per year; over 10 years — 1 trillion euros.</li>
+    <li>All because we didn't want to confront, for the sake of reputation.</li>
+  </ul>
+  <hr>
+  <h2>Conclusion: what needs to change?</h2>
+  <p>Europe doesn't need to abandon its values, but it must abandon its fears. Reputational fears must not outweigh action; diversity of opinion cannot be treated as a threat; and the courage to make decisions must not be hampered just because someone on Twitter might not understand.</p>
+  <p>Our reputation is not more important than our freedom.</p>
+  <p>And if we forget that, then even more dangerously — we will lose it.</p>
+  <div style="width: 100%; height: 280px; overflow: hidden; position: relative; margin-top: 2rem;">
+    <img src="../images/raksti/nobeiguma-strip.jpg" alt="Closing metaphor on courage and freedom" style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
+  </div>
+  <h1>Why has Europe developed a culture of reputation and caution?</h1>
+  <ul>
+    <li><strong>1. Historical guilt and over-compensation</strong></li>
+  </ul>
+  <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+    <img src="../images/raksti/vainas-apziņa.jpg" alt="Europe's historical guilt" style="width: 100px; height: auto; margin-top: 4rem; border: 1px solid #ccc; box-shadow: 0 0 6px rgba(0,0,0,0.2); flex-shrink: 0;">
+    <div style="flex: 1; min-width: 250px;">
+      <p>After the tragedies of the 20th century — two world wars, the Holocaust, colonialism, totalitarianism — Europe developed a values-based self-identity: peace, human rights, tolerance, international cooperation.</p>
+      <p>Germany's guilt culture created a template: "never again" → excessive caution, including in rhetoric, defence and relations with Russia.</p>
+      <p>Post-colonial Western Europe became highly sensitive to concepts of oppression, discrimination and hegemony.</p>
+      <p>The European Union project is at its core a bureaucratic compromise, not a vision of strength or courage.</p>
+    </div>
+  </div>
+  <ul><li>2. Systemic governance culture</li></ul>
+  <p>Europe (especially Western Europe) developed a highly formal, regulation-saturated society where norms &gt; action, institutions &gt; initiative, consensus &gt; dissent. This helped guarantee stability, but destroyed flexibility.</p>
+  <ul><li>3. Weak boundaries between public and private spheres</li></ul>
+  <p>Reputation in Europe is often tied to behaviour in the public sphere rather than results or competence. This creates situations where people are judged by "correct" language rather than thought; officials fear acting lest they "look bad"; and being neutral and correct is equated with being good.</p>
+  <h2>🧨 Who benefits from this?</h2>
+  <div style="display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem;">
+    <div style="flex: 1; min-width: 260px;">
+      <ul><li><strong>1. Bureaucratic and legal structures</strong></li></ul>
+      <p>They consolidate their power, as everything becomes dependent on regulations, interpretations and approvals. The Brussels apparatus becomes self-sufficient, rather than a servant of society.</p>
+      <ul><li><strong>2. Countries and companies outside Europe</strong></li></ul>
+      <p>The USA and China gain, because they can: act faster (AI, energy, military), acquire European innovations, exploit EU weakness in their geopolitical calculations.</p>
+      <ul><li><strong>3. Demagoguery and populism within Europe</strong></li></ul>
+      <p>When society feels that "real problems are not being addressed", populists appear promising to "stop whining and act" — e.g. Meloni, Orbán, Le Pen, Šlesers.</p>
+    </div>
+    <img src="../images/raksti/eiropas-krizes-faktori.jpg" alt="Europe's internal and external factors" style="width: 160px; height: auto; border: 1px solid #ccc; box-shadow: 0 0 6px rgba(0,0,0,0.2); flex-shrink: 0;">
+  </div>
+  <h2>📉 Who loses most?</h2>
+  <ul>
+    <li>Young creative people and innovators — they leave for the USA, Canada, Israel, China, where there is space for risk, attempts and acceptance of failure.</li>
+    <li>Democratic values themselves — when freedom of expression becomes an empty formality because people are afraid to speak, freedom becomes lifeless.</li>
+    <li>Small countries — those that rely on a "unified European response" (e.g. the Baltic states) often suffer from slow, evasive, cautious action.</li>
+  </ul>
+  <h2>🛠️ What to do right now?</h2>
+  <ul>
+    <li>Reconsider whom we truly serve: reputation or reality? Sometimes one must say clearly: better to err than not to act at all.</li>
+    <li>Less normativism, more accountable action — allow experimentation, even if it means making mistakes.</li>
+    <li>Acknowledge that confrontation is not always bad — with authoritarian forces you cannot speak the language of reputation.</li>
+    <li>Defend freedom not only in words but also in space — strengthen freedom of expression without the threat of "cancellation".</li>
+  </ul>
+  <h2>🧾 Conclusion:</h2>
+  <p>Europe is morally sophisticated but practically paralysed. If reputation remains more important than reality, we will be not the conscience of civilisation but its frozen mirror. And in the meantime, others will simply act.</p>
+  <p>"We will still be writing guidelines while others are already building the world in which we will have to serve."</p>
+  <div style="width: 100%; height: 370px; overflow: hidden; position: relative; margin-top: 2rem;">
+    <img src="../images/raksti/noslegums-final.jpg" alt="Europe's final metaphor — paralysis through reputation" style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
+  </div>
+  <h1>🧭 Is everything bad in Europe?</h1>
+  <p>No, certainly not. Many features of Europe's reputation culture are wise, historically grounded and socially valuable.</p>
+  <h2>🌿 What Europe does well:</h2>
+  <ul>
+    <li>Social stability — protection, healthcare, education create a sense of security.</li>
+    <li>Value foundations — a legal system that protects privacy, minorities and freedom of expression.</li>
+    <li>Urban quality and the environment — cities are liveable and human-friendly.</li>
+    <li>The Green Deal — Europe is the only region consistently pursuing a climate policy that could become an export model.</li>
+  </ul>
+  <h2>✅ What we could learn from each other?</h2>
+  <p>The ideal model is neither Brussels nor Texas, but a healthy balance between courage and responsibility. Between freedom of expression and empathy. Between reputation and action.</p>
+  <h2>✏️ Closing thought:</h2>
+  <p>Europe's reputation is not bad — but it should not be a prison.</p>
+  <h1>🧠 The roots of Latvia's culture of correctness:</h1>
+  <ul>
+    <li>Soviet legacy: silence = survival — for decades people were taught not to think aloud, not to speak, not to risk.</li>
+    <li>Small market + narrow professional environment — "everyone knows everyone", and one photo or post can spread at lightning speed.</li>
+    <li>Fear of official speech and public image — officials are very guarded, even when they have interesting and courageous opinions.</li>
+  </ul>
+  <h2>🕊️ Is there a way out?</h2>
+  <p>Yes — and it starts with people who nonetheless speak, even if "it could be uncomfortable": those who write ironic lines about life; those who ask questions rather than learning to recite the correct phrases.</p>
+  <h2>✏️ Conclusion:</h2>
+  <p>In Latvia, correctness sometimes means silence where a voice should be heard. We are educated enough to think critically — but are we brave enough to say it aloud?</p>
+</main>
 
-
-<h2>📉 Kas zaudē visvairāk?</h2>
-<ul>
-<li>1. Jaunie radošie cilvēki un inovatori</li>
-</ul>
-<p>Viņi aizbrauc uz ASV, Kanādu, Izraēlu, Ķīnu, jo tur ir telpa riskam, mēģinājumiem, izgāšanās pieņemšanai.</p>
-<p>Eiropa zaudē intelektu, uzņēmējdarbību, kultūru.</p>
-<ul>
-<li>2. Demokrātiskās vērtības pašas par sevi</li>
-</ul>
-<p>Kad vārda brīvība kļūst par tukšu formalitāti, jo cilvēki baidās runāt, brīvība kļūst nedzīva.</p>
-<p>Kad reputācija ir svarīgāka par rīcību, sabiedrība aizver acis uz patiesajiem draudiem.</p>
-<ul>
-<li>3. Mazās valstis</li>
-</ul>
-<p>Tās, kas paļaujas uz “Eiropas vienoto atbildi” (piemēram, Baltijas valstis), bieži cieš no lēnas, izvairīgas, piesardzīgas rīcības.</p>
-
-<h2>🛠️ Ko darīt tieši tagad?</h2>
-<ul>
-<li>1. Pārskatīt, kam mēs patiesi kalpojam: reputācijai vai realitātei?</li>
-</ul>
-<p>Brīžiem jāsaka skaidri: labāk kļūdīties, nekā vispār nerīkoties.</p>
-<p>Politiskajiem un intelektuālajiem līderiem jāatjauno drosmes kultūra.</p>
-<ul>
-<li>2. Mazāk normatīvisma, vairāk atbildīgas rīcības</li>
-</ul>
-<p>Mazināt “regulējuma pirms inovācijas” pieeju.</p>
-<p>Atļaut eksperimentēt, pat ja tas nozīmē radīt kļūdas.</p>
-<ul>
-<li>3. Atzīt, ka konfrontācija ne vienmēr ir slikta</li>
-</ul>
-<p>Ar autoritāriem spēkiem (Krievija, Ķīna, iekšējais populisms) nevar runāt reputācijas valodā — viņi to nesaprot.</p>
-<p>Jābūt skaidrākam, drosmīgākam, straujākam.</p>
-<ul>
-<li>4. Aizstāvēt brīvību ne tikai vārdos, bet arī telpā</li>
-</ul>
-<p>Stiprināt vārda brīvību bez “atcelšanas” draudiem.</p>
-<p>Radīt vidi, kur cilvēks var kļūdīties, diskutēt, būt nepopulārs — un tomēr dzirdēts.</p>
-
-<h2>🧾 Noslēgums:</h2>
-<p>Eiropa ir morāli izsmalcināta, bet praktiski paralizēta. Ja reputācija paliek svarīgāka par realitāti, mēs būsim nevis civilizācijas sirdsapziņa, bet tās iestrēgušais spogulis. Un tajā laikā citi vienkārši rīkosies.</p>
-<p>“Mēs vēl rakstīsim vadlīnijas, kamēr citi jau būvēs pasauli, kurā mums būs jākalpo.”</p>
-
-<div style="width: 100%; height: 370px; overflow: hidden; position: relative; margin-top: 2rem;">
-  <img src="../images/raksti/noslegums-final.jpg"
-       alt="Eiropas noslēguma metafora – paralīze reputācijas dēļ"
-       style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
-</div>
-
-<h1>🧭 Vai Eiropā viss ir slikti?</h1>
-<p>Nē, pavisam noteikti nē. Daudzas Eiropas reputācijas kultūras iezīmes ir gudras, vēsturiski pamatotas un sociāli vērtīgas.</p>
-<h2>🌿 Kas Eiropā ir labi:</h2>
-<ul>
-<li>1. Sociālā stabilitāte un līdzsvars</li>
-</ul>
-<p>Sociālā aizsardzība, veselības aprūpe, atvaļinājumi, izglītība — tās nav tikai “labās lietas”, tās rada drošības sajūtu un ilgtermiņa domāšanu.</p>
-<p>Eiropas darba kultūrā cilvēks netiek reducēts uz peļņas rīku.</p>
-<ul>
-<li>2. Vērtību pamatotība</li>
-</ul>
-<p>Tiesību sistēma, kas aizsargā privātumu, minoritātes, vārda brīvību, tiek veidota uz vēsturiskas ciešanu pieredzes pamata.</p>
-<p>Reputācijas piesardzība bieži sargā mazāk aizsargātos – piemēram, pret rasismu, diskrimināciju, autoritārismu.</p>
-<ul>
-<li>3. Vide, pilsētvides kvalitāte, kultūras telpa</li>
-</ul>
-<p>Eiropā pilsētas ir dzīvojamas, cilvēkam draudzīgas, ar labu sabiedrisko transportu, nevis tikai auto dominanci.</p>
-<p>Vēsturiskā un kultūras daudzveidība joprojām ir iedvesmojoša (Amsterdamas kanāli, Romas drupas, Rīgas koka arhitektūra).</p>
-<ul>
-<li>4. Uz nākotni vērsts klimata kurss</li>
-</ul>
-<p>Lai arī lēni, Eiropa vienīgā pasaulē cenšas konsekventi veidot Zaļo kursu un klimatpolitiku — kas var kļūt par eksporta modeli nākotnē.</p>
-<p>🇺🇸 Un ASV? Brīvība vai haoss?</p>
-<p>Tava metafora ar desu uz jumta un prasību tiesā ir lieliska — tā trāpa tieši ASV kultūras paranojas un tiesiskā absurda punktā.</p>
-
-<h2>🔥 Kas ASV ir problemātiski:</h2>
-
-<p>Tiesvedības eksplozija – jebkurš pret jebkuru, par jebko → bailes, juristu dominance.</p>
-<p>Atcelšanas kultūra (“cancel culture”) un emocionāla pārspīlēšana, kas pārsniedz veselīgu brīdinājumu → bail izteikties.</p>
-<p>Darba vidē pārmērīgs formālisms – cilvēks var tikt atlaists vai iesūdzēts tiesā par nepareizu skatienu vai joku.</p>
-<p>Ekonomiskā plaisa – nav sabiedrības veselības drošības tīkla, studentu parādi, nepastāvīga nodarbinātība.</p>
-
-<h2>🎯 Tātad — kur ir īstā problēma Eiropā, ja vērtības ir labas?</h2>
-
-<p>Nav tā, ka vērtības pašas būtu nepareizas — problēma ir pārmērīga piesardzība, nespēja reaģēt ātri, bailes no riska.</p>
-<p>Brīžiem Eiropa:</p>
-<p>aizsargā tēlu vairāk nekā būtību</p>
-<p>nosoda nepareizus vārdus, bet nepasaka patiesību</p>
-<p>baidās izskatīties slikti, tāpēc neizdara neko</p>
-<p>Tā vietā, lai ļautu cilvēkiem runāt, kļūdīties, būt radošiem, dažreiz Eiropa audzina klusējošu korektumu, kurā viss ir pareizs – bet nedzīvs.</p>
-
-<h2>✅ Ko mēs varētu mācīties viens no otra?</h2>
-
-<p>🇪🇺 Eiropa	🇺🇸 ASV</p>
-<p>Stabilitāte, cieņa, izglītība	Radošums, drosme, ātrums</p>
-<p>Pārdomāta sabiedrība	Uzņēmīga sabiedrība</p>
-<p>Bet pārāk bailīga un lēna	Bet pārmērīgi haotiska un individuālistiska</p>
-<p>Ideālais modelis nav ne Brisele, ne Texas, bet veselīgs balanss starp drosmi un atbildību. Starp vārda brīvību un empātiju. Starp reputāciju un rīcību.</p>
-
-<h2>✏️ Noslēguma doma:</h2>
-
-<p>Eiropas reputācija nav slikta — bet tai nevajadzētu būt cietumam.</p>
-<p>ASV brīvība nav ļauna — bet tai vajadzīga jēga.</p>
-
-<h1>🧠 Latvijas korektuma kultūras saknes:</h1>
-<ul>
-<li>1. Padomju mantojums: klusēšana = izdzīvošana</li>
-</ul>
-<p>Desmitgadēm cilvēkiem iemācīja nedomāt skaļi, nerunāt, neriskēt, nepateikt visu.</p>
-<p>Sekoja iekšējā cenzūra, pašcenzūra, sargāšanās no &quot;nepareiza&quot; vārda.</p>
-<p>Pat pēc neatkarības atgūšanas – instinkts klusēt palika dzīvs.</p>
-<ul>
-<li>2. Mazs tirgus + šaura profesionālā vide</li>
-</ul>
-<p>Latvijā “visi visus pazīst”, un viena bilde vai ieraksts var izplatīties zibensātrumā.</p>
-<p>Cilvēki baidās izteikties, jo:</p>
-<p>tas var ietekmēt karjeru,</p>
-<p>sašaurināt iespējas,</p>
-<p>radīt personiskus konfliktus.</p>
-<p>Tas rada vidi, kur cilvēki domā daudz, bet runā maz.</p>
-<ul>
-<li>3. Oficiālās runas un publiskā tēla bailes</li>
-</ul>
-<p>Amatpersonas, uzņēmumu vadītāji, kultūras cilvēki ļoti piesargās, pat ja viņiem ir interesanti un drosmīgi viedokļi.</p>
-<p>Visi “stāv taisni, runā pēc protokola, smaida neitrāli”.</p>
-
-<h2>😶 Un kas no tā cieš?</h2>
-
-<ul>
-<li>1. Radošums un autentiskums</li>
-</ul>
-<p>Latvijā nav tik daudz radošo haotisko telpu, kur cilvēki var būt “dīvaini, drosmīgi un brīvi”.</p>
-<p>Ja kāds izlēkā no normas — viņu var pasmīnēt, ignorēt vai izstumt.</p>
-<ul>
-<li>2. Diskusija un veselīga domstarpība</li>
-</ul>
-<p>Cilvēki izvairās no strīdiem, pat ja temats ir sabiedriski svarīgs.</p>
-<p>Tas rada klusu piekrišanu stagnācijai — viss virzās, bet neviens īsti nerunā par to, kas kaitina.</p>
-<ul>
-<li>3. Sabiedrības nogurums un apātija</li>
-</ul>
-<p>Kad cilvēks nevar izteikties bez seku bailēm, viņš izvēlas vienkārši… nerunāt.</p>
-<p>Tas veicina cinismu, “labāk paklusēt” attieksmi, iekšēju neuzticēšanos.</p>
-
-<h2>🕊️ Vai tam ir izeja?</h2>
-
-<p>Jā – un tā sākas ar cilvēkiem, kas tomēr runā, pat ja “varētu būt neērti”:</p>
-<p>Tiem, kas uzraksta ironiskas rindas par dzīvi, nevis tikai apraksta “kultūras notikumus”.</p>
-<p>Tiem, kas uzdod jautājumus, nevis mācās deklamēt pareizās frāzes.</p>
-
-<h2>✏️ Noslēgums:</h2>
-
-<p>Latvijā korektums dažreiz nozīmē klusumu tur, kur vajadzētu dzirdēt balsi.</p>
-<p>Mēs esam pietiekami izglītoti, lai domātu kritiski — bet vai pietiekami drosmīgi, lai to pateiktu skaļi?</p>
-
-
-   </main>
+  <script src="../assets/js/lang.js?v=5"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
+  <script src="../assets/js/analytics.js"></script>
 </body>
 </html>

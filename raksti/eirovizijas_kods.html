@@ -7,145 +7,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:image" content="https://puteklis.com/images/share/eurovision_not_music.jpg" />
   <style>
-   body {
-      background: linear-gradient(to right, #2c3e50, #4ca1af);
-      color: #f8f8f8;
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 3rem 2rem;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    }
-    h2 {
-      margin-top: 2em;
-      font-size: 1.4em;
-      color: #ffe;
-    }
-    p {
-      font-size: 1.05em;
-      line-height: 1.6em;
-      margin-bottom: 1em;
-    }
-    .emoji {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-    }
-
-    header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
-  backdrop-filter: blur(4px);
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-}
-
-header nav a {
-  color: #ffffff; /* gaišāka krāsa! */
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s;
-}
-
-header nav a:hover {
-  color: #ffd700; /* zeltaina krāsa hover efektam */
-}
-
-header nav a.active {
-  text-decoration: underline;
-  color: #00ffff;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: sans-serif;
-  margin-top: 1em;
-}
-
-th, td {
-  border: 1px solid #44788a;
-  padding: 12px 16px;
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  background-color: #01597b; /* tumši zils */
-  color: white;
-}
-
-tr:nth-child(even) {
-  background-color: #27596c; /* dziļāks tumši zils */
-}
-
-.note {
-  display: block;
-  font-size: 0.9em;
-  color: #aacfd0; /* gaiši zils uz tumšā fona */
-  margin-top: 4px;
-}
+    body { background: linear-gradient(to right, #2c3e50, #4ca1af); color: #f8f8f8; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: auto; padding: 3rem 2rem; }
+    h1 { font-size: 2.5em; margin-bottom: 1rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+    h2 { margin-top: 2em; font-size: 1.4em; color: #ffe; }
+    p { font-size: 1.05em; line-height: 1.6em; margin-bottom: 1em; }
+    .emoji { font-size: 1.2em; margin-right: 0.3em; }
+    header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: rgba(0,0,0,0.6); padding: 1rem 2rem; backdrop-filter: blur(4px); }
+    header nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 2rem; margin: 0; }
+    header nav a { color: #fff; text-decoration: none; font-weight: bold; transition: color 0.2s; }
+    header nav a:hover { color: #ffd700; }
+    header nav a.active { text-decoration: underline; color: #00ffff; }
+    table { width: 100%; border-collapse: collapse; font-family: sans-serif; margin-top: 1em; }
+    th, td { border: 1px solid #44788a; padding: 12px 16px; text-align: left; vertical-align: top; }
+    th { background-color: #01597b; color: white; }
+    tr:nth-child(even) { background-color: #27596c; }
+    .note { display: block; font-size: 0.9em; color: #aacfd0; margin-top: 4px; }
+    figure { margin: 2em 0; }
+    figcaption { font-size: 0.95em; color: #ccc; margin-top: 0.5em; }
+    .lang-en { display: none; }
+    body.lang-en .lang-lv { display: none; }
+    body.lang-en .lang-en { display: block; }
   </style>
 </head>
 <body>
- <header>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Manifests</a></li>
-        <li><a href="../raksti.html" class="active">Raksti</a></li>
-        <li><a href="../index_en.html">EN</a></li>
-      </ul>
-    </nav>
-</header>
- <div class="container">
+<script>document.body.classList.add('lang-'+(localStorage.getItem('puteklis-lang')||'lv'));</script>
 
- <h1>Eirovīzijas kods – kas tas ir?</h1>
+<header>
+  <nav>
+    <ul>
+      <li><a href="../index.html" data-i18n="nav.manifests">Manifests</a></li>
+      <li><a href="../raksti.html" class="active" data-i18n="nav.raksti">Raksti</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ========== LATVIAN ========== -->
+<div class="container lang-lv">
+
+<h1>Eirovīzijas kods – kas tas ir?</h1>
 
 <h2>Ievads</h2>
-<p>Eirovīzijas dziesmu konkurss bieži tiek prezentēts kā <strong>muzikāls notikums</strong>, kurā uz vienlīdzīgiem pamatiem sacenšas dažādu valstu labākie izpildītāji un dziesmu autori. Taču realitātē tas vairāk atgādina <em>emocionāli un vizuāli pielādētu sociālu šovu</em>, kur mūzika ir tikai viens no daudziem faktoriem, kas nosaka skatītāju reakcijas un konkursa iznākumu.</p>
-
-<p>Šajā rakstā tiks analizēts, kā <strong>Eirovīzija no mūzikas konkursa kļuvusi par emocionālas ietekmes algoritmu</strong>, kas ekspluatē psiholoģiskus mehānismus, mediju loģiku un kultūras identitāšu simboliku. Tā ir platforma, kur uzvar nevis labākā dziesma, bet <em>spēcīgākais tēls vai sajūta</em>, ko auditorija uztver dažu minūšu laikā.</p>
+<p>Eirovīzijas dziesmu konkurss bieži tiek prezentēts kā <strong>muzikāls notikums</strong>, kurā uz vienlīdzīgiem pamatiem sacenšas dažādu valstu labākie izpildītāji un dziesmu autori. Taču realitātē tas vairāk atgādina <em>emocionāli un vizuāli pielādētu sociālu šovu</em>, kur mūzika ir tikai viens no daudziem faktoriem.</p>
+<p>Šajā rakstā tiks analizēts, kā <strong>Eirovīzija no mūzikas konkursa kļuvusi par emocionālas ietekmes algoritmu</strong>, kas ekspluatē psiholoģiskus mehānismus, mediju loģiku un kultūras identitāšu simboliku.</p>
 
 <figure>
   <img src="../images/raksti/eurovision_code_intro.jpg" alt="Eirovīzijas kods – spožums vai simulācija?" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>Eirovīzija – spožs troksnis vai simulēta izvēle? Šova kods slēpjas aiz emociju algoritma.</em>
-  </figcaption>
+  <figcaption><em>Eirovīzija – spožs troksnis vai simulēta izvēle? Šova kods slēpjas aiz emociju algoritma.</em></figcaption>
 </figure>
 
-
 <h2>Problēmas formulējums</h2>
-<p>Eirovīzija <em>de jure</em> ir dziesmu konkurss, bet <em>de facto</em> — tas ir <strong>sociāli-psiholoģisks un mediju menedžēts fenomens</strong>, kas vairāk darbojas kā kolektīva emocionālā atbildes reakcija, nevis profesionāls muzikāls vērtējums. Rodas pretruna starp deklarēto mērķi (vērtēt dziesmas) un realitāti (vērtēšanas objekts ir tēls, valsts, stāsts, vizuālais iespaids u.c.).</p>
+<p>Eirovīzija <em>de jure</em> ir dziesmu konkurss, bet <em>de facto</em> — tas ir <strong>sociāli-psiholoģisks un mediju menedžēts fenomens</strong>. Rodas pretruna starp deklarēto mērķi (vērtēt dziesmas) un realitāti (vērtēšanas objekts ir tēls, valsts, stāsts, vizuālais iespaids u.c.).</p>
 
 <h2>Pētījuma jautājumi</h2>
 <ul>
   <li>Kā Eirovīzija <strong>vēsturiski ir radusies</strong>, un kāda bija tās sākotnējā funkcija?</li>
   <li>Kuras <strong>organizācijas, sponsori un mediji</strong> to uztur, un kādi ir viņu <strong>motīvi</strong>?</li>
-  <li>Kādēļ tik daudz skatītāju piedzīvo <strong>emocionālu patiku</strong> pret dziesmām, kas objektīvi šķiet vājas vai samākslotas?</li>
-  <li>Kādus <strong>psiholoģiskos un sociālos mehānismus</strong> izmanto šova veidotāji, lai ietekmētu uztveri?</li>
-  <li>Kā mainās <strong>muzikālā kvalitāte un vizuālais saturs</strong> gadu no gada — un kāpēc šķiet, ka <em>viss kļūst vienlaikus spožāks un tukšāks</em>?</li>
+  <li>Kādēļ tik daudz skatītāju piedzīvo <strong>emocionālu patiku</strong> pret dziesmām, kas objektīvi šķiet vājas?</li>
+  <li>Kādus <strong>psiholoģiskos un sociālos mehānismus</strong> izmanto šova veidotāji?</li>
+  <li>Kā mainās <strong>muzikālā kvalitāte un vizuālais saturs</strong> gadu no gada?</li>
 </ul>
 
 <h2>Izmantotās metodes un avoti</h2>
-<p>Šī analīze balstīsies uz vairākiem avotu tipiem un pieejām:</p>
+<p>Šī analīze balstīsies uz:</p>
 <ul>
   <li><strong>Akadēmiskie pētījumi</strong> (psiholoģija, mūzikas uztvere, kultūras kritika)</li>
   <li><strong>Oficiālie dokumenti</strong> no EBU, mediju partneriem un rīkotājiem</li>
@@ -153,396 +77,494 @@ tr:nth-child(even) {
   <li><strong>Sociālo mediju un komentētāju diskurss</strong> (tiešraides, Twitter, Reddit)</li>
 </ul>
 
-<p>Šāda pieeja ļaus ne tikai <em>izjaukt Eirovīzijas virspusējo tēlu</em>, bet arī <strong>atklāt algoritmisko un emocionālo kodu</strong>, kas šo fenomenu padara tik ietekmīgu, komerciāli veiksmīgu un psiholoģiski apburošu, pat ja mūzika kļūst otršķirīga.</p>
-
 <h2>1. Vēsturiskā ģenēze</h2>
-
 <h3>1.1. Pēc-kara Eiropa un EBU dibināšana</h3>
-<p>Pēc Otrā pasaules kara Eiropā valdīja vajadzība pēc sadarbības, kultūras vienotības un mediju savstarpējās sapratnes. 1950. gadā tika izveidota <strong>Eiropas Raidorganizāciju apvienība</strong> (EBU – European Broadcasting Union), lai apvienotu sabiedriskās televīzijas un radio organizācijas vienotā tīklā.</p>
-<p>EBU mērķis bija ne tikai tehniskā sadarbība, bet arī <em>kultūras un identitātes vienojošu projektu veidošana</em>. Eirovīzijas dziesmu konkurss bija viens no pirmajiem šādiem projektiem, kas apvienoja apraidi, mūziku un starptautisku simboliku.</p>
+<p>Pēc Otrā pasaules kara Eiropā valdīja vajadzība pēc sadarbības. 1950. gadā tika izveidota <strong>Eiropas Raidorganizāciju apvienība</strong> (EBU), lai apvienotu sabiedriskās televīzijas un radio organizācijas vienotā tīklā.</p>
+<p>EBU mērķis bija ne tikai tehniskā sadarbība, bet arī <em>kultūras un identitātes vienojošu projektu veidošana</em>.</p>
 
 <h3>1.2. 1956. gads – pirmais konkurss Lugano</h3>
-<p><strong>1956. gada 24. maijā</strong> Lugano (Šveicē) notika pirmais Eirovīzijas dziesmu konkurss ar tikai 7 valstīm un 14 dziesmām. Katru valsti pārstāvēja valsts raidorganizācija, un uzstāšanās bija dzīvajā ar orķestri. Uzvarētājs bija <em>Lys Assia</em> no Šveices ar dziesmu “Refrain”.</p>
-<p>Sākotnējais mērķis bija veicināt <strong>raidošo tehnoloģiju attīstību</strong>, kā arī kultūras kontaktus starp Eiropas valstīm. Mūzika kalpoja kā līdzeklis, nevis mērķis.</p>
+<p><strong>1956. gada 24. maijā</strong> Lugano (Šveicē) notika pirmais Eirovīzijas dziesmu konkurss ar tikai 7 valstīm un 14 dziesmām. Uzvarētājs bija <em>Lys Assia</em> no Šveices ar dziesmu "Refrain".</p>
+<p>Sākotnējais mērķis bija veicināt <strong>raidošo tehnoloģiju attīstību</strong>. Mūzika kalpoja kā līdzeklis, nevis mērķis.</p>
 
 <h3>1.3. Galvenie pagrieziena punkti</h3>
 <ul>
-  <li><strong>1968</strong> – pirmais <em>krāsainais TV signāls</em>, uzlabojot vizuālo iespaidu un padarot šovu par “TV notikumu”.</li>
-  <li><strong>1998</strong> – <em>tele balsošanas</em> ieviešana ļāva skatītājiem balsot, kas būtiski mainīja dinamiku no profesionālām žūrijām uz masu gaumes atspoguļojumu.</li>
-  <li><strong>2004</strong> – <em>pusfinālu sistēma</em> ļāva piedalīties arvien vairāk valstīm (paplašināšanās uz Austrumeiropu pēc ES paplašināšanās).</li>
-  <li><strong>2023</strong> – ievieš “<em>Rest of the World</em>” balsojumu, ļaujot skatītājiem no valstīm ārpus EBU dalībnieku loka piedalīties balsojumā.</li>
+  <li><strong>1968</strong> – pirmais <em>krāsainais TV signāls</em>.</li>
+  <li><strong>1998</strong> – <em>tele balsošanas</em> ieviešana mainīja dinamiku no profesionālām žūrijām uz masu gaumi.</li>
+  <li><strong>2004</strong> – <em>pusfinālu sistēma</em> ļāva piedalīties arvien vairāk valstīm.</li>
+  <li><strong>2023</strong> – ievieš "<em>Rest of the World</em>" balsojumu.</li>
 </ul>
 
-<p>Kopš tā laika konkurss ir <strongp>eksponenciāli audzis</strongp> gan dalībnieku skaitā, gan auditorijā – kļūstot par vienu no skatītākajiem ne-sporta tiešraidēm pasaulē ar aptuveni 160 miljoniem skatītāju ik gadu (EBU dati).</p>
-
 <figure>
-  <img src="../images/raksti/eurovision_history_stage.jpg" alt="Eirovīzijas pirmsākumi – no apraides eksperimenta līdz kultūras šovam" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>No vienkāršas skatuves Lugano līdz LED superšoviem – Eirovīzijas vēsture ir Eiropas mediju evolūcija miniatūrā.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_history_stage.jpg" alt="Eirovīzijas pirmsākumi" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>No vienkāršas skatuves Lugano līdz LED superšoviem – Eirovīzijas vēsture ir Eiropas mediju evolūcija miniatūrā.</em></figcaption>
 </figure>
 
-
 <h2>2. Organizatoriskā arhitektūra</h2>
-
 <h3>2.1. Eiropas Raidorganizāciju apvienība (EBU)</h3>
-<p><strong>EBU (European Broadcasting Union)</strong> ir lielākā sabiedrisko mediju alianse pasaulē, kas apvieno vairāk nekā 110 organizācijas no vairāk nekā 50 valstīm. Tā ir Eirovīzijas dziesmu konkursa oficiālā īpašniece un galvenā organizatore.</p>
-<p>EBU nav tikai tehnisks koordinators – tā darbojas kā <em>mediju politikas un reputācijas platforma</em> visām Eiropas sabiedriskajām raidorganizācijām, piedāvājot rīkus, standartu uzturēšanu un starptautisku redzamību.</p>
+<p><strong>EBU</strong> ir lielākā sabiedrisko mediju alianse pasaulē, kas apvieno vairāk nekā 110 organizācijas no vairāk nekā 50 valstīm. Tā ir Eirovīzijas dziesmu konkursa oficiālā īpašniece un galvenā organizatore.</p>
 
 <h3>2.2. Host broadcaster – rīkotājvalsts loma</h3>
-<p>Katru gadu konkursa rīkošanu pārņem tās valsts raidorganizācija, kuras pārstāvis iepriekšējā gadā uzvarēja (piem., BBC 2023, SVT 2024). Šī organizācija kļūst par tā saukto <strong>host broadcaster</strong> — atbild par pasākuma tehnisko nodrošinājumu, norises vietu, tiešraidi un skatuves dizainu.</p>
-<p>Rīkotājvalsts bieži iegulda <strong>miljonus eiro</strong>, ko papildina valsts budžeta dotācijas, tūrisma fondi un sponsoru ieguldījums. Taču tas tiek uzskatīts par prestižu iespēju uzlabot starptautisko tēlu un veicināt tūrisma pieaugumu.</p>
+<p>Katru gadu konkursa rīkošanu pārņem tās valsts raidorganizācija, kuras pārstāvis iepriekšējā gadā uzvarēja. Rīkotājvalsts bieži iegulda <strong>miljonus eiro</strong>, ko uzskata par prestižu iespēju uzlabot starptautisko tēlu.</p>
 
 <h3>2.3. Oficiālie sponsori un partneri</h3>
-<p>Eirovīzijas sponsorsaraksts pēdējos gados iekļauj zīmolus kā <strong>Moroccanoil</strong>, <strong>Booking.com</strong>, <strong>TikTok</strong> un <strong>Royal Caribbean</strong>. Šie uzņēmumi ne tikai reklamējas pasākuma laikā, bet bieži <em>integrējas saturā</em> — piemēram, backstage klipi “atbalsta Moroccanoil”, TikTok ekskluzīvās tiešraides utt.</p>
-<p>Sponsoru motivācija ir skaidra: Eirovīzija piedāvā piekļuvi <strong>daudzvalodu, LGBTQ+ iekļaujošai un globāli redzamai auditorijai</strong>. Tā kļūst par reputācijas pozicionēšanas instrumentu, nevis tikai par reklāmas platformu.</p>
+<p>Eirovīzijas sponsorsaraksts iekļauj zīmolus kā <strong>Moroccanoil</strong>, <strong>Booking.com</strong>, <strong>TikTok</strong> un <strong>Royal Caribbean</strong>. Sponsoru motivācija ir skaidra: Eirovīzija piedāvā piekļuvi <strong>daudzvalodu, LGBTQ+ iekļaujošai un globāli redzamai auditorijai</strong>.</p>
 
 <h3>2.4. Finansēšanas modelis</h3>
 <ul>
   <li><strong>EBU</strong> veic galveno licencēšanu un saņem iemaksas no visām dalībvalstīm;</li>
-  <li><strong>Host broadcaster</strong> sedz lielāko daļu tehniskās un vizuālās produkcijas izmaksu;</li>
+  <li><strong>Host broadcaster</strong> sedz lielāko daļu tehniskās produkcijas izmaksu;</li>
   <li><strong>Sponsori</strong> palīdz nosegt daļu no radošā satura budžeta;</li>
   <li><strong>Biļetes, TV tiesības un suvenīru pārdošana</strong> veido daļu no ieņēmumiem.</li>
 </ul>
 
-<p>Šāda struktūra ļauj konkursam būt <em>finansiāli ilgtspējīgam</em>, bet arī ļoti atkarīgam no šova reitingiem un globālās auditorijas lojalitātes.</p>
-
 <figure>
-  <img src="../images/raksti/eurovision_structure_diagram.jpg" alt="Eirovīzijas organizatoriskā sistēma un intereses" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>No EBU līdz backstage grimmam – Eirovīzijas struktūra ir daudzslāņaina: mediji, sponsori, valstis, zīmoli, publika.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_structure_diagram.jpg" alt="Eirovīzijas organizatoriskā sistēma" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>No EBU līdz backstage grimmam – Eirovīzijas struktūra ir daudzslāņaina: mediji, sponsori, valstis, zīmoli, publika.</em></figcaption>
 </figure>
-
 
 <h2>3. Interešu grupas un to motivācijas</h2>
-
 <h3>3.1. EBU – kultūras integrācijas un reitingu kombinācija</h3>
-<p><strong>Eiropas Raidorganizāciju apvienība (EBU)</strong> pozicionē Eirovīziju kā rīku kultūras apmaiņai un Eiropas vienotības stiprināšanai. Taču realitātē EBU motivācija ir arī <strong>augsti reitingi un sabiedrisko mediju konkurētspēja</strong> digitālajā laikmetā.</p>
-<p>Eirovīzija ir <em>flagmanis</em>, kas pierāda sabiedriskās televīzijas jēgu — piedāvājot saturu, ko komerctelevīzijas bieži nespēj realizēt šādā mērogā.</p>
+<p><strong>EBU</strong> pozicionē Eirovīziju kā rīku kultūras apmaiņai. Taču realitātē EBU motivācija ir arī <strong>augsti reitingi un sabiedrisko mediju konkurētspēja</strong> digitālajā laikmetā.</p>
 
 <h3>3.2. Valstu raidorganizācijas – nacionālais PR un reitingi</h3>
-<p>Katras valsts sabiedriskā raidorganizācija iegulda Eirovīzijā gan finansiāli, gan emocionāli. Tā ir iespēja demonstrēt <strong>nacionālo tēlu</strong>, kultūras daudzveidību vai arī “jauno identitāti” (piemēram, Ukrainas uzstāšanās 2022. gadā ar politisku nokrāsu, Somijas deju pankroks 2023. gadā kā dumpinieciskuma zīme).</p>
-<p>Dalība konkursā arī garantē <strong>augstu auditorijas iesaisti</strong>, īpaši pusfinālu un fināla tiešraidēs, kur reklāmas ieņēmumi vai abonementi (ja kanāls ir maksas) palielinās.</p>
+<p>Katras valsts sabiedriskā raidorganizācija iegulda Eirovīzijā, lai demonstrētu <strong>nacionālo tēlu</strong> un gūtu augstu auditorijas iesaisti.</p>
 
 <h3>3.3. Dziesmu autori un izpildītāji – starptautiska ekspozīcija</h3>
-<p>Eirovīzija kalpo kā <strong>karjeras tramplīns</strong> daudziem māksliniekiem. Pat neiekļūstot finālā, dalība sniedz:
-<ul>
-  <li>miljoniem skatījumu YouTube un straumēšanas platformās,</li>
-  <li>koncertturneju iespējas un sadarbības ārpus savas valsts,</li>
-  <li>atzinību no industrijas un fanu kopienas.</li>
-</ul>
-<p>Nav retums, ka dziesmas tiek <em>pirktas vai rakstītas ārpus valsts</em> — īpaši Zviedrijā, kur darbojas vesela “Eirovīzijas dziesmu ražošanas industrija” (piem., The Family, Symphonix International u.c.).</p>
+<p>Eirovīzija kalpo kā <strong>karjeras tramplīns</strong>. Pat neiekļūstot finālā, dalība sniedz miljoniem skatījumu un sadarbības iespējas.</p>
+<p>Nav retums, ka dziesmas tiek <em>pirktas vai rakstītas ārpus valsts</em> — īpaši Zviedrijā, kur darbojas vesela "Eirovīzijas dziesmu ražošanas industrija".</p>
 
 <h3>3.4. Skatītāji – rituāls, identitāte, humors</h3>
-<p>Liela daļa auditorijas neskatās Eirovīziju mūzikas dēļ vien. Tā kļuvusi par <strong>gadskārtēju sociālu rituālu</strong>:
-<ul>
-  <li>kopīgas skatīšanās ballītes,</li>
-  <li>humoristiskas memes un komentāri,</li>
-  <li>emocionāla piesaiste savas valsts pārstāvim,</li>
-  <li>kopienas sajūta ar līdzīgi domājošajiem (īpaši LGBTQ+ auditorijā).</li>
-</ul>
-<p>Skatīšanās nereti kļūst par <em>identitātes performanci</em>, nevis estētisku izvēli — "es sevi redzu šajā pasākumā, nevis dzirdu dziesmas".</p>
+<p>Liela daļa auditorijas neskatās Eirovīziju mūzikas dēļ vien. Tā kļuvusi par <strong>gadskārtēju sociālu rituālu</strong> ar kopīgas skatīšanās ballītēm, humoristiskām memes un kopienas sajūtu.</p>
 
 <h3>3.5. Komentētāji un satura veidotāji – mediju kapitāls</h3>
-<p>Eirovīzija ir zelta iespēja arī <strong>influenceriem, vlogeriem un komentētājiem</strong>, kuri izmanto tiešraides, reakciju video un prognozes, lai uzkrātu skatījumu, klikšķu un sekošanas kapitālu.</p>
-<p>Jo ekstrēmāks priekšnesums — jo vairāk <em>reakcijas video, meme un diskusiju</em>. Tā veidojas “meta-Eirovīzija”, kur notikums dzīvo tālākos atvasinājumos — kā interneta diskurss, nevis mūzikas izrāde.</p>
+<p>Jo ekstrēmāks priekšnesums — jo vairāk <em>reakcijas video, meme un diskusiju</em>. Tā veidojas "meta-Eirovīzija", kur notikums dzīvo tālākos atvasinājumos.</p>
 
 <figure>
-  <img src="../images/raksti/eurovision_interest_groups.jpg" alt="Eirovīzijas ieinteresētās puses un to motivācijas" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>Katram savas intereses: EBU aizstāv sabiedrisko mediju nākotni, sponsori pērk uzmanību, skatītāji meklē rituālu, bet dziesmu autori — karjeras liftu.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_interest_groups.jpg" alt="Eirovīzijas ieinteresētās puses" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Katram savas intereses: EBU aizstāv sabiedrisko mediju nākotni, sponsori pērk uzmanību, skatītāji meklē rituālu, bet dziesmu autori — karjeras liftu.</em></figcaption>
 </figure>
 
-
-<h2>4. Sociāli-psiholoģiskais “kods”</h2>
-
+<h2>4. Sociāli-psiholoģiskais "kods"</h2>
 <h3>4.1. Konformitāte un grupas ietekme</h3>
-<p>Jau 1950. gados Salomons Ašs pierādīja, ka cilvēki mēdz <strong>pieņemt grupas viedokli</strong>, pat ja tas ir acīmredzami kļūdains. Tas attiecas arī uz Eirovīzijas skatītājiem — ja auditorija aplaudē, komentētāji slavē un sociālie tīkli "deg", daudziem <em>šķiet, ka viņiem arī vajadzētu patikt</em>.</p>
-<p>Šis mehānisms ir zināms kā <strong>konformitāte</strong>, un to bieži izmanto, lai aktivizētu “masu entuziasmu” ap konkrētām dziesmām.</p>
+<p>Jau 1950. gados Salomons Ašs pierādīja, ka cilvēki mēdz <strong>pieņemt grupas viedokli</strong>, pat ja tas ir acīmredzami kļūdains. Ja auditorija aplaudē, komentētāji slavē un sociālie tīkli "deg", daudziem <em>šķiet, ka viņiem arī vajadzētu patikt</em>.</p>
 
 <h3>4.2. Mere exposure efekts – jo vairāk dzirdi, jo vairāk patīk</h3>
-<p>Psihologs Roberts Zajoncs pierādīja, ka cilvēkiem sāk <strong>patikt lietas, ko viņi biežāk redz vai dzird</strong> — pat ja sākotnēji tās šķiet neitrālas vai neinteresantas. Šis “mere exposure” efekts Eirovīzijā darbojas caur:
-<ul>
-  <li>priekšskatījuma klipiem un nacionālajām atlasēm,</li>
-  <li>atkārtotu klātbūtni sociālajos medijos,</li>
-  <li>vīrusa efektu – skatītāju izraisītu dziesmu daudzskaitlīgu pieminēšanu.</li>
-</ul>
-<p>Rezultāts – <em>atpazīstamība tiek sajaukta ar patiku</em>.</p>
+<p>Psihologs Roberts Zajoncs pierādīja, ka cilvēkiem sāk <strong>patikt lietas, ko viņi biežāk redz vai dzird</strong>. Eirovīzijā šis efekts darbojas caur priekšskatījuma klipiem un vīrusa efektu. Rezultāts – <em>atpazīstamība tiek sajaukta ar patiku</em>.</p>
 
-<h3>4.3. “Earworm” un muzikālā atmiņa</h3>
-<p>Vienkāršas, atkārtojošas melodijas biežāk “iestrēgst galvā” — parādība, ko sauc par <strong>involuntary musical imagery</strong> jeb “earworm”. Pētījumi (Kellaris 2003, Liikkanen 2012) rāda, ka cilvēki bieži <em>domā, ka dziesma patīk</em>, tikai tāpēc, ka to nevar aizmirst.</p>
-<p>Eirovīzijā tas bieži tiek izmantots mērķtiecīgi — daudzas dziesmas ir konstruētas ap vienu atkārtojošu frāzi vai motīvu, kas ir viegli dziedāms, pat ja muzikāli vienkāršots.</p>
+<h3>4.3. "Earworm" un muzikālā atmiņa</h3>
+<p>Vienkāršas, atkārtojošas melodijas biežāk "iestrēgst galvā". Pētījumi (Kellaris 2003, Liikkanen 2012) rāda, ka cilvēki bieži <em>domā, ka dziesma patīk</em>, tikai tāpēc, ka to nevar aizmirst.</p>
 
 <h3>4.4. Vizualitātes dominance pār mūziku</h3>
-<p>Eksperiments (Tsay, 2013, PNAS) pierādīja, ka <strong>cilvēki muzikālu izpildījumu vērtē augstāk, ja redz, nevis tikai dzird</strong>. Tas nozīmē, ka Eirovīzijā uzvarēt var arī viduvēja dziesma, ja priekšnesums ir vizuāli iespaidīgs, emocionāli spēcīgs vai simboliski “lādēts”.</p>
-<p>LED ekrāni, kameras leņķi, kostīmi un gaismas kļūst par <em>manipulatīviem līdzekļiem uztveres pārveidei</em>.</p>
+<p>Eksperiments (Tsay, 2013, PNAS) pierādīja, ka <strong>cilvēki muzikālu izpildījumu vērtē augstāk, ja redz, nevis tikai dzird</strong>. LED ekrāni, kameras leņķi, kostīmi un gaismas kļūst par <em>manipulatīviem līdzekļiem uztveres pārveidei</em>.</p>
 
 <h3>4.5. Identitāte, piederība un patriotisms</h3>
-<p>Balsojums bieži nav par dziesmu, bet gan par <strong>valsti, identitāti vai solidaritāti</strong>. Diasporas balsojumi, ģeopolitiskie bloki un kultūras tuvums bieži nosaka rezultātus vairāk nekā muzikālais saturs.</p>
-<p>Skatītājs ne tikai vēlas, lai viņa valsts uzvar, bet arī <em>emocionāli iegulda</em> cerības, lepnumu vai vilšanos — tādējādi dziesmas kļūst par <strong>kolektīviem psiholoģiskiem trigeriem</strong>.</p>
+<p>Balsojums bieži nav par dziesmu, bet gan par <strong>valsti, identitāti vai solidaritāti</strong>. Skatītājs <em>emocionāli iegulda</em> cerības, lepnumu vai vilšanos — dziesmas kļūst par <strong>kolektīviem psiholoģiskiem trigeriem</strong>.</p>
 
 <h3>4.6. Pašapmāns un emocionalizēta uztvere</h3>
-<p>Daudzi skatītāji tic, ka viņiem dziesma patīk, taču patiesībā viņi <strong>reaģē uz apkārtējiem efektiem</strong> – stāstu, tēlu, valodu, skaļumu, auditorijas ovācijām. Rodas emocionāls efekts, ko cilvēks interpretē kā “patiku”, pat ja <em>nav muzikālas rezonanses</em>.</p>
-<p>Šāda uztvere ir dabisks <strong>psiholoģisks aizsardzības mehānisms</strong>: cilvēks nevēlas atzīt, ka emocionālā sajūta radusies no virspusējiem stimuliem, tāpēc viņš <em>racionalizē</em> to kā “patiesu patiku pret dziesmu”.</p>
+<p>Daudzi skatītāji tic, ka viņiem dziesma patīk, taču patiesībā viņi <strong>reaģē uz apkārtējiem efektiem</strong>. Rodas emocionāls efekts, ko cilvēks interpretē kā "patiku", pat ja <em>nav muzikālas rezonanses</em>.</p>
 
 <figure>
-  <img src="../images/raksti/eurovision_psychology.jpg" alt="Eirovīzijas psiholoģiskais kods – kā tiek ietekmēta uztvere" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>Patika vai pašapmāns? Eirovīzija iedarbina kolektīvus mehānismus: konformitāti, vizuālo trigerēšanu, identitātes pārnesi.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_psychology.jpg" alt="Eirovīzijas psiholoģiskais kods" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Patika vai pašapmāns? Eirovīzija iedarbina kolektīvus mehānismus: konformitāti, vizuālo trigerēšanu, identitātes pārnesi.</em></figcaption>
 </figure>
 
 <h2>5. Balsošanas mehānika un (ne)taisnīgums</h2>
-
-<h3>5.1. Evolūcija: no žūrijas līdz “Rest of the World”</h3>
-<p>Eirovīzijas balsošanas sistēma ir mainījusies vairākas reizes. Sākotnēji tā balstījās tikai uz <strong>valstu profesionālajām žūrijām</strong>. Vēlāk tika ieviesta tele balsošana, un kopš 2009. gada rezultāts veidojas kā <strong>50% žūrijas + 50% skatītāju balsojums</strong>.</p>
-<p><strong>2023. gadā</strong> sistēma tika paplašināta, iekļaujot arī skatītājus no valstīm, kuras nepiedalās konkursā — <em>“Rest of the World”</em>. Šī daļa rada vēl lielāku globālu iesaisti, bet arī palielina diskusijas par līdzsvaru un objektivitāti.</p>
+<h3>5.1. Evolūcija: no žūrijas līdz "Rest of the World"</h3>
+<p>Eirovīzijas balsošanas sistēma ir mainījusies vairākas reizes. Kopš 2009. gada rezultāts veidojas kā <strong>50% žūrijas + 50% skatītāju balsojums</strong>. 2023. gadā sistēma tika paplašināta, iekļaujot arī skatītājus no valstīm, kuras nepiedalās konkursā.</p>
 
 <h3>5.2. Balsošanas bloki un statistiskie modeļi</h3>
-<p>Pētījumi rāda, ka valstis nereti balso par “savējiem” — vai nu <strong>kultūras tuvuma, ģeogrāfijas vai diasporas dēļ</strong>. Tā rodas t.s. <em>balsošanas bloki</em> (piem., Skandināvija, Balkāni, bijušās PSRS valstis).</p>
-<p><strong>Feddersen & Maennig (2008)</strong> izveidoja ekonometrisku modeli, kas pierāda: balsojums nav nejaušs, un valstis sistemātiski piešķir punktus noteiktiem partneriem, neatkarīgi no dziesmas kvalitātes.</p>
+<p>Pētījumi rāda, ka valstis nereti balso par "savējiem" — vai nu <strong>kultūras tuvuma, ģeogrāfijas vai diasporas dēļ</strong>. <strong>Feddersen & Maennig (2008)</strong> izveidoja modeli, kas pierāda sistēmiskus balsojuma blokus.</p>
 
 <h3>5.3. Žūrija vs. tele balsošana – kontrasti</h3>
-<p>Bieži notiek krasas atšķirības starp profesionālās žūrijas un skatītāju balsojumu. Žūrijas mēdz vērtēt tehnisko izpildījumu, vokālo kvalitāti un kompozīciju, savukārt skatītāji balso pēc:
-<ul>
-  <li>tēla un harismas,</li>
-  <li>valsts vai reģionālās piederības,</li>
-  <li>vizuālā iespaida vai priekšnesuma dramatiskuma.</li>
-</ul>
-<p>Šīs atšķirības īpaši izceļas fināla rezultātu laikā, kad žūrija un tele balsošana var dot diametrāli pretējus rezultātus. Tas rada <em>uzticības plaisu</em> starp skatītājiem un sistēmu.</p>
+<p>Žūrijas mēdz vērtēt tehnisko izpildījumu, vokālo kvalitāti un kompozīciju, savukārt skatītāji balso pēc tēla, harismas un vizuālā iespaida. Tas rada <em>uzticības plaisu</em> starp skatītājiem un sistēmu.</p>
 
 <h3>5.4. Ilūzija par taisnīgumu</h3>
-<p>Lai gan Eirovīzija tiek prezentēta kā “tautas balsojums”, realitātē <strong>balsošanas sistēma ir kompromiss</strong> starp populāro gaumi un institucionālās reputācijas sargāšanu. Žūrijas bieži darbojas kā “filtrs”, kas neļauj uzvarēt pārāk pretrunīgiem vai “meme-veidīgiem” priekšnesumiem.</p>
-<p>Rezultātā daudzi skatītāji piedzīvo <em>emocionālu vilšanos</em> — viņu favorīts uzvar tele balsošanā, bet žūrija to ignorē. Tas vēl vairāk pastiprina uztveri, ka <strong>balsojums nav godīgs</strong>.</p>
+<p>Lai gan Eirovīzija tiek prezentēta kā "tautas balsojums", realitātē <strong>balsošanas sistēma ir kompromiss</strong>. Žūrijas bieži darbojas kā "filtrs", kas neļauj uzvarēt pārāk pretrunīgiem priekšnesumiem.</p>
 
 <h3>5.5. Statistika vs. uztvere</h3>
-<p>Lai arī dati rāda vispārēju balsošanas loģiku, skatītāji parasti uztver balsojumu emocionāli. Ja “mūsu dziesma” nesaņem punktus — tas tiek uztverts kā <em>necieņa</em> vai <em>netaisnība</em>, nevis kā statistiska sakritība.</p>
-<p>Šī uztvere stiprina kolektīvo identitāti (“mūs ignorē”) un reizē arī motivē skatīties atkal nākamgad — cerot uz revanšu.</p>
+<p>Ja "mūsu dziesma" nesaņem punktus — tas tiek uztverts kā <em>necieņa</em> vai <em>netaisnība</em>. Šī uztvere stiprina kolektīvo identitāti un motivē skatīties atkal nākamgad.</p>
 
 <figure>
-  <img src="../images/raksti/eurovision_voting_system.jpg" alt="Eirovīzijas balsošanas mehānika – tele balsošana pret žūriju" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>Balsojuma sistēma – publika emocionāli, žūrija tehniski, un ne vienmēr uzvar tas, par ko balso vairākums.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_voting_system.jpg" alt="Eirovīzijas balsošanas mehānika" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Balsojuma sistēma – publika emocionāli, žūrija tehniski, un ne vienmēr uzvar tas, par ko balso vairākums.</em></figcaption>
 </figure>
 
-
-
-<h2>6. Industrijas “trīs minūšu formula”</h2>
-
+<h2>6. Industrijas "trīs minūšu formula"</h2>
 <h3>6.1. Strukturālā formula: viss notiek ātrāk</h3>
-<p>Eirovīzijas dziesmai jāiekļaujas <strong>precīzā 3 minūšu formātā</strong>. Tas rada spiedienu uz autoru komandu — izveidot dziesmu, kas spēj <em>uzreiz piesaistīt uzmanību</em>, attīstīties, kulminēt un atstāt iespaidu, visu izdarot rekordīsā laikā.</p>
-<p>Rezultāts: dziesmas bieži sākas ar <strong>refrēnu vai “lielo momentu”</strong>, bez muzikālās izaugsmes vai dramatiskas struktūras. Intro un outro ir minimāli vai neeksistē vispār.</p>
+<p>Eirovīzijas dziesmai jāiekļaujas <strong>precīzā 3 minūšu formātā</strong>. Dziesmas bieži sākas ar <strong>refrēnu vai "lielo momentu"</strong>, bez muzikālās izaugsmes vai dramatiskas struktūras.</p>
 
 <h3>6.2. Zviedrijas dominance un pop-industrijas efekts</h3>
-<p>Ļoti daudzas dziesmas tiek rakstītas ārpus valsts, ko tās pārstāv. Liela daļa autoru nāk no <strong>Zviedrijas, Dānijas un Lielbritānijas</strong>, kur darbojas t.s. <em>Eirovīzijas dziesmu “nometnes”</em> (piem., The Family, Symphonix International).</p>
-<p>Šajās radošajās sesijās tiek producētas <strong>formulētas, tehniski efektīvas dziesmas</strong>, kas paredzētas skatuvei, nevis mājas klausīšanai vai mākslinieciskai izpausmei.</p>
+<p>Liela daļa autoru nāk no <strong>Zviedrijas, Dānijas un Lielbritānijas</strong>, kur darbojas t.s. <em>Eirovīzijas dziesmu "nometnes"</em>. Tiek producētas <strong>formulētas, tehniski efektīvas dziesmas</strong>, kas paredzētas skatuvei.</p>
 
 <h3>6.3. Profesionālie mūziķi – līdzdalība vai piespēle?</h3>
-
-<p>Daudzi Eirovīzijas dalībnieki ir <strong>profesionāli mūziķi ar akadēmisku vai komerciālu pieredzi</strong>. Viņi labi pārzina muzikālas kvalitātes kritērijus, harmonijas, dramaturģiju, vokālo tehniku un emocionālās nianses. Un tieši tāpēc rodas būtisks jautājums:</p>
-
-<p><em>Vai viņi apzināti kļūst par šova algoritma izpildītājiem? Vai arī notiek publikas mānīšana, piespēlējot masu gaumei?</em></p>
-
-<p>Atbilde ir sarežģīta. Daļa mūziķu piedalās Eirovīzijā kā <strong>karjeras stratēģijas spēles dalībnieki</strong>: viņi izvēlas “āķīgu” dziesmu, kurai nav dziļuma, taču tā nodrošina skatījumu un vīrusa potenciālu. Dziesmu bieži izvēlas producenti vai nacionālās atlases komandas, nevis pats mākslinieks. Rezultātā uz skatuves parādās <em>profesionālis, kurš izpilda emociju formulu, nevis personisku stāstu</em>.</p>
-
-<p>Citi to dara <strong>ironiski vai konceptuāli</strong> — kā komentāru par pašu konkursu. Šādā gadījumā mākslinieks kļūst par <em>meta-tēla pārstāvi</em>, kurš spēlē “tā, it kā tas būtu nopietni”, bet patiesībā reflektē par kultūras šova būtību (piemēram, Käärijä 2023).</p>
-
-<p>Tomēr ir arī mākslinieki, kas šo kompromisu veic <strong>neapzināti</strong> — paļaujoties uz komandu, kas sola uzvaras formulu, un zaudē paši savu balsi.</p>
-
-<p>Šādos gadījumos Eirovīzijas dziesma kļūst par <strong>teātri, kas imitē patiesumu</strong>, un profesionālais mūziķis kļūst par līdzdalībnieku simulācijā, nevis patiesā emocionālā saziņā.</p>
+<p>Daļa mūziķu piedalās Eirovīzijā kā <strong>karjeras stratēģijas spēles dalībnieki</strong>. Dziesmu bieži izvēlas producenti vai nacionālās atlases komandas, nevis pats mākslinieks. Rezultātā uz skatuves parādās <em>profesionālis, kurš izpilda emociju formulu</em>.</p>
+<p>Citi to dara <strong>ironiski vai konceptuāli</strong> — kā komentāru par pašu konkursu (piemēram, Käärijä 2023).</p>
 
 <h3>6.4. Harmonisks standarts un klišejiska dramaturģija</h3>
-<p>Daudzās dziesmās atkārtojas līdzīgas <strong>harmoniskās progresijas</strong> (piemēram, I–V–vi–IV), kuras klausītājs uztver kā “dabiskas” un emocionāli paredzamas.</p>
-<p>Turklāt bieži tiek izmantots <em>“modulācijas triks”</em> — pēkšņa toņa maiņa augstākā tonalitātē pirms fināla refrēna. Tas rada <strong>iluzoru drāmas efektu</strong>, pat ja dziesma līdz tam bijusi monotoniska.</p>
+<p>Daudzās dziesmās atkārtojas līdzīgas <strong>harmoniskās progresijas</strong> (piemēram, I–V–vi–IV). Bieži tiek izmantots <em>"modulācijas triks"</em> — pēkšņa toņa maiņa augstākā tonalitātē pirms fināla refrēna.</p>
 
-<h3>6.5. “Staging” kā pārdošanas instruments</h3>
-<p>Skatuves noformējums (staging) kļūst par <strong>centrālo emocionālās ietekmes līdzekli</strong>. Dziesmas bieži tiek veidotas <em>ar konkrētu vizuālo tēlu prātā</em> — LED foni, uguns, dūmi, droni, kameras kustība un akrobātiski elementi.</p>
-<p>Rezultātā mūzika tiek <em>pakļauta scenogrāfijai</em> — nevis skaņa veido tēlu, bet tēls diktē, kādai jābūt skaņai. Tas ļauj radīt <strong>spēcīgu vizuālu ilūziju</strong>, kas atstāj muzikālo kvalitāti otrajā plānā.</p>
+<h3>6.5. "Staging" kā pārdošanas instruments</h3>
+<p>Skatuves noformējums kļūst par <strong>centrālo emocionālās ietekmes līdzekli</strong>. Mūzika tiek <em>pakļauta scenogrāfijai</em> — nevis skaņa veido tēlu, bet tēls diktē, kādai jābūt skaņai.</p>
 
-<h3>6.6. “Šova algoritms”</h3>
-<p>Dziesmas tiek veidotas, ievērojot <strong>Eirovīzijas semantisko spektru</strong>: pacilātība, drāma, pašpārliecība, identitāte, mīlestība, pretestība, taču reti — ironija, stils vai minimālisms.</p>
-<p>Notiek <strong>tematiska atkārtošanās</strong>, kurā dziesmas imitē iepriekšējo gadu uzvarētājus (piemēram, “Arcade” → “Brividi” → “Snap”), nevis rada jaunu virzienu. Tā veidojas <em>droša un paredzama kultūras produkcija</em>.</p>
+<h3>6.6. "Šova algoritms"</h3>
+<p>Notiek <strong>tematiska atkārtošanās</strong>, kurā dziesmas imitē iepriekšējo gadu uzvarētājus. Tā veidojas <em>droša un paredzama kultūras produkcija</em>.</p>
 
 <figure>
-  <img src="../images/raksti/eurovision_formula.jpg" alt="Eirovīzijas trīs minūšu formula – kā tiek radītas dziesmas" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>Formula: 10 sek. uzmanībai, 30 sek. “āķim”, 2 min. uzkarsēšanai, 20 sek. sprādzienam, 5 sek. noslēgumam. Mūzika kļūst par algoritma rezultātu.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_formula.jpg" alt="Eirovīzijas trīs minūšu formula" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Formula: 10 sek. uzmanībai, 30 sek. "āķim", 2 min. uzkarsēšanai, 20 sek. sprādzienam, 5 sek. noslēgumam.</em></figcaption>
 </figure>
-
 
 <h2>7. Mediju ekosistēma un digitālā eskalācija</h2>
-
-<h3>7.1. Tiešraides un “otrais ekrāns”</h3>
-<p>Eirovīzija vairs nav tikai skatīšanās pasākums — tā ir <strong>multikanālu pieredze</strong>, kur vienlaikus darbojas:
-<ul>
-  <li>TV tiešraide,</li>
-  <li>Twitter (X) komentāri un memes,</li>
-  <li>TikTok klipi un reakcijas,</li>
-  <li>YouTube straumes un apskati.</li>
-</ul>
-<p>Skatītājs aktīvi piedalās šovā, komentē, veido memes un pārpublicē fragmentus — radot <em>digitālu troksni</em>, kas stiprina šova redzamību.</p>
+<h3>7.1. Tiešraides un "otrais ekrāns"</h3>
+<p>Eirovīzija vairs nav tikai skatīšanās pasākums — tā ir <strong>multikanālu pieredze</strong>: TV tiešraide, Twitter komentāri, TikTok klipi un YouTube straumes vienlaikus.</p>
 
 <h3>7.2. Sociālo mediju algoritmi un klipu cirkulācija</h3>
-<p>Dziesmas un priekšnesumi nereti kļūst populāri nevis pēc konkursa, bet <strong>pirms tā</strong>, pateicoties sociālo tīklu algoritmiem, kas izceļ vizuāli efektīgus vai emocionāli skaļus fragmentus.</p>
-<p>“TikTok dziesmas” fenomens kļūst arvien izteiktāks — dziesmu izvēle vai stāsts tiek veidots <em>ar klipu potenciālu</em> galvā. Tiek meklēts moments, kas var izraisīt “viralitāti”, nevis ilgstošu muzikālo ietekmi.</p>
+<p>Dziesmas nereti kļūst populāras <strong>pirms konkursa</strong>, pateicoties algoritmiem. "TikTok dziesmas" fenomens kļūst arvien izteiktāks — tiek meklēts moments, kas var izraisīt "viralitāti".</p>
 
 <h3>7.3. YouTube vs. Spotify – atšķirīgi vērtēšanas lauki</h3>
-<p>Bieži Eirovīzijas dziesmas iegūst <strong>miljoniem skatījumu YouTube</strong>, bet <em>nedaudzus tūkstošus klausījumu Spotify</em>. Tas norāda uz šova efektu: skatīšanās ir galvenā pieredze, nevis mūzikas baudīšana.</p>
-<p>Dziesmas, kas darbojas uz skatuves, nereti <em>nestrādā kā mūzikas ieraksti</em>. Savukārt kvalitatīvi skaņdarbi, kas nav vizuāli iespaidīgi, tiek ignorēti.</p>
+<p>Bieži Eirovīzijas dziesmas iegūst <strong>miljoniem skatījumu YouTube</strong>, bet <em>nedaudzus tūkstošus klausījumu Spotify</em>. Tas norāda uz šova efektu: skatīšanās ir galvenā pieredze.</p>
 
 <h3>7.4. Globālā paplašināšanās un mārketings</h3>
-<p>Kopš 2015. gada konkursā piedalās arī <strong>Austrālija</strong>. 2023. gadā tika ieviests “Rest of the World” tele balsošana, padarot Eirovīziju par <em>pasaules mēroga zīmolu</em>, ne tikai Eiropas pasākumu.</p>
-<p>Organizatori sadarbojas ar <strong>starptautiskiem zīmoliem</strong> — Booking.com, TikTok, Royal Caribbean u.c., lai paplašinātu ietekmi ārpus tradicionālajiem skatītājiem. Tā tiek veidots <strong>kultūras eksports ar izklaides funkciju</strong>.</p>
+<p>Kopš 2015. gada konkursā piedalās arī <strong>Austrālija</strong>. 2023. gadā ieviests "Rest of the World" tele balsošana. Organizatori sadarbojas ar <strong>starptautiskiem zīmoliem</strong>.</p>
 
 <h3>7.5. Sponsorētais saturs un integrētā reklāma</h3>
-<p>Aizkulišu video, “meet the artists” formāti un grima istabas klipi bieži tiek <strong>sponsorēti un brendoti</strong>. Moroccanoil, piemēram, ir oficiālais frizūru partneris, un viņu zīmols ir redzams gan backstage, gan uz mākslinieku galdiem.</p>
-<p>Reklāma kļūst <em>integrēta estētikā</em> — skatītājs neredz baneri, bet gan “pieredz zīmolu” kā daļu no šova.</p>
+<p>Reklāma kļūst <em>integrēta estētikā</em> — skatītājs neredz baneri, bet gan "pieredz zīmolu" kā daļu no šova.</p>
 
 <figure>
-  <img src="../images/raksti/eurovision_media_ecosystem.jpg" alt="Eirovīzijas mediju ekosistēma – kā dziesmas kļūst par klipiem, memes un algoritmiem" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>No skatuves līdz ekrāniem – Eirovīzijas dzīve sākas tiešraidē, bet turpinās TikTok, YouTube un memes. Notikums kļūst par algoritmu barību.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_media_ecosystem.jpg" alt="Eirovīzijas mediju ekosistēma" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>No skatuves līdz ekrāniem – Eirovīzijas dzīve sākas tiešraidē, bet turpinās TikTok, YouTube un memes.</em></figcaption>
 </figure>
-
 
 <h2>8. Gada-pret-gadu eskalācija</h2>
-
 <h3>8.1. Budžetu pieaugums un tehniskais grandiozums</h3>
-<p>Katrs nākamais konkurss cenšas <strong>pārspēt iepriekšējo</strong>. Tas nozīmē:
-<ul>
-  <li>lielākas skatuves konstrukcijas,</li>
-  <li>modernākas gaismas un kameras,</li>
-  <li>augstākas izmaksas no rīkotājvalsts puses.</li>
-</ul>
-<p>Piemēram, 2012. gada Baku konkurss izmaksāja Azerbaidžānai vairāk nekā <strong>150 miljonus eiro</strong>, kamēr 2023. gada Liverpūles konkurss — aptuveni 60 miljonus. Šī tendence norāda uz <em>ekskluzivitātes un pompozuma pieaugumu</em>.</p>
+<p>Katrs nākamais konkurss cenšas <strong>pārspēt iepriekšējo</strong>. Piemēram, 2012. gada Baku konkurss izmaksāja vairāk nekā <strong>150 miljonus eiro</strong>. Šī tendence norāda uz <em>ekskluzivitātes un pompozuma pieaugumu</em>.</p>
 
-<h3>8.2. “Šoka vērtība” kā konkurences priekšrocība</h3>
-<p>Ik gadu dziesmas un priekšnesumi kļūst <strong>skaļāki, dīvaināki vai vizuāli ekstrēmāki</strong>, lai izceltos starp 30+ numuriem. Skatuves triki (piem., degošas kleitas, dejas būros, puspliki dejotāji) kļūst par galveno uzmanības piesaistīšanas līdzekli.</p>
-<p>“Normāla, muzikāli niansēta dziesma” riskē būt <em>invisible</em>. Tāpēc katru gadu pieaug ekstrēmu tēlu, ironijas vai teātra izmantojums.</p>
+<h3>8.2. "Šoka vērtība" kā konkurences priekšrocība</h3>
+<p>Ik gadu dziesmas un priekšnesumi kļūst <strong>skaļāki, dīvaināki vai vizuāli ekstrēmāki</strong>. "Normāla, muzikāli niansēta dziesma" riskē būt <em>invisible</em>.</p>
 
 <h3>8.3. Politiskais konteksts un kontroverses</h3>
-<p>Eirovīzijas vēsturē bijušas vairākas <strong>diskvalifikācijas, boikoti un protesti</strong>. Piemēram:
-<ul>
-  <li>Krievijas izslēgšana pēc iebrukuma Ukrainā (2022),</li>
-  <li>Izraēlas dalība un politiskās debates (2024),</li>
-  <li>dziesmas ar simbolisku nozīmi, ko EBU lūdz “nepolitizēt”.</li>
-</ul>
-<p>Šie notikumi parāda, ka <strong>konkurss kļūst par ideoloģiskās cīņas lauku</strong>, nevis tikai izklaidi. Tomēr organizatori cenšas saglabāt <em>neitrālas izklaides fasādi</em>.</p>
+<p>Eirovīzijas vēsturē bijušas vairākas diskvalifikācijas un protesti: Krievijas izslēgšana (2022), Izraēlas dalība un politiskās debates (2024). Šie notikumi parāda, ka <strong>konkurss kļūst par ideoloģiskās cīņas lauku</strong>.</p>
 
-<h3>8.4. Vai “laba dziesma” joprojām var uzvarēt?</h3>
-<p>Jautājums, kas katru gadu izskan no kritiķiem: vai mūzikai vēl ir nozīme? Laiku pa laikam uzvar <strong>patiesi muzikāli darbi</strong>, piemēram:
-<ul>
-  <li><em>“Amar Pelos Dois”</em> (Portugāle, 2017) — klasisks, intīms dziesminieku stils,</li>
-  <li><em>“Stefania”</em> (Ukraina, 2022) — tautas motīvs un hiphopa saplūdums ar emocionālu vēstījumu un kultūras svaru.</li>
-</ul>
-<p>Taču šie gadījumi kļūst par <em>izņēmumiem, kas apstiprina noteikumu</em>. Lielākoties uzvar <strong>vizuāli iedarbīgākie un emocionāli uzlādētākie</strong> priekšnesumi — neatkarīgi no muzikālās sarežģītības.</p>
+<h3>8.4. Vai "laba dziesma" joprojām var uzvarēt?</h3>
+<p>Laiku pa laikam uzvar <strong>patiesi muzikāli darbi</strong>: <em>"Amar Pelos Dois"</em> (2017), <em>"Stefania"</em> (2022). Taču šie gadījumi kļūst par <em>izņēmumiem, kas apstiprina noteikumu</em>.</p>
 
 <figure>
-  <img src="../images/raksti/eurovision_escalation.jpg" alt="Eirovīzijas gada-pret-gadu eskalācija – spožāk, dārgāk, skaļāk" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>Katru gadu vairāk: lielāka skatuve, dārgāki specefekti, skaļāki numuri. Cīņa nav par mūziku, bet par uzmanību.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_escalation.jpg" alt="Eirovīzijas gada-pret-gadu eskalācija" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Katru gadu vairāk: lielāka skatuve, dārgāki specefekti, skaļāki numuri. Cīņa nav par mūziku, bet par uzmanību.</em></figcaption>
 </figure>
-
 
 <h2>9. Kritika, reformu mēģinājumi un nākotnes scenāriji</h2>
-
 <h3>9.1. Mūziķu un kritiķu iebildes</h3>
-<p>Daudzi profesionāli mūziķi, žurnālisti un skatītāji pauž bažas, ka <strong>muzikālā kvalitāte ir upurēta par labu šovam</strong>. Kritika bieži skar:
-<ul>
-  <li>homogēno skaņu un formulu atkārtošanu,</li>
-  <li>pārāk lielu uzmanību vizualitātei,</li>
-  <li>komerciāli orientētu dziesmu atlasi bez mākslinieciskas individualitātes.</li>
-</ul>
-<p>Kritiķi jautā: vai Eirovīzija joprojām ir mūzikas konkurss, vai vienkārši <em>vizuāli pielādēts TV produkts ar dziesmas atribūtu</em>?</p>
+<p>Profesionāli mūziķi un žurnālisti pauž bažas, ka <strong>muzikālā kvalitāte ir upurēta par labu šovam</strong>. Kritiķi jautā: vai Eirovīzija joprojām ir mūzikas konkurss?</p>
 
 <h3>9.2. Organizatoru atbildes un minimālās reformas</h3>
-<p>EBU un rīkotājvalstis regulāri ievieš <strong>tehniskas un balsošanas korekcijas</strong>, piemēram:
-<ul>
-  <li>žūrijas punktu piešķiršanas atklātība,</li>
-  <li>publiskie balsojumu sadalījumi (tele balsošana vs žūrija),</li>
-  <li>noteikumu izmaiņas, kas ierobežo politisku simboliku vai provocējošu uzvedību.</li>
-</ul>
-<p>Taču šīs reformas reti ietekmē paša satura būtību. <strong>Šova modelis paliek nemainīgs</strong>, jo tas garantē skatītāju uzmanību un reitingus.</p>
+<p>EBU regulāri ievieš <strong>tehniskas un balsošanas korekcijas</strong>. Taču šīs reformas reti ietekmē paša satura būtību. <strong>Šova modelis paliek nemainīgs</strong>.</p>
 
 <h3>9.3. Tehnoloģiju nākotne – hibrīda Eirovīzija</h3>
-<p>Nākotnē var parādīties <strong>jauni formāti</strong>, kas paplašina Eirovīzijas pieredzi:
-<ul>
-  <li>VR vai AR tiešraides,</li>
-  <li>personificēta balsošana ar AI palīdzību,</li>
-  <li>reāllaika pielāgoti vizuālie efekti skatītāja ierīcē.</li>
-</ul>
-<p>EBU arī apsver iespējas integrēt <em>noteiktiem AI rīkiem</em> pielāgotu mūziku, taču 2025. gadā izsludināja noteikumu, kas <strong>aizliedz AI pilnībā ģenerētas dziesmas</strong> — vismaz pagaidām.</p>
+<p>Nākotnē var parādīties VR/AR tiešraides un personificēta balsošana ar AI palīdzību. EBU 2025. gadā izsludināja noteikumu, kas <strong>aizliedz AI pilnībā ģenerētas dziesmas</strong>.</p>
 
-<h3>9.4. Vai skatītāji reiz “atjēgsies”?</h3>
-<p>Jautājums paliek: vai auditorija kādreiz sāks <strong>nošķirt vizuālo sajūtu no muzikālās kvalitātes</strong>? Vai tiks pieprasīts dziļāks saturs, vairāk autentiskuma, mazāk formulu?</p>
-<p>Šobrīd nav indikāciju par masveida apziņas maiņu. Gluži pretēji — <em>Eirovīzijas skatītāju skaits pieaug</em>, īpaši sociālajos tīklos un jauniešu auditorijā. Un kamēr tas notiek, sistēma saglabājas.</p>
-
-<p><strong>Secinājums:</strong> Eirovīzija mainās virspusē, bet tās pamatkods paliek nemainīgs — tā ir <em>emocionālas ietekmes mašīna, kas simulē muzikālu izvērtējumu</em>. Un šī simulācija ir tik efektīva, ka to uztver kā patiesību.</p>
+<h3>9.4. Vai skatītāji reiz "atjēgsies"?</h3>
+<p>Šobrīd nav indikāciju par masveida apziņas maiņu. <em>Eirovīzijas skatītāju skaits pieaug</em>, īpaši sociālajos tīklos. Un kamēr tas notiek, sistēma saglabājas.</p>
+<p><strong>Secinājums:</strong> Eirovīzija mainās virspusē, bet tās pamatkods paliek nemainīgs — tā ir <em>emocionālas ietekmes mašīna, kas simulē muzikālu izvērtējumu</em>.</p>
 
 <figure>
-  <img src="../images/raksti/eurovision_future_reforms.jpg" alt="Eirovīzijas nākotne – vai kaut kas mainīsies?" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>Eirovīzija mainās vizuāli, bet kodols paliek: algoritms + emocijas. Vai nākotnē būs vieta īstai mūzikai?</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_future_reforms.jpg" alt="Eirovīzijas nākotne" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Eirovīzija mainās vizuāli, bet kodols paliek: algoritms + emocijas. Vai nākotnē būs vieta īstai mūzikai?</em></figcaption>
 </figure>
 
-
 <h2>10. Noslēgums</h2>
-
-<p>Eirovīzijas dziesmu konkurss ir kļuvis par vienu no <strong>visilgāk pastāvošajiem un visplašāk skatītajiem popkultūras notikumiem pasaulē</strong>. Taču tas nav palicis uzticīgs savam sākotnējam solījumam — kļūt par muzikālu sacensību. Tā vietā Eirovīzija ir transformējusies par <strong>emocionāli koreģētu, mediju menedžētu un vizuāli ekspluatētu šovu</strong>, kur dziesmas bieži vien ir tikai platforma, nevis saturs.</p>
-
-<p>Tā balstās uz psiholoģiskiem mehānismiem — konformitāti, atpazīstamības efektu, vizuālās dominances ietekmi, piederības ilūziju un simbolisku patriotismu. Tās balsošanas sistēma ir strukturēts kompromiss starp institucionālu korektumu un auditorijas iegribām. Un tās dziesmu dramaturģija seko formulai, nevis radošumam.</p>
-
-<p>Un tomēr — tā darbojas. Eirovīzijas <strong>“kods”</strong> nav nejaušs. Tas ir <em>optimizēts kultūras produkts</em>, kas sniedz skatītājam tieši to, ko viņš meklē: trīs minūtes emocionāla sprādziena, nevis estētisku pārdomu. Tā kļuvusi par sava laikmeta spoguli — ātru, spilgtu, dalītu un aizmirstamu.</p>
-
-<p>Bet šī koda izpratne nav domāta tam, lai “atmaskotu” šovu. Tā ir iespēja skatīties ar <strong>apzinātu ironiju vai estētisku distanci</strong>. Jo tikai tad, kad mēs saprotam, <em>kā tiek radīta patikas ilūzija</em>, mēs varam izvēlēties, vai ļauties tai vai pārslēgt kanālu.</p>
-
+<p>Eirovīzijas dziesmu konkurss ir kļuvis par vienu no <strong>visilgāk pastāvošajiem un visplašāk skatītajiem popkultūras notikumiem pasaulē</strong>. Taču tas ir transformējies par <strong>emocionāli koreģētu, mediju menedžētu un vizuāli ekspluatētu šovu</strong>.</p>
+<p>Tā balstās uz psiholoģiskiem mehānismiem — konformitāti, atpazīstamības efektu, vizuālās dominances ietekmi, piederības ilūziju un simbolisku patriotismu.</p>
+<p>Un tomēr — tā darbojas. Eirovīzijas <strong>"kods"</strong> ir <em>optimizēts kultūras produkts</em>, kas sniedz skatītājam tieši to, ko viņš meklē: trīs minūtes emocionāla sprādziena.</p>
+<p>Bet šī koda izpratne ir iespēja skatīties ar <strong>apzinātu ironiju vai estētisku distanci</strong>. Jo tikai tad, kad mēs saprotam, <em>kā tiek radīta patikas ilūzija</em>, mēs varam izvēlēties, vai ļauties tai vai pārslēgt kanālu.</p>
 <p><em>Jo varbūt patiesi kvalitatīva dziesma joprojām var uzvarēt — bet tikai tad, ja mēs zinām, ko klausāmies.</em></p>
 
 <figure>
-  <img src="../images/raksti/eurovision_conclusion_symbolic.jpg" alt="Eirovīzijas kods – skatīties ar ironiju vai aizrautību?" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-  <figcaption style="font-size: 0.95em; color: #ccc; margin-top: 0.5em;">
-    <em>Mēs varam skatīties, zinot spēles noteikumus. Kods atklāts – tagad izvēle ir mūsējā.</em>
-  </figcaption>
+  <img src="../images/raksti/eurovision_conclusion_symbolic.jpg" alt="Eirovīzijas kods – noslēgums" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Mēs varam skatīties, zinot spēles noteikumus. Kods atklāts – tagad izvēle ir mūsējā.</em></figcaption>
 </figure>
 
-
 <h2>11. Literatūras un avotu saraksts</h2>
-
 <ul>
   <li>Asch, S. E. (1951). Effects of group pressure upon the modification and distortion of judgments. <em>Groups, leadership, and men</em>, 222–236.</li>
-  
   <li>Cialdini, R. B. (2001). <em>Influence: Science and Practice</em> (4th ed.). Allyn & Bacon.</li>
-  
   <li>Zajonc, R. B. (1968). Attitudinal effects of mere exposure. <em>Journal of Personality and Social Psychology</em>, 9(2), 1–27.</li>
-  
-  <li>Kellaris, J. J. (2003). Dissecting earworms: Further evidence on the "song-stuck-in-my-head" phenomenon. <em>Society for Consumer Psychology</em>.</li>
-  
+  <li>Kellaris, J. J. (2003). Dissecting earworms. <em>Society for Consumer Psychology</em>.</li>
   <li>Liikkanen, L. A. (2012). Musical activities predispose to involuntary musical imagery. <em>Psychology of Music</em>, 40(2), 236–256.</li>
-  
-  <li>Tsay, C. J. (2013). Sight over sound in the judgment of music performance. <em>Proceedings of the National Academy of Sciences</em>, 110(36), 14580–14585.</li>
-  
+  <li>Tsay, C. J. (2013). Sight over sound in the judgment of music performance. <em>PNAS</em>, 110(36), 14580–14585.</li>
   <li>Feddersen, A., & Maennig, W. (2008). Determinants of success at the Eurovision Song Contest. <em>Hamburg Contemporary Economic Discussions</em>, No. 23.</li>
-  
   <li>Jordan, P. (2011). The Eurovision Song Contest: Nation branding and nation building in Estonia and Ukraine. <em>University of Glasgow, PhD Thesis</em>.</li>
-  
-  <li>EBU (European Broadcasting Union). <a href="https://www.ebu.ch" target="_blank">https://www.ebu.ch</a> — Oficiālā informācija par organizāciju, balsošanas noteikumiem un konkursu vēsturi.</li>
-  
-  <li>Eurovision.tv — Oficiālā konkursa mājaslapa ar vēsturiskajiem datiem, bilžu arhīvu, balsojumu rezultātiem un sponsorpolitiku: <a href="https://eurovision.tv" target="_blank">https://eurovision.tv</a></li>
-  
-  <li>BBC News, SVT, ERR, NRK un citi sabiedrisko raidorganizāciju pārskati par Eirovīzijas organizatoriskajiem izdevumiem un kultūras efektu.</li>
-  
-  <li>Reddit r/eurovision, ESCUnited, ESCInsight — kopienu diskusijas un neoficiālie analīzes resursi.</li>
+  <li>EBU (European Broadcasting Union). <a href="https://www.ebu.ch" target="_blank">https://www.ebu.ch</a></li>
+  <li>Eurovision.tv — <a href="https://eurovision.tv" target="_blank">https://eurovision.tv</a></li>
+  <li>BBC News, SVT, ERR, NRK un citi sabiedrisko raidorganizāciju pārskati.</li>
+  <li>Reddit r/eurovision, ESCUnited, ESCInsight — kopienu diskusijas.</li>
 </ul>
 
+</div>
 
+<!-- ========== ENGLISH ========== -->
+<div class="container lang-en">
 
-  </div>
+<h1>The Eurovision Code — What is it?</h1>
+
+<h2>Introduction</h2>
+<p>The Eurovision Song Contest is often presented as a <strong>musical event</strong> in which the best performers and songwriters from different countries compete on equal terms. In reality, however, it resembles an <em>emotionally and visually loaded social show</em>, where music is just one of many factors.</p>
+<p>This article analyses how <strong>Eurovision has evolved from a music competition into an algorithm of emotional influence</strong> that exploits psychological mechanisms, media logic and the symbolism of cultural identities.</p>
+
+<figure>
+  <img src="../images/raksti/eurovision_code_intro.jpg" alt="The Eurovision Code – brilliance or simulation?" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Eurovision — dazzling noise or simulated choice? The show's code hides behind an emotion algorithm.</em></figcaption>
+</figure>
+
+<h2>Problem statement</h2>
+<p>Eurovision is <em>de jure</em> a song contest, but <em>de facto</em> — it is a <strong>social-psychological, media-managed phenomenon</strong>. A contradiction arises between the declared goal (evaluating songs) and reality (the object of evaluation is the image, the country, the story, the visual impression, etc.).</p>
+
+<h2>Research questions</h2>
+<ul>
+  <li>How did Eurovision <strong>historically emerge</strong>, and what was its original function?</li>
+  <li>Which <strong>organisations, sponsors and media</strong> sustain it, and what are their <strong>motives</strong>?</li>
+  <li>Why do so many viewers experience <strong>emotional enjoyment</strong> of songs that objectively seem weak?</li>
+  <li>Which <strong>psychological and social mechanisms</strong> do the show's creators use to influence perception?</li>
+  <li>How does <strong>musical quality and visual content</strong> change year on year?</li>
+</ul>
+
+<h2>Methods and sources used</h2>
+<p>This analysis draws on:</p>
+<ul>
+  <li><strong>Academic research</strong> (psychology, music perception, cultural criticism)</li>
+  <li><strong>Official documents</strong> from EBU, media partners and organisers</li>
+  <li><strong>Ratings and streaming statistics</strong> (YouTube, Spotify, TV ratings)</li>
+  <li><strong>Social media and commentator discourse</strong> (live streams, Twitter, Reddit)</li>
+</ul>
+
+<h2>1. Historical genesis</h2>
+<h3>1.1. Post-war Europe and the founding of EBU</h3>
+<p>After the Second World War, Europe was driven by a need for cooperation. In 1950, the <strong>European Broadcasting Union</strong> (EBU) was established to unite public television and radio organisations into a single network.</p>
+<p>EBU's goal was not only technical cooperation, but also the creation of <em>projects that unite culture and identity</em>.</p>
+
+<h3>1.2. 1956 — the first contest in Lugano</h3>
+<p>On <strong>24 May 1956</strong> in Lugano, Switzerland, the first Eurovision Song Contest was held with just 7 countries and 14 songs. The winner was <em>Lys Assia</em> from Switzerland with "Refrain".</p>
+<p>The original goal was to promote <strong>broadcasting technology development</strong>. Music served as a means, not an end.</p>
+
+<h3>1.3. Key turning points</h3>
+<ul>
+  <li><strong>1968</strong> — first <em>colour TV signal</em>.</li>
+  <li><strong>1998</strong> — introduction of <em>televoting</em>, shifting the dynamic from professional juries to mass taste.</li>
+  <li><strong>2004</strong> — <em>semi-final system</em> allowing more countries to participate.</li>
+  <li><strong>2023</strong> — introduction of the "<em>Rest of the World</em>" vote.</li>
+</ul>
+
+<figure>
+  <img src="../images/raksti/eurovision_history_stage.jpg" alt="Eurovision's origins" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>From a simple stage in Lugano to LED super-shows — Eurovision's history is Europe's media evolution in miniature.</em></figcaption>
+</figure>
+
+<h2>2. Organisational architecture</h2>
+<h3>2.1. European Broadcasting Union (EBU)</h3>
+<p>The <strong>EBU</strong> is the world's largest public media alliance, uniting more than 110 organisations from more than 50 countries. It is the official owner and principal organiser of the Eurovision Song Contest.</p>
+
+<h3>2.2. Host broadcaster — the role of the host country</h3>
+<p>Each year the contest is hosted by the broadcaster of the country whose representative won the previous year. The host country frequently invests <strong>millions of euros</strong>, regarded as a prestigious opportunity to improve its international image.</p>
+
+<h3>2.3. Official sponsors and partners</h3>
+<p>Eurovision's sponsor list includes brands such as <strong>Moroccanoil</strong>, <strong>Booking.com</strong>, <strong>TikTok</strong> and <strong>Royal Caribbean</strong>. The sponsors' motivation is clear: Eurovision offers access to a <strong>multilingual, LGBTQ+ inclusive and globally visible audience</strong>.</p>
+
+<h3>2.4. Funding model</h3>
+<ul>
+  <li><strong>EBU</strong> handles the main licensing and receives contributions from all member countries;</li>
+  <li><strong>Host broadcaster</strong> covers most of the technical and visual production costs;</li>
+  <li><strong>Sponsors</strong> help cover part of the creative content budget;</li>
+  <li><strong>Tickets, TV rights and souvenir sales</strong> form part of revenues.</li>
+</ul>
+
+<figure>
+  <img src="../images/raksti/eurovision_structure_diagram.jpg" alt="Eurovision's organisational system" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>From EBU to backstage make-up — Eurovision's structure is multi-layered: media, sponsors, countries, brands, audience.</em></figcaption>
+</figure>
+
+<h2>3. Interest groups and their motivations</h2>
+<h3>3.1. EBU — a combination of cultural integration and ratings</h3>
+<p>The <strong>EBU</strong> positions Eurovision as a tool for cultural exchange. In reality, however, EBU's motivation also includes <strong>high ratings and the competitiveness of public media</strong> in the digital age.</p>
+
+<h3>3.2. National broadcasters — national PR and ratings</h3>
+<p>Each country's public broadcaster invests in Eurovision to demonstrate its <strong>national image</strong> and achieve high audience engagement.</p>
+
+<h3>3.3. Songwriters and performers — international exposure</h3>
+<p>Eurovision serves as a <strong>career springboard</strong>. Even without reaching the final, participation brings millions of views and collaboration opportunities.</p>
+<p>It is not uncommon for songs to be <em>bought or written outside the country</em> — especially in Sweden, where an entire "Eurovision song production industry" operates.</p>
+
+<h3>3.4. Viewers — ritual, identity, humour</h3>
+<p>A large portion of the audience does not watch Eurovision solely for the music. It has become an <strong>annual social ritual</strong> with group viewing parties, humorous memes and a sense of community.</p>
+
+<h3>3.5. Commentators and content creators — media capital</h3>
+<p>The more extreme the performance, the more <em>reaction videos, memes and discussions</em>. A "meta-Eurovision" forms in which the event lives on in derivatives.</p>
+
+<figure>
+  <img src="../images/raksti/eurovision_interest_groups.jpg" alt="Eurovision's stakeholders and their motivations" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Each to their own interests: EBU defends the future of public media, sponsors buy attention, viewers seek ritual, songwriters seek a career lift.</em></figcaption>
+</figure>
+
+<h2>4. The social-psychological "code"</h2>
+<h3>4.1. Conformity and group influence</h3>
+<p>As early as the 1950s, Solomon Asch demonstrated that people tend to <strong>adopt the group's view</strong>, even when it is obviously wrong. If the audience applauds, commentators praise and social media "burns", many <em>feel they ought to like it too</em>.</p>
+
+<h3>4.2. The mere exposure effect — the more you hear it, the more you like it</h3>
+<p>Psychologist Robert Zajonc showed that people begin to <strong>like things they see or hear more often</strong>. In Eurovision this effect operates through preview clips and viral spread. Result — <em>familiarity is confused with liking</em>.</p>
+
+<h3>4.3. "Earworm" and musical memory</h3>
+<p>Simple, repetitive melodies more often "get stuck in the head". Research (Kellaris 2003, Liikkanen 2012) shows that people often <em>think they like a song</em> simply because they cannot forget it.</p>
+
+<h3>4.4. The dominance of visuality over music</h3>
+<p>An experiment (Tsay, 2013, PNAS) showed that <strong>people rate a musical performance higher when they see it rather than just hear it</strong>. LED screens, camera angles, costumes and lighting become <em>manipulative instruments for reshaping perception</em>.</p>
+
+<h3>4.5. Identity, belonging and patriotism</h3>
+<p>Voting is often not about the song, but about <strong>a country, identity or solidarity</strong>. Viewers <em>emotionally invest</em> hopes, pride or disappointment — songs become <strong>collective psychological triggers</strong>.</p>
+
+<h3>4.6. Self-deception and emotionalised perception</h3>
+<p>Many viewers believe they like a song, but are actually <strong>reacting to surrounding effects</strong> — the story, the image, the language, the volume. An emotional effect arises that the person interprets as "liking", even when there is <em>no musical resonance</em>.</p>
+
+<figure>
+  <img src="../images/raksti/eurovision_psychology.jpg" alt="Eurovision's psychological code" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Liking or self-deception? Eurovision activates collective mechanisms: conformity, visual triggering, identity transfer.</em></figcaption>
+</figure>
+
+<h2>5. Voting mechanics and (un)fairness</h2>
+<h3>5.1. Evolution: from jury to "Rest of the World"</h3>
+<p>Since 2009, the result has been formed as <strong>50% jury + 50% viewer vote</strong>. In 2023 the system was expanded to include viewers from non-participating countries.</p>
+
+<h3>5.2. Voting blocs and statistical models</h3>
+<p>Research shows that countries tend to vote for "their own" — due to <strong>cultural affinity, geography or diaspora</strong>. <strong>Feddersen & Maennig (2008)</strong> created a model demonstrating systematic voting blocs.</p>
+
+<h3>5.3. Jury vs. televote — contrasts</h3>
+<p>Juries tend to assess technical performance, vocal quality and composition, while viewers vote based on image, charisma and visual impression. This creates a <em>credibility gap</em> between viewers and the system.</p>
+
+<h3>5.4. Illusion of fairness</h3>
+<p>Although Eurovision is presented as a "people's vote", in reality the <strong>voting system is a compromise</strong>. Juries often act as a "filter" preventing overly controversial performances from winning.</p>
+
+<h3>5.5. Statistics vs. perception</h3>
+<p>If "our song" does not receive points — it is perceived as <em>disrespect</em> or <em>injustice</em>. This perception strengthens collective identity and motivates viewers to watch again next year.</p>
+
+<figure>
+  <img src="../images/raksti/eurovision_voting_system.jpg" alt="Eurovision's voting mechanics" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>The voting system — the public votes emotionally, the jury technically, and not always the one with the most votes wins.</em></figcaption>
+</figure>
+
+<h2>6. The industry's "three-minute formula"</h2>
+<h3>6.1. Structural formula: everything happens faster</h3>
+<p>A Eurovision song must fit within a <strong>precise 3-minute format</strong>. Songs often start with <strong>the chorus or the "big moment"</strong>, with no musical build-up or dramatic structure.</p>
+
+<h3>6.2. Sweden's dominance and the pop-industry effect</h3>
+<p>A large proportion of songwriters come from <strong>Sweden, Denmark and the UK</strong>, where so-called <em>Eurovision song "camps"</em> operate. <strong>Formulaic, technically effective songs</strong> are produced, designed for the stage rather than home listening.</p>
+
+<h3>6.3. Professional musicians — participation or a pawn's role?</h3>
+<p>Some musicians participate in Eurovision as <strong>players in a career strategy game</strong>. The song is often chosen by producers or national selection committees, not the artist themselves. The result is a <em>professional executing an emotion formula</em> on stage.</p>
+<p>Others do it <strong>ironically or conceptually</strong> — as a commentary on the contest itself (e.g. Käärijä 2023).</p>
+
+<h3>6.4. Harmonic standard and clichéd dramaturgy</h3>
+<p>Many songs repeat similar <strong>harmonic progressions</strong> (e.g. I–V–vi–IV). The <em>"modulation trick"</em> — a sudden key change to a higher tonality before the final chorus — is frequently employed to create an <strong>illusory drama effect</strong>.</p>
+
+<h3>6.5. "Staging" as a sales instrument</h3>
+<p>Stage design becomes the <strong>central instrument of emotional impact</strong>. Music is <em>subordinated to scenography</em> — it is not the sound that shapes the image, but the image that dictates what the sound should be.</p>
+
+<h3>6.6. The "show algorithm"</h3>
+<p><strong>Thematic repetition</strong> occurs as songs imitate previous winners. This produces <em>safe and predictable cultural production</em>.</p>
+
+<figure>
+  <img src="../images/raksti/eurovision_formula.jpg" alt="Eurovision's three-minute formula" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Formula: 10 sec. for attention, 30 sec. for the hook, 2 min. warm-up, 20 sec. explosion, 5 sec. close. Music becomes an algorithm's output.</em></figcaption>
+</figure>
+
+<h2>7. The media ecosystem and digital escalation</h2>
+<h3>7.1. Live streams and the "second screen"</h3>
+<p>Eurovision is no longer merely a viewing event — it is a <strong>multi-channel experience</strong>: TV live stream, Twitter comments, TikTok clips and YouTube streams all simultaneously.</p>
+
+<h3>7.2. Social media algorithms and clip circulation</h3>
+<p>Songs and performances often become popular <strong>before the contest</strong>, thanks to algorithms. The "TikTok song" phenomenon is growing — the sought-after moment is one that can trigger virality, not lasting musical impact.</p>
+
+<h3>7.3. YouTube vs. Spotify — different valuation fields</h3>
+<p>Eurovision songs frequently gain <strong>millions of YouTube views</strong> but <em>few thousand Spotify listens</em>. This points to the show effect: watching is the primary experience, not music appreciation.</p>
+
+<h3>7.4. Global expansion and marketing</h3>
+<p>Since 2015, <strong>Australia</strong> has participated. In 2023 "Rest of the World" televoting was introduced, making Eurovision a <em>global brand</em>. Organisers partner with <strong>international brands</strong> to expand reach beyond traditional viewers.</p>
+
+<h3>7.5. Sponsored content and integrated advertising</h3>
+<p>Advertising becomes <em>integrated into aesthetics</em> — the viewer does not see a banner, but rather "experiences the brand" as part of the show.</p>
+
+<figure>
+  <img src="../images/raksti/eurovision_media_ecosystem.jpg" alt="Eurovision's media ecosystem" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>From stage to screens — Eurovision's life begins in the live broadcast but continues on TikTok, YouTube and in memes. The event becomes algorithm fodder.</em></figcaption>
+</figure>
+
+<h2>8. Year-on-year escalation</h2>
+<h3>8.1. Budget growth and technical grandeur</h3>
+<p>Each successive contest strives to <strong>surpass the previous one</strong>. For example, the 2012 Baku contest cost Azerbaijan more than <strong>€150 million</strong>. This trend indicates a growing <em>exclusivity and pomposity</em>.</p>
+
+<h3>8.2. "Shock value" as a competitive advantage</h3>
+<p>Year on year, songs and performances become <strong>louder, stranger or visually more extreme</strong>. A "normal, musically nuanced song" risks being <em>invisible</em>.</p>
+
+<h3>8.3. Political context and controversies</h3>
+<p>Eurovision history includes several disqualifications and protests: Russia's exclusion after the invasion of Ukraine (2022), Israel's participation and political debates (2024). These events show that the <strong>contest is becoming a battleground for ideological conflict</strong>.</p>
+
+<h3>8.4. Can a "good song" still win?</h3>
+<p>From time to time, <strong>genuinely musical works</strong> win: <em>"Amar Pelos Dois"</em> (Portugal, 2017) and <em>"Stefania"</em> (Ukraine, 2022). But these cases become <em>exceptions that prove the rule</em>.</p>
+
+<figure>
+  <img src="../images/raksti/eurovision_escalation.jpg" alt="Eurovision's year-on-year escalation" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Every year more: bigger stage, more expensive effects, louder performances. The battle is not for music, but for attention.</em></figcaption>
+</figure>
+
+<h2>9. Criticism, reform attempts and future scenarios</h2>
+<h3>9.1. Objections from musicians and critics</h3>
+<p>Many professional musicians and journalists voice concern that <strong>musical quality has been sacrificed for the show</strong>. Critics ask: is Eurovision still a music contest?</p>
+
+<h3>9.2. Organisers' responses and minimal reforms</h3>
+<p>EBU regularly introduces <strong>technical and voting corrections</strong>. But these reforms rarely affect the essence of the content itself. <strong>The show model remains unchanged</strong>.</p>
+
+<h3>9.3. The technological future — hybrid Eurovision</h3>
+<p>In the future, VR/AR live streams and AI-assisted personalised voting may emerge. In 2025 EBU announced a rule <strong>banning fully AI-generated songs</strong>.</p>
+
+<h3>9.4. Will audiences eventually "come to their senses"?</h3>
+<p>There are currently no signs of mass consciousness change. <em>Eurovision viewership is growing</em>, especially on social media. And as long as that continues, the system endures.</p>
+<p><strong>Conclusion:</strong> Eurovision changes on the surface, but its core code remains unchanged — it is an <em>emotional impact machine that simulates musical evaluation</em>.</p>
+
+<figure>
+  <img src="../images/raksti/eurovision_future_reforms.jpg" alt="Eurovision's future" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>Eurovision changes visually, but the core remains: algorithm + emotion. Will there be room for real music in the future?</em></figcaption>
+</figure>
+
+<h2>10. Conclusion</h2>
+<p>The Eurovision Song Contest has become one of the <strong>world's longest-running and most widely watched pop-culture events</strong>. But it has not remained faithful to its original promise — to be a musical competition. Instead, Eurovision has transformed into an <strong>emotionally engineered, media-managed and visually exploited show</strong>, where songs are often merely a platform, not content.</p>
+<p>It rests on psychological mechanisms — conformity, the familiarity effect, the influence of visual dominance, the illusion of belonging and symbolic patriotism.</p>
+<p>And yet — it works. Eurovision's <strong>"code"</strong> is an <em>optimised cultural product</em> that gives viewers exactly what they seek: three minutes of emotional explosion.</p>
+<p>But understanding this code is an opportunity to watch with <strong>conscious irony or aesthetic distance</strong>. Because only when we understand <em>how the illusion of liking is created</em> can we choose whether to surrender to it or change the channel.</p>
+<p><em>Because perhaps a truly quality song can still win — but only if we know what we are listening to.</em></p>
+
+<figure>
+  <img src="../images/raksti/eurovision_conclusion_symbolic.jpg" alt="The Eurovision Code — conclusion" style="width:100%; border-radius:12px; margin-top:2em; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+  <figcaption><em>We can watch knowing the rules of the game. The code is revealed — now the choice is ours.</em></figcaption>
+</figure>
+
+<h2>11. Bibliography and sources</h2>
+<ul>
+  <li>Asch, S. E. (1951). Effects of group pressure upon the modification and distortion of judgments. <em>Groups, leadership, and men</em>, 222–236.</li>
+  <li>Cialdini, R. B. (2001). <em>Influence: Science and Practice</em> (4th ed.). Allyn & Bacon.</li>
+  <li>Zajonc, R. B. (1968). Attitudinal effects of mere exposure. <em>Journal of Personality and Social Psychology</em>, 9(2), 1–27.</li>
+  <li>Kellaris, J. J. (2003). Dissecting earworms. <em>Society for Consumer Psychology</em>.</li>
+  <li>Liikkanen, L. A. (2012). Musical activities predispose to involuntary musical imagery. <em>Psychology of Music</em>, 40(2), 236–256.</li>
+  <li>Tsay, C. J. (2013). Sight over sound in the judgment of music performance. <em>PNAS</em>, 110(36), 14580–14585.</li>
+  <li>Feddersen, A., & Maennig, W. (2008). Determinants of success at the Eurovision Song Contest. <em>Hamburg Contemporary Economic Discussions</em>, No. 23.</li>
+  <li>Jordan, P. (2011). The Eurovision Song Contest: Nation branding and nation building in Estonia and Ukraine. <em>University of Glasgow, PhD Thesis</em>.</li>
+  <li>EBU (European Broadcasting Union). <a href="https://www.ebu.ch" target="_blank">https://www.ebu.ch</a></li>
+  <li>Eurovision.tv — <a href="https://eurovision.tv" target="_blank">https://eurovision.tv</a></li>
+  <li>BBC News, SVT, ERR, NRK and other public broadcaster reports on Eurovision's organisational costs and cultural impact.</li>
+  <li>Reddit r/eurovision, ESCUnited, ESCInsight — community discussions and unofficial analysis resources.</li>
+</ul>
+
+</div>
+
+  <script src="../assets/js/lang.js?v=5"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
+  <script src="../assets/js/analytics.js"></script>
 </body>
 </html>

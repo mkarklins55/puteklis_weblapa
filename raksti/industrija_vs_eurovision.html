@@ -5,457 +5,306 @@
   <link rel="icon" href="/images/logo_small.png" type="image/png">
   <title>Industrija pret eirovīziju?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta property="og:image" content="https://puteklis.com/images/share/industry_vs_eurovision.jpg" />
+  <meta property="og:image" content="https://puteklis.com/images/share/industry_vs_eurovision.jpg" />
   <style>
-    body {
-      background: linear-gradient(to right, #2c3e50, #4ca1af);
-      color: #f8f8f8;
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 3rem 2rem;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    }
-    h2 {
-      margin-top: 2em;
-      font-size: 1.4em;
-      color: #ffe;
-    }
-    p {
-      font-size: 1.05em;
-      line-height: 1.6em;
-      margin-bottom: 1em;
-    }
-    .emoji {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-    }
-
-    header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
-  backdrop-filter: blur(4px);
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-}
-
-header nav a {
-  color: #ffffff; /* gaišāka krāsa! */
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s;
-}
-
-header nav a:hover {
-  color: #ffd700; /* zeltaina krāsa hover efektam */
-}
-
-header nav a.active {
-  text-decoration: underline;
-  color: #00ffff;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: sans-serif;
-  margin-top: 1em;
-}
-
-th, td {
-  border: 1px solid #44788a;
-  padding: 12px 16px;
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  background-color: #01597b; /* tumši zils */
-  color: white;
-}
-
-tr:nth-child(even) {
-  background-color: #27596c; /* dziļāks tumši zils */
-}
-
-.note {
-  display: block;
-  font-size: 0.9em;
-  color: #aacfd0; /* gaiši zils uz tumšā fona */
-  margin-top: 4px;
-}
-
-
+    body { background: linear-gradient(to right, #2c3e50, #4ca1af); color: #f8f8f8; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: auto; padding: 3rem 2rem; }
+    h1 { font-size: 2.5em; margin-bottom: 1rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+    h2 { margin-top: 2em; font-size: 1.4em; color: #ffe; }
+    p { font-size: 1.05em; line-height: 1.6em; margin-bottom: 1em; }
+    .emoji { font-size: 1.2em; margin-right: 0.3em; }
+    header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: rgba(0,0,0,0.6); padding: 1rem 2rem; backdrop-filter: blur(4px); }
+    header nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 2rem; margin: 0; }
+    header nav a { color: #fff; text-decoration: none; font-weight: bold; transition: color 0.2s; }
+    header nav a:hover { color: #ffd700; }
+    header nav a.active { text-decoration: underline; color: #00ffff; }
+    table { width: 100%; border-collapse: collapse; font-family: sans-serif; margin-top: 1em; }
+    th, td { border: 1px solid #44788a; padding: 12px 16px; text-align: left; vertical-align: top; }
+    th { background-color: #01597b; color: white; }
+    tr:nth-child(even) { background-color: #27596c; }
+    .note { display: block; font-size: 0.9em; color: #aacfd0; margin-top: 4px; }
+    .lang-en { display: none; }
+    body.lang-en .lang-lv { display: none; }
+    body.lang-en .lang-en { display: block; }
   </style>
 </head>
 <body>
- <header>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Manifests</a></li>
-        <li><a href="../raksti.html" class="active">Raksti</a></li>
-        <li><a href="../index_en.html">EN</a></li>
-      </ul>
-    </nav>
-  </header>
- <div class="container">
+<script>document.body.classList.add('lang-'+(localStorage.getItem('puteklis-lang')||'lv'));</script>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="../index.html" data-i18n="nav.manifests">Manifests</a></li>
+      <li><a href="../raksti.html" class="active" data-i18n="nav.raksti">Raksti</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ========== LATVIAN ========== -->
+<div class="container lang-lv">
   <h1>Industrijas dziesmas vs. Eirovīzijas dziesmas</h1>
 
 <h2>1. 🎯 Mērķis un auditorija</h2>
-
-<p>
-Industrijas dziesmas tiek radītas kā <strong>daļa no mūzikas tirgus</strong> – tās ir komerciāli produkti, kas darbojas ilgtermiņā: playlistēs, koncertos, straumēšanā. Tās tiek pakļautas <em>tirgus loģikai</em> — klausāmība, muzikālā kvalitāte, balss tekstūra, instrumentu saskaņa, un jā – arī emocijas, bet ar mēru. Tās strādā, jo ir baudāmas ne tikai vienā izrādes brīdī, bet arī fonā, ceļā uz darbu, vai klausoties uz austiņām vakarā.
-</p>
-
-<p>
-Savukārt Eirovīzijas dziesmas pieder <strong>nevis mūzikas industrijai, bet televīzijas šovbiznesam</strong>. Tās tiek veidotas nevis kā mūzikas pieredze, bet kā <em>trīs minūšu skatuves eksplozija</em>. Eirovīzija ir strukturēta kā <strong>valstu pārstāvju teātris</strong> – katrai dziesmai jānes sev līdzi ne tikai skaņa, bet arī stāsts, karogs, trauma, drāma, žesti, tēls vai sauklis. Tas ir sacensību formāts, nevis radošuma tirgus.
-</p>
+<p>Industrijas dziesmas tiek radītas kā <strong>daļa no mūzikas tirgus</strong> – tās ir komerciāli produkti, kas darbojas ilgtermiņā: playlistēs, koncertos, straumēšanā. Tās tiek pakļautas <em>tirgus loģikai</em> — klausāmība, muzikālā kvalitāte, balss tekstūra, instrumentu saskaņa, un jā – arī emocijas, bet ar mēru.</p>
+<p>Savukārt Eirovīzijas dziesmas pieder <strong>nevis mūzikas industrijai, bet televīzijas šovbiznesam</strong>. Tās tiek veidotas nevis kā mūzikas pieredze, bet kā <em>trīs minūšu skatuves eksplozija</em>. Eirovīzija ir strukturēta kā <strong>valstu pārstāvju teātris</strong>.</p>
 
 <div style="width: 100%; height: 500px; overflow: hidden; position: relative; margin-top: 2rem;">
-  <img src="../images/raksti/pop-vs-euro-stage.jpg"
-       alt="Skatuves kontrasts"
-       style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
+  <img src="../images/raksti/pop-vs-euro-stage.jpg" alt="Skatuves kontrasts" style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
 </div>
 
-<p>
-Šī iemesla dēļ daudzas Eirovīzijas dziesmas <strong>nav klausāmas ārpus konteksta</strong>. Tās ir veidotas ar uzsvaru uz <strong>uzvedumu, kliedzieniem, “vokālo sprintu”, LED projekcijām vai traumas naratīvu</strong>. Dziesmas bieži sākas ar sūdzību vai asarām un beidzas ar kulminējošu saucienu vai pacēlumu, kas domāts balsotāju uzrunāšanai. Tās nestrādā bez bildes, bez gaismas efektiem. Tās ir kā <em>ziedi no plastmasas</em> – skaļi, bet bez smaržas.
-</p>
-
-<p>
-Pretēji tam, industrijas dziesmas tiek sacerētas, lai būtu <strong>patiesi klausāmas</strong>: tu gribi tās dzirdēt vēlreiz, tām piemīt ritmisks līdzsvars, vokālā elpa, atturēta estētika vai radoša eksperimentācija. Tās bieži nerunā par “pasaules sāpēm” tik klaji, bet parāda nianses, ilgas, izjustu ironiju, skumju melodiju vai priecīgu groove. Tās ir muzikāli smalkākas, jo nav jāiekļaujas trīs minūtēs starp diviem politiķu paziņojumiem un valsts himnām.
-</p>
-
-<p>
-Tāpēc arī auditorija atšķiras. Industrijā galvenais ir <strong>individuālais klausītājs</strong> — kas atgriežas pie dziesmas, ieliek to savā playlistē un dzīvo ar to. Eirovīzijā galvenais ir <strong>masu efekts vienā brīdī</strong> — uzrāviens, kas uzreiz ievelk, satricina, un... pazūd.
-</p>
-
-<p>
-Un te ir būtiskā atšķirība: <strong>Eirovīzija izskatās pēc mūzikas industrijas, bet tai nepieder</strong>. Tā imitē industrijas izteiksmes līdzekļus — pop ritmus, modernus miksus, klipus — taču patiesībā ir <em>televīzijas teātris ar valstu karogiem un ieprogrammētu patosu</em>. Tāpēc bieži dzirdam nevis dziesmu, bet <strong>skaļu vēstījumu bez melodijas</strong>.
-</p>
-
-<p>
-Ja industrijas dziesma ir kā <em>plūstošs ūdens</em>, tad Eirovīzijas dziesma bieži ir kā <em>uzvārīts tvaiks</em> — ātri, uzspiedīgi, un tas pazūd.
-</p>
+<p>Šī iemesla dēļ daudzas Eirovīzijas dziesmas <strong>nav klausāmas ārpus konteksta</strong>. Tās ir veidotas ar uzsvaru uz <strong>uzvedumu, kliedzieniem, "vokālo sprintu", LED projekcijām vai traumas naratīvu</strong>. Tās ir kā <em>ziedi no plastmasas</em> – skaļi, bet bez smaržas.</p>
+<p>Pretēji tam, industrijas dziesmas tiek sacerētas, lai būtu <strong>patiesi klausāmas</strong>. Tās bieži nerunā par "pasaules sāpēm" tik klaji, bet parāda nianses, ilgas, izjustu ironiju, skumju melodiju vai priecīgu groove.</p>
+<p>Tāpēc arī auditorija atšķiras. Industrijā galvenais ir <strong>individuālais klausītājs</strong>. Eirovīzijā galvenais ir <strong>masu efekts vienā brīdī</strong>.</p>
+<p>Un te ir būtiskā atšķirība: <strong>Eirovīzija izskatās pēc mūzikas industrijas, bet tai nepieder</strong>. Tāpēc bieži dzirdam nevis dziesmu, bet <strong>skaļu vēstījumu bez melodijas</strong>.</p>
+<p>Ja industrijas dziesma ir kā <em>plūstošs ūdens</em>, tad Eirovīzijas dziesma bieži ir kā <em>uzvārīts tvaiks</em> – ātri, uzspiedīgi, un tas pazūd.</p>
 
 <h3 style="margin-top: 2rem;">🎧 Klausies piemērus:</h3>
-
-<!-- Industrijas piemērs -->
-<p><strong>Industrijas dziesma:</strong> Phoebe Bridgers – “Motion Sickness”</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/9sfYpolGCu8" 
-title="Phoebe Bridgers - Motion Sickness" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
-<!-- Eirovīzijas piemērs -->
-<p style="margin-top: 1.5rem;"><strong>Eirovīzijas dziesma:</strong> Netta – “Toy” (Israel 2018)</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/CziHrYYSyPc" 
-title="Netta - Toy (Israel 2018)" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
+<p><strong>Industrijas dziesma:</strong> Phoebe Bridgers – "Motion Sickness"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/9sfYpolGCu8" title="Phoebe Bridgers - Motion Sickness" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p style="margin-top: 1.5rem;"><strong>Eirovīzijas dziesma:</strong> Netta – "Toy" (Israel 2018)</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/CziHrYYSyPc" title="Netta - Toy (Israel 2018)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h2>2. 🎵 Struktūra un kompozīcija</h2>
-
-<p>
-Viens no visbūtiskākajiem aspektiem, kas atšķir industrijas dziesmas no Eirovīzijas dziesmām, ir to <strong>uzbūve — jeb struktūra</strong>. Popmūzikas industrijā dziesmas forma tiek veidota brīvi: iespējams lēns ievads, pre-chorus, post-chorus, pat klusa izskaņa vai “fade out”. Dziesma var mainīt tempu, pārsteigt ar aranžējumu, ieiet bridge daļā, kurā tonāli vai emocionāli viss transformējas. Klausītājs nereti pat neapzinās šo struktūru — viņš vienkārši <em>plūst līdzi</em>.
-</p>
-
-<p>
-Eirovīzijā tāds plūdums būtu <strong>nāvīga kļūda</strong>. Tev tiek dotas trīs minūtes, lai pateiktu visu. Tā vietā, lai izaugtu lēni, dziesmai jau pirmajās 10 sekundēs jāpievilina skatītājs. Parasti tas notiek ar intro, kas izceļ vokālu vai dramatisku akordu. Tūlīt seko piedziedājums vai izteikts "hook" — āķis, ko klausītājs atceras līdz balsojumam.  
-</p>
-
-<p>
-Industrijā “hook” bieži ir smalks — kā ritma atkārtojums, kā tekstūras efekts. Savukārt Eirovīzijā tas ir kā <strong>reklāmas sauklis</strong>: skaļš, skaidrs, ieurbjas ausīs. Tas nav gluži muzikāls risinājums — tas ir atmiņas instruments.  
-</p>
-
-<p>
-Turklāt industrijā dziesma drīkst būt nedaudz garāka — pat līdz 3:30 minūtēm vai vairāk, ja vajag. Eirovīzijā <strong>noteikums ir skarbs — maksimums 3:00 minūtes</strong>. Tas rada dramaturģisku spiedienu: viss jāizstāsta bez atkāpēm, bez elpas. Kulminācija ir obligāta — bez tās tu esi “aizšāvis garām”. Bieži tas notiek arī ar tonālajām izmaiņām jeb “key change”, kas tiek izmantots kā emocionāls triks.
-</p>
-
-<p>
-Šī strukturālā atšķirība arī nosaka emocionālo rezultātu. Kamēr industrijas dziesmas ļauj justies kā stāstā, Eirovīzijas dziesmas bieži šķiet kā <em>monologs publikas priekšā — ar vienu elpu, priekš vienas iespējas</em>.
-</p>
+<p>Popmūzikas industrijā dziesmas forma tiek veidota brīvi: iespējams lēns ievads, pre-chorus, post-chorus, pat klusa izskaņa. Dziesma var mainīt tempu, pārsteigt ar aranžējumu. Klausītājs nereti pat neapzinās šo struktūru — viņš vienkārši <em>plūst līdzi</em>.</p>
+<p>Eirovīzijā tāds plūdums būtu <strong>nāvīga kļūda</strong>. Tev tiek dotas trīs minūtes, lai pateiktu visu. Dziesmai jau pirmajās 10 sekundēs jāpievilina skatītājs.</p>
+<p>Industrijā "hook" bieži ir smalks. Savukārt Eirovīzijā tas ir kā <strong>reklāmas sauklis</strong>: skaļš, skaidrs, ieurbjas ausīs.</p>
+<p>Turklāt Eirovīzijā <strong>noteikums ir skarbs — maksimums 3:00 minūtes</strong>. Tas rada dramaturģisku spiedienu. Kulminācija ir obligāta, bieži arī ar tonālajām izmaiņām jeb "key change".</p>
+<p>Šī strukturālā atšķirība nosaka emocionālo rezultātu. Kamēr industrijas dziesmas ļauj justies kā stāstā, Eirovīzijas dziesmas bieži šķiet kā <em>monologs publikas priekšā — ar vienu elpu</em>.</p>
 
 <div style="width: 100%; height: 500px; overflow: hidden; position: relative; margin-top: 2rem;">
-  <img src="../images/raksti/song-structure.jpg"
-       alt="Dziesmu struktūra"
-       style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
+  <img src="../images/raksti/song-structure.jpg" alt="Dziesmu struktūra" style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
 </div>
 
 <h3 style="margin-top: 2rem;">🎧 Klausies piemērus:</h3>
-
-<!-- Industrijas piemērs -->
-<p><strong>Industrijas dziesma:</strong> The Weeknd - "Blinding Lights”</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/4NRXx6U8ABQ" 
-title="The Weeknd - Blinding Lights" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
-<!-- Eirovīzijas piemērs -->
+<p><strong>Industrijas dziesma:</strong> The Weeknd - "Blinding Lights"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/4NRXx6U8ABQ" title="The Weeknd - Blinding Lights" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p style="margin-top: 1.5rem;"><strong>Eirovīzijas dziesma:</strong> Loreen - Tattoo</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/BE2Fj0W4jP4" 
-title="Loreen - Tattoo" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/BE2Fj0W4jP4" title="Loreen - Tattoo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h2>3. 🎚 Skaņas producēšana</h2>
+<p>Popmūzikas industrijā producēšana ir smalks līdzsvars — dziesma tiek pielāgota straumēšanas platformu algoritmiem, radio viļņiem, klausīšanās uz austiņām. Tas nozīmē: sabalansēta dinamika, telpisks vokāls, rūpīgi panākta siltuma un skaidrības attiecība.</p>
+<p>Turpretī Eirovīzijas dziesma tiek veidota ar vienu fokusu: <strong>skaņa uz skatuves</strong>. Vokāls dominē visam pāri, basu līnijas ir izteikti uzpumpētas.</p>
 
-<p>
-Skaņa ir ne tikai tas, ko mēs dzirdam — tā ir arī tas, <em>kā mēs jūtam</em>. Un tieši šeit starpība starp industrijas dziesmu un Eirovīzijas dziesmu kļūst fiziski dzirdama. Popmūzikas industrijā producēšana ir smalks līdzsvars — dziesma tiek pielāgota straumēšanas platformu algoritmiem, radio viļņiem, klausīšanās uz austiņām. Tas nozīmē: sabalansēta dinamika, telpisks vokāls, rūpīgi panākta siltuma un skaidrības attiecība.
-</p>
-
-<p>
-Turpretī Eirovīzijas dziesma tiek veidota ar vienu fokusu: <strong>skaņa uz skatuves</strong>. Tā skan skaļāk, plašāk, bieži arī asāk — kā <em>teātra balss</em>, nevis kamermūzika. Vokāls dominē visam pāri, basu līnijas ir izteikti uzpumpētas, un bieži tiek izmantotas skaņas „sprādziena” tehnikas, kas vizuāli saskan ar prožektoriem un LED fonu.
-</p>
-
-<!-- Attēls vidū -->
 <div style="width: 100%; height: 400px; overflow: hidden; position: relative; margin: 2rem 0;">
-  <img src="../images/raksti/sound-stage-vs-studio.jpg"
-       alt="Studijas vs skatuves skaņas vide"
-       style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
+  <img src="../images/raksti/sound-stage-vs-studio.jpg" alt="Studijas vs skatuves skaņas vide" style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
 </div>
 
-<p>
-Industrijas producents darbojas kā <strong>skaņas arhitekts</strong> — viņš izliek muzikālu telpu, kurā klausītājs var ieiet un palikt. Tas var būt lo-fi estētikā balstīts ritms, sirsnīgs analogs sintezators vai gluži pretēji — hiperprecīzs trap beat. Šajās dziesmās ir vieta klusumam, telpai, atkārtojumam, niansēm.
-</p>
-
-<p>
-Savukārt Eirovīzijas producents kļūst par <strong>skatuves inženieri</strong>. Viņa uzdevums nav izveidot vidi, kurā cilvēks var pazust, bet gan radīt <em>sprādziena punktu</em>, ko tūkstoši dzirdēs vienlaicīgi stadionā vai miljoni ekrānā. Tādēļ šīs dziesmas bieži izklausās pēc “blast audio” — viss ir virspusē, skaidrs, uzspīlēts.
-</p>
-
-<p>
-Instrumentācijā arī vērojama atšķirība. Industrijas dziesmas bieži eksperimentē — trap perkusijas savienojas ar indie akustiku, synth-pop saplūst ar house ritmiem. Eirovīzijas dziesmas atpazīstamas pēc <strong>eiro-pop klišejām, etno motīviem un EDM piedziedājumiem</strong>, kas tiek izkārtoti kā dramaturģiski “triki”.
-</p>
-
-<p>
-Visbeidzot — efekti. Kamēr industrijā tie ir kā garšvielas — reverb, distortion, chorus — Eirovīzijā tie kļūst par <em>galveno sastāvdaļu</em>: lai piešķirtu dziesmai „masu” un teatrālu klātbūtni. Bieži pat mierīgs teksts tiek iepakots skaņu uzbrukumā.
-</p>
-
-<p>
-Rezultātā: industrijas skaņa cenšas būt <strong>ievelkoša</strong>. Eirovīzijas skaņa – <strong>neaizmirstama</strong>. Viena vēlas palikt fonā. Otra – uzsprāgt tev tieši sejā.
-</p>
+<p>Industrijas producents darbojas kā <strong>skaņas arhitekts</strong> — viņš izliek muzikālu telpu, kurā klausītājs var ieiet un palikt.</p>
+<p>Savukārt Eirovīzijas producents kļūst par <strong>skatuves inženieri</strong>. Viņa uzdevums ir radīt <em>sprādziena punktu</em>, ko tūkstoši dzirdēs vienlaicīgi stadionā.</p>
+<p>Instrumentācijā arī vērojama atšķirība. Industrijas dziesmas bieži eksperimentē. Eirovīzijas dziesmas atpazīstamas pēc <strong>eiro-pop klišejām, etno motīviem un EDM piedziedājumiem</strong>.</p>
+<p>Rezultātā: industrijas skaņa cenšas būt <strong>ievelkoša</strong>. Eirovīzijas skaņa – <strong>neaizmirstama</strong>.</p>
 
 <h3 style="margin-top: 2rem;">🎧 Klausies piemērus:</h3>
-
-<!-- Industrijas piemērs -->
-<p><strong>Industrijas dziesma:</strong> he Tiger Lillies - "Heroin"</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/r_XhlZrL64Q" 
-title="he Tiger Lillies - Heroin" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
-<!-- Eirovīzijas piemērs -->
+<p><strong>Industrijas dziesma:</strong> The Tiger Lillies - "Heroin"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/r_XhlZrL64Q" title="The Tiger Lillies - Heroin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p style="margin-top: 1.5rem;"><strong>Eirovīzijas dziesma:</strong> Go_A - SHUM</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/U7-dxzp6Jvs" 
-title="Go_A - SHUM" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/U7-dxzp6Jvs" title="Go_A - SHUM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h2>4. 🎭 Tēls un performances daba</h2>
+<p>Industrijas mākslinieks veido savu tēlu kā ilgtermiņa stāstu. Viņa vizuālā identitāte ir daļa no rūpīgi uzbūvētas karjeras. Šie tēli aug kopā ar auditoriju.</p>
+<p>Eirovīzijā tēls tiek radīts uz vienu reizi. Tas ir <strong>performatīvs sprādziens</strong> – tas nedzīvo ilgāk par trīs minūtēm, bet tam jābūt atmiņā paliekošam. Tā nav karjeras epizode – tā ir vienas nakts maskarāde.</p>
 
-<p>
-Industrijas mākslinieks veido savu tēlu kā ilgtermiņa stāstu. Viņa vizuālā identitāte – no klipiem līdz skatuvei, no intervijām līdz apģērbam – ir daļa no rūpīgi uzbūvētas karjeras. Šie tēli aug kopā ar auditoriju. Tiem ir loģika, vēsture, attīstība. Mēs redzam, kā mūziķis mainās albumā pēc albuma, kļūst autentiskāks, dažkārt provokatīvāks, dažkārt klusāks. Koncertturnejas, klipi, sociālo tīklu saturs — tas viss nostiprina vienu nemainīgu kodolu.
-</p>
-
-<p>
-Eirovīzijā tas viss ir otršķirīgi. Tēls tiek radīts uz vienu reizi. Tas ir <strong>performatīvs sprādziens</strong> – tas nedzīvo ilgāk par trīs minūtēm, bet tam jābūt atmiņā paliekošam. Tā nav karjeras epizode – tā ir vienas nakts maskarāde. Tērps var būt absurds vai grandiozs, vokālais stils pārspīlēts, žesti teatrāli. Šeit dziesma nav tikai dziesma – tā ir <em>dramatizēta metafora</em>, bieži pārkodēta politiskā vai identitātes zīmē.
-</p>
-
-<!-- Attēls -->
 <div style="width: 100%; height: 550px; overflow: hidden; position: relative; margin-top: 2rem;">
-  <img src="../images/raksti/performance-style.jpg"
-       alt="Tēls un skatuve"
-       style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
+  <img src="../images/raksti/performance-style.jpg" alt="Tēls un skatuve" style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
 </div>
 
-<p>
-Vēl būtiska atšķirība ir <strong>izpildījuma tehnika</strong>. Industrijā playback (iepriekš ierakstīts vokāls) ir ikdienišķs rīks – lai uzlabotu skaņu, palīdzētu skriešanas laikā koncertā, vai vienkārši saglabātu konsekvenci. Savukārt Eirovīzijā <strong>dzīvais vokāls ir obligāts</strong>, un tas nozīmē, ka pat viskomplicētākā kustību horeogrāfija jāsaskaņo ar reālu dziedāšanu – bieži tas rada pārslodzi un dziesmas “elpo” mazāk.
-</p>
-
-<p>
-Industrijā mūziķis domā: <em>„Kā tas izskatīsies rēķinoties ar kopējo estētiku?”</em>. Eirovīzijā tiek jautāts: <em>„Vai to atcerēsies mani pēc 20 sekundēm?”</em>
-</p>
-
-<p>
-Tāpēc bieži Eirovīzijas tēli šķiet <strong>karikatūriski, memētiski, teatralizēti</strong>, kamēr industrijā tēli – pat ja ekstrēmi – šķiet organiski. Viens ir ilgtermiņa saruna ar klausītāju. Otrs – teatrāls kliedziens pāri visam stadionam.
-</p>
+<p>Vēl būtiska atšķirība ir <strong>izpildījuma tehnika</strong>. Industrijā playback ir ikdienišķs rīks. Savukārt Eirovīzijā <strong>dzīvais vokāls ir obligāts</strong>.</p>
+<p>Tāpēc bieži Eirovīzijas tēli šķiet <strong>karikatūriski, memētiski, teatralizēti</strong>, kamēr industrijā tēli – pat ja ekstrēmi – šķiet organiski.</p>
 
 <h3 style="margin-top: 2rem;">🎧 Klausies piemērus:</h3>
-
-<!-- Industrijas piemērs -->
 <p><strong>Industrijas dziesma:</strong> AURORA - "The Seed"</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/_Mc_OM5oNA8" 
-title="AURORA - The Seed" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
-<!-- Eirovīzijas piemērs -->
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/_Mc_OM5oNA8" title="AURORA - The Seed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p style="margin-top: 1.5rem;"><strong>Eirovīzijas dziesma:</strong> Conchita Wurst - "Rise Like A Phoenix"</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/ToqNa0rqUtY" 
-title="GConchita Wurst - Rise Like A Phoenix" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ToqNa0rqUtY" title="Conchita Wurst - Rise Like A Phoenix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h2>5. 🌍 Tematika un žanru dažādība</h2>
-
-<p>
-Mūzikas industrija ir kā <strong>milzīgs daudzžanru tirgus</strong>, kurā mākslinieki eksperimentē ar formām, hibridizē stilus un rada arvien jaunas nišas. Vienā dienā Spotify topā blakus pastāv hyperpop dziesma ar digitāli deformētu vokālu un lo-fi sapņains singls, kas ierakstīts guļamistabā. Žanru robežas kļūst izplūdušas: trap ar R&B, industrial techno ar melanholisku indie. Šī daudzveidība ļauj dziesmām būt <em>personiskām un dažādām</em>, pielāgotām konkrētam klausītājam.
-</p>
-
-<p>
-Eirovīzijas pasaule, savukārt, ir daudz strukturētāka. Žanri, lai gan it kā dažādi, bieži seko jau pārbaudītiem šabloniem: <strong>eiro-pop + EDM + etno vai ballādes elementi</strong>. Lielākā daļa Eirovīzijas dziesmu skan kā “konkursam piemērots stils” – liels vokāls, straujš piedziedājums, emocionāla atdeve, bieži arī stilizēts tautas motīvs vai ritmiska fona deja. Mūzikas izvēle šeit nav brīva izpēte – tā ir <em>apzināta stratēģija</em>.
-</p>
+<p>Mūzikas industrija ir kā <strong>milzīgs daudzžanru tirgus</strong>. Žanru robežas kļūst izplūdušas: trap ar R&B, industrial techno ar melanholisku indie.</p>
+<p>Eirovīzijas pasaule ir daudz strukturētāka. Žanri, lai gan it kā dažādi, bieži seko jau pārbaudītiem šabloniem: <strong>eiro-pop + EDM + etno vai ballādes elementi</strong>.</p>
 
 <div style="width: 100%; height: 460px; overflow: hidden; position: relative; margin: 2rem 0;">
-  <img src="../images/raksti/genre-diversity.jpg"
-       alt="Žanru un tematu daudzveidība"
-       style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
+  <img src="../images/raksti/genre-diversity.jpg" alt="Žanru un tematu daudzveidība" style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
 </div>
 
-<p>
-Runājot par <strong>valodu izvēli</strong>, industrijā dominē angļu valoda – tā ļauj sasniegt globālu auditoriju un iekļūt lielākajos playlistos. Bet arvien biežāk parādās arī dziesmas korejiešu, spāņu, franču, poļu, turku vai pat latviešu valodā – nišu algoritmiem tas netraucē. Mūzikas industrija kļūst patiesi <em>transvalodiska</em>, kur saturs ir svarīgāks par tulkojumu.
-</p>
-
-<p>
-Eirovīzijā valoda ir <strong>politisks un simbolisks izvēles akts</strong>. Dzimtā valoda bieži tiek izmantota kā nacionālās identitātes marķieris, bet piedziedājums gandrīz vienmēr ir angļu valodā, lai to saprastu žūrija un skatītāji visā Eiropā. Šī balansēšana starp lokālo un globālo rada dīvainu “hibrīda valodu”, kas reizēm izklausās pēc <em>Google Translate poēzijas</em>.
-</p>
-
-<p>
-Tematiski industrijas dziesmas ir daudz plašākas: tās risina emocionālu intimitāti, mentālo veselību, seksualitāti, var būt introspektīvas vai ironiskas, kritiskas vai nihilistiskas. Tās uzrunā vienu klausītāju. 
-</p>
-
-<p>
-Eirovīzijas dziesmas runā <strong>ar masu</strong>. To tēmas gandrīz vienmēr ir “lielas” – brīvība, mīlestība, trauma, karš, tautas spēks, dziedinošs gars. Tās ir kā <em>vēstījuma plakāti ar muzikālu rāmi</em>, kas nereti pārslogo dziesmas saturu ar simboliem: spārni, uguns, ūdens, klusums, sauciens.
-</p>
-
-<p>
-Un tā rezultātā: industrijas dziesmas dzīvo ilgāk, jo tās ir <em>personiski patiesas</em>. Eirovīzijas dziesmas bieži dzīvo vienu nakti, jo tās ir <em>teātris, kas runā globālā valodā, bet ne vienmēr klausāmi</em>.
-</p>
+<p>Runājot par <strong>valodu izvēli</strong>, industrijā dominē angļu valoda, bet arvien biežāk parādās arī dziesmas korejiešu, spāņu vai latviešu valodā. Mūzikas industrija kļūst patiesi <em>transvalodiska</em>.</p>
+<p>Eirovīzijā valoda ir <strong>politisks un simbolisks izvēles akts</strong>. Šī balansēšana starp lokālo un globālo rada dīvainu "hibrīda valodu".</p>
+<p>Tematiski industrijas dziesmas ir daudz plašākas: tās risina emocionālu intimitāti, mentālo veselību, ironiju. Eirovīzijas dziesmas runā <strong>ar masu</strong>. To tēmas gandrīz vienmēr ir "lielas" – brīvība, mīlestība, trauma, karš.</p>
+<p>Un tā rezultātā: industrijas dziesmas dzīvo ilgāk, jo tās ir <em>personiski patiesas</em>. Eirovīzijas dziesmas bieži dzīvo vienu nakti.</p>
 
 <h3 style="margin-top: 2rem;">🎧 Klausies piemērus:</h3>
-
-<!-- Industrijas piemērs -->
 <p><strong>Industrijas dziesma:</strong> Gary Clark Jr. - "Bright Lights"</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/CFjMeOnqAPI" 
-title="Gary Clark Jr. - Bright Lights" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
-<!-- Eirovīzijas piemērs -->
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/CFjMeOnqAPI" title="Gary Clark Jr. - Bright Lights" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p style="margin-top: 1.5rem;"><strong>Eirovīzijas dziesma:</strong> Salvador Sobral - "Amar Pelos Dois"</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/ymFVfzu-2mw" 
-title="Salvador Sobral - Amar Pelos Dois" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ymFVfzu-2mw" title="Salvador Sobral - Amar Pelos Dois" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-  <h2>6. 📊 Stratēģija un izplatīšana</h2>
-
-<p>
-Mūzikas industrijā katra dziesma ir <strong>produkts ar izaugsmes ceļu</strong>. Tās izdošana ir daļa no lielāka plāna – albuma kampaņas, singlu secības, vasaras tūres vai straumēšanas stratēģijas. Dziesmu izlaiž konkrētā laikā, izvēlas tai piemērotus “editorial playlistus”, mērķē uz TikTok, YouTube Shorts vai Instagram Reels, lai panāktu algoritmisku pamanāmību. Tā ir <em>ilgtermiņa investīcija</em> – dziesma tiek atkārtoti “pabīdīta” publikas priekšā mēnešiem vai pat gadiem.
-</p>
-
-<p>
-Eirovīzijā viss notiek pēc <strong>pilnīgi cita principa</strong>. Dziesma tiek izlaista konkrētam notikumam – nacionālajai atlasei, pusfinālam, finālam. Tās “dzīve” sākas ar uzvaru vietējā konkursā un virzās uz Eirovīzijas finālu kā <em>vienreizējs vilnis</em>. Ja dziesma neiekļūst finālā – tā bieži pazūd. Pat ja iekļūst – tai ir tikai pāris nedēļas, lai kļūtu par “hitu”. Tas nav lēns kāpums – tā ir viena šāviena spēle.
-</p>
+<h2>6. 📊 Stratēģija un izplatīšana</h2>
+<p>Mūzikas industrijā katra dziesma ir <strong>produkts ar izaugsmes ceļu</strong>. Tās izdošana ir daļa no lielāka plāna. Tā ir <em>ilgtermiņa investīcija</em>.</p>
+<p>Eirovīzijā viss notiek pēc <strong>pilnīgi cita principa</strong>. Dziesma tiek izlaista konkrētam notikumam. Tā ir viena šāviena spēle.</p>
 
 <div style="width: 100%; height: 460px; overflow: hidden; position: relative; margin: 2rem 0;">
-  <img src="../images/raksti/strategy-distribution.jpg"
-       alt="Stratēģija un izplatīšana"
-       style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
+  <img src="../images/raksti/strategy-distribution.jpg" alt="Stratēģija un izplatīšana" style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
 </div>
 
-<p>
-Industrijā par dziesmas panākumiem rūpējas <strong>profesionāls menedžments un ierakstu kompānijas</strong>. Ir PR komandas, sociālo mediju menedžeri, datu analītiķi, kas seko līdzi tendencēm. Mērķis ir ilgstoši uzturēt dziesmu apritē un pārvērst to par daļu no mākslinieka zīmola.
-</p>
-
-<p>
-Eirovīzijas dziesmu mārketings bieži ir <strong>valsts projekts</strong>. Par to atbild nacionālā televīzija, valsts PR nodaļas, dažreiz arī fanu kopienas, kas izplata saturu sociālajos tīklos. Tas ir <em>kolektīvs pasākums</em>, bieži emocionāli uzlādēts – cilvēki uztver šo dziesmu kā “savējo”. Bet tieši tāpēc arī tās dzīve ir tik saistīta ar konkrēto notikumu – pēc konkursa interese apsīkst.
-</p>
-
-<p>
-Tādējādi: industrijas dziesmas tiek <strong>plānotas kā karjeras sastāvdaļa</strong>, kamēr Eirovīzijas dziesmas ir <strong>reklāmas kampaņa ar derīguma termiņu</strong>. Viena balstās algoritmos, otra – emocijās.
-</p>
+<p>Industrijā par dziesmas panākumiem rūpējas <strong>profesionāls menedžments un ierakstu kompānijas</strong>. Mērķis ir ilgstoši uzturēt dziesmu apritē.</p>
+<p>Eirovīzijas dziesmu mārketings bieži ir <strong>valsts projekts</strong>. Tas ir <em>kolektīvs pasākums</em>, emocionāli uzlādēts. Bet tieši tāpēc arī tās dzīve ir saistīta ar konkrēto notikumu.</p>
+<p>Tādējādi: industrijas dziesmas tiek <strong>plānotas kā karjeras sastāvdaļa</strong>, kamēr Eirovīzijas dziesmas ir <strong>reklāmas kampaņa ar derīguma termiņu</strong>.</p>
 
 <h3 style="margin-top: 2rem;">🎧 Klausies piemērus:</h3>
-
-<!-- Industrijas piemērs -->
 <p><strong>Industrijas dziesma:</strong> Nick Cave & The Bad Seeds - 'Jesus Alone'</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/9iGxoJnygW8" 
-title="Nick Cave & The Bad Seeds - 'Jesus Alone'" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
-<!-- Eirovīzijas piemērs -->
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/9iGxoJnygW8" title="Nick Cave & The Bad Seeds - 'Jesus Alone'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p style="margin-top: 1.5rem;"><strong>Eirovīzijas dziesma:</strong> TIX - "Fallen Angel"</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/bp2kfhuv8ZU" 
-title="TIX - Fallen Angel" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/bp2kfhuv8ZU" title="TIX - Fallen Angel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h2>📌 Secinājums</h2>
-
-<p>
-Runāt par Eirovīziju kā par “mūzikas konkursu” ir tikpat precīzi kā dēvēt olimpisko spēļu atklāšanas ceremoniju par vieglatlētikas sacensībām. Protams, tur ir kustība, skatuve un skaņa – bet patiesībā tā ir <strong>televīzijas ceremonija ar karodziņiem, emociju uzsitieniem un memētiskiem tēliem</strong>. Tā pārstāv valstis, nevis žanrus; cilvēkus, nevis skaņas. Tā ir kultūras cosplay (costume play) ar LED prožektoriem.
-</p>
-
-<p>
-Savukārt mūzikas industrija bieži tiek noniecināta kā “pārkomercializēta”, “bez dvēseles”, “Spotify-orientēta”. Bet realitāte ir sarežģītāka. Tā ir vieta, kur dziesmas dzīvo ilgi pēc tam, kad gaismas ir izslēgtas. Tur dzimst ne tikai hīti, bet arī <em>formas eksperimenti, balss meklējumi, valodas miksi un saturs, kas nereti ir pārāk intīms, lai skanētu uz Eirovīzijas skatuves</em>.
-</p>
-
-<p>
-Eirovīzija sola “vienot mūzikā”, bet bieži izklausās pēc <strong>populāru žanru teātra</strong> ar standarta sižetu – trauma → cerība → modulācija. Industrija savukārt neapsola neko – tikai “jaunumu plūsmu”, no kuras reizēm iznirst īsts, godīgs skaņas fragments, kas paliek.
-</p>
-
-<p>
-Un, nē – Eirovīzija nav “mūzikas nākotne”. Tas ir <em>pašreprezentācijas karnevāls</em>, kur bieži uzvar nevis dziesma, bet karogs, vizuālais triks vai “kreisās kājas vibrācija 2:43 minūtē”.
-</p>
-
-<p>
-Protams, Eirovīzija ir cirks. Bet populārs. Krāsains, skaļš un emocijām pārpildīts šovs ar konfeti, spārniem un obligātu bļāvienu pie modulācijas. Un tas viss ir lieliski — ja vien mēs beigtu tēlot, ka tas ir mūzikas templis. Jo tā nav katedrāle. Tas ir skatuves lunaparks ar nacionāliem kostīmiem. Un varbūt beidzot arī jāuzraksta virs ieejas: “Laipni lūgti — šeit sākas estētiski koordinēta histērija.”
-</p>
+<p>Runāt par Eirovīziju kā par "mūzikas konkursu" ir tikpat precīzi kā dēvēt olimpisko spēļu atklāšanas ceremoniju par vieglatlētikas sacensībām. Tā ir <strong>televīzijas ceremonija ar karodziņiem, emociju uzsitieniem un memētiskiem tēliem</strong>.</p>
+<p>Savukārt mūzikas industrija bieži tiek noniecināta kā "pārkomercializēta". Bet realitātē tā ir vieta, kur dziesmas dzīvo ilgi pēc tam, kad gaismas ir izslēgtas.</p>
+<p>Eirovīzija sola "vienot mūzikā", bet bieži izklausās pēc <strong>populāru žanru teātra</strong> ar standarta sižetu – trauma → cerība → modulācija.</p>
+<p>Un, nē – Eirovīzija nav "mūzikas nākotne". Tas ir <em>pašreprezentācijas karnevāls</em>. Protams, Eirovīzija ir cirks. Bet populārs. Krāsains, skaļš un emocijām pārpildīts šovs. Varbūt jāuzraksta virs ieejas: "Laipni lūgti — šeit sākas estētiski koordinēta histērija."</p>
 
 <div style="width: 100%; height: 460px; overflow: hidden; position: relative; margin: 2rem 0;">
-  <img src="../images/raksti/finale-irony.jpg"
-       alt="Ironisks secinājums par Eirovīziju un industriju"
-       style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
+  <img src="../images/raksti/finale-irony.jpg" alt="Ironisks secinājums par Eirovīziju un industriju" style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
 </div>
-
 
 <h3 style="margin-top: 2rem;">🎧 Klausies piemērus:</h3>
-
-<!-- Industrijas piemērs -->
 <p><strong>Industrijas dziesma:</strong> Dzelzs Vilks - "Nepārtraukta Līnija"</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/ToIEOvbqGaQ" 
-title="Dzelzs Vilks - Nepārtraukta Līnija" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
-<!-- Eirovīzijas piemērs -->
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ToIEOvbqGaQ" title="Dzelzs Vilks - Nepārtraukta Līnija" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p style="margin-top: 1.5rem;"><strong>Eirovīzijas dziesma:</strong> Tautumeitas - "Bur Man Laimi"</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/b1_t79mQkm4" 
-title="TTautumeitas - Bur Man Laimil" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/b1_t79mQkm4" title="Tautumeitas - Bur Man Laimi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+
+<!-- ========== ENGLISH ========== -->
+<div class="container lang-en">
+  <h1>Industry Songs vs. Eurovision Songs</h1>
+
+<h2>1. 🎯 Purpose and audience</h2>
+<p>Industry songs are created as <strong>part of the music market</strong> — they are commercial products that work long-term: in playlists, concerts, streaming. They are subject to <em>market logic</em> — listenability, musical quality, vocal texture, instrument cohesion, and yes — emotion too, but in measured doses.</p>
+<p>Eurovision songs, on the other hand, belong <strong>not to the music industry, but to television show business</strong>. They are crafted not as a musical experience, but as a <em>three-minute stage explosion</em>. Eurovision is structured as a <strong>theatre of national representatives</strong>.</p>
+
+<div style="width: 100%; height: 500px; overflow: hidden; position: relative; margin-top: 2rem;">
+  <img src="../images/raksti/pop-vs-euro-stage.jpg" alt="Stage contrast" style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
+</div>
+
+<p>For this reason, many Eurovision songs <strong>are not listenable outside context</strong>. They are built with emphasis on <strong>performance, screaming, "vocal sprints", LED projections or trauma narrative</strong>. They are like <em>plastic flowers</em> — loud, but without fragrance.</p>
+<p>By contrast, industry songs are composed to be <strong>genuinely listenable</strong>. They often speak of "the world's pain" less bluntly, instead revealing nuances, longing, felt irony, a sad melody or a joyful groove.</p>
+<p>The audience differs too. In the industry, the key is the <strong>individual listener</strong>. In Eurovision, the key is the <strong>mass effect at a single moment</strong>.</p>
+<p>And here lies the essential distinction: <strong>Eurovision looks like the music industry, but does not belong to it</strong>. That is why we so often hear not a song, but <strong>a loud message without melody</strong>.</p>
+<p>If an industry song is like <em>flowing water</em>, a Eurovision song is often like <em>boiled steam</em> — quick, pressurised, and gone.</p>
+
+<h3 style="margin-top: 2rem;">🎧 Listen to examples:</h3>
+<p><strong>Industry song:</strong> Phoebe Bridgers – "Motion Sickness"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/9sfYpolGCu8" title="Phoebe Bridgers - Motion Sickness" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p style="margin-top: 1.5rem;"><strong>Eurovision song:</strong> Netta – "Toy" (Israel 2018)</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/CziHrYYSyPc" title="Netta - Toy (Israel 2018)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2>2. 🎵 Structure and composition</h2>
+<p>In the pop music industry, a song's form is built freely: a slow intro is possible, a pre-chorus, a post-chorus, even a quiet fade-out. A song can change tempo, surprise with arrangement. The listener often does not even notice the structure — they simply <em>flow along</em>.</p>
+<p>In Eurovision such flow would be a <strong>fatal mistake</strong>. You are given three minutes to say everything. A song must attract the viewer within the first 10 seconds.</p>
+<p>In the industry, the "hook" is often subtle. In Eurovision, it is like an <strong>advertising slogan</strong>: loud, clear, drilling into the ears.</p>
+<p>Moreover, Eurovision's <strong>rule is strict — maximum 3:00 minutes</strong>. This creates dramaturgical pressure. The climax is mandatory, often involving a "key change".</p>
+<p>This structural difference determines the emotional result. While industry songs let you feel part of a story, Eurovision songs often feel like a <em>monologue before an audience — with one breath</em>.</p>
+
+<div style="width: 100%; height: 500px; overflow: hidden; position: relative; margin-top: 2rem;">
+  <img src="../images/raksti/song-structure.jpg" alt="Song structure" style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
+</div>
+
+<h3 style="margin-top: 2rem;">🎧 Listen to examples:</h3>
+<p><strong>Industry song:</strong> The Weeknd - "Blinding Lights"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/4NRXx6U8ABQ" title="The Weeknd - Blinding Lights" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p style="margin-top: 1.5rem;"><strong>Eurovision song:</strong> Loreen - Tattoo</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/BE2Fj0W4jP4" title="Loreen - Tattoo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2>3. 🎚 Sound production</h2>
+<p>In the pop music industry, production is a delicate balance — the song is adapted for streaming platform algorithms, radio waves, headphone listening. This means: balanced dynamics, spatial vocals, carefully achieved warmth-to-clarity ratio.</p>
+<p>By contrast, a Eurovision song is built with one focus: <strong>sound on stage</strong>. Vocals dominate everything, bass lines are conspicuously pumped up.</p>
+
+<div style="width: 100%; height: 400px; overflow: hidden; position: relative; margin: 2rem 0;">
+  <img src="../images/raksti/sound-stage-vs-studio.jpg" alt="Studio vs stage sound environment" style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
+</div>
+
+<p>An industry producer works as a <strong>sonic architect</strong> — laying out a musical space the listener can enter and inhabit.</p>
+<p>The Eurovision producer becomes a <strong>stage engineer</strong>. Their task is not to create an environment in which someone can get lost, but to generate an <em>explosion point</em> that thousands will hear simultaneously in a stadium.</p>
+<p>Instrumentation also differs. Industry songs frequently experiment. Eurovision songs are recognisable by <strong>euro-pop clichés, ethno motifs and EDM choruses</strong>.</p>
+<p>Result: industry sound tries to be <strong>immersive</strong>. Eurovision sound — <strong>unforgettable</strong>.</p>
+
+<h3 style="margin-top: 2rem;">🎧 Listen to examples:</h3>
+<p><strong>Industry song:</strong> The Tiger Lillies - "Heroin"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/r_XhlZrL64Q" title="The Tiger Lillies - Heroin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p style="margin-top: 1.5rem;"><strong>Eurovision song:</strong> Go_A - SHUM</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/U7-dxzp6Jvs" title="Go_A - SHUM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2>4. 🎭 Image and the nature of performance</h2>
+<p>An industry artist builds their image as a long-term story. Their visual identity — from videos to stage, from interviews to clothing — is part of a carefully constructed career. These images grow together with the audience.</p>
+<p>In Eurovision all of this is secondary. The image is created for a single occasion. It is a <strong>performative explosion</strong> — it lives no longer than three minutes, but must remain in the memory. It is not a career episode — it is a one-night masquerade.</p>
+
+<div style="width: 100%; height: 550px; overflow: hidden; position: relative; margin-top: 2rem;">
+  <img src="../images/raksti/performance-style.jpg" alt="Image and stage" style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
+</div>
+
+<p>Another significant difference is <strong>performance technique</strong>. In the industry, playback is an everyday tool. In Eurovision, <strong>live vocals are compulsory</strong>.</p>
+<p>That is why Eurovision images often seem <strong>caricatured, meme-like, theatricalised</strong>, while industry images — even when extreme — seem organic.</p>
+
+<h3 style="margin-top: 2rem;">🎧 Listen to examples:</h3>
+<p><strong>Industry song:</strong> AURORA - "The Seed"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/_Mc_OM5oNA8" title="AURORA - The Seed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p style="margin-top: 1.5rem;"><strong>Eurovision song:</strong> Conchita Wurst - "Rise Like A Phoenix"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ToqNa0rqUtY" title="Conchita Wurst - Rise Like A Phoenix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2>5. 🌍 Themes and genre diversity</h2>
+<p>The music industry is like a <strong>vast multi-genre market</strong>. Genre boundaries are becoming blurred: trap with R&B, industrial techno with melancholic indie.</p>
+<p>The Eurovision world is far more structured. Genres, though ostensibly varied, often follow already-tested templates: <strong>euro-pop + EDM + ethno or ballad elements</strong>.</p>
+
+<div style="width: 100%; height: 460px; overflow: hidden; position: relative; margin: 2rem 0;">
+  <img src="../images/raksti/genre-diversity.jpg" alt="Genre and thematic diversity" style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
+</div>
+
+<p>Regarding <strong>language choice</strong>, English dominates in the industry, but songs in Korean, Spanish or Latvian are appearing more frequently. The music industry is becoming truly <em>trans-linguistic</em>.</p>
+<p>In Eurovision, language is a <strong>political and symbolic act of choice</strong>. The balancing act between local and global creates a strange "hybrid language".</p>
+<p>Thematically, industry songs are much broader: they address emotional intimacy, mental health, irony. Eurovision songs speak <strong>to the masses</strong>. Their themes are almost always "big" — freedom, love, trauma, war.</p>
+<p>The result: industry songs live longer because they are <em>personally true</em>. Eurovision songs often live for a single night.</p>
+
+<h3 style="margin-top: 2rem;">🎧 Listen to examples:</h3>
+<p><strong>Industry song:</strong> Gary Clark Jr. - "Bright Lights"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/CFjMeOnqAPI" title="Gary Clark Jr. - Bright Lights" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p style="margin-top: 1.5rem;"><strong>Eurovision song:</strong> Salvador Sobral - "Amar Pelos Dois"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ymFVfzu-2mw" title="Salvador Sobral - Amar Pelos Dois" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2>6. 📊 Strategy and distribution</h2>
+<p>In the music industry, every song is a <strong>product with a growth path</strong>. Its release is part of a larger plan. It is a <em>long-term investment</em>.</p>
+<p>In Eurovision everything works on a <strong>completely different principle</strong>. A song is released for a specific event. It is a one-shot game.</p>
+
+<div style="width: 100%; height: 460px; overflow: hidden; position: relative; margin: 2rem 0;">
+  <img src="../images/raksti/strategy-distribution.jpg" alt="Strategy and distribution" style="position: absolute; top: -30px; left: 0; width: 100%; height: auto;">
+</div>
+
+<p>In the industry, <strong>professional management and record companies</strong> look after a song's success. The goal is to keep the song in circulation long-term.</p>
+<p>Eurovision song marketing is often a <strong>state project</strong>. It is a <em>collective undertaking</em>, emotionally charged. But that is exactly why the song's life is so tied to the specific event.</p>
+<p>Thus: industry songs are <strong>planned as part of a career</strong>, while Eurovision songs are an <strong>advertising campaign with an expiry date</strong>.</p>
+
+<h3 style="margin-top: 2rem;">🎧 Listen to examples:</h3>
+<p><strong>Industry song:</strong> Nick Cave & The Bad Seeds - 'Jesus Alone'</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/9iGxoJnygW8" title="Nick Cave & The Bad Seeds - 'Jesus Alone'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p style="margin-top: 1.5rem;"><strong>Eurovision song:</strong> TIX - "Fallen Angel"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/bp2kfhuv8ZU" title="TIX - Fallen Angel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2>📌 Conclusion</h2>
+<p>Calling Eurovision a "music contest" is as precise as calling the Olympic opening ceremony an athletics competition. It is a <strong>television ceremony with flags, emotional punches and meme-like images</strong>. It represents countries, not genres; people, not sounds.</p>
+<p>The music industry, meanwhile, is often dismissed as "over-commercialised" and "Spotify-oriented". But reality is more complex. It is the place where songs live long after the lights go out.</p>
+<p>Eurovision promises to "unite through music", but often sounds like a <strong>theatre of popular genres</strong> with a standard plot — trauma → hope → modulation.</p>
+<p>And no — Eurovision is not "the future of music". It is a <em>carnival of self-representation</em>. Of course, Eurovision is a circus. But a popular one. Colourful, loud and emotion-packed. Perhaps it is finally time to write above the entrance: "Welcome — aesthetically coordinated hysteria begins here."</p>
+
+<div style="width: 100%; height: 460px; overflow: hidden; position: relative; margin: 2rem 0;">
+  <img src="../images/raksti/finale-irony.jpg" alt="Ironic conclusion about Eurovision and the industry" style="position: absolute; top: -20px; left: 0; width: 100%; height: auto;">
+</div>
+
+<h3 style="margin-top: 2rem;">🎧 Listen to examples:</h3>
+<p><strong>Industry song:</strong> Dzelzs Vilks - "Nepārtraukta Līnija"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ToIEOvbqGaQ" title="Dzelzs Vilks - Nepārtraukta Līnija" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p style="margin-top: 1.5rem;"><strong>Eurovision song:</strong> Tautumeitas - "Bur Man Laimi"</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/b1_t79mQkm4" title="Tautumeitas - Bur Man Laimi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+  <script src="../assets/js/lang.js?v=5"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
+  <script src="../assets/js/analytics.js"></script>
 </body>
 </html>

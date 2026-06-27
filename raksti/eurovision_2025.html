@@ -3,592 +3,440 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="/images/logo_small.png" type="image/png">
-  <title>Eirovīzija — Dziesma vai bļaušana?</title>
+  <title>Eirovīzija — Dziesma vai bļaušana?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta property="og:image" content="https://puteklis.com/images/share/eurovision_share.jpg" />
+  <meta property="og:image" content="https://puteklis.com/images/share/eurovision_share.jpg" />
   <style>
-    body {
-      background: linear-gradient(to right, #2c3e50, #4ca1af);
-      color: #f8f8f8;
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 3rem 2rem;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    }
-    h2 {
-      margin-top: 2em;
-      font-size: 1.4em;
-      color: #ffe;
-    }
-    p {
-      font-size: 1.05em;
-      line-height: 1.6em;
-      margin-bottom: 1em;
-    }
-    .emoji {
-      font-size: 1.2em;
-      margin-right: 0.3em;
-    }
-
-    header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
-  backdrop-filter: blur(4px);
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-}
-
-header nav a {
-  color: #ffffff; /* gaišāka krāsa! */
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s;
-}
-
-header nav a:hover {
-  color: #ffd700; /* zeltaina krāsa hover efektam */
-}
-
-header nav a.active {
-  text-decoration: underline;
-  color: #00ffff;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: sans-serif;
-  margin-top: 1em;
-}
-
-th, td {
-  border: 1px solid #44788a;
-  padding: 12px 16px;
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  background-color: #01597b; /* tumši zils */
-  color: white;
-}
-
-tr:nth-child(even) {
-  background-color: #27596c; /* dziļāks tumši zils */
-}
-
-.note {
-  display: block;
-  font-size: 0.9em;
-  color: #aacfd0; /* gaiši zils uz tumšā fona */
-  margin-top: 4px;
-}
-
-
+    body { background: linear-gradient(to right, #2c3e50, #4ca1af); color: #f8f8f8; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: auto; padding: 3rem 2rem; }
+    h1 { font-size: 2.5em; margin-bottom: 1rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+    h2 { margin-top: 2em; font-size: 1.4em; color: #ffe; }
+    p { font-size: 1.05em; line-height: 1.6em; margin-bottom: 1em; }
+    .emoji { font-size: 1.2em; margin-right: 0.3em; }
+    header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: rgba(0,0,0,0.6); padding: 1rem 2rem; backdrop-filter: blur(4px); }
+    header nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 2rem; margin: 0; }
+    header nav a { color: #fff; text-decoration: none; font-weight: bold; transition: color 0.2s; }
+    header nav a:hover { color: #ffd700; }
+    header nav a.active { text-decoration: underline; color: #00ffff; }
+    table { width: 100%; border-collapse: collapse; font-family: sans-serif; margin-top: 1em; }
+    th, td { border: 1px solid #44788a; padding: 12px 16px; text-align: left; vertical-align: top; }
+    th { background-color: #01597b; color: white; }
+    tr:nth-child(even) { background-color: #27596c; }
+    .note { display: block; font-size: 0.9em; color: #aacfd0; margin-top: 4px; }
+    .lang-en { display: none; }
+    body.lang-en .lang-lv { display: none; }
+    body.lang-en .lang-en { display: block; }
   </style>
 </head>
 <body>
- <header>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Manifests</a></li>
-        <li><a href="../raksti.html" class="active">Raksti</a></li>
-        <li><a href="../index_en.html">EN</a></li>
-      </ul>
-    </nav>
-  </header>
- <main class="container">
-<body>
-<h1>“Dziesma vai bļaušana?”</h1>
+<script>document.body.classList.add('lang-'+(localStorage.getItem('puteklis-lang')||'lv'));</script>
 
-<h2>Ievads – kāpēc šis konkurss joprojām ir tik populārs</h2>
-<p>Eirovīzijas dziesmu konkurss ir ilgmūžīgākais TV formāts pasaulē (kopš 1956) un viens no visvairāk apstrīdētajiem. Kā Berlīnes sienas atspoguļojums tas atklāj Eiropas politisko, sociālo un estētisko psihoanalīzi — no optimismā dziedošām balādēm līdz hiper‑emocionālām identitātes deklarācijām. Skatītāji jautā: «Kur pazudusi melodija?» Šeit — soli pa solim: kā nonācām pie kliedzienu, drāmu un klišeju laikmeta; ko tas dod (vai vairs nedod) Eiropai; un kādas ir reālās alternatīvas.</p>
+<header>
+  <nav>
+    <ul>
+      <li><a href="../index.html" data-i18n="nav.manifests">Manifests</a></li>
+      <li><a href="../raksti.html" class="active" data-i18n="nav.raksti">Raksti</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ========== LATVIAN ========== -->
+<main class="container lang-lv">
+<h1>"Dziesma vai bļaušana?"</h1>
+
+<h2>Ievads – kāpēc šis konkurss joprojām ir tik populārs</h2>
+<p>Eirovīzijas dziesmu konkurss ir ilgmūžīgākais TV formāts pasaulē (kopš 1956) un viens no visvairāk apstrīdētajiem. Kā Berlīnes sienas atspoguļojums tas atklāj Eiropas politisko, sociālo un estētisko psihoanalīzi — no optimismā dziedošām balādēm līdz hiper‑emocionālām identitātes deklarācijām. Skatītāji jautā: «Kur pazudusi melodija?» Šeit — soli pa solim: kā nonācām pie kliedzienu, drāmu un klišeju laikmeta; ko tas dod (vai vairs nedod) Eiropai; un kādas ir reālās alternatīvas.</p>
 
 <div style="width: 100%; height: 320px; overflow: hidden; position: relative; margin-top: 2rem;">
-  <img src="../images/raksti/dziesma-vs-kliedziens.jpg"
-       alt="Mikrofons pret megafonu – Eirovīzijas metafora"
-       style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
+  <img src="../images/raksti/dziesma-vs-kliedziens.jpg" alt="Mikrofons pret megafonu – Eirovīzijas metafora" style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
 </div>
 
-<h2>1. No estrādes līdz identitāšu šovam – hronoloģiska skice</h2>
+<h2>1. No estrādes līdz identitāšu šovam – hronoloģiska skice</h2>
 <table>
-  <tr>
-    <th>Posms</th>
-    <th>Galvenās iezīmes</th>
-    <th>Piemēri</th>
-  </tr>
-  <tr>
-    <td>1956‑1970<br><span class="note">“Viena mīlestības valoda”</span></td>
-    <td>Svinga/šansona melodijas; viesnīcu orķestri; dzīvs vokāls.</td>
-    <td>“Nel blu, dipinto di blu” (1958)</td>
-  </tr>
-  <tr>
-    <td>1970‑2000<br><span class="note">Pop‑revolūcija</span></td>
-    <td>Disko, sintezatori; ABBA efekts; TV glamūrs.</td>
-    <td>Bucks Fizz svārku triks (1981); Dana International (1998)</td>
-  </tr>
-  <tr>
-    <td>2001‑2013<br><span class="note">Spektakls & televote</span></td>
-    <td>LED, monstri, telefonbalsošana.</td>
-    <td>Lordi (2006); Rybak (2009)</td>
-  </tr>
-  <tr>
-    <td>2014‑…<br><span class="note">Identitāšu / trauma‑pop</span></td>
-    <td>Stāsts > melodija; sociālo tīklu tempi.</td>
-    <td>Conchita (2014); Nemo (2024)</td>
-  </tr>
+  <tr><th>Posms</th><th>Galvenās iezīmes</th><th>Piemēri</th></tr>
+  <tr><td>1956‑1970<br><span class="note">"Viena mīlestības valoda"</span></td><td>Svinga/šansona melodijas; viesnīcu orķestri; dzīvs vokāls.</td><td>"Nel blu, dipinto di blu" (1958)</td></tr>
+  <tr><td>1970‑2000<br><span class="note">Pop‑revolūcija</span></td><td>Disko, sintezatori; ABBA efekts; TV glamūrs.</td><td>Bucks Fizz svārku triks (1981); Dana International (1998)</td></tr>
+  <tr><td>2001‑2013<br><span class="note">Spektakls & televote</span></td><td>LED, monstri, telefonbalsošana.</td><td>Lordi (2006); Rybak (2009)</td></tr>
+  <tr><td>2014‑…<br><span class="note">Identitāšu / trauma‑pop</span></td><td>Stāsts > melodija; sociālo tīklu tempi.</td><td>Conchita (2014); Nemo (2024)</td></tr>
 </table>
 
-<h2>2. Kāpēc pazūd melodija un parādās kliedziens?</h2>
-
-<!-- Flex konteineris -->
+<h2>2. Kāpēc pazūd melodija un parādās kliedziens?</h2>
 <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 1rem;">
-
-  <!-- Attēls pa kreisi -->
   <div style="flex-shrink: 0;">
     <img src="../images/raksti/eurovision-trauma.jpg" alt="Traumas estētika" style="max-width: 280px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
   </div>
-
-  <!-- Teksts pa labi -->
   <div style="flex: 1; min-width: 260px;">
     <ul style="list-style-type: disc; padding-left: 1.2rem; font-size: 1.05em; line-height: 1.6em; color: #f0f0f0;">
-      <li>
-        <strong>Platformu ekonomika</strong> — 15 sekunžu "hook" (TikTok efekts) → vokāla sprādziens uzreiz.<br>
-        Digitālajā laikmetā dziesmas vairs nevar atļauties lēnu ievadu. Sociālo tīklu algoritmi (īpaši TikTok) dod priekšroku uzreiz atpazīstamam emocionālam vai muzikālam eksplozīvam brīdim. Nevis albums, bet fragments kļūst par ekonomisko vienību.
-      </li>
-      <li>
-        <strong>Žūrija × televote</strong> — balsis vs. šoks → vokāla sprinti + memētiskums.<br>
-        Tradicionālā žūrija meklē tehniski kvalitatīvu izpildījumu, kamēr skatītāji balso par pārsteigumu vai tēlu. Tiek veidotas dziesmas ar “vokāliem sprintiem” un vizuālām zīmēm, kas uzrunā abas grupas — žūriju un publiku.
-      </li>
-      <li>
-        <strong>Traumas estētika</strong> — asaras = autentiskums; melodija = izvēles opcija.<br>
-        Mūsdienu skatītājs autentiskumu redz ievainojamībā. Tāpēc mākslinieki uz skatuves raud, stāsta par sāpēm un pārdzīvojumiem. Dziesma kļūst par emocionālu terapiju, nevis tikai melodiju.
-      </li>
+      <li><strong>Platformu ekonomika</strong> — 15 sekunžu "hook" (TikTok efekts) → vokāla sprādziens uzreiz.<br>Digitālajā laikmetā dziesmas vairs nevar atļauties lēnu ievadu. Sociālo tīklu algoritmi (īpaši TikTok) dod priekšroku uzreiz atpazīstamam emocionālam vai muzikālam eksplozīvam brīdim. Nevis albums, bet fragments kļūst par ekonomisko vienību.</li>
+      <li><strong>Žūrija × televote</strong> — balsis vs. šoks → vokāla sprinti + memētiskums.<br>Tradicionālā žūrija meklē tehniski kvalitatīvu izpildījumu, kamēr skatītāji balso par pārsteigumu vai tēlu. Tiek veidotas dziesmas ar "vokāliem sprintiem" un vizuālām zīmēm, kas uzrunā abas grupas — žūriju un publiku.</li>
+      <li><strong>Traumas estētika</strong> — asaras = autentiskums; melodija = izvēles opcija.<br>Mūsdienu skatītājs autentiskumu redz ievainojamībā. Tāpēc mākslinieki uz skatuves raud, stāsta par sāpēm un pārdzīvojumiem. Dziesma kļūst par emocionālu terapiju, nevis tikai melodiju.</li>
     </ul>
   </div>
-
 </div>
 
-<!-- Turpinājums zem izkārtojuma -->
-<div style="margin-top: 1rem;">
-  <!-- Turpiniet šeit ar nākamo sadaļu -->
-</div>
-
-
-<h2>3. Vadītāju klišejas – PR Nirvāna</h2>
-
-<p class="warning">“Tonight we celebrate love, diversity and unity…” — tulkojams 37 valodās, nepasaka neko.</p>
-
-<p>
-Eirovīzijas vadītāji kļuvuši par PR algoritmu balss izpausmi. Viņu uzrunas ir tik precīzi izlīdzinātas, tik neitrālas un "iekļaujošas", ka bieži vien zaudē jebkādu nozīmi. Frāzes kā “Mēs esam viena ģimene”, “Šī ir mūzikas nakts” vai “Šovakar mīlestība uzvar” skan pēc prezentācijas PowerPoint šabloniem, nevis dzīvām emocijām.
-</p>
-
-<p>
-Šie teksti ir paredzēti, lai neriskētu — ne aizvainotu, ne pateiktu kaut ko oriģinālu. Tie strādā kā semantiska sedācija: klausītājs sajūtas ieaijāts drošā, gludā multikulturālisma vilnī, kurā visi smaida un neviens īsti neko nesaka. Tas ir PR Nirvānas stāvoklis — viss ir labi, vienmēr, visiem.
-</p>
-
-<p>
-Un tomēr – jo vairāk vadītāji atkārto “vienotības mantru”, jo tukšāka tā kļūst. Vārdi tiek šķērdēti kā konfeti — daudz, spilgti, bet izšķīstoši gaisā. Šī "vienotība" nav pieredze, bet pieraksts. Tas nav dialogs, bet scenārijs. Tas nav cilvēks, kas runā — tas ir uzņēmuma tēls ar mikrofonu.
-</p>
-
+<h2>3. Vadītāju klišejas – PR Nirvāna</h2>
+<p>"Tonight we celebrate love, diversity and unity…" — tulkojams 37 valodās, nepasaka neko.</p>
+<p>Eirovīzijas vadītāji kļuvuši par PR algoritmu balss izpausmi. Viņu uzrunas ir tik precīzi izlīdzinātas, tik neitrālas un "iekļaujošas", ka bieži vien zaudē jebkādu nozīmi. Frāzes kā "Mēs esam viena ģimene", "Šī ir mūzikas nakts" vai "Šovakar mīlestība uzvar" skan pēc prezentācijas PowerPoint šabloniem, nevis dzīvām emocijām.</p>
+<p>Šie teksti ir paredzēti, lai neriskētu — ne aizvainotu, ne pateiktu kaut ko oriģinālu. Tie strādā kā semantiska sedācija: klausītājs sajūtas ieaijāts drošā, gludā multikulturālisma vilnī, kurā visi smaida un neviens īsti neko nesaka. Tas ir PR Nirvānas stāvoklis — viss ir labi, vienmēr, visiem.</p>
+<p>Un tomēr – jo vairāk vadītāji atkārto "vienotības mantru", jo tukšāka tā kļūst. Vārdi tiek šķērdēti kā konfeti — daudz, spilgti, bet izšķīstoši gaisā. Šī "vienotība" nav pieredze, bet pieraksts. Tas nav dialogs, bet scenārijs. Tas nav cilvēks, kas runā — tas ir uzņēmuma tēls ar mikrofonu.</p>
 
 <h2>4. Politiskais un sociālais lifts</h2>
-
 <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
-
-  <!-- Teksts pa kreisi -->
   <div style="flex: 1; min-width: 280px;">
-    <p>
-      Eirovīzija nav tikai mūzikas konkurss – tā ir <strong>platforma simboliskiem vēstījumiem</strong>, diplomātiskiem žestiem un sociālajai pārstāvniecībai. Šova formāts darbojas kā “sociālais lifts”, kas dažādām sabiedrībām ļauj izcelt vērtības, kuras lokālā politikā bieži tiek ignorētas vai apspiestas.
-    </p>
-
+    <p>Eirovīzija nav tikai mūzikas konkurss – tā ir <strong>platforma simboliskiem vēstījumiem</strong>, diplomātiskiem žestiem un sociālajai pārstāvniecībai.</p>
     <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
-      <li>
-        <strong>Soft power – Ukraina 2022</strong><br>
-        Ukrainas uzvara kara apstākļos ar “Stefania” bija simbols ne tikai muzikālai gaumei, bet arī politiskai solidaritātei. Eirovīzija nostājās kultūras frontē – kā emocionāla diplomātija, kuras balsojums aizstāja ieročus ar balsīm.
-      </li>
-      <li>
-        <strong>LGBTQ+ redzamība – jaunais standarts kopš 2014</strong><br>
-        Conchita Wurst uzvara iezīmēja pagrieziena punktu – ne tikai Eirovīzijas vēsturē, bet Eiropas kultūras vērtību manifestācijā. Kopš tā laika LGBTQ+ tēmas nav perifērijā, bet kļuvušas par daļu no konkursa identitātes.
-      </li>
-      <li>
-        <strong>EBU = TV NATO</strong><br>
-        Eiropas Raidorganizāciju apvienība darbojas kā neformāla “TV NATO” – nosakot tehniskos, ētiskos un reprezentācijas standartus. UHD/HDR kvalitāte ir tikai virspuse. Vērtības tiek translētas kopā ar datu straumēm.
-      </li>
+      <li><strong>Soft power – Ukraina 2022</strong><br>Ukrainas uzvara kara apstākļos ar "Stefania" bija simbols ne tikai muzikālai gaumei, bet arī politiskai solidaritātei.</li>
+      <li><strong>LGBTQ+ redzamība – jaunais standarts kopš 2014</strong><br>Conchita Wurst uzvara iezīmēja pagrieziena punktu – ne tikai Eirovīzijas vēsturē, bet Eiropas kultūras vērtību manifestācijā.</li>
+      <li><strong>EBU = TV NATO</strong><br>Eiropas Raidorganizāciju apvienība darbojas kā neformāla "TV NATO" – nosakot tehniskos, ētiskos un reprezentācijas standartus.</li>
     </ul>
-
-    <p>
-      Eirovīzija kļūst par <em>sabiedrības spoguli</em> un reizē arī <em>tās ideālu skatuvi</em>. Tā palīdz ne tikai redzēt, kas mēs esam, bet arī to, kādi vēlamies būt — solidāri, iekļaujoši, tehnoloģiski progresīvi.
-    </p>
+    <p>Eirovīzija kļūst par <em>sabiedrības spoguli</em> un reizē arī <em>tās ideālu skatuvi</em>.</p>
   </div>
-
-  <!-- Attēls pa labi -->
   <div style="flex-shrink: 0;">
     <img src="../images/raksti/eurovision-softpower.jpg" alt="Eirovīzijas politiskais lifts" style="max-width: 300px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
   </div>
-
 </div>
 
-
 <h2>5. Kritikas magnēti</h2>
-
-<p>Eirovīzija bieži tiek kritizēta – gan no estētiskā, gan politiskā, gan ekonomiskā viedokļa. Tomēr daudzos gadījumos šīs kritikas ir vienpusējas vai neņem vērā konkursa plašo ietekmi un attīstību.</p>
-
+<p>Eirovīzija bieži tiek kritizēta – gan no estētiskā, gan politiskā, gan ekonomiskā viedokļa.</p>
 <table>
-  <tr>
-    <th>Kritika</th>
-    <th>Pamats</th>
-    <th>Pretarguments</th>
-  </tr>
-
-  <tr>
-    <td><strong>Politiskā balsošana</strong></td>
-    <td>
-      Kaimiņu valstis tradicionāli apmainās ar punktiem — piemēram, Grieķija un Kipra, Skandināvijas valstis, Balkāni. Tas šķiet negodīgi.
-    </td>
-    <td>
-      Kopš 2016. gada balsošana tiek sadalīta: <strong>žūrija</strong> un <strong>televote</strong> veido atsevišķus rezultātus. Tas mazināja politisko punktu apmaiņu, jo žūrijas balsis bieži ir neatkarīgākas.
-    </td>
-  </tr>
-
-  <tr>
-    <td><strong>Izmaksas (30–70 milj. €)</strong></td>
-    <td>
-      Rīkošana prasa milzīgus resursus – no skatuves tehnoloģijām līdz drošības un delegāciju izmaksām. Nodokļu maksātāji mēdz iebilst.
-    </td>
-    <td>
-      Pasākums piesaista tūristus, nodrošina <strong>globālu PR</strong> valsts tēlam un ļauj reklamēt kultūru, tehnoloģijas un uzņēmējdarbību. Ukrainas, Itālijas un Zviedrijas piemēri rāda ilgtermiņa ieguvumus.
-    </td>
-  </tr>
-
-  <tr>
-    <td><strong>Mūzikas kvalitāte</strong></td>
-    <td>
-      Kritiķi norāda uz “EDM copy-paste” efektu – vienādas ballīšu dziesmas ar līdzīgām struktūrām un piedziedājumiem, kas zūd straumēšanas algoritmos.
-    </td>
-    <td>
-      Taču Eirovīzija sniedz arī izrāviena iespējas oriģināliem māksliniekiem. <strong>Salvador Sobral</strong> (2017) pārstāvēja džeza-balādes liriskumu, bet <strong>Måneskin</strong> (2021) atgrieza roka estētiku masu auditorijai.
-    </td>
-  </tr>
-
+  <tr><th>Kritika</th><th>Pamats</th><th>Pretarguments</th></tr>
+  <tr><td><strong>Politiskā balsošana</strong></td><td>Kaimiņu valstis tradicionāli apmainās ar punktiem — piemēram, Grieķija un Kipra, Skandināvijas valstis, Balkāni.</td><td>Kopš 2016. gada balsošana tiek sadalīta: <strong>žūrija</strong> un <strong>televote</strong> veido atsevišķus rezultātus.</td></tr>
+  <tr><td><strong>Izmaksas (30–70 milj. €)</strong></td><td>Rīkošana prasa milzīgus resursus – no skatuves tehnoloģijām līdz drošības un delegāciju izmaksām.</td><td>Pasākums piesaista tūristus, nodrošina <strong>globālu PR</strong> valsts tēlam.</td></tr>
+  <tr><td><strong>Mūzikas kvalitāte</strong></td><td>Kritiķi norāda uz "EDM copy-paste" efektu – vienādas ballīšu dziesmas.</td><td>Eirovīzija sniedz arī izrāviena iespējas oriģināliem māksliniekiem. <strong>Salvador Sobral</strong> (2017), <strong>Måneskin</strong> (2021).</td></tr>
 </table>
 
-
 <h2>6. Ko konkurss dod / atņem</h2>
-
 <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
-
-  <!-- Attēls pa kreisi -->
   <div style="flex-shrink: 0;">
-    <img src="../images/raksti/eurovision-duality.jpg" alt="Eirovīzijas duālā daba" style="max-width: 280px; height: auto;  margin-top: 4rem; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+    <img src="../images/raksti/eurovision-duality.jpg" alt="Eirovīzijas duālā daba" style="max-width: 280px; height: auto; margin-top: 4rem; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
   </div>
-
-  <!-- Teksts pa labi -->
   <div style="flex: 1; min-width: 280px;">
-    <p>
-      Eirovīzijas konkurss darbojas kā <strong>Eiropas kultūras spogulis</strong>, kurā redzamas gan radošuma virsotnes, gan estētiskā banalizācija. Tas ir vienlaikus <em>platforma</em> un <em>teātris</em>, <em>balss</em> un <em>troksnis</em>. 
-    </p>
-
     <h4 style="margin-top: 1em;">🌍 Ko tas dod:</h4>
     <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
-      <li><strong>Kultūru starpniecība:</strong> valodas, simboli un mūzikas stili šķērso robežas, ļaujot mazām valstīm tikt pamanītām.</li>
-      <li><strong>Tehnoloģiju poligons:</strong> skatuves dizains, LED projekcijas, virtuālā realitāte un AI tiek testēti miljonu skatītāju priekšā.</li>
-      <li><strong>Brīvības barometrs:</strong> valstu attieksme pret LGBTQ+, identitāti, dzimumu un traumu bieži parādās dziesmu un tēlu izvēlē.</li>
+      <li><strong>Kultūru starpniecība:</strong> valodas, simboli un mūzikas stili šķērso robežas.</li>
+      <li><strong>Tehnoloģiju poligons:</strong> skatuves dizains, LED, VR un AI tiek testēti miljonu skatītāju priekšā.</li>
+      <li><strong>Brīvības barometrs:</strong> valstu attieksme pret LGBTQ+, identitāti un dzimumu parādās dziesmu izvēlē.</li>
     </ul>
-
     <h4 style="margin-top: 1em;">⚠️ Ko tas atņem:</h4>
     <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
-      <li><strong>Melodijas atšķaidīšana:</strong> lai uzvarētu, dziesmas tiek pielāgotas algoritmu loģikai — “virālas” nevis muzikāli niansētas.</li>
-      <li><strong>Politizācija:</strong> balsojums nereti kļūst par diplomātijas vai solidaritātes izpausmi, nevis mākslinieciskas kvalitātes izvērtējumu.</li>
-      <li><strong>Memētiskums > mūzika:</strong> dažkārt vairāk tiek runāts par tērpu vai triku nekā par pašas dziesmas jēgu vai skaistumu.</li>
+      <li><strong>Melodijas atšķaidīšana:</strong> dziesmas tiek pielāgotas algoritmu loģikai — "virālas" nevis muzikāli niansētas.</li>
+      <li><strong>Politizācija:</strong> balsojums nereti kļūst par diplomātijas izpausmi, nevis mākslinieciskas kvalitātes izvērtējumu.</li>
+      <li><strong>Memētiskums > mūzika:</strong> vairāk tiek runāts par tērpu vai triku nekā par dziesmas jēgu.</li>
     </ul>
-
-    <p>
-      Eirovīzija ir kā kultūras centrifūga – tā apvieno, pārvērš un izkliedē. Ieguvumi un zaudējumi dzīvo uz vienas skatuves – bieži vien vienlaicīgi.
-    </p>
   </div>
-
 </div>
 
 <h2>7. Kāpēc Eirovīziju bieži uztver kā daļu no mūzikas industrijas?</h2>
-
 <h3>🎭 1. Eirovīzija izskatās kā mūzikas industrija</h3>
-<p>
-Ir skatuve, prožektori, dziedātāji, stilisti, balsojumi, vizuālā estētika — viss izskatās līdzīgi tam, ko redzam “MTV Awards”, “The Voice” vai popmūzikas klipos. Tiek radītas dziesmas, publicēti Spotify singli, notiek reitingi — šķiet, ka tā ir daļa no industrijas.
-</p>
-<p><strong>🔎 Bet tas ir estētisks pārklājums, nevis struktūra.</strong></p>
-
+<p>Ir skatuve, prožektori, dziedātāji, stilisti, balsojumi, vizuālā estētika — viss izskatās līdzīgi tam, ko redzam "MTV Awards" vai popmūzikas klipos. <strong>Bet tas ir estētisks pārklājums, nevis struktūra.</strong></p>
 <h3>🧠 2. Sabiedrība redz rezultātu, nevis mehānismu</h3>
-<p>
-Lielākā daļa cilvēku nedomā par to, kas organizē šovu – viņi redz “dziesmas sacensības”, tātad – mūzikas konkurss. Viņi neiedziļinās, ka to veido valstu sabiedriskās televīzijas, nevis komerciālas ierakstu kompānijas.
-</p>
-<p>
-Viņiem šķiet: "Ja ir dziedāšana un uzvara — tas nozīmē, ka tā ir kā American Idol, tātad — mūzikas industrija".
-</p>
-
+<p>Lielākā daļa cilvēku nedomā par to, kas organizē šovu – viņi redz "dziesmas sacensības". Viņi neiedziļinās, ka to veido valstu sabiedriskās televīzijas, nevis komerciālas ierakstu kompānijas.</p>
 <h3>🎯 3. Dziesmas tiek izdotas, straumētas, tiek veidoti klipi</h3>
-<p>
-Patiešām, katra valsts izdod dziesmu, ko var atrast Spotify vai YouTube. Bet tas nenozīmē, ka tā ir radīta tirgum. Tā bieži ir radīta televīzijai, vienam priekšnesumam, vienam simboliskam uzdevumam.
-</p>
-<p>
-Tas ir mūzikas “produkts”, bet ar citu mērķi — reprezentēt, nevis dominēt tirgū.
-</p>
-
+<p>Katra valsts izdod dziesmu, ko var atrast Spotify vai YouTube. Bet tā bieži ir radīta televīzijai, vienam priekšnesumam, vienam simboliskam uzdevumam. Tas ir mūzikas "produkts", bet ar citu mērķi — reprezentēt, nevis dominēt tirgū.</p>
 <h3>💥 4. Eirovīzija imitē industriju, bet tai nepieder</h3>
-<p>
-Tā ir kā muzikālā teātra versija par mūzikas biznesu — simboliska, izrādīta, stilizēta. Un tas rada <strong>kognitīvo ilūziju</strong>, ka tā būtu daļa no “īstās” industrijas, bet patiesībā tā stāv tai blakus — kā paralēls Visums.
-</p>
-
-
-
+<p>Tā ir kā muzikālā teātra versija par mūzikas biznesu — simboliska, izrādīta, stilizēta. Un tas rada <strong>kognitīvo ilūziju</strong>, ka tā būtu daļa no "īstās" industrijas, bet patiesībā tā stāv tai blakus — kā paralēls Visums.</p>
 
 <h2>8. Uzlabojumu scenāriji: kā attīstīt Eirovīziju?</h2>
-
 <table>
-  <tr>
-    <th>Scenārijs</th>
-    <th>Maināmais</th>
-    <th>Pluss</th>
-    <th>Risks</th>
-  </tr>
-
-  <tr>
-    <td><strong>Melodiju kvota</strong></td>
-    <td>
-      Ieviest fiksētu proporciju (piemēram, 30%) no žūrijas un televote punktiem, kas tiek piešķirti tieši <em>melodijas kvalitātei</em> neatkarīgi no izpildījuma vai šova.
-    </td>
-    <td>
-      Tas atdzīvinātu klasiskās dziesmas formas nozīmi, mudinātu dalībniekus domāt par muzikālo struktūru, ne tikai vizuālo iespaidu vai "viralitāti".
-    </td>
-    <td>
-      Ieviešot šo sistēmu, varētu būt grūti tehniski realizēt balsošanas mehānismu, jo būtu jādefinē objektīvi melodiskie kritēriji. Pastāv risks par vēl lielāku sistēmas sarežģītību.
-    </td>
-  </tr>
-
-  <tr>
-    <td><strong>Žanru fināli</strong></td>
-    <td>
-      Konkursa ietvaros ieviest <em>iepriekšējus finālus pa žanriem</em>: pop, folk/etno, urbānā mūzika, alternatīvais u.c. Katrai žanru grupai – savs atlases posms.
-    </td>
-    <td>
-      Tas veicinātu daudzveidību un dotu iespēju nedominējošiem stiliem nonākt finālā. Klausītāji varētu baudīt plašāku mūzikas spektru, un netiktu "noslīcināti" nestandarta priekšnesumos.
-    </td>
-    <td>
-      Papildus posmi pagarinātu konkursu, palielinātu organizatoriskās izmaksas un varētu samazināt koncentrēšanos uz vienu kopējo finālu. Pastāv risks sadrumstalot skatītāju uzmanību.
-    </td>
-  </tr>
-
-  <tr>
-    <td><strong>Popkultūras EXPO</strong></td>
-    <td>
-      Paralēli konkursam organizēt nedēļu garu <em>mūzikas un tehnoloģiju festivālu</em>, kurā notiek AI un hologrammu koncerti, vēsturiski retrospektīvi šovi un interaktīvi eksperimenti.
-    </td>
-    <td>
-      Tas nostiprinātu Eirovīziju kā <strong>Eiropas popkultūras centrmezglu</strong>, piesaistītu jauniešu auditoriju, medijus, kā arī veicinātu inovāciju demonstrēšanu sabiedrībai.
-    </td>
-    <td>
-      Šāds plašs saturs var novērst uzmanību no pašām dziesmu sacensībām. Pastāv risks, ka konkurss kļūst par vienu no daudzajiem notikumiem, nevis galveno notikumu – tiek zaudēta fokusa ass.
-    </td>
-  </tr>
+  <tr><th>Scenārijs</th><th>Maināmais</th><th>Pluss</th><th>Risks</th></tr>
+  <tr><td><strong>Melodiju kvota</strong></td><td>Ieviest fiksētu proporciju (piemēram, 30%) no žūrijas un televote punktiem, kas tiek piešķirti tieši <em>melodijas kvalitātei</em>.</td><td>Tas atdzīvinātu klasiskās dziesmas formas nozīmi.</td><td>Grūti tehniski realizēt — jādefinē objektīvi melodiskie kritēriji.</td></tr>
+  <tr><td><strong>Žanru fināli</strong></td><td>Ieviest <em>iepriekšējus finālus pa žanriem</em>: pop, folk/etno, urbānā mūzika u.c.</td><td>Veicinātu daudzveidību un dotu iespēju nedominējošiem stiliem.</td><td>Papildus posmi pagarinātu konkursu un palielinātu izmaksas.</td></tr>
+  <tr><td><strong>Popkultūras EXPO</strong></td><td>Paralēli konkursam organizēt nedēļu garu <em>mūzikas un tehnoloģiju festivālu</em>.</td><td>Nostiprinātu Eirovīziju kā <strong>Eiropas popkultūras centrmezglu</strong>.</td><td>Var novērst uzmanību no pašām dziesmu sacensībām.</td></tr>
 </table>
 
-
 <h2>9. Nākotnes prognozes (2025–2035)</h2>
-
 <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
-
-  <!-- Kreisā teksta kolonna -->
   <div style="flex: 1; min-width: 260px;">
     <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
-      <li>
-        <strong>AI līdzautori > 50%</strong><br>
-        Lielākā daļa dziesmu radītas sadarbībā ar mākslīgā intelekta palīdzību — sākot no melodijām un aranžējuma līdz pat lirikas versijām vairākās valodās. EBU varētu ieviest marķējumus "AI-assisted", kas kļūst par radošuma standartu.
-      </li>
-      <li>
-        <strong>VR kop-skats ar emoji balsošanu</strong><br>
-        Skatītāji ienirst metaversā — ar VR brillēm seko šovam no "virtuālās arēnas", balsojot ar emoji reakcijām reāllaikā. Auditorijas emocijas kļūst par daļu no priekšnesuma.
-      </li>
+      <li><strong>AI līdzautori > 50%</strong><br>Lielākā daļa dziesmu radītas sadarbībā ar mākslīgā intelekta palīdzību. EBU varētu ieviest marķējumus "AI-assisted".</li>
+      <li><strong>VR kop-skats ar emoji balsošanu</strong><br>Skatītāji ienirst metaversā — ar VR brillēm seko šovam no "virtuālās arēnas", balsojot ar emoji reakcijām reāllaikā.</li>
     </ul>
   </div>
-
-  <!-- Attēls pa vidu -->
   <div style="flex-shrink: 0;">
     <img src="../images/raksti/eurovision-future.jpg" alt="Eirovīzijas nākotnes skatuve" style="max-width: 280px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
   </div>
-
-  <!-- Labā teksta kolonna -->
   <div style="flex: 1; min-width: 260px;">
     <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
-      <li>
-        <strong>Euro‑Med paplašinājums</strong><br>
-        Eirovīzija vairs nav tikai “Eiro” — pievienojas valstis no Ziemeļāfrikas, Tuvajiem Austrumiem un Centrālās Āzijas. Kultūru karte paplašinās, veidojot "Eurovision Alliance".
-      </li>
-      <li>
-        <strong>CO₂ plafons → mazāk pirotehnikas</strong><br>
-        Klimata krīze liek ierobežot CO₂ pēdas nospiedumu. Tiek samazināti pirotehniskie efekti, pārejot uz virtuālajiem liesmu simulācijām, energoefektīvu LED un otrreiz izmantojamām dekorācijām.
-      </li>
+      <li><strong>Euro‑Med paplašinājums</strong><br>Eirovīzija vairs nav tikai "Eiro" — pievienojas valstis no Ziemeļāfrikas, Tuvajiem Austrumiem un Centrālās Āzijas.</li>
+      <li><strong>CO₂ plafons → mazāk pirotehnikas</strong><br>Klimata krīze liek ierobežot CO₂ pēdas nospiedumu. Pāreja uz virtuālajiem liesmu simulācijām un energoefektīvu LED.</li>
     </ul>
   </div>
-
 </div>
-
 
 <h2>10. Vai šo vilcienu var apstādināt?</h2>
-
 <h3>🛤️ Kāpēc tas brauc tālāk?</h3>
 <ul style="line-height: 1.6em;">
-  <li><strong>Tirgus:</strong> skatītāju skaits gadu no gada saglabājas augsts (ap 160 miljoniem), īpaši pateicoties sociālo mediju “otrā ekrāna” efektiem. Platformas kā TikTok, Instagram un X (Twitter) pārvērš šovu par memu festivālu.</li>
-  <li><strong>Mērķauditorija:</strong> konkursa kodols — jauni pieaugušie un LGBTQ+ kopiena — meklē dramatiskus stāstus, reprezentāciju, negaidītus tēlus. Šovs pielāgojas šai estētikai, lai izdzīvotu kultūras konkurencē.</li>
-  <li><strong>Naratīvs:</strong> “iekļaujošas, daudzveidīgas Eiropas simbols” — kritika par pārmērīgu šovu, politizāciju vai kvalitātes zudumu tiek bieži marginalizēta kā “neprogresīva” vai “vecmodīga”. Vilciens neremdināmi traucas tālāk.
+  <li><strong>Tirgus:</strong> skatītāju skaits gadu no gada saglabājas augsts (ap 160 miljoniem), īpaši pateicoties sociālo mediju "otrā ekrāna" efektiem.</li>
+  <li><strong>Mērķauditorija:</strong> konkursa kodols — jauni pieaugušie un LGBTQ+ kopiena — meklē dramatiskus stāstus un reprezentāciju.</li>
+  <li><strong>Naratīvs:</strong> "iekļaujošas, daudzveidīgas Eiropas simbols" — kritika par pārmērīgu šovu bieži tiek marginalizēta kā "neprogresīva".</li>
 </ul>
-
 <h3>🔧 Reāli mainīt? — šobrīd neviens īsti negrib.</h3>
 <ul style="line-height: 1.6em;">
-  <li>
-    Lai notiktu būtiskas pārmaiņas, nepieciešama <strong>struktūrāla drosme</strong> EBU līmenī — piemēram, ieviest žanriskus filtrus, melodiskuma kritērijus vai AI regulāciju. Taču ne valstu delegācijas, ne skatītāji pagaidām neveido spiedienu pēc reformām.
-  </li>
+  <li>Lai notiktu būtiskas pārmaiņas, nepieciešama <strong>struktūrāla drosme</strong> EBU līmenī. Taču ne valstu delegācijas, ne skatītāji pagaidām neveido spiedienu pēc reformām.</li>
 </ul>
-
 <h3>🌀 Transformācija vs. Sabrukums</h3>
 <ul style="line-height: 1.6em;">
-  <li><strong>Transformācija:</strong> Pieaugošs “trauma-pop” nogurums var virzīt konkursu atpakaļ pie muzikāli tīrākiem, emocionāli klusākiem priekšnesumiem. Tiek meklēta balss, nevis karogs.</li>
-  <li><strong>Sabrukums:</strong> Ja pārmaiņas nenotiek, var sākties lēna auditorijas erozija: konkurss kļūst par nišas fenomenu sociālajos tīklos, zaudējot TV masveida pievilcību un institucionalo svaru.</li>
+  <li><strong>Transformācija:</strong> Pieaugošs "trauma-pop" nogurums var virzīt konkursu atpakaļ pie muzikāli tīrākiem priekšnesumiem.</li>
+  <li><strong>Sabrukums:</strong> Ja pārmaiņas nenotiek, var sākties lēna auditorijas erozija: konkurss kļūst par nišas fenomenu sociālajos tīklos.</li>
 </ul>
-
 <h3>🌱 Alternatīvas</h3>
 <ul style="line-height: 1.6em;">
-  <li><strong>Jauns Eiroradio formāts:</strong> uzsvars uz dziesmas muzikālo kvalitāti un valodas daudzveidību, ne uz šovu. Neliels, prestižs konkurss bez pirotehnikas un meme-fokusa.</li>
-  <li><strong>Decentralizētas mūzikas balvas:</strong> neatkarīgas platformas, kur mūziķi un klausītāji izvēlas labākos darbus, nevis nacionālās delegācijas vai EBU birokrātija.</li>
-  <li><strong>Digitālās skaņu sacensības:</strong> jaunas formas kā “Soundcloud Grand Prix”, “YouTube Melody Wars” vai “AI Composer Cup”, kas darbojas pēc citiem principiem – algoritms, balss un eksperimentācija.</li>
+  <li><strong>Jauns Eiroradio formāts:</strong> uzsvars uz dziesmas muzikālo kvalitāti un valodas daudzveidību, ne uz šovu.</li>
+  <li><strong>Decentralizētas mūzikas balvas:</strong> neatkarīgas platformas, kur mūziķi un klausītāji izvēlas labākos darbus.</li>
+  <li><strong>Digitālās skaņu sacensības:</strong> jaunas formas kā "Soundcloud Grand Prix" vai "AI Composer Cup".</li>
 </ul>
-
 
 <h2>11. Finanses, psiholoģija, kultūra — kas patiesībā notiek?</h2>
-
 <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
-
-  <!-- Teksts pa kreisi -->
   <div style="flex: 1; min-width: 280px;">
-
     <h3>💶 Finansiālais līmenis</h3>
     <ul style="line-height: 1.6em;">
-      <li>
-        Eirovīzijas organizēšana maksā 30–70 miljonus eiro, taču tūlītējais ieguvums var būt ievērojams: Liverpūles 2023. gada rīkošana radīja vairāk nekā <strong>40 miljonu mārciņu</strong> ekonomisko aktivitāti tūrisma un reklāmas jomā.
-      </li>
-      <li>
-        Mazai valstij (piemēram, Latvijai 2003) šis konkurss kalpo kā <strong>vienreizēja PR platforma</strong> — valsts tiek parādīta pasaules mērogā bez militāras vai ekonomiskas varas.
-      </li>
-      <li>
-        Skatuves dizains un translācijas kvalitāte padara šo pasākumu par <strong>tehnoloģisku eksperimentu</strong>: Eirovīzija ir Eiropas 4K, HDR, XR inovāciju testēšanas poligons.
-      </li>
+      <li>Eirovīzijas organizēšana maksā 30–70 miljonus eiro, taču tūlītējais ieguvums var būt ievērojams: Liverpūles 2023. gada rīkošana radīja vairāk nekā <strong>40 miljonu mārciņu</strong> ekonomisko aktivitāti.</li>
+      <li>Mazai valstij (piemēram, Latvijai 2003) šis konkurss kalpo kā <strong>vienreizēja PR platforma</strong>.</li>
     </ul>
-
     <h3>💥 Psiholoģiskais līmenis</h3>
     <ul style="line-height: 1.6em;">
-      <li><strong>Rituāls:</strong> Eirovīzija kļuvusi par sociālu vakaru, kur cilvēki pulcējas, dzer vīnu, vēro un vērtē. Tā ir <em>kolektīva izraušanās</em> no ikdienas.</li>
-      <li><strong>Identitāte:</strong> skatītāji asociējas ar valstīm, dalībniekiem, dziesmu stāstiem. Karogs kļūst par emociju simbolu — pat nevalstiskām identitātēm.</li>
-      <li><strong>Kolektīvā drāma:</strong> Šovs darbojas kā <em>sporta sacensība bez bumbas</em> — uzvara ir svarīga, bet svarīgāks ir pārdzīvojums.</li>
+      <li><strong>Rituāls:</strong> Eirovīzija kļuvusi par sociālu vakaru, kur cilvēki pulcējas un vērtē. Tā ir <em>kolektīva izraušanās</em> no ikdienas.</li>
+      <li><strong>Kolektīvā drāma:</strong> Šovs darbojas kā <em>sporta sacensība bez bumbas</em>.</li>
     </ul>
-
     <h3>🌍 Kultūrsociālais līmenis</h3>
     <ul style="line-height: 1.6em;">
-      <li>
-        Eirovīzija ir viens no pēdējiem <strong>paneiropas kultūras brīžiem</strong>, ko skatās vectēvs un mazbērns vienā telpā. Tā pārsniedz TikTok burbuļus un valodu barjeras.
-      </li>
-      <li>
-        Konkursā nepārtraukti notiek <strong>dialogi par brīvību, dažādību, dzimumiem un robežām</strong>. Dziesmas kļūst par miniatūrām kultūrpolitikas vēstulēm.
-      </li>
+      <li>Eirovīzija ir viens no pēdējiem <strong>paneiropas kultūras brīžiem</strong>, ko skatās vectēvs un mazbērns vienā telpā.</li>
+      <li>Konkursā notiek <strong>dialogi par brīvību, dažādību, dzimumiem un robežām</strong>.</li>
     </ul>
-
   </div>
-
-  <!-- Attēls pa labi -->
   <div style="flex-shrink: 0;">
-    <img src="../images/raksti/eurovision-sociotechno.jpg" alt="Skatītāju un kultūras psiholoģiska ainava" style="max-width: 300px;  margin-top: 4rem; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+    <img src="../images/raksti/eurovision-sociotechno.jpg" alt="Skatītāju un kultūras psiholoģiska ainava" style="max-width: 300px; margin-top: 4rem; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
   </div>
-
 </div>
 
-
-<h2>12. Par kliedzieniem un “vecumu”</h2>
-
-<p>
-Ne katrs vokālais sprādziens ir pārdzīvojums. Kliedziena estētika, ko bieži redzam Eirovīzijā, nav gluži tas pats, kas <em>Rammstein liesma</em>, <em>Nick Cave vilkšana</em> vai <em>Tom Waits rūsas čuksts</em>. Tā nav blues vai metal autentiskā drāma — tā ir <strong>stilizēta afekta simulācija</strong>, kas bieži aizstāj melodiju, stāstu un telpu.
-</p>
-
-<p>
-Mūsdienu trauma‑pop bieži eksplodē jau pirmajā sekundē, un nekas nepaliek pāri — tikai spiediens. Mūzika kļūst par uzbrukumu, nevis pieredzi. Kontrasti pazūd. Emocija bez struktūras ir troksnis.
-</p>
-
+<h2>12. Par kliedzieniem un "vecumu"</h2>
+<p>Ne katrs vokālais sprādziens ir pārdzīvojums. Kliedziena estētika, ko bieži redzam Eirovīzijā, nav gluži tas pats, kas <em>Rammstein liesma</em>, <em>Nick Cave vilkšana</em> vai <em>Tom Waits rūsas čuksts</em>. Tā ir <strong>stilizēta afekta simulācija</strong>, kas bieži aizstāj melodiju, stāstu un telpu.</p>
+<p>Mūsdienu trauma‑pop bieži eksplodē jau pirmajā sekundē, un nekas nepaliek pāri — tikai spiediens. Mūzika kļūst par uzbrukumu, nevis pieredzi. Emocija bez struktūras ir troksnis.</p>
 <h4>🎸 Kas kaitina:</h4>
 <ul style="line-height: 1.6em;">
-  <li><strong>Pārliekas emocijas:</strong> nevis atturēts sāpīgums vai stilizēta trauksme (kā industrial vai kabarē), bet burtisks, teatrāls izkliedziens katrā taktī.</li>
+  <li><strong>Pārliekas emocijas:</strong> nevis atturēts sāpīgums, bet burtisks, teatrāls izkliedziens katrā taktī.</li>
   <li><strong>Formas trūkums:</strong> dziesmas bieži nevirzās, tās neelpo. Nav gaita, nav kulminācija — tikai konstanta intensitāte.</li>
 </ul>
-
 <h4>💡 Ko darīt:</h4>
 <ul style="line-height: 1.6em;">
-  <li><strong>Klausīties dziļāk:</strong> kur ir kontrapunkts, kur ir balss tekstūra, kas atšķir asins kliedzienu no vokālās dramaturģijas?</li>
-  <li><strong>Runāt par skaņas arhitektūru:</strong> arī rock, cabaret un metal respektē uzbūvi — estētiskā spriedze rodas no kontrastiem, nevis histērijas.</li>
+  <li><strong>Klausīties dziļāk:</strong> kur ir kontrapunkts, kur ir balss tekstūra?</li>
+  <li><strong>Runāt par skaņas arhitektūru:</strong> arī rock, cabaret un metal respektē uzbūvi.</li>
 </ul>
-
-<p>
-Klausīšanās nav par žanru — tā ir par uzbūvi un spēku. Starp klusu elpu un distorsijas sienu ir pasaule. Mūzikā – svarīgs ir tas, kas paliek pāri, kad kliedziens izdziest.
-</p>
-
-
+<p>Klausīšanās nav par žanru — tā ir par uzbūvi un spēku. Mūzikā – svarīgs ir tas, kas paliek pāri, kad kliedziens izdziest.</p>
 
 <h2>Secinājums — vai mums Eirovīzija vēl vajadzīga?</h2>
+<p>Eirovīzija nav tikai konkurss — tā ir <strong>kultūrpolitiskā izrāde</strong>, kurā mūzika, estētika un ideoloģija spēlē uz vienas skatuves.</p>
+<p>Un tomēr — ja šajā testā vairs nav dzirdams <strong>ritms, kas elpo</strong>, vai <strong>balss, kas nedeg</strong>, tad jājautā: ko mēs tiešām svinam? Emociju klaustrofobiju vai skaņas daudzveidību?</p>
+<p>No rock līdz kabarē, no blues līdz industrial, mūzikā ir spēks nevis kliegt, bet trāpīt. Ja Eirovīzija šo aizmirst, tā kļūst tikai par efektu katalogu.</p>
+<p>Tāpēc jāvaicā nevis vai mums to vajag, bet: <em>Vai mēs esam gatavi tai dot otru iespēju? Vai mēs vēl gribam klausīties — ne tikai skatīties?</em></p>
+<p><em>Jo brīdis, kad melodija tiek aizmirsta, ir brīdis, kad mēs paši pārtraucam skanēt.</em></p>
 
-<p>
-Eirovīzija nav tikai konkurss — tā ir <strong>kultūrpolitiskā izrāde</strong>, kurā mūzika, estētika un ideoloģija spēlē uz vienas skatuves. Tas ir kā <em>sabiedrības diagnostikas tests</em> — rādītājs tam, kas šobrīd tiek uzskatīts par “svarīgu”, “skaistu” un “virālu”.
-</p>
-
-<p>
-Un tomēr — ja šajā testā vairs nav dzirdams <strong>ritms, kas elpo</strong>, vai <strong>balss, kas nedeg, tad jājautā: ko mēs tiešām svinam? Emociju klaustrofobiju vai skaņas daudzveidību?  
-</p>
-
-<p>
-No **rock līdz kabarē**, no **blues līdz industrial**, mūzikā ir spēks nevis kliegt, bet trāpīt. Un šis trāpīgums nav atkarīgs no decibeliem — bet no uzbūves, kontrasta, formas un klātbūtnes. Ja Eirovīzija šo aizmirst, tā kļūst tikai par efektu katalogu.
-</p>
-
-<p>
-Tāpēc jāvaicā nevis vai mums to vajag, bet:  
-<em>Vai mēs esam gatavi tai dot otru iespēju?</em>  
-<em>Vai mēs vēl gribam klausīties — ne tikai skatīties?</em>  
-<em>Vai skaistums, uzbūve un stils var atgūt vietu blakus vēstījumam?</em>
-</p>
-
-<p>
-<em>Jo brīdis, kad melodija tiek aizmirsta, ir brīdis, kad mēs paši pārtraucam skanēt.</em>
-</p>
-
-<div class="center">— FIN —</div>
-
-<!-- Attēls pa visu ekrāna platumu -->
 <div style="margin-top: 2rem;">
   <img src="../images/raksti/eurovision-wide-finale.jpg" alt="Eirovīzijas fināla ainava" style="width: 50%; height: auto; display: block; border-top: 4px solid #222; border-bottom: 4px solid #222;">
 </div>
+</main>
 
+<!-- ========== ENGLISH ========== -->
+<main class="container lang-en">
+<h1>"Song or Screaming?"</h1>
+
+<h2>Introduction – why this contest is still so popular</h2>
+<p>The Eurovision Song Contest is the world's longest-running TV format (since 1956) and one of the most contested. Like a reflection of the Berlin Wall, it reveals Europe's political, social and aesthetic psychoanalysis — from optimistically sung ballads to hyper-emotional identity declarations. Viewers ask: "Where has the melody gone?" Here — step by step: how we arrived at the age of screaming, drama and clichés; what it gives (or no longer gives) Europe; and what the real alternatives are.</p>
+
+<div style="width: 100%; height: 320px; overflow: hidden; position: relative; margin-top: 2rem;">
+  <img src="../images/raksti/dziesma-vs-kliedziens.jpg" alt="Microphone vs megaphone – Eurovision metaphor" style="position: absolute; top: -40px; left: 0; width: 100%; height: auto;">
+</div>
+
+<h2>1. From variety stage to identity show – a chronological sketch</h2>
+<table>
+  <tr><th>Period</th><th>Key features</th><th>Examples</th></tr>
+  <tr><td>1956‑1970<br><span class="note">"One language of love"</span></td><td>Swing/chanson melodies; hotel orchestras; live vocals.</td><td>"Nel blu, dipinto di blu" (1958)</td></tr>
+  <tr><td>1970‑2000<br><span class="note">Pop revolution</span></td><td>Disco, synthesisers; the ABBA effect; TV glamour.</td><td>Bucks Fizz skirt trick (1981); Dana International (1998)</td></tr>
+  <tr><td>2001‑2013<br><span class="note">Spectacle & televote</span></td><td>LED, monsters, phone voting.</td><td>Lordi (2006); Rybak (2009)</td></tr>
+  <tr><td>2014‑…<br><span class="note">Identity / trauma-pop</span></td><td>Story > melody; social media pace.</td><td>Conchita (2014); Nemo (2024)</td></tr>
+</table>
+
+<h2>2. Why does melody disappear and screaming appear?</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 1rem;">
+  <div style="flex-shrink: 0;">
+    <img src="../images/raksti/eurovision-trauma.jpg" alt="Trauma aesthetics" style="max-width: 280px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+  </div>
+  <div style="flex: 1; min-width: 260px;">
+    <ul style="list-style-type: disc; padding-left: 1.2rem; font-size: 1.05em; line-height: 1.6em; color: #f0f0f0;">
+      <li><strong>Platform economics</strong> — the 15-second hook (TikTok effect) → vocal explosion immediately.<br>In the digital age, songs can no longer afford a slow intro. Social media algorithms (especially TikTok) favour an immediately recognisable emotional or musical explosive moment. The fragment, not the album, becomes the economic unit.</li>
+      <li><strong>Jury × televote</strong> — votes vs. shock → vocal sprints + meme-ability.<br>The traditional jury seeks technically high-quality performances, while viewers vote for surprise or image. Songs are built with "vocal sprints" and visual signs that appeal to both groups.</li>
+      <li><strong>Trauma aesthetics</strong> — tears = authenticity; melody = optional.<br>The modern viewer sees authenticity in vulnerability. So artists cry on stage, tell stories of pain and suffering. The song becomes emotional therapy, not just a melody.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>3. Host clichés – PR Nirvana</h2>
+<p>"Tonight we celebrate love, diversity and unity…" — translatable into 37 languages, says nothing.</p>
+<p>Eurovision hosts have become the voice of a PR algorithm. Their speeches are so precisely calibrated, so neutral and "inclusive", that they often lose all meaning. Phrases like "We are one family", "This is a night of music" or "Tonight love wins" sound like PowerPoint presentation templates, not living emotions.</p>
+<p>These texts are designed to avoid risk — not to offend, not to say anything original. They work as semantic sedation: the listener is lulled into a safe, smooth wave of multiculturalism where everyone smiles and no one really says anything. That is the state of PR Nirvana — everything is fine, always, for everyone.</p>
+<p>And yet — the more hosts repeat the "unity mantra", the emptier it becomes. Words are squandered like confetti — many, bright, but dissolving into air. This "unity" is not an experience but a note. Not a dialogue but a script. Not a human speaking — but a corporate image with a microphone.</p>
+
+<h2>4. The political and social lift</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+  <div style="flex: 1; min-width: 280px;">
+    <p>Eurovision is not only a music contest — it is a <strong>platform for symbolic messages</strong>, diplomatic gestures and social representation.</p>
+    <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
+      <li><strong>Soft power – Ukraine 2022</strong><br>Ukraine's wartime victory with "Stefania" was a symbol not only of musical taste but also of political solidarity.</li>
+      <li><strong>LGBTQ+ visibility – the new standard since 2014</strong><br>Conchita Wurst's victory marked a turning point — not only in Eurovision history, but in the manifestation of European cultural values.</li>
+      <li><strong>EBU = TV NATO</strong><br>The European Broadcasting Union acts as an informal "TV NATO" — setting technical, ethical and representation standards.</li>
+    </ul>
+    <p>Eurovision becomes both a <em>mirror of society</em> and <em>its ideal stage</em>.</p>
+  </div>
+  <div style="flex-shrink: 0;">
+    <img src="../images/raksti/eurovision-softpower.jpg" alt="Eurovision's political lift" style="max-width: 300px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+  </div>
+</div>
+
+<h2>5. Magnets for criticism</h2>
+<p>Eurovision is frequently criticised — from aesthetic, political and economic perspectives alike.</p>
+<table>
+  <tr><th>Criticism</th><th>Basis</th><th>Counter-argument</th></tr>
+  <tr><td><strong>Political voting</strong></td><td>Neighbouring countries traditionally exchange points — e.g. Greece and Cyprus, Scandinavian countries, the Balkans.</td><td>Since 2016 voting is split: <strong>jury</strong> and <strong>televote</strong> form separate results, reducing bloc voting.</td></tr>
+  <tr><td><strong>Cost (€30–70m)</strong></td><td>Hosting requires enormous resources — from stage technology to security and delegation costs.</td><td>The event attracts tourists and provides <strong>global PR</strong> for the host country's image.</td></tr>
+  <tr><td><strong>Music quality</strong></td><td>Critics point to the "EDM copy-paste" effect — identical party songs with similar structures.</td><td>Eurovision also provides breakthrough opportunities for original artists: <strong>Salvador Sobral</strong> (2017), <strong>Måneskin</strong> (2021).</td></tr>
+</table>
+
+<h2>6. What the contest gives / takes away</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+  <div style="flex-shrink: 0;">
+    <img src="../images/raksti/eurovision-duality.jpg" alt="Eurovision's dual nature" style="max-width: 280px; height: auto; margin-top: 4rem; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+  </div>
+  <div style="flex: 1; min-width: 280px;">
+    <h4 style="margin-top: 1em;">🌍 What it gives:</h4>
+    <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
+      <li><strong>Cultural mediation:</strong> languages, symbols and musical styles cross borders, letting small countries be noticed.</li>
+      <li><strong>Technology test bed:</strong> stage design, LED, VR and AI are tested in front of millions of viewers.</li>
+      <li><strong>Freedom barometer:</strong> countries' attitudes toward LGBTQ+, identity and gender appear in song choices.</li>
+    </ul>
+    <h4 style="margin-top: 1em;">⚠️ What it takes away:</h4>
+    <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
+      <li><strong>Dilution of melody:</strong> songs are adapted to algorithm logic — "viral" rather than musically nuanced.</li>
+      <li><strong>Politicisation:</strong> voting often becomes an expression of diplomacy rather than an assessment of artistic quality.</li>
+      <li><strong>Meme-ability > music:</strong> more is said about a costume or trick than about the song's meaning or beauty.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>7. Why is Eurovision often perceived as part of the music industry?</h2>
+<h3>🎭 1. Eurovision looks like the music industry</h3>
+<p>There is a stage, spotlights, singers, stylists, votes, visual aesthetics — everything looks similar to what we see at the MTV Awards or in pop music videos. <strong>But it is an aesthetic veneer, not a structure.</strong></p>
+<h3>🧠 2. Society sees the result, not the mechanism</h3>
+<p>Most people don't think about who organises the show — they see a "song competition", so it's a music contest. They don't investigate that it is run by national public broadcasters, not commercial record companies.</p>
+<h3>🎯 3. Songs are released, streamed, videos are made</h3>
+<p>Each country releases a song you can find on Spotify or YouTube. But it is often created for television, for one performance, for one symbolic task. It is a music "product", but with a different goal — to represent, not to dominate the market.</p>
+<h3>💥 4. Eurovision imitates the industry, but does not belong to it</h3>
+<p>It is like a musical theatre version of the music business — symbolic, staged, stylised. And this creates a <strong>cognitive illusion</strong> that it is part of the "real" industry, when in reality it stands beside it — as a parallel universe.</p>
+
+<h2>8. Improvement scenarios: how to develop Eurovision?</h2>
+<table>
+  <tr><th>Scenario</th><th>What changes</th><th>Upside</th><th>Risk</th></tr>
+  <tr><td><strong>Melody quota</strong></td><td>Introduce a fixed proportion (e.g. 30%) of jury and televote points allocated specifically to <em>melody quality</em>.</td><td>Would revive the importance of classical song form and encourage participants to think about musical structure.</td><td>Difficult to realise technically — objective melodic criteria would need to be defined. Risk of greater system complexity.</td></tr>
+  <tr><td><strong>Genre finals</strong></td><td>Introduce <em>preliminary genre finals</em>: pop, folk/ethno, urban music, alternative etc.</td><td>Would promote diversity and give non-dominant styles a path to the final.</td><td>Extra rounds would lengthen the contest and increase organisational costs.</td></tr>
+  <tr><td><strong>Pop-culture EXPO</strong></td><td>Run a week-long <em>music and technology festival</em> alongside the contest.</td><td>Would establish Eurovision as a <strong>European pop-culture hub</strong>.</td><td>Risk that the contest becomes just one of many events, losing focus.</td></tr>
+</table>
+
+<h2>9. Future forecasts (2025–2035)</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+  <div style="flex: 1; min-width: 260px;">
+    <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
+      <li><strong>AI co-authors > 50%</strong><br>Most songs created in collaboration with artificial intelligence. EBU could introduce "AI-assisted" labels as a creative standard.</li>
+      <li><strong>VR co-viewing with emoji voting</strong><br>Viewers immerse in the metaverse — following the show from a "virtual arena" via VR headsets and voting with real-time emoji reactions.</li>
+    </ul>
+  </div>
+  <div style="flex-shrink: 0;">
+    <img src="../images/raksti/eurovision-future.jpg" alt="Eurovision's future stage" style="max-width: 280px; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+  </div>
+  <div style="flex: 1; min-width: 260px;">
+    <ul style="list-style-type: disc; padding-left: 1.4rem; font-size: 1.05em; line-height: 1.6em;">
+      <li><strong>Euro-Med expansion</strong><br>Eurovision is no longer only "Euro" — countries from North Africa, the Middle East and Central Asia join, forming a "Eurovision Alliance".</li>
+      <li><strong>CO₂ ceiling → less pyrotechnics</strong><br>The climate crisis forces a reduction in the carbon footprint. Transition to virtual flame simulations and energy-efficient LED.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>10. Can this train be stopped?</h2>
+<h3>🛤️ Why it keeps going:</h3>
+<ul style="line-height: 1.6em;">
+  <li><strong>Market:</strong> viewership remains high year on year (around 160 million), especially thanks to the social media "second screen" effect.</li>
+  <li><strong>Target audience:</strong> the contest's core — young adults and the LGBTQ+ community — seeks dramatic stories and representation.</li>
+  <li><strong>Narrative:</strong> "symbol of inclusive, diverse Europe" — criticism of excess showmanship is often marginalised as "unprogressive" or "old-fashioned".</li>
+</ul>
+<h3>🔧 Real change? — nobody really wants it right now.</h3>
+<ul style="line-height: 1.6em;">
+  <li>Meaningful change would require <strong>structural courage</strong> at EBU level. But neither national delegations nor viewers are currently pressing for reform.</li>
+</ul>
+<h3>🌀 Transformation vs. Collapse</h3>
+<ul style="line-height: 1.6em;">
+  <li><strong>Transformation:</strong> Growing "trauma-pop" fatigue may push the contest back toward musically purer, emotionally quieter performances.</li>
+  <li><strong>Collapse:</strong> If change does not come, a slow audience erosion may begin: the contest becomes a niche social-media phenomenon, losing mass TV appeal.</li>
+</ul>
+<h3>🌱 Alternatives</h3>
+<ul style="line-height: 1.6em;">
+  <li><strong>New EuroRadio format:</strong> emphasis on a song's musical quality and linguistic diversity, not on the show.</li>
+  <li><strong>Decentralised music awards:</strong> independent platforms where musicians and listeners choose the best works.</li>
+  <li><strong>Digital sound competitions:</strong> new forms such as "Soundcloud Grand Prix" or "AI Composer Cup".</li>
+</ul>
+
+<h2>11. Finance, psychology, culture — what is really happening?</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+  <div style="flex: 1; min-width: 280px;">
+    <h3>💶 Financial level</h3>
+    <ul style="line-height: 1.6em;">
+      <li>Hosting Eurovision costs €30–70 million, but the immediate return can be significant: Liverpool's 2023 hosting generated more than <strong>£40 million</strong> in economic activity.</li>
+      <li>For a small country (e.g. Latvia in 2003) the contest serves as a <strong>one-off PR platform</strong> — the country is showcased on the world stage without military or economic power.</li>
+    </ul>
+    <h3>💥 Psychological level</h3>
+    <ul style="line-height: 1.6em;">
+      <li><strong>Ritual:</strong> Eurovision has become a social evening where people gather and judge. It is a <em>collective escape</em> from daily life.</li>
+      <li><strong>Collective drama:</strong> The show functions as a <em>sports competition without a ball</em> — winning matters, but the experience matters more.</li>
+    </ul>
+    <h3>🌍 Cultural-social level</h3>
+    <ul style="line-height: 1.6em;">
+      <li>Eurovision is one of the last <strong>pan-European cultural moments</strong> watched by grandparent and grandchild in the same room.</li>
+      <li>The contest continuously hosts <strong>dialogues about freedom, diversity, gender and borders</strong>.</li>
+    </ul>
+  </div>
+  <div style="flex-shrink: 0;">
+    <img src="../images/raksti/eurovision-sociotechno.jpg" alt="Viewers and the cultural-psychological landscape" style="max-width: 300px; margin-top: 4rem; height: auto; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+  </div>
+</div>
+
+<h2>12. On screaming and "old age"</h2>
+<p>Not every vocal explosion is an experience. The aesthetics of screaming often seen in Eurovision is not quite the same as a <em>Rammstein flame</em>, a <em>Nick Cave drag</em> or a <em>Tom Waits rusty whisper</em>. It is a <strong>stylised simulation of affect</strong> that frequently substitutes for melody, story and space.</p>
+<p>Contemporary trauma-pop often explodes in the first second, and nothing remains — only pressure. Music becomes an assault, not an experience. Contrasts disappear. Emotion without structure is noise.</p>
+<h4>🎸 What irritates:</h4>
+<ul style="line-height: 1.6em;">
+  <li><strong>Excessive emotion:</strong> not restrained pain or stylised anxiety, but a literal, theatrical scream on every beat.</li>
+  <li><strong>Lack of form:</strong> songs often go nowhere, they don't breathe. No arc, no climax — only constant intensity.</li>
+</ul>
+<h4>💡 What to do:</h4>
+<ul style="line-height: 1.6em;">
+  <li><strong>Listen more deeply:</strong> where is the counterpoint, where is the vocal texture?</li>
+  <li><strong>Talk about sonic architecture:</strong> rock, cabaret and metal also respect structure — aesthetic tension comes from contrasts, not hysteria.</li>
+</ul>
+<p>Listening is not about genre — it is about structure and power. In music, what matters is what remains after the scream fades.</p>
+
+<h2>Conclusion — do we still need Eurovision?</h2>
+<p>Eurovision is not just a contest — it is a <strong>cultural-political performance</strong> in which music, aesthetics and ideology play on the same stage.</p>
+<p>And yet — if in this test there is no longer a <strong>rhythm that breathes</strong> or a <strong>voice that doesn't burn</strong>, then one must ask: what are we truly celebrating? Emotional claustrophobia or sonic diversity?</p>
+<p>From rock to cabaret, from blues to industrial, music's power lies not in screaming but in hitting the mark. If Eurovision forgets this, it becomes nothing but a catalogue of effects.</p>
+<p>So the question to ask is not whether we need it, but: <em>Are we ready to give it a second chance? Do we still want to listen — not just watch?</em></p>
+<p><em>For the moment when melody is forgotten is the moment we ourselves stop sounding.</em></p>
+
+<div style="margin-top: 2rem;">
+  <img src="../images/raksti/eurovision-wide-finale.jpg" alt="Eurovision finale landscape" style="width: 50%; height: auto; display: block; border-top: 4px solid #222; border-bottom: 4px solid #222;">
+</div>
+</main>
+
+  <script src="../assets/js/lang.js?v=5"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
+  <script src="../assets/js/analytics.js"></script>
 </body>
 </html>

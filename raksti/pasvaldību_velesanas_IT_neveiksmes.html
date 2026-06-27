@@ -13,7 +13,6 @@
       font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
       padding: 0;
-      
     }
     .container {
       max-width: 960px;
@@ -50,69 +49,59 @@
     th {
       background-color: rgba(255, 255, 255, 0.1);
     }
-
-   header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
-  backdrop-filter: blur(4px);
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-}
-
-header nav a {
-  color: #ffffff; /* gaišāka krāsa! */
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s;
-}
-
-header nav a:hover {
-  color: #ffd700; /* zeltaina krāsa hover efektam */
-}
-
-header nav a.active {
-  text-decoration: underline;
-  color: #00ffff;
-}
-
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      backdrop-filter: blur(4px);
+    }
+    header nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+    }
+    header nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    header nav a:hover { color: #ffd700; }
+    header nav a.active { text-decoration: underline; color: #00ffff; }
+    .lang-en { display: none; }
+    body.lang-en .lang-lv { display: none; }
+    body.lang-en .lang-en { display: block; }
   </style>
 </head>
 <body>
+<script>document.body.classList.add('lang-'+(localStorage.getItem('puteklis-lang')||'lv'));</script>
 
-    <header>
+  <header>
     <nav>
       <ul>
-        <li><a href="../index.html">Manifests</a></li>
-        <li><a href="../raksti.html" class="active">Raksti</a></li>
-        <li><a href="../index_en.html">EN</a></li>
+        <li><a href="../index.html" data-i18n="nav.manifests">Manifests</a></li>
+        <li><a href="../raksti.html" class="active" data-i18n="nav.raksti">Raksti</a></li>
       </ul>
     </nav>
   </header>
 
-
-
-  <main class="container">
-       <h1>Pašvaldību vēlēšanu IT fiasko: kas nogāja greizi un ko darīt citādi</h1>
+  <main class="container lang-lv">
+    <h1>Pašvaldību vēlēšanu IT fiasko: kas nogāja greizi un ko darīt citādi</h1>
 
     <h2>1. Kas notika un kāpēc izgāzās</h2>
     <table>
       <thead><tr><th>Galvenais trūkums</th><th>Ko atklāja vēlēšanu nakts</th></tr></thead>
       <tbody>
         <tr><td>Sasteigta nodošana</td><td>Sistēma ekspluatācijā tika iedota tikai 1 dienu pirms vēlēšanām – nebija laika pilnai slodzes un drošības pārbaudei.</td></tr>
-        <tr><td>Nepareizs “rate limiter”</td><td>Drošības slānis bloķēja likumīgus iecirkņu pieprasījumus, radot ķēdes reakciju un “karoties” serveriem.</td></tr>
+        <tr><td>Nepareizs "rate limiter"</td><td>Drošības slānis bloķēja likumīgus iecirkņu pieprasījumus, radot ķēdes reakciju un "karoties" serveriem.</td></tr>
         <tr><td>Centralizēts OCR mezgls</td><td>Biļetenu attēli (≈ 100 KB × 600–800 tūkst.) gāja uz vienu galveno serveri; bez paralelizētas apstrādes tas sāka smakt pie pīķa slodzes.</td></tr>
-        <tr><td>Nav rindas/buferēšanas</td><td>Iecirkņu dati “piedzina” backendu, jo netika izmantoti prioritāri job-queue vai message-brokeri (RabbitMQ/Kafka).</td></tr>
+        <tr><td>Nav rindas/buferēšanas</td><td>Iecirkņu dati "piedzina" backendu, jo netika izmantoti prioritāri job-queue vai message-brokeri (RabbitMQ/Kafka).</td></tr>
         <tr><td>Formāls atbalsts</td><td>Incidentu eskalācija risinājās WhatsApp čatā, nevis ar 24/7 SOC/monitoringu.</td></tr>
         <tr><td>Nereāls budžets</td><td>Piešķirtie 1,81 M EUR atļāva MVP, bet ne valsts mēroga, kļūmēm noturīgu sistēmu.</td></tr>
       </tbody>
@@ -134,7 +123,7 @@ header nav a.active {
     </table>
     <p>Tipiska peļņas marža pie valsts iepirkumiem: 15–30 %. Pie 4 M EUR budžeta uzņēmumam (vai konsorcijam) paliktu 0,6–1,0 M EUR pēc algu un infrastruktūras izmaksu segšanas.</p>
 
-    <h2>3. Tehniskais skats “kā bija” vs. “kā vajadzēja”</h2>
+    <h2>3. Tehniskais skats "kā bija" vs. "kā vajadzēja"</h2>
     <table>
       <thead><tr><th>Komponents</th><th>Faktiski (iespējams)</th><th>Ieteicamā prakse</th></tr></thead>
       <tbody>
@@ -150,14 +139,15 @@ header nav a.active {
 
     <h2>4. Cik laika vajadzēja</h2>
     <ul>
-      <li>Minimāli uzticams grafiks: 8–12 mēneši</li>
-      <ul>
-        <li>1–2 mēn. analīze</li>
-        <li>4 mēn. izstrāde</li>
-        <li>2 mēn. integrācija + slodzes/drošības testi</li>
-        <li>1 mēn. ģenerālmēģinājumi, apmācība</li>
-      </ul>
-      <li>Latvijā reālā izstrāde praktiski “saspiesta” <6 mēnešos, ar nodošanu dienu pirms vēlēšanām.</li>
+      <li>Minimāli uzticams grafiks: 8–12 mēneši
+        <ul>
+          <li>1–2 mēn. analīze</li>
+          <li>4 mēn. izstrāde</li>
+          <li>2 mēn. integrācija + slodzes/drošības testi</li>
+          <li>1 mēn. ģenerālmēģinājumi, apmācība</li>
+        </ul>
+      </li>
+      <li>Latvijā reālā izstrāde praktiski "saspiesta" &lt;6 mēnešos, ar nodošanu dienu pirms vēlēšanām.</li>
     </ul>
 
     <h2>5. Galvenā atbildība</h2>
@@ -168,7 +158,7 @@ header nav a.active {
         <tr><td>VARAM (politiskā uzraudzība)</td><td>Budžets, termiņu kontrole, starpinstitucionālā koordinācija</td><td>Akceptēja nodošanu pēdējā brīdī</td></tr>
         <tr><td>CVK (Centrālā vēlēšanu komisija)</td><td>Lietotāja prasības, sistēmas pieņemšana</td><td>Pieņēma sistēmu bez pilna ģenerālmēģinājuma validācijas</td></tr>
         <tr><td>Galvenais līgumizpildītājs (nosaukums publiski slēpts)</td><td>Izstrāde, testēšana, atbalsts</td><td>Pieļāva arhitektūras un slodzes dizaina nepilnības</td></tr>
-        <tr><td>Apakšuzņēmēji (OCR, hosting)</td><td>Specializētie moduļi, datu centrs</td><td>Noslēgti “melno kastu” līgumi, trūkst caurspīdības</td></tr>
+        <tr><td>Apakšuzņēmēji (OCR, hosting)</td><td>Specializētie moduļi, datu centrs</td><td>Noslēgti "melno kastu" līgumi, trūkst caurspīdības</td></tr>
       </tbody>
     </table>
 
@@ -176,11 +166,96 @@ header nav a.active {
     <ol>
       <li>Budžets ≥ 4 M EUR, ar 20 % rezervi neparedzētam infrastruktūras pieaugumam vēlēšanu nedēļā.</li>
       <li>Atvērt mikroservisu arhitektūru, balstītu uz Docker + Kubernetes, lai varētu horizontāli mērogot OCR un API mezglus dažu minūšu laikā.</li>
-      <li>Pilna slodzes simulācija (≥ 2 k pieprasījumi/s) vismaz 60 dienas pirms vēlēšanām; atkārtot pēc katra koda “major” laidiena.</li>
-      <li>Neatkarīgs drošības audits un “red-team” tests ar DDoS, SQL-injection, identificācijas zādzību scenārijiem.</li>
-      <li>24/7 incidentu pārvaldības centrs ar reālu “runbook”: restarti automatizēti, push-paziņojumi iecirkņiem, nevis WhatsApp improvizācija.</li>
+      <li>Pilna slodzes simulācija (≥ 2 k pieprasījumi/s) vismaz 60 dienas pirms vēlēšanām; atkārtot pēc katra koda "major" laidiena.</li>
+      <li>Neatkarīgs drošības audits un "red-team" tests ar DDoS, SQL-injection, identificācijas zādzību scenārijiem.</li>
+      <li>24/7 incidentu pārvaldības centrs ar reālu "runbook": restarti automatizēti, push-paziņojumi iecirkņiem, nevis WhatsApp improvizācija.</li>
     </ol>
-
   </main>
+
+  <main class="container lang-en">
+    <h1>Municipal Elections IT Fiasco: What Went Wrong and What to Do Differently</h1>
+
+    <h2>1. What happened and why it failed</h2>
+    <table>
+      <thead><tr><th>Main Deficiency</th><th>What election night revealed</th></tr></thead>
+      <tbody>
+        <tr><td>Rushed handover</td><td>The system was put into operation only 1 day before the elections — no time for full load and security testing.</td></tr>
+        <tr><td>Incorrect rate limiter</td><td>The security layer blocked legitimate precinct requests, causing a chain reaction and server overload.</td></tr>
+        <tr><td>Centralised OCR node</td><td>Ballot images (≈ 100 KB × 600–800 thousand) were routed to a single main server; without parallelised processing it began to choke under peak load.</td></tr>
+        <tr><td>No queue / buffering</td><td>Precinct data overwhelmed the backend, as no priority job-queues or message brokers (RabbitMQ/Kafka) were in place.</td></tr>
+        <tr><td>Informal support</td><td>Incident escalation happened via WhatsApp chat rather than a 24/7 SOC / monitoring system.</td></tr>
+        <tr><td>Unrealistic budget</td><td>The allocated 1.81 M EUR was enough for an MVP, but not for a national-scale, fault-tolerant system.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>2. Money: what was available vs. what was objectively needed</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Spent (2025)</th><th>Adequate for critical infrastructure</th></tr></thead>
+      <tbody>
+        <tr><td>Analysis + design</td><td>≈ 0.18 M</td><td>0.30 M</td></tr>
+        <tr><td>Development (OCR, API, UI)</td><td>≈ 0.45 M</td><td>0.90 M</td></tr>
+        <tr><td>Servers + storage</td><td>≈ 0.27 M</td><td>0.60 M</td></tr>
+        <tr><td>Security / load tests</td><td>≈ 0.18 M</td><td>0.30 M</td></tr>
+        <tr><td>Training + documentation</td><td>≈ 0.18 M</td><td>0.25 M</td></tr>
+        <tr><td>24/7 support</td><td>(included in total budget)</td><td>0.20 M</td></tr>
+        <tr><td>Management + audit</td><td>≈ 0.27 M</td><td>0.40 M</td></tr>
+        <tr><th>Total</th><th>1.81 M EUR</th><th>≈ 3.5–4.0 M EUR</th></tr>
+      </tbody>
+    </table>
+    <p>Typical profit margin on government contracts: 15–30 %. With a 4 M EUR budget, the company (or consortium) would retain 0.6–1.0 M EUR after covering salaries and infrastructure costs.</p>
+
+    <h2>3. Technical view: "as it was" vs. "as it should have been"</h2>
+    <table>
+      <thead><tr><th>Component</th><th>Actual (likely)</th><th>Recommended practice</th></tr></thead>
+      <tbody>
+        <tr><td>DB</td><td>Single PostgreSQL/SQL Server instance, no clustering</td><td>Clustered PostgreSQL or Oracle RAC + Redis buffer</td></tr>
+        <tr><td>File storage</td><td>NFS disks, uncompressed JPG/PDF</td><td>Ceph/S3 with gzip/zip, checksum + versioning</td></tr>
+        <tr><td>OCR</td><td>ABBYY/Tesseract on a single 32-vCPU server</td><td>Docker microservices × 10–20 nodes (auto-scale)</td></tr>
+        <tr><td>Rate limiting</td><td>IP-based threshold</td><td>Token-based quota, adaptive to load</td></tr>
+        <tr><td>Monitoring</td><td>System logs + manual WhatsApp</td><td>Prometheus + Grafana + Alertmanager, SOC team</td></tr>
+        <tr><td>CI/CD</td><td>Manual deploy, late integration stage</td><td>GitLab CI, IaC (Terraform/Ansible), staging + prod environments</td></tr>
+        <tr><td>Testing</td><td>Limited JMeter scripts</td><td>Gatling/JMeter simulating 1000 precincts, ≥ 2k requests/s</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4. How much time was needed</h2>
+    <ul>
+      <li>Minimum reliable schedule: 8–12 months
+        <ul>
+          <li>1–2 months: analysis</li>
+          <li>4 months: development</li>
+          <li>2 months: integration + load/security tests</li>
+          <li>1 month: rehearsals, training</li>
+        </ul>
+      </li>
+      <li>In Latvia, actual development was effectively compressed to &lt;6 months, with handover one day before elections.</li>
+    </ul>
+
+    <h2>5. Main responsibility</h2>
+    <table>
+      <thead><tr><th>Role</th><th>Responsible for</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>VDAA (State Digital Development Agency)</td><td>Procurement, project oversight, operational handover</td><td>Critically underestimated load risks and deadlines</td></tr>
+        <tr><td>VARAM (political oversight)</td><td>Budget, deadline control, inter-institutional coordination</td><td>Accepted last-minute handover</td></tr>
+        <tr><td>CVK (Central Election Commission)</td><td>User requirements, system acceptance</td><td>Accepted the system without full dress-rehearsal validation</td></tr>
+        <tr><td>Main contractor (name withheld publicly)</td><td>Development, testing, support</td><td>Allowed architectural and load-design deficiencies</td></tr>
+        <tr><td>Subcontractors (OCR, hosting)</td><td>Specialised modules, data centre</td><td>Black-box contracts, lack of transparency</td></tr>
+      </tbody>
+    </table>
+
+    <h2>6. Five concrete recommendations for next elections</h2>
+    <ol>
+      <li>Budget ≥ 4 M EUR, with a 20 % reserve for unforeseen infrastructure scaling during election week.</li>
+      <li>Open microservice architecture based on Docker + Kubernetes, enabling horizontal scaling of OCR and API nodes within minutes.</li>
+      <li>Full load simulation (≥ 2k requests/s) at least 60 days before elections; repeated after every major code release.</li>
+      <li>Independent security audit and red-team test covering DDoS, SQL-injection, and identity-theft scenarios.</li>
+      <li>24/7 incident management centre with a real runbook: automated restarts, push notifications to precincts — not WhatsApp improvisation.</li>
+    </ol>
+  </main>
+
+  <script src="../assets/js/lang.js?v=5"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
+  <script src="../assets/js/analytics.js"></script>
 </body>
 </html>
