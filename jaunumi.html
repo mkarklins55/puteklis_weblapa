@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="/images/logo_small.png" type="image/png">
-  <title>Jaunumi | Puteklis</title>
+  <title data-i18n="nav.jaunumi">Jaunumi | Puteklis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="assets/css/main_puteklis.css" />
   <link rel="alternate" type="application/rss+xml" title="Putekļa Jaunumi" href="https://puteklis.com/jaunumi.xml" />
@@ -145,21 +145,21 @@
     <header>
     <nav>
       <ul>
-        <li><a href="index.html">Manifests</a></li>
-        <li><a href="jaunumi.html" class="active">Jaunumi</a></li>
-        <li><a href="raksti.html">Raksti</a></li>
-        <li><a href="abonet.html">Abonēt</a></li>
-        <li><a href="index_en.html">EN</a></li>
+        <li><a href="index.html" data-i18n="nav.manifests">Manifests</a></li>
+        <li><a href="jaunumi.html" class="active" data-i18n="nav.jaunumi">Jaunumi</a></li>
+        <li><a href="raksti.html" data-i18n="nav.raksti">Raksti</a></li>
+        <li><a href="abonet.html" data-i18n="nav.abonet">Abonēt</a></li>
       </ul>
     </nav>
   </header>
 
 
   <div class="container">
-    <h1>Putekļa jaunumi</h1>
-    <div class="news-grid" id="newsContainer">Notiek ielāde...</div>
+    <h1 data-i18n="jaunumi.h1">Putekļa jaunumi</h1>
+    <div class="news-grid" id="newsContainer"></div>
   </div>
 
+  <script src="assets/js/lang.js?v=3"></script>
   <script>
     fetch("jaunumi.json")
       .then(response => response.json())
@@ -183,7 +183,7 @@
         });
       })
       .catch(error => {
-        document.getElementById("newsContainer").innerHTML = "Kļūda ielādējot jaunumus.";
+        document.getElementById("newsContainer").textContent = t('jaunumi.error');
         console.error("JSON ielādes kļūda:", error);
       });
   </script>

@@ -107,6 +107,10 @@ const TRANSLATIONS = {
     'raksti.kods.p': 'Simulācija, kurā tu pats esi algoritma daļa',
     'raksti.it.h2': 'Pašvaldību vēlēšanu IT fiasko',
     'raksti.it.p': 'Kas nogāja greizi, cik tas maksāja un ko darīt nākotnē',
+    /* --- jaunumi.html --- */
+    'jaunumi.h1': 'Putekļa jaunumi',
+    'jaunumi.loading': 'Notiek ielāde...',
+    'jaunumi.error': 'Kļūda ielādējot jaunumus.',
     /* --- index.html --- */
     'index.h3': 'Puteklis bija tik mazs, ka viņu varēja aizpūst pat doma',
     'index.subtext': 'Visneiedomājamākās vētras sākas ar vismazāko putekli',
@@ -273,6 +277,10 @@ const TRANSLATIONS = {
     'raksti.kods.p': 'A simulation in which you yourself are part of the algorithm',
     'raksti.it.h2': 'Municipal Elections IT Fiasco',
     'raksti.it.p': 'What went wrong, how much it cost and what to do next',
+    /* --- jaunumi.html --- */
+    'jaunumi.h1': 'Puteklis News',
+    'jaunumi.loading': 'Loading...',
+    'jaunumi.error': 'Error loading news.',
     /* --- index.html --- */
     'index.h3': 'Dust was so small that even a thought could blow it away',
     'index.subtext': 'The most unimaginable storms begin with the smallest particle of dust',
