@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="lv">
 <head>
   <meta charset="UTF-8" />
@@ -147,16 +147,16 @@
   <div class="top-logo"><a href="index.html"><img src="images/logo_small.png" alt="Puteklis"></a></div>
 
   <!-- Intro teksti -->
-  <div class="intro-line">Cilvēks radīja mašīnu, lai palīdzētu sev … un tā sāka ieteikt, ko ēst vakariņās.</div>
-  <div class="overlay-text"><h1>Datori</h1><p>Laiks un saprāts digitālajā laikmetā.</p></div>
+  <div class="intro-line" data-i18n="datori.intro">Cilvēks radīja mašīnu, lai palīdzētu sev … un tā sāka ieteikt, ko ēst vakariņās.</div>
+  <div class="overlay-text"><h1 data-i18n="datori.h1">Datori</h1><p data-i18n="datori.p">Laiks un saprāts digitālajā laikmetā.</p></div>
 
   <!-- Pogas -->
   <div class="grid-links">
-    <a href="#" data-id="mi"><img src="images/thumbs/MI.jpg" alt="MI">MI</a>
-    <a href="#" data-id="intuicija"><img src="images/thumbs/intuicija.jpg" alt="Intuīcija">Digitālā intuīcija</a>
-    <a href="#" data-id="tagadne"><img src="images/thumbs/tagadne.jpg" alt="Tagadne">Tagadne</a>
-    <a href="#" data-id="nakotne"><img src="images/thumbs/nakotne.jpg" alt="Nākotne">Nākotne</a>
-    <a href="#" data-id="pagatne"><img src="images/thumbs/pagatne.jpg" alt="Pagātne">Pagātne</a>
+    <a href="#" data-id="mi"><img src="images/thumbs/MI.jpg" alt="MI"><span data-i18n="datori.mi">MI</span></a>
+    <a href="#" data-id="intuicija"><img src="images/thumbs/intuicija.jpg" alt="Intuīcija"><span data-i18n="datori.intuicija">Digitālā intuīcija</span></a>
+    <a href="#" data-id="tagadne"><img src="images/thumbs/tagadne.jpg" alt="Tagadne"><span data-i18n="datori.tagadne">Tagadne</span></a>
+    <a href="#" data-id="nakotne"><img src="images/thumbs/nakotne.jpg" alt="Nākotne"><span data-i18n="datori.nakotne">Nākotne</span></a>
+    <a href="#" data-id="pagatne"><img src="images/thumbs/pagatne.jpg" alt="Pagātne"><span data-i18n="datori.pagatne">Pagātne</span></a>
   </div>
 
   <!-- Popup saturs -->
@@ -164,6 +164,7 @@
   <div class="quote" id="quoteBox">"Katrs bits ir sapņa atblāzma."</div>
 
   <!-- ======= SCRIPTS (saīsināti; tava loģika paliek) ======= -->
+  <script src="assets/js/lang.js?v=3"></script>
   <script>
    // 1) Tīkla animācija
     const canvas = document.getElementById('networkCanvas');

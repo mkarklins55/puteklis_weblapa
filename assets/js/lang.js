@@ -105,6 +105,20 @@ const TRANSLATIONS = {
     'raksti.kods.p': 'Simulācija, kurā tu pats esi algoritma daļa',
     'raksti.it.h2': 'Pašvaldību vēlēšanu IT fiasko',
     'raksti.it.p': 'Kas nogāja greizi, cik tas maksāja un ko darīt nākotnē',
+    /* --- index.html --- */
+    'index.h3': 'Puteklis bija tik mazs, ka viņu varēja aizpūst pat doma',
+    'index.subtext': 'Visneiedomājamākās vētras sākas ar vismazāko putekli',
+    'index.button': 'Uzzināt vairāk',
+    'index.about.h2': 'Par Putekli...',
+    /* --- datori.html --- */
+    'datori.h1': 'Datori',
+    'datori.p': 'Laiks un saprāts digitālajā laikmetā.',
+    'datori.intro': 'Cilvēks radīja mašīnu, lai palīdzētu sev … un tā sāka ieteikt, ko ēst vakariņās.',
+    'datori.mi': 'MI',
+    'datori.intuicija': 'Digitālā intuīcija',
+    'datori.tagadne': 'Tagadne',
+    'datori.nakotne': 'Nākotne',
+    'datori.pagatne': 'Pagātne',
     /* --- maksla.html --- */
     'maksla.h1': 'Māksla',
     'maksla.gramatas.h2': 'Grāmatas',
@@ -255,6 +269,20 @@ const TRANSLATIONS = {
     'raksti.kods.p': 'A simulation in which you yourself are part of the algorithm',
     'raksti.it.h2': 'Municipal Elections IT Fiasco',
     'raksti.it.p': 'What went wrong, how much it cost and what to do next',
+    /* --- index.html --- */
+    'index.h3': 'Dust was so small that even a thought could blow it away',
+    'index.subtext': 'The most unimaginable storms begin with the smallest particle of dust',
+    'index.button': 'Learn more',
+    'index.about.h2': 'About Puteklis...',
+    /* --- datori.html --- */
+    'datori.h1': 'Computers',
+    'datori.p': 'Time and reason in the digital age.',
+    'datori.intro': 'Humans created the machine to help themselves… and it started suggesting what to have for dinner.',
+    'datori.mi': 'AI',
+    'datori.intuicija': 'Digital Intuition',
+    'datori.tagadne': 'Present',
+    'datori.nakotne': 'Future',
+    'datori.pagatne': 'Past',
     /* --- maksla.html --- */
     'maksla.h1': 'Art',
     'maksla.gramatas.h2': 'Books',

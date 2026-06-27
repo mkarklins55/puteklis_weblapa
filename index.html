@@ -115,16 +115,14 @@
     <button id="navToggle" aria-label="Izvēlne">☰</button>
     <nav>
       <ul>
-        <li><a href="index.html" class="active">Manifests</a></li>
-        <li><a href="piedzivojumi.html">Ceļojumi</a></li>
-        <li><a href="foto.html">Foto</a></li>
-        <li><a href="datori.html">Datori</a></li>
-        <li><a href="politika_new.html">Politika</a></li>
-        <li><a href="maksla.html">Māksla</a></li>
-        <li><a href="muzika.html">Mūzika</a></li>
-        <li><a href="raksti.html">Raksti</a></li>
-        <li><a href="jaunumi.html">Jaunumi</a></li>
-        <li><a href="index_en.html">EN</a></li>
+        <li><a href="index.html" class="active" data-i18n="nav.manifests">Manifests</a></li>
+        <li><a href="piedzivojumi.html" data-i18n="nav.piedzivojumi">Ceļojumi</a></li>
+        <li><a href="foto.html" data-i18n="nav.foto">Foto</a></li>
+        <li><a href="datori.html" data-i18n="nav.datori">Datori</a></li>
+        <li><a href="maksla.html" data-i18n="nav.maksla">Māksla</a></li>
+        <li><a href="muzika.html" data-i18n="nav.muzika">Mūzika</a></li>
+        <li><a href="raksti.html" data-i18n="nav.raksti">Raksti</a></li>
+        <li><a href="jaunumi.html" data-i18n="nav.jaunumi">Jaunumi</a></li>
       </ul>
     </nav>
   </header>
@@ -135,9 +133,9 @@
     <div class="color-overlay"></div>
     <div class="hero-content">
       <h1 class="animated-title" data-text="Putekļa manifests" aria-label="Putekļa manifests">Putekļa manifests</h1>
-      <h3>Puteklis bija tik mazs, ka viņu varēja aizpūst pat doma</h3>
-      <p>Visneiedomājamākās vētras sākas ar vismazāko putekli</p>
-      <a href="#about" class="button">Uzzināt vairāk</a>
+      <h3 data-i18n="index.h3">Puteklis bija tik mazs, ka viņu varēja aizpūst pat doma</h3>
+      <p data-i18n="index.subtext">Visneiedomājamākās vētras sākas ar vismazāko putekli</p>
+      <a href="#about" class="button" data-i18n="index.button">Uzzināt vairāk</a>
     </div>
   </section>
 
@@ -148,7 +146,7 @@
   </a>
 
   <section class="about-section" id="about">
-    <h2>Par Putekli...</h2>
+    <h2 data-i18n="index.about.h2">Par Putekli...</h2>
     <p>Es esmu puteklis.<br>Ne zvaigzne, ne influenceris, ne prezidents, ne NFT kolekcija.<br>Es esmu tas, ko tu noslauki no galda, bet kas vienmēr atgriežas.<br>Mazs. Neredzams. Un mūžīgi klāt esošs.</p>
     <p>Man nav plāna. Bet man ir trajektorija.<br>Es ceļoju pa bibliotēkām, serveru plauktiem un Balkānu ceļiem, aizpūsts nevis ar likteni, bet ar dabu – un datu plūsmu.</p>
     <p>Es nepiekrītu:<br>– ka niecīgie neko nespēj,<br>– ka viedokli drīkst paturēt tikai tie, kam ir partijas biedra karte,<br>– ka dzīve ir Excel tabula bez Ctrl+Z.</p>
@@ -157,6 +155,7 @@
     <p>Jo es esmu puteklis.<br>Un šis ir mans manifests.</p>
   </section>
 
+  <script src="assets/js/lang.js?v=3"></script>
   <script>
     document.querySelectorAll('.animated-title').forEach((title)=>{
       const text = title.dataset.text || title.textContent || '';
