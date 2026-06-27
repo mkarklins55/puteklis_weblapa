@@ -283,83 +283,18 @@
       });
     });
 
-    function showContent(id) {
-      contentBox.style.display = 'block';
-      contentBox.innerHTML = `
-        <button id="closeBtn" title="Aizvērt">✖</button>
-      `;
-      switch(id) {
-        case 'mi':
-          contentBox.innerHTML += `
-             <h2>🤖 Mākslīgais intelekts šodien: ne tikai Skynets, bet arī tavs kolēģis</h2>
+    let _curId = null;
 
-      <p><em>Reiz bija laiki, kad "mākslīgais intelekts" izklausījās pēc Terminatora filmas trešās daļas mārketinga reklāmas.</em></p>
-      <p>Šodien MI ir:</p>
-      <ul>
-        <li>tava meklētājprogramma,</li>
-        <li>tavas Google Maps prognozes,</li>
-        <li>tava Spotify dziesmu izlase,</li>
-        <li>un, jā — čoms, kas tev raksta referātu piektdienas naktī.</li>
-      </ul>
-
-      <h3>📅 Kur mēs esam 2025. gadā?</h3>
-      <p>Mākslīgais intelekts vairs nav tikai zinātnieku rotaļlieta laboratorijā. Tagad tas ir:</p>
-      <ul>
-        <li><strong>ChatGPT, Claude, Gemini, Mistral</strong> — teksta ģenerēšanas mašīnas ar IQ, kas sapņo par Turinga testu.</li>
-        <li><strong>DALL·E, Midjourney, Leonardo AI</strong> — mākslinieki bez otas, bez krampjiem rokām un bez autortiesībām (nu labi, šis vēl ir diskutējams).</li>
-        <li><strong>Deepfake video</strong> — tur, kur agrāk vajadzēja Holivudas budžetu, tagad pietiek ar pāris klikšķiem.</li>
-      </ul>
-
-      <h3>🧑‍💻 Ko tas nozīmē parastam cilvēkam?</h3>
-      <p>Tu jau dzīvo ar MI, vienkārši to nezini. Lūk, kā tas izpaužas:</p>
-      <ul>
-        <li>Tavs kolēģis raksta e-pastu ar ChatGPT, bet izliekas, ka viņš ir ģeniāls.</li>
-        <li>Tava Instagram lente optimizēta pēc algoritma, kas zina tavas vājības labāk nekā tava mamma.</li>
-        <li>Tu meklē “ātrāko ceļu uz darbu”, un MI nosūta tevi cauri bērnudārza pagalmiem, jo "statistiski tā sanāk ātrāk".</li>
-      </ul>
-      <p><em>Un jā, arī šis raksts varētu būt uzrakstīts ar MI.</em></p>
-      <p><strong>Bet tā nav krāpšana.</strong> Tā ir sadarbība. Kā cilvēks un robots spēlē šahu. Tikai tagad robots uztaisa arī galdiņu, raksta noteikumus un sūta preses relīzi.</p>
-
-      <h3>❓ Lielie jautājumi</h3>
-      <ul>
-        <li>Nav skaidrs, kas ir cilvēka, kas — mašīnu darbs.</li>
-        <li>Zināšanas ir sekundēs pieejamas, bet izpratne — joprojām deficīts.</li>
-        <li>Informācijas plūsma ātra, bet uzticība — trausla kā Google docā neatvērts fails.</li>
-        <li>Un: Vai cilvēks ir vēl nepieciešams, ja MI jau uzrakstīja referātu, atbildēja uz e-pastu, uzzīmēja logotipu un uzvarēja memu konkursā?</li>
-      </ul>
-
-      <h3>⚠️ Bet MI nav visspēcīgs</h3>
-      <p>MI nav gudrāks par tevi. Viņš vienkārši:</p>
-      <ul>
-        <li>nav noguris,</li>
-        <li>neiet uz tualeti,</li>
-        <li>un nelasa Facebook komentārus pirms miega.</li>
-      </ul>
-      <p>Viņš zina daudz, bet nesaprot pasauli kā cilvēks — viņam nav pieredzes ar slapjām zeķēm martā vai mizotiem kartupeļiem.</p>
-
-      <h3>🇱🇻 Un Latvijā?</h3>
-      <ul>
-        <li>Uzņēmumi sāk izmantot MI klientu apkalpošanā, mārketingā un dokumentu analīzē.</li>
-        <li>Skolēni kļūst par "prompt-inženieriem", skolotāji — meklē ChatGPT detektorus.</li>
-        <li>Valsts pārvalde vēl tikai no papīra pārceļas uz PDF, bet MI jau raksta secinājumus par reformām.</li>
-      </ul>
-
-      <h3>💡 Ko mums darīt?</h3>
-      <ul>
-        <li>Domāt vairāk.</li>
-        <li>Uzdot labākus jautājumus — arī sev pašiem.</li>
-        <li>Neuztvert MI kā burvju nūjiņu vai apokalipsi. Tas ir rīks. Un rīka spēku nosaka roka, kas to tur.</li>
-      </ul>
-
-      <h3>🧾 Nobeigumā:</h3>
-      <p>Mākslīgais intelekts šobrīd nav nedz dievs, nedz velns. Viņš ir aizņemts interns ar milzīgu datu krātuvi un bez sajūtām par robežām.</p>
-      <p><strong>Tavs uzdevums?</strong> Iemācīties ar viņu dzīvot, strādāt un — reizēm — arī pasmieties.</p>
-    </div>
-<h3>🎵 Roboti gan komponē, gan izpilda</h3>
-    <p>Klausies dažus no demo failiem: </p>
+    function _getMiMusic(lang) {
+      const h = lang==='en' ? '🎵 Robots both compose and perform' : '🎵 Roboti gan komponē, gan izpilda';
+      const p = lang==='en' ? 'Listen to some demo files:' : 'Klausies dažus no demo failiem:';
+      const ph = lang==='en' ? '-- Choose a song --' : '-- Izvēlies dziesmu --';
+      const ab = lang==='en' ? 'Your browser does not support audio.' : 'Tavs pārlūks neatbalsta audio elementu.';
+      const lh = lang==='en' ? 'Choose a song to see the lyrics.' : 'Izvēlies dziesmu, lai redzētu vārdus.';
+      return `<h3>${h}</h3><p>${p}</p>
  <div class="centeredContent">
   <select id="songSelector" onchange="playSelectedSong()">
-    <option value="">-- Izvēlies dziesmu --</option>
+    <option value="">${ph}</option>
     <option value="music/The Lost Sock Saga.mp3">The Lost Sock Saga</option>
     <option value="music/un mēs braucam.mp3">Un mēs braucam</option>
     <option value="music/There are prisoners trapped between cloc.mp3">There are prisoners trapped between clocks</option>
@@ -378,7 +313,7 @@
     <option value="music/Rust on the rails and grass in the ties.mp3">Rust on the rails and grass in the ties</option>
     <option value="music/Riteņi minas pa ceļu, kas nav.mp3">Riteņi minas pa ceļu, kas nav</option>
     <option value="music/Ridin' hard on a frozen track.mp3">Ridin' hard on a frozen track</option>
-    <option value="music/Ich spür’ dein Herz, es schlägt so kalt.mp3">Ich spür’ dein Herz, es schlägt so kalt</option>
+    <option value="music/Ich spür' dein Herz, es schlägt so kalt.mp3">Ich spür' dein Herz, es schlägt so kalt</option>
     <option value="music/Die letzte Straßenbahn nach Riga.mp3">Die letzte Straßenbahn nach Riga</option>
     <option value="music/Muris.mp3">Muris</option>
     <option value="music/Sous mes bottes, la poussière chante.mp3">Sous mes bottes, la poussière chante</option>
@@ -396,7 +331,7 @@
     <option value="music/Два дні їдемо крізь пил.mp3">Два дні їдемо крізь пил</option>
     <option value="music/Crows return on shattered wings.mp3">Crows return on shattered wings</option>
     <option value="music/After the autumn sadness.mp3">After the autumn sadness</option>
-    <option value="music/We don’t fight wars.mp3">We don’t fight wars</option>
+    <option value="music/We don't fight wars.mp3">We don't fight wars</option>
     <option value="music/lai dzīvo puritānisms.mp3">Lai dzīvo puritānisms</option>
     <option value="music/When all the fucking ropes snap.mp3">When all the fucking ropes snap</option>
     <option value="music/Sanctus, sanctus, Sanctus Algorithmus.mp3">Sanctus, sanctus, Sanctus Algorithmus</option>
@@ -410,20 +345,20 @@
     <option value="music/A Little Song for Joy.mp3">A Little Song for Joy</option>
     <option value="music/Broken Chain Anthem.mp3">Broken Chain Anthem</option>
     <option value="music/Some fucking nature scene.mp3">Some fucking nature scene</option>
-    <option value="music/I started rollin’ early, sun just touchi.mp3">A Hundred Kilometres</option>
+    <option value="music/I started rollin' early, sun just touchi.mp3">A Hundred Kilometres</option>
     <option value="music/Ich zähle jeden Atemzug.mp3">Ich zähle jeden Atemzug</option>
     <option value="music/Wrong shoes, wrong night.mp3">One Last Time - Burn It Down</option>
     <option value="music/Red dusk falls on his tired face.mp3">The Old Cat Walks</option>
     <option value="music/You lit me up, then walked away.mp3">Awake to Be Happy</option>
     <option value="music/You fucked, you ran, you left the light.mp3">You fucked, you ran, you left the light</option>
-    <option value="music/I don’t knead, I don’t purr, I don’t play.mp3">I’m the Fuckin’ Cat</option>
+    <option value="music/I don't knead, I don't purr, I don't play.mp3">I'm the Fuckin' Cat</option>
     <option value="music/She stitched my name in a coat of smoke.mp3">Ash and Velvet</option>
     <option value="music/Dipadu dapadu.mp3">Vēja zirdziņš</option>
     <option value="music/Pūpoliņi, pūpoliņi.mp3">Pūpoliņi</option>
     <option value="music/first row freaks.mp3">AND THEN THEY SCREAM</option>
     <option value="music/We got your letter.mp3">If Someone Licks the Stamp</option>
     <option value="music/Had a little money from the cow we sold.mp3">Four Days in Paris</option>
-    <option value="music/Streets don’t care.mp3">WALK, MOTHERFUCKER</option>
+    <option value="music/Streets don't care.mp3">WALK, MOTHERFUCKER</option>
     <option value="music/Katru rītu agri ceļos.mp3">Skolas diena</option>
     <option value="music/Alfrēds Klucis — darbā sētnieks.mp3">Klucis un Cena</option>
     <option value="music/Shiny shards in sidewalk seams.mp3">Sidewalk of Shards</option>
@@ -436,7 +371,7 @@
     <option value="music/Four wolves leapt into the brush.mp3">Four Wolves</option>
     <option value="music/Tiesa, tiesa, ne meliņi, līgo, līgo.mp3">Raganu nakts</option>
     <option value="music/Katra vieta klāt savs smukums.mp3">Katra vieta klāt savs smukums</option>
-    <option value="music/I’m the palm.mp3">I’m the palm</option>
+    <option value="music/I'm the palm.mp3">I'm the palm</option>
     <option value="music/The wizard knocks upon my door.mp3">The wizard knocks upon my door</option>
     <option value="music/The world keeps turning, it never stops.mp3">The World Keeps Turning</option>
     <option value="music/Es saviju vainadziņu, līgo, Jānīti.mp3">Vainagu deja</option>
@@ -445,7 +380,7 @@
     <option value="music/četri vilki.mp3">Uijā, uijā, nikni vilki</option>
     <option value="music/Ieksejas_kartibas_noteikumi.mp3">Iekšējās kārtības noteikumi</option>
     <option value="music/The world keeps turning, it never stops (Remix).mp3">The World Keeps Turning (remix)</option>
-    <option value="music/Coffeeshop — “Hedgehog in the Fog”.mp3">Coffeeshop — “Hedgehog in the Fog”</option>
+    <option value="music/Coffeeshop — "Hedgehog in the Fog".mp3">Coffeeshop — "Hedgehog in the Fog"</option>
     <option value="music/Dārgie kaimiņi, (Remix).mp3">Dārgie kaimiņi</option>
     <option value="music/Zirgi sazviedzas, (Remix).mp3">Kāmīši</option>
     <option value="music/RUNĀ RĪGAS PARKA LAUVA.mp3">RUNĀ RĪGAS PARKA LAUVA</option>
@@ -454,14 +389,14 @@
     <option value="music/Vai tas ezers ir vai upe - (Remix).mp3">GAIDĪTĀJA MEŽA CŪKA</option>
     <option value="music/Peles pieliekamā prot, (Remix).mp3">KO PROT PELES PIELIEKAMĀ</option>
     <option value="music/Pa garo dienu (Remix).mp3">Pa garo dienu (Remix)</option>
-    <option value="music/The rain’s been falling, (Remix).mp3">The rain’s been falling, (Remix)</option>
-    <option value="music/I’m a little Don Quixote.mp3">I’m a little Don Quixote</option>
+    <option value="music/The rain's been falling, (Remix).mp3">The rain's been falling, (Remix)</option>
+    <option value="music/I'm a little Don Quixote.mp3">I'm a little Don Quixote</option>
     <option value="music/When years ago, in silence they burned (Remix).mp3">When years ago, in silence they burned (Remix)</option>
     <option value="music/Enough of good and evil – enough. (Remix).mp3">Enough of good and evil – enough. (Remix)</option>
     <option value="music/metaphysical barbarism.mp3">Metaphysical barbarism</option>
     <option value="music/Aprēķins (Dievs un kasiere).mp3">Aprēķins (Dievs un kasiere)</option>
     <option value="music/Please, observe the silence.mp3">Please, observe the silence</option>
-    <option value="music/My screen’s cluttered with half-born tho (Remix).mp3">My screen’s cluttered with half-born thoughts</option>
+    <option value="music/My screen's cluttered with half-born tho (Remix).mp3">My screen's cluttered with half-born thoughts</option>
     <option value="music/TERRIBLE WORDS.mp3">TERRIBLE WORDS</option>
     <option value="music/Kur piesaulē žogs, (Remix).mp3">Kaķuzeme</option>
     <option value="music/NO KURIENES.mp3">NO KURIENES?</option>
@@ -470,7 +405,7 @@
     <option value="music/Ādams.mp3">Ādams</option>
     <option value="music/zālīte pa riņķi.mp3">zālīte pa riņķi</option>
     <option value="music/labi ka diena ar nakti vēl mainās (Remix) (Remastered x2) (Remix).mp3">labi ka diena ar nakti vēl mainās (Remix)</option>
-    <option value="music/Man nepatīk vārds iecietība — (Remix).mp3">Man nepatīk vārds “iecietība” — (Remix)</option>
+    <option value="music/Man nepatīk vārds iecietība — (Remix).mp3">Man nepatīk vārds "iecietība" — (Remix)</option>
     <option value="music/Whiskers sharp, high heels click (Remix).mp3">Velvet Guillotine</option>
     <option value="music/Lips stitched in velvet law, (Remix).mp3">Thighs Like Thrones</option>
     <option value="music/Dust for Dinner.mp3">Dust for Dinner</option>
@@ -499,10 +434,10 @@
     <option value="music/Apkal Manu Kumeliņu.mp3">Apkal Manu Kumeliņu (Cover by PUTEKLIS)</option>
     <option value="music/Lights of Euphoria - Here comes the Rain -  (Cover).mp3">Lights of Euphoria - Here comes the Rain (Cover by PUTEKLIS)</option>
     <option value="music/Wham! - Last Christmas (Country).mp3">Wham! - Last Christmas (Country) (Cover by PUTEKLIS)</option>
-    <option value="music/Tell me where you’ve been tonight.mp3">Tell me where you’ve been tonight</option>
+    <option value="music/Tell me where you've been tonight.mp3">Tell me where you've been tonight</option>
     <option value="music/Baltā dziesma (Cover).mp3">Baltā dziesma (Cover by PUTEKLIS)</option>
     <option value="music/EZERS (Cover).mp3">EZERS (Cover by PUTEKLIS)</option>
-    <option value="music/I’m on my way home for Christmas.mp3">I’m on my way home for Christmas</option>
+    <option value="music/I'm on my way home for Christmas.mp3">I'm on my way home for Christmas</option>
     <option value="music/Holding the Lane.mp3">Holding the Lane</option>
     <option value="music/Igo - Dziesma Sniegbaltītei (Cover).mp3">Igo - Dziesma Sniegbaltītei (Cover by PUTEKLIS)</option>
     <option value="music/Oda priekam (Cover).mp3">Oda priekam (Cover by PUTEKLIS)</option>
@@ -530,276 +465,281 @@
     <option value="music/dzīvoklis.mp3">dzīvoklis</option>
     <option value="music/4 meitenes.mp3">4 meitenes</option>
     <option value="music/Pārdaugava.mp3">Pārdaugava</option>
-     <option value="music/Cypress Drawer.mp3">Cypress Drawer</option>
-    </select>
-
+    <option value="music/Cypress Drawer.mp3">Cypress Drawer</option>
+  </select>
   <audio id="audioPlayer" controls>
     <source id="audioSource" src="" type="audio/mpeg">
-    Tavs pārlūks neatbalsta audio elementu.
+    ${ab}
   </audio>
   <div id="lyricsBox">
-    <p id="lyricsText" class="fade-in">Izvēlies dziesmu, lai redzētu vārdus.</p>
+    <p id="lyricsText" class="fade-in">${lh}</p>
   </div>
 </div>
- <h3></h3>
-<a href="https://suno.com/invite/@mkarklins55" target="_blank">https://suno.com/invite/@mkarklins55</a>
-
-  `;
-  break;
-        case 'intuicija':
-          contentBox.innerHTML += `
-         <h2>🧠 Nojauta — Digitālā intuīcija</h2>
-      <p>Vai algoritmi lasa mūsu domas vai vienkārši mūs pazīst pārāk labi?</p>
-
-      <p><em>Ir noticis tā:</em></p>
-      <ul>
-        <li>Tu domā par ceļojumu uz Itāliju, un pēkšņi sociālajos tīklos parādās reklāma ar lētām aviobiļetēm uz Romu.</li>
-        <li>Tu meklē dāvanas mammai, un Google iesaka Jaunā Rīgas teātra biļetes.</li>
-      </ul>
-
-      <p><strong>Un Tu nodomā:</strong> Kas tas ir, kā tas (dators) varēja zināt, ko es šobrīd domāju?</p>
-
-      <h3>🔍 Digitālā nojauta jeb “machine feels me”</h3>
-      <p>Šķiet, ka dators ir attīstījis <strong>sesto maņu</strong>. Bet patiesībā tā ir:</p>
-      <ul>
-        <li>algoritmu analīze,</li>
-        <li>datu ieguve,</li>
-        <li>prognozējošā modelēšana,</li>
-        <li>un Tu pats — ar savu <strong>milzīgo klikšķu vēsturi</strong>.</li>
-      </ul>
-      <p><strong>Digitālā intuīcija</strong> nav nekāda “burvestība” — tā ir loģika ar kosmisku apjomu datu.</p>
-
-      <h3>🧮 Kā tas strādā - vienkāršos vārdos?</h3>
-      <ul>
-        <li>Tu meklē “cepumi bez glutēna” → sistēma zina, ka Tevi interesē veselīgs uzturs.</li>
-        <li>Tu skaties video par trauksmi → sistēma piedāvā meditāciju, psihologus, piparmētru tēju.</li>
-        <li>Tu ilgi skaties uz kādu produktu → sistēma “sajūt”, ka Tu gatavojies pirkt. Un sāk tevi "presēt".</li>
-      </ul>
-      <p><em>Tā nav pareģošana. Tas ir tikai augstas precizitātes datu “zīlēšanas galds”.</em></p>
-
-      <h3>🤖 Vai dators jūt? Nē. Bet viņš tevi redz labāk nekā tu pats</h3>
-      <p>Cilvēka intuīcija balstās uz pieredzi, emocijām, ķermeņa valodu un sajūtām.<br>
-         Mašīnas intuīcija balstās uz:</p>
-      <ul>
-        <li>miljoniem uzvedības modeļu,</li>
-        <li>statistiku,</li>
-        <li>laika, vietas, konteksta kombināciju.</li>
-      </ul>
-      <p><strong>Atšķirība?</strong><br>
-         Cilvēks kļūdās. Mašīna... kļūdās masveidā, bet pārliecinoši.</p>
-
-      <h3>🧭 Tad ko darīt ar šo digitālo “nojautu”?</h3>
-      <ul>
-        <li>Bez panikas. Tā nav skaitļotāja dvēsele – tas ir tikai kods ar datu diētu.</li>
-        <li>Nevajag arī akli uzticēties – reklāmas nav nekādi krutie padomdevēji.</li>
-        <li>Un nevajag aizmirst, ka cilvēka īstā nojauta ir unikāla — mašīnai tā ir tikai imitējama.</li>
-      </ul>
-
-      <h3>🧘‍♂️ Kopsavilkums:</h3>
-      <ul>
-        <li>algoritmiska empātijas imitācija,</li>
-        <li>iepriekš paredzamu modeļu detektēšana,</li>
-        <li>un Tavs paša digitālais spogulis.</li>
-      </ul>
-      <p>Tu klikšķināji, viņi pierakstīja. Tu apstājies, viņi aprēķināja.<br>
-         Un tad Google “nejauši” ieteica to, par ko domāji... <em>bet varbūt vispirms Tu ieraudzīji, un tad iedomājies?</em></p>
-    </div>
-  `;
-  break;
-        case 'tagadne':
-          contentBox.innerHTML += `
-            <h2>🧠 Mēs dzīvojam starp viedierīcēm, bet uzvedamies kā dumjierīces.</h2>
-      <p>Zinātne skrien, tehnoloģijas dominē, cilvēks tik 'tin'. Kurš šeit īsti domā?<br>
-      Laipni lūgti 2025. gada vidū, kur:</p>
-
-      <ul>
-        <li>Mākslīgais intelekts raksta satura plānus.</li>
-        <li>Datu centri patērē vairāk elektrības nekā dažas labas valstis.</li>
-        <li>Zinātnieki publicē pētījumu pēc pētījuma, bet sabiedrība viņus pārtrauc ar "man ir viedoklis".</li>
-      </ul>
-
-      <h3>🤖 AI nav nākotne. Tā ir tava tagadne. Un tu jau esi tur iekšā.</h3>
-      <p>ChatGPT, Claude, Gemini, Copilot — tie nav brīnumi, tie ir biroja darbinieku klusie kolēģi. Viņi nepārtrauc sapulces, bet dara melno darbu:</p>
-      <ul>
-        <li>→ Raksta e-pastus.</li>
-        <li>→ Apkopo dokumentus.</li>
-        <li>→ Izdomā tekstus, kurus vadītājs paņems kā savus.</li>
-      </ul>
-      <p>Korporatīvā pasaule mācās MI izmantot. Skolas vēl tikai mēģina aizliegt. Bet tas jau ir par vēlu.</p>
-      <p>Un cilvēks? Cilvēks kļūst par promptu ievades mezglu, kas reizēm atver Exceli.</p>
-
-      <h3>📱 Tehnoloģijas kā fons. Fons, kas pārņem skatuvi.</h3>
-      <p>Reiz telefons bija rīks. Tagad tas ir tavs galvenais sabiedrotais, modinātājs, fotogrāfs, navigators, terapeits un spiegs.</p>
-      <p>Smartwatch ziņo par tavu miegu, bet tu gulēji slikti, jo skatījies tajā līdz 2:41.<br>
-      Tavs auto analizē ceļu labāk nekā tu, bet tāpat Tu stāvi sastrēgumā, klausoties podcastu par laika menedžmentu.</p>
-      <p>Mēs esam sasnieguši brīdi, kurā tehnoloģijas nav atbalsts, bet noteikšanas instruments. Tu domā, ka izvēlies, bet tas bija piedāvāts “Priekš tevis” profilā.</p>
-
-      <h3>🧬 Zinātne kļūst par fonu – ja tā nav TikTok formātā</h3>
-      <p>Zinātne šobrīd ir iespaidīga, bet margināla.<br>
-      Mēs zinām:</p>
-      <ul>
-        <li>kā modificēt DNS,</li>
-        <li>kā atklāt kvantu dīvainības,</li>
-        <li>kā kartēt smadzeņu aktivitāti ar mikroshēmu.</li>
-      </ul>
-      <p>Un tomēr cilvēks vairāk tic bioenerģētikai, čia sēklām un elpas terapijai.<br>
-      Zinātne prasa laiku un domāšanu. Taču tā nespēlē algoritmu spēli, kur virsraksts svarīgāks par saturu.</p>
-
-      <h3>👤 Cilvēks šajā ainavā: datu punkts ar emocijām</h3>
-      <p>Cilvēks šobrīd:</p>
-      <ul>
-        <li>Iegūst vairāk informācijas nekā jebkad — bet nezina, kam ticēt.</li>
-        <li>Lieto vairāk tehnoloģiju — bet neizprot tās.</li>
-        <li>Lasa virsrakstus — bet dzīvo pēc iespaidiem.</li>
-      </ul>
-      <p>Tu neesi vainīgs. Tu esi sistēmas produkts, kas pielāgojies digitālai plūsmai. Bet jautājums ir — vai šis ir pielāgošanās maksimums, vai pašiznīcināšanās sākums?</p>
-
-      <h3>⚠️ Brīdinājums no tagadnes:</h3>
-      <p>Algoritmi tagad definē cilvēka uzvedību.<br>
-      Nevis atspoguļo, bet veido.</p>
-      <p>Mēs runājam par brīvību, bet dzīvojam “Es piekrītu” režīmā.<br>
-      Mēs sapņojam par radošumu, bet ļaujam sevi profilēt ar emoji klikšķiem.<br>
-      Mēs gribam būt unikāli, bet strādājam saskaņā ar mašīnas paredzētu modeli.</p>
-
-      <h3>🎯 Secinājums:</h3>
-      <p>Šī nav distopija. Šī ir realitāte, kas izskatās draudzīga, bet darbojas ar klusu dominances kodu.</p>
-      <p>Un cilvēks? Cilvēks ir apņēmies 'tīt' tālāk. Līdz kļūst par pasīvu algoritmiskās tagadnes vērotāju, kurš vairs nejautā: “Kas būs tālāk?”<br>
-      ...bet vienkārši nospiež "Next".</p>
-    </div>
-  `;
-  break;
-        case 'nakotne':
-          contentBox.innerHTML += `
-            <h2>🌐 Nākotne — Vai cilvēks būs iekļauts?</h2>
-      <p>Mašīnas mācās. Tehnoloģijas paātrinās. Zinātne pārsteidz. Bet vai mēs vēl esam daļa no spēles?</p>
-
-      <h3>🤖 Mākslīgais intelekts: vēl viens rīks vai pats jau nākamais lietotājs?</h3>
-      <p>AI vairs nav tikai palīgs. Tas sāk pārņemt lēmumus, ko senāk pieņēma cilvēki. Radošums, tulkošana, datu analīze, pat programmēšana – tas viss tiek automatizēts, optimizēts, aizvietots.</p>
-      <p>Jautājums vairs nav: “Ko MI vēl nespēj?”,<br>bet drīzāk: “Ko cilvēks vēl spēj darīt labāk?”</p>
-
-      <h3>👁️ Tehnoloģijas kļūst neredzamas</h3>
-      <p>Nākotnē tehnoloģijas neizskatīsies pēc robotiem.<br>Tās būs iekļautas mūsu drēbēs, mūsu acīs, mūsu ādā, mūsu balss tonī.<br>Mēs nedzīvosim “blakus” tehnoloģijām – mēs dzīvosim ar to iekšā sevī.</p>
-      <p>Ne tikai "smartphone", bet "smartself".</p>
-
-      <h3>🧬 Zinātne virzās uz robežām</h3>
-      <p>No gēnu inženierijas līdz kvantu datoriem – zinātne ļauj mums spēlēties ar realitātes struktūru.</p>
-      <ul>
-        <li>Mēs varēsim ārstēt slimības, pirms tās parādās.</li>
-        <li>Mēs varēsim redzēt, dzirdēt un atcerēties vairāk nekā jebkad.</li>
-        <li>Mēs varēsim mainīt to, kas nozīmē būt cilvēkam.</li>
-      </ul>
-      <p>Un tas rada jautājumu:<br>Vai cilvēks joprojām būs cilvēks, ja viņš sevi pārveidos par pusrobotu?</p>
-
-      <h3>👤 Cilvēks — vai vēl būs vajadzīgs?</h3>
-      <p>Vai mēs esam nākotnes virzītāji, vai tikai vērotāji?<br>
-      Vai būs vēl vajadzīgs rakstnieks, ja AI rakstīs ātrāk?<br>
-      Vai būs vēl vajadzīgs skolotājs, ja bērni mācīsies ar personalizētiem MI asistentiem?</p>
-      <p>Varbūt būs vajadzīgs tikai lietotājs, kurš maksā un klusē.</p>
-
-      <h3>📉 Līdzdalības ilūzija</h3>
-      <p>Tehnoloģiju nākotne tiek būvēta ar:</p>
-      <ul>
-        <li>milzīgiem kapitāliem,</li>
-        <li>globāliem uzņēmumiem,</li>
-        <li>datiem, ko mēs paši brīvprātīgi atdodam.</li>
-      </ul>
-      <p>Un cilvēks? Ko viņš saņem:</p>
-      <ul>
-        <li>“Piekrītu lietošanas noteikumiem”</li>
-        <li>"Tava uzmanība ir mūsu produkts"</li>
-        <li>un “Jaunais atjauninājums mainīs Tavu dzīvi (bet tu to nepamanīsi).”</li>
-      </ul>
-
-      <h3>🗺 Kas mūs sagaida?</h3>
-      <p>Trīs iespējas:</p>
-      <ul>
-        <li><strong>Simbioze:</strong> Cilvēks un tehnoloģija attīstās kopā.</li>
-        <li><strong>Asimilācija:</strong> Cilvēks pakāpeniski kļūst par tehnoloģiju paplašinājumu.</li>
-        <li><strong>Aizvietošana:</strong> Cilvēks kļūst lieks. Efektivitāte uzvar humānisma paliekas.</li>
-      </ul>
-
-      <h3>🎯 Secinājums:</h3>
-      <p>Nākotne nav tehnoloģiska problēma. Tas ir jautājums par pašu cilvēku.</p>
-      <p>Ja mēs neuzdodam jautājumus, tad uz tiem atbildēs serveri.<br>
-      Ja mēs neiesaistāmies, tad nākotne mūs integrēs – kā funkciju, nevis kā būtni.</p>
-      <p>Un, iespējams, pats svarīgākais jautājums nav:</p>
-      <p><em>“Ko MI spēs pēc 10 gadiem?”</em><br>
-      ...bet:<br>
-      <strong>“Vai cilvēks vēl spēs domāt, just un atteikties — brīvprātīgi?”</strong></p>
-    </div>
-  `;
-  break;
-        case 'pagatne':
-          contentBox.innerHTML += `
-           <h2>🔩 Kad mašīnas svilpa, bet cilvēks vēl svilpoja pretī</h2>
-      <p><strong>Pirms klikšķiem, kad domāja pārnesumos un dūmos</strong><br>
-      Pirms MI un Wi-Fi, pirms touchscreen un serveriem — bija tvaiks, zobrati, radiolampas un skaitļošanas mehānismi ar kloķiem.<br>
-      Un cilvēks vēl zināja, kā strādā tas, ko viņš lietoja. Tā bija pasaule, kur mehānika bija saprotama, bet cilvēks vēl nezināja, ko tieši viņš atbrīvo.</p>
-
-      <h3>🕰️ Tehnoloģija bija smaga. Burtiski.</h3>
-      <ul>
-        <li>Rēķinātājs? Metāla kaste ar kloķiem.</li>
-        <li>Telefons? Sienas aparāts ar rokturi, kas savienots ar operatores ausīm.</li>
-        <li>Radio? Lampa, kas sildīja tavu istabu un reizēm nodedzināja pirkstu.</li>
-        <li>Toreiz tehnoloģija grabēja, dūmoja, kustējās, kvēloja un čīkstēja.</li>
-        <li>Katrs klikšķis bija mehānisks spiedziens, nevis bezskaņas kapacitīvā pieskāriena čuksts.</li>
-      </ul>
-
-      <h3>🤯 Cilvēks vēl domāja ar galvu</h3>
-      <ul>
-        <li>Matemātika tika rēķināta uz papīra, nevis pārrēķināta kalkulatorā.</li>
-        <li>Atmiņa bija galvā, nevis mākoņservisā.</li>
-        <li>“Palīgs” bija sēdošs cilvēks aiz rakstāmgalda, nevis gaismas indikators ar vārdu Alexa.</li>
-        <li>Būt inteliģentam nozīmēja zināt, nevis spēt meklēt.</li>
-      </ul>
-
-      <h3>🔧 Mašīnas bija cilvēka papildinājums — nevis aizvietotājs</h3>
-      <p>Mašīna palīdzēja ražot, pacelt, transportēt.<br>
-      Tā nepieņēma lēmumus, tikai izpildīja.<br>
-      Un, kad tā salūza, cilvēks to pats izjauca un salika atpakaļ.<br>
-      Tagad? Kad printeris čīkst, mēs restartējam visu sistēmu un lūdzam palīdzību mākslīgajam intelektam.</p>
-
-      <h3>⚙️ Lēnums radīja cieņu</h3>
-      <ul>
-        <li>Bija jāpagaida, līdz uzsils lampiņa.</li>
-        <li>Rakstāmmašīna kļūdījās skaļi un neatgriezeniski.</li>
-        <li>Televīzijai bija tikai viens kanāls, viens laiks, un viena programma.</li>
-        <li>Un tajā bija klātbūtne, uzmanība un apzināta darbība.</li>
-        <li>Tagad, kad viss ir “pēc pieprasījuma”, cilvēks kļuvis par haotisku klikšķu algoritmu pats sev.</li>
-      </ul>
-
-      <h3>📜 Bet viss sākās tur</h3>
-      <ul>
-        <li>Pirmie priekšstati par datoru (Charles Babbage (1791–1871) angļu matemātiķis, kurš izstrādāja "Analītisko mašīnu" )</li>
-        <li>Mehāniskie kalkulatori, kas lika cilvēkiem sajūsmā apstāties</li>
-        <li>Pirmie elektrības vadi, kas solīja jaunu civilizāciju</li>
-      </ul>
-      <p>Tā bija laikmeta sākotne, kas vēl nezināja, ka beigsies ar čipu pierē un attention span &lt; 7 sekundēm.</p>
-
-      <h3>🎯 Secinājums:</h3>
-      <p>Senā pagātne nebija vieda. Bet tā bija godīga.<br>
-      Cilvēks vēl pats grieza kloķi, pats vilka sviru, pats uzņēmās riskus, pats domāja.</p>
-      <p>Un tieši tāpēc viņš:</p>
-      <ul>
-        <li>izdomāja datoru,</li>
-        <li>radīja internetu,</li>
-        <li>izgudroja MI...</li>
-      </ul>
-      <p>...un tagad viņam jāatbild uz jautājumu, vai tas viss bija tā vērts.</p>
-    </div>
-  `;
-  break;
-      default:
-        contentBox.innerHTML += `<h2>Nekas nav atrodams</h2>`;
+<h3></h3>
+<a href="https://suno.com/invite/@mkarklins55" target="_blank">https://suno.com/invite/@mkarklins55</a>`;
     }
 
-    // Pievieno aizvērt pogas eventu
-    document.getElementById('closeBtn').addEventListener('click', () => {
-      closeBox();
-    });
-  }
+    const _cLV = {
+      mi: `<h2>🤖 Mākslīgais intelekts šodien: ne tikai Skynets, bet arī tavs kolēģis</h2>
+      <p><em>Reiz bija laiki, kad "mākslīgais intelekts" izklausījās pēc Terminatora filmas trešās daļas mārketinga reklāmas.</em></p>
+      <p>Šodien MI ir:</p>
+      <ul><li>tava meklētājprogramma,</li><li>tavas Google Maps prognozes,</li><li>tava Spotify dziesmu izlase,</li><li>un, jā — čoms, kas tev raksta referātu piektdienas naktī.</li></ul>
+      <h3>📅 Kur mēs esam 2025. gadā?</h3>
+      <p>Mākslīgais intelekts vairs nav tikai zinātnieku rotaļlieta laboratorijā. Tagad tas ir:</p>
+      <ul><li><strong>ChatGPT, Claude, Gemini, Mistral</strong> — teksta ģenerēšanas mašīnas ar IQ, kas sapņo par Turinga testu.</li><li><strong>DALL·E, Midjourney, Leonardo AI</strong> — mākslinieki bez otas, bez krampjiem rokām un bez autortiesībām (nu labi, šis vēl ir diskutējams).</li><li><strong>Deepfake video</strong> — tur, kur agrāk vajadzēja Holivudas budžetu, tagad pietiek ar pāris klikšķiem.</li></ul>
+      <h3>🧑‍💻 Ko tas nozīmē parastam cilvēkam?</h3>
+      <p>Tu jau dzīvo ar MI, vienkārši to nezini. Lūk, kā tas izpaužas:</p>
+      <ul><li>Tavs kolēģis raksta e-pastu ar ChatGPT, bet izliekas, ka viņš ir ģeniāls.</li><li>Tava Instagram lente optimizēta pēc algoritma, kas zina tavas vājības labāk nekā tava mamma.</li><li>Tu meklē "ātrāko ceļu uz darbu", un MI nosūta tevi cauri bērnudārza pagalmiem, jo "statistiski tā sanāk ātrāk".</li></ul>
+      <p><em>Un jā, arī šis raksts varētu būt uzrakstīts ar MI.</em></p>
+      <p><strong>Bet tā nav krāpšana.</strong> Tā ir sadarbība. Kā cilvēks un robots spēlē šahu. Tikai tagad robots uztaisa arī galdiņu, raksta noteikumus un sūta preses relīzi.</p>
+      <h3>❓ Lielie jautājumi</h3>
+      <ul><li>Nav skaidrs, kas ir cilvēka, kas — mašīnu darbs.</li><li>Zināšanas ir sekundēs pieejamas, bet izpratne — joprojām deficīts.</li><li>Informācijas plūsma ātra, bet uzticība — trausla kā Google docā neatvērts fails.</li><li>Un: Vai cilvēks ir vēl nepieciešams, ja MI jau uzrakstīja referātu, atbildēja uz e-pastu, uzzīmēja logotipu un uzvarēja memu konkursā?</li></ul>
+      <h3>⚠️ Bet MI nav visspēcīgs</h3>
+      <p>MI nav gudrāks par tevi. Viņš vienkārši:</p>
+      <ul><li>nav noguris,</li><li>neiet uz tualeti,</li><li>un nelasa Facebook komentārus pirms miega.</li></ul>
+      <p>Viņš zina daudz, bet nesaprot pasauli kā cilvēks — viņam nav pieredzes ar slapjām zeķēm martā vai mizotiem kartupeļiem.</p>
+      <h3>🇱🇻 Un Latvijā?</h3>
+      <ul><li>Uzņēmumi sāk izmantot MI klientu apkalpošanā, mārketingā un dokumentu analīzē.</li><li>Skolēni kļūst par "prompt-inženieriem", skolotāji — meklē ChatGPT detektorus.</li><li>Valsts pārvalde vēl tikai no papīra pārceļas uz PDF, bet MI jau raksta secinājumus par reformām.</li></ul>
+      <h3>💡 Ko mums darīt?</h3>
+      <ul><li>Domāt vairāk.</li><li>Uzdot labākus jautājumus — arī sev pašiem.</li><li>Neuztvert MI kā burvju nūjiņu vai apokalipsi. Tas ir rīks. Un rīka spēku nosaka roka, kas to tur.</li></ul>
+      <h3>🧾 Nobeigumā:</h3>
+      <p>Mākslīgais intelekts šobrīd nav nedz dievs, nedz velns. Viņš ir aizņemts interns ar milzīgu datu krātuvi un bez sajūtām par robežām.</p>
+      <p><strong>Tavs uzdevums?</strong> Iemācīties ar viņu dzīvot, strādāt un — reizēm — arī pasmieties.</p>`,
+      intuicija: `<h2>🧠 Nojauta — Digitālā intuīcija</h2>
+      <p>Vai algoritmi lasa mūsu domas vai vienkārši mūs pazīst pārāk labi?</p>
+      <p><em>Ir noticis tā:</em></p>
+      <ul><li>Tu domā par ceļojumu uz Itāliju, un pēkšņi sociālajos tīklos parādās reklāma ar lētām aviobiļetēm uz Romu.</li><li>Tu meklē dāvanas mammai, un Google iesaka Jaunā Rīgas teātra biļetes.</li></ul>
+      <p><strong>Un Tu nodomā:</strong> Kas tas ir, kā tas (dators) varēja zināt, ko es šobrīd domāju?</p>
+      <h3>🔍 Digitālā nojauta jeb "machine feels me"</h3>
+      <p>Šķiet, ka dators ir attīstījis <strong>sesto maņu</strong>. Bet patiesībā tā ir:</p>
+      <ul><li>algoritmu analīze,</li><li>datu ieguve,</li><li>prognozējošā modelēšana,</li><li>un Tu pats — ar savu <strong>milzīgo klikšķu vēsturi</strong>.</li></ul>
+      <p><strong>Digitālā intuīcija</strong> nav nekāda "burvestība" — tā ir loģika ar kosmisku apjomu datu.</p>
+      <h3>🧮 Kā tas strādā — vienkāršos vārdos?</h3>
+      <ul><li>Tu meklē "cepumi bez glutēna" → sistēma zina, ka Tevi interesē veselīgs uzturs.</li><li>Tu skaties video par trauksmi → sistēma piedāvā meditāciju, psihologus, piparmētru tēju.</li><li>Tu ilgi skaties uz kādu produktu → sistēma "sajūt", ka Tu gatavojies pirkt. Un sāk tevi "presēt".</li></ul>
+      <p><em>Tā nav pareģošana. Tas ir tikai augstas precizitātes datu "zīlēšanas galds".</em></p>
+      <h3>🤖 Vai dators jūt? Nē. Bet viņš tevi redz labāk nekā tu pats</h3>
+      <p>Cilvēka intuīcija balstās uz pieredzi, emocijām, ķermeņa valodu un sajūtām.<br>Mašīnas intuīcija balstās uz:</p>
+      <ul><li>miljoniem uzvedības modeļu,</li><li>statistiku,</li><li>laika, vietas, konteksta kombināciju.</li></ul>
+      <p><strong>Atšķirība?</strong><br>Cilvēks kļūdās. Mašīna... kļūdās masveidā, bet pārliecinoši.</p>
+      <h3>🧭 Tad ko darīt ar šo digitālo "nojautu"?</h3>
+      <ul><li>Bez panikas. Tā nav skaitļotāja dvēsele – tas ir tikai kods ar datu diētu.</li><li>Nevajag arī akli uzticēties – reklāmas nav nekādi krutie padomdevēji.</li><li>Un nevajag aizmirst, ka cilvēka īstā nojauta ir unikāla — mašīnai tā ir tikai imitējama.</li></ul>
+      <h3>🧘‍♂️ Kopsavilkums:</h3>
+      <ul><li>algoritmiska empātijas imitācija,</li><li>iepriekš paredzamu modeļu detektēšana,</li><li>un Tavs paša digitālais spogulis.</li></ul>
+      <p>Tu klikšķināji, viņi pierakstīja. Tu apstājies, viņi aprēķināja.<br>Un tad Google "nejauši" ieteica to, par ko domāji... <em>bet varbūt vispirms Tu ieraudzīji, un tad iedomājies?</em></p>`,
+      tagadne: `<h2>🧠 Mēs dzīvojam starp viedierīcēm, bet uzvedamies kā dumjierīces.</h2>
+      <p>Zinātne skrien, tehnoloģijas dominē, cilvēks tik "tin". Kurš šeit īsti domā?<br>Laipni lūgti 2025. gada vidū, kur:</p>
+      <ul><li>Mākslīgais intelekts raksta satura plānus.</li><li>Datu centri patērē vairāk elektrības nekā dažas labas valstis.</li><li>Zinātnieki publicē pētījumu pēc pētījuma, bet sabiedrība viņus pārtrauc ar "man ir viedoklis".</li></ul>
+      <h3>🤖 AI nav nākotne. Tā ir tava tagadne. Un tu jau esi tur iekšā.</h3>
+      <p>ChatGPT, Claude, Gemini, Copilot — tie nav brīnumi, tie ir biroja darbinieku klusie kolēģi. Viņi nepārtrauc sapulces, bet dara melno darbu:</p>
+      <ul><li>→ Raksta e-pastus.</li><li>→ Apkopo dokumentus.</li><li>→ Izdomā tekstus, kurus vadītājs paņems kā savus.</li></ul>
+      <p>Korporatīvā pasaule mācās MI izmantot. Skolas vēl tikai mēģina aizliegt. Bet tas jau ir par vēlu.</p>
+      <p>Un cilvēks? Cilvēks kļūst par promptu ievades mezglu, kas reizēm atver Exceli.</p>
+      <h3>📱 Tehnoloģijas kā fons. Fons, kas pārņem skatuvi.</h3>
+      <p>Reiz telefons bija rīks. Tagad tas ir tavs galvenais sabiedrotais, modinātājs, fotogrāfs, navigators, terapeits un spiegs.</p>
+      <p>Smartwatch ziņo par tavu miegu, bet tu gulēji slikti, jo skatījies tajā līdz 2:41.<br>Tavs auto analizē ceļu labāk nekā tu, bet tāpat Tu stāvi sastrēgumā, klausoties podcastu par laika menedžmentu.</p>
+      <p>Mēs esam sasnieguši brīdi, kurā tehnoloģijas nav atbalsts, bet noteikšanas instruments. Tu domā, ka izvēlies, bet tas bija piedāvāts "Priekš tevis" profilā.</p>
+      <h3>🧬 Zinātne kļūst par fonu – ja tā nav TikTok formātā</h3>
+      <p>Zinātne šobrīd ir iespaidīga, bet margināla.<br>Mēs zinām:</p>
+      <ul><li>kā modificēt DNS,</li><li>kā atklāt kvantu dīvainības,</li><li>kā kartēt smadzeņu aktivitāti ar mikroshēmu.</li></ul>
+      <p>Un tomēr cilvēks vairāk tic bioenerģētikai, čia sēklām un elpas terapijai.<br>Zinātne prasa laiku un domāšanu. Taču tā nespēlē algoritmu spēli, kur virsraksts svarīgāks par saturu.</p>
+      <h3>👤 Cilvēks šajā ainavā: datu punkts ar emocijām</h3>
+      <p>Cilvēks šobrīd:</p>
+      <ul><li>Iegūst vairāk informācijas nekā jebkad — bet nezina, kam ticēt.</li><li>Lieto vairāk tehnoloģiju — bet neizprot tās.</li><li>Lasa virsrakstus — bet dzīvo pēc iespaidiem.</li></ul>
+      <p>Tu neesi vainīgs. Tu esi sistēmas produkts, kas pielāgojies digitālai plūsmai. Bet jautājums ir — vai šis ir pielāgošanās maksimums, vai pašiznīcināšanās sākums?</p>
+      <h3>⚠️ Brīdinājums no tagadnes:</h3>
+      <p>Algoritmi tagad definē cilvēka uzvedību.<br>Nevis atspoguļo, bet veido.</p>
+      <p>Mēs runājam par brīvību, bet dzīvojam "Es piekrītu" režīmā.<br>Mēs sapņojam par radošumu, bet ļaujam sevi profilēt ar emoji klikšķiem.<br>Mēs gribam būt unikāli, bet strādājam saskaņā ar mašīnas paredzētu modeli.</p>
+      <h3>🎯 Secinājums:</h3>
+      <p>Šī nav distopija. Šī ir realitāte, kas izskatās draudzīga, bet darbojas ar klusu dominances kodu.</p>
+      <p>Un cilvēks? Cilvēks ir apņēmies "tīt" tālāk. Līdz kļūst par pasīvu algoritmiskās tagadnes vērotāju, kurš vairs nejautā: "Kas būs tālāk?"<br>...bet vienkārši nospiež "Next".</p>`,
+      nakotne: `<h2>🌐 Nākotne — Vai cilvēks būs iekļauts?</h2>
+      <p>Mašīnas mācās. Tehnoloģijas paātrinās. Zinātne pārsteidz. Bet vai mēs vēl esam daļa no spēles?</p>
+      <h3>🤖 Mākslīgais intelekts: vēl viens rīks vai pats jau nākamais lietotājs?</h3>
+      <p>AI vairs nav tikai palīgs. Tas sāk pārņemt lēmumus, ko senāk pieņēma cilvēki. Radošums, tulkošana, datu analīze, pat programmēšana – tas viss tiek automatizēts, optimizēts, aizvietots.</p>
+      <p>Jautājums vairs nav: "Ko MI vēl nespēj?",<br>bet drīzāk: "Ko cilvēks vēl spēj darīt labāk?"</p>
+      <h3>👁️ Tehnoloģijas kļūst neredzamas</h3>
+      <p>Nākotnē tehnoloģijas neizskatīsies pēc robotiem.<br>Tās būs iekļautas mūsu drēbēs, mūsu acīs, mūsu ādā, mūsu balss tonī.<br>Mēs nedzīvosim "blakus" tehnoloģijām – mēs dzīvosim ar to iekšā sevī.</p>
+      <p>Ne tikai "smartphone", bet "smartself".</p>
+      <h3>🧬 Zinātne virzās uz robežām</h3>
+      <p>No gēnu inženierijas līdz kvantu datoriem – zinātne ļauj mums spēlēties ar realitātes struktūru.</p>
+      <ul><li>Mēs varēsim ārstēt slimības, pirms tās parādās.</li><li>Mēs varēsim redzēt, dzirdēt un atcerēties vairāk nekā jebkad.</li><li>Mēs varēsim mainīt to, kas nozīmē būt cilvēkam.</li></ul>
+      <p>Un tas rada jautājumu:<br>Vai cilvēks joprojām būs cilvēks, ja viņš sevi pārveidos par pusrobotu?</p>
+      <h3>👤 Cilvēks — vai vēl būs vajadzīgs?</h3>
+      <p>Vai mēs esam nākotnes virzītāji, vai tikai vērotāji?<br>Vai būs vēl vajadzīgs rakstnieks, ja AI rakstīs ātrāk?<br>Vai būs vēl vajadzīgs skolotājs, ja bērni mācīsies ar personalizētiem MI asistentiem?</p>
+      <p>Varbūt būs vajadzīgs tikai lietotājs, kurš maksā un klusē.</p>
+      <h3>📉 Līdzdalības ilūzija</h3>
+      <p>Tehnoloģiju nākotne tiek būvēta ar:</p>
+      <ul><li>milzīgiem kapitāliem,</li><li>globāliem uzņēmumiem,</li><li>datiem, ko mēs paši brīvprātīgi atdodam.</li></ul>
+      <p>Un cilvēks? Ko viņš saņem:</p>
+      <ul><li>"Piekrītu lietošanas noteikumiem"</li><li>"Tava uzmanība ir mūsu produkts"</li><li>un "Jaunais atjauninājums mainīs Tavu dzīvi (bet tu to nepamanīsi)."</li></ul>
+      <h3>🗺 Kas mūs sagaida?</h3>
+      <p>Trīs iespējas:</p>
+      <ul><li><strong>Simbioze:</strong> Cilvēks un tehnoloģija attīstās kopā.</li><li><strong>Asimilācija:</strong> Cilvēks pakāpeniski kļūst par tehnoloģiju paplašinājumu.</li><li><strong>Aizvietošana:</strong> Cilvēks kļūst lieks. Efektivitāte uzvar humānisma paliekas.</li></ul>
+      <h3>🎯 Secinājums:</h3>
+      <p>Nākotne nav tehnoloģiska problēma. Tas ir jautājums par pašu cilvēku.</p>
+      <p>Ja mēs neuzdodam jautājumus, tad uz tiem atbildēs serveri.<br>Ja mēs neiesaistāmies, tad nākotne mūs integrēs – kā funkciju, nevis kā būtni.</p>
+      <p>Un, iespējams, pats svarīgākais jautājums nav:</p>
+      <p><em>"Ko MI spēs pēc 10 gadiem?"</em><br>...bet:<br><strong>"Vai cilvēks vēl spēs domāt, just un atteikties — brīvprātīgi?"</strong></p>`,
+      pagatne: `<h2>🔩 Kad mašīnas svilpa, bet cilvēks vēl svilpoja pretī</h2>
+      <p><strong>Pirms klikšķiem, kad domāja pārnesumos un dūmos</strong><br>Pirms MI un Wi-Fi, pirms touchscreen un serveriem — bija tvaiks, zobrati, radiolampas un skaitļošanas mehānismi ar kloķiem.<br>Un cilvēks vēl zināja, kā strādā tas, ko viņš lietoja. Tā bija pasaule, kur mehānika bija saprotama, bet cilvēks vēl nezināja, ko tieši viņš atbrīvo.</p>
+      <h3>🕰️ Tehnoloģija bija smaga. Burtiski.</h3>
+      <ul><li>Rēķinātājs? Metāla kaste ar kloķiem.</li><li>Telefons? Sienas aparāts ar rokturi, kas savienots ar operatores ausīm.</li><li>Radio? Lampa, kas sildīja tavu istabu un reizēm nodedzināja pirkstu.</li><li>Toreiz tehnoloģija grabēja, dūmoja, kustējās, kvēloja un čīkstēja.</li><li>Katrs klikšķis bija mehānisks spiedziens, nevis bezskaņas kapacitīvā pieskāriena čuksts.</li></ul>
+      <h3>🤯 Cilvēks vēl domāja ar galvu</h3>
+      <ul><li>Matemātika tika rēķināta uz papīra, nevis pārrēķināta kalkulatorā.</li><li>Atmiņa bija galvā, nevis mākoņservisā.</li><li>"Palīgs" bija sēdošs cilvēks aiz rakstāmgalda, nevis gaismas indikators ar vārdu Alexa.</li><li>Būt inteliģentam nozīmēja zināt, nevis spēt meklēt.</li></ul>
+      <h3>🔧 Mašīnas bija cilvēka papildinājums — nevis aizvietotājs</h3>
+      <p>Mašīna palīdzēja ražot, pacelt, transportēt.<br>Tā nepieņēma lēmumus, tikai izpildīja.<br>Un, kad tā salūza, cilvēks to pats izjauca un salika atpakaļ.<br>Tagad? Kad printeris čīkst, mēs restartējam visu sistēmu un lūdzam palīdzību mākslīgajam intelektam.</p>
+      <h3>⚙️ Lēnums radīja cieņu</h3>
+      <ul><li>Bija jāpagaida, līdz uzsils lampiņa.</li><li>Rakstāmmašīna kļūdījās skaļi un neatgriezeniski.</li><li>Televīzijai bija tikai viens kanāls, viens laiks, un viena programma.</li><li>Un tajā bija klātbūtne, uzmanība un apzināta darbība.</li><li>Tagad, kad viss ir "pēc pieprasījuma", cilvēks kļuvis par haotisku klikšķu algoritmu pats sev.</li></ul>
+      <h3>📜 Bet viss sākās tur</h3>
+      <ul><li>Pirmie priekšstati par datoru (Charles Babbage (1791–1871) angļu matemātiķis, kurš izstrādāja "Analītisko mašīnu")</li><li>Mehāniskie kalkulatori, kas lika cilvēkiem sajūsmā apstāties</li><li>Pirmie elektrības vadi, kas solīja jaunu civilizāciju</li></ul>
+      <p>Tā bija laikmeta sākotne, kas vēl nezināja, ka beigsies ar čipu pierē un attention span &lt; 7 sekundēm.</p>
+      <h3>🎯 Secinājums:</h3>
+      <p>Senā pagātne nebija vieda. Bet tā bija godīga.<br>Cilvēks vēl pats grieza kloķi, pats vilka sviru, pats uzņēmās riskus, pats domāja.</p>
+      <p>Un tieši tāpēc viņš:</p>
+      <ul><li>izdomāja datoru,</li><li>radīja internetu,</li><li>izgudroja MI...</li></ul>
+      <p>...un tagad viņam jāatbild uz jautājumu, vai tas viss bija tā vērts.</p>`
+    };
 
-  // 4) F-ja aizvērt saturu
+    const _cEN = {
+      mi: `<h2>🤖 Artificial Intelligence Today: Not Just Skynet, but Also Your Colleague</h2>
+      <p><em>Once upon a time, "artificial intelligence" sounded like marketing for Terminator 3.</em></p>
+      <p>Today AI is:</p>
+      <ul><li>your search engine,</li><li>your Google Maps predictions,</li><li>your Spotify playlist,</li><li>and yes — the buddy writing your essay on Friday night.</li></ul>
+      <h3>📅 Where are we in 2025?</h3>
+      <p>AI is no longer just a scientist's toy in a laboratory. Now it is:</p>
+      <ul><li><strong>ChatGPT, Claude, Gemini, Mistral</strong> — text-generating machines with an IQ that dreams of the Turing test.</li><li><strong>DALL·E, Midjourney, Leonardo AI</strong> — artists without a brush, without cramped hands and without copyright (well, that one is still debatable).</li><li><strong>Deepfake video</strong> — where you once needed a Hollywood budget, now a couple of clicks will do.</li></ul>
+      <h3>🧑‍💻 What does this mean for the average person?</h3>
+      <p>You already live with AI, you just don't know it. Here's how it manifests:</p>
+      <ul><li>Your colleague writes emails with ChatGPT but pretends to be a genius.</li><li>Your Instagram feed is optimised by an algorithm that knows your weaknesses better than your mother.</li><li>You search for "the fastest route to work", and AI sends you through kindergarten courtyards because "statistically it's faster".</li></ul>
+      <p><em>And yes, this article could have been written by AI too.</em></p>
+      <p><strong>But that's not cheating.</strong> That's collaboration. Like a human and a robot playing chess. Except now the robot also builds the table, writes the rules, and sends the press release.</p>
+      <h3>❓ The Big Questions</h3>
+      <ul><li>It's unclear what is human work and what is machine work.</li><li>Knowledge is available in seconds, but understanding is still scarce.</li><li>Information flows fast, but trust is as fragile as an unopened file in Google Docs.</li><li>And: Is the human still needed if AI has already written the essay, replied to the email, drawn the logo and won the meme contest?</li></ul>
+      <h3>⚠️ But AI is Not Almighty</h3>
+      <p>AI is not smarter than you. It simply:</p>
+      <ul><li>doesn't get tired,</li><li>doesn't go to the toilet,</li><li>and doesn't read Facebook comments before bed.</li></ul>
+      <p>It knows a lot, but doesn't understand the world like a human — it has no experience with wet socks in March or peeling potatoes.</p>
+      <h3>🇱🇻 And in Latvia?</h3>
+      <ul><li>Companies are starting to use AI in customer service, marketing and document analysis.</li><li>Students are becoming "prompt engineers", teachers are searching for ChatGPT detectors.</li><li>Government administration is still moving from paper to PDF, but AI is already writing conclusions about reforms.</li></ul>
+      <h3>💡 What should we do?</h3>
+      <ul><li>Think more.</li><li>Ask better questions — including of ourselves.</li><li>Don't treat AI as a magic wand or an apocalypse. It's a tool. And the power of a tool is determined by the hand that holds it.</li></ul>
+      <h3>🧾 In Conclusion:</h3>
+      <p>Artificial intelligence right now is neither a god nor a devil. It's a busy intern with a massive data warehouse and no sense of boundaries.</p>
+      <p><strong>Your task?</strong> Learn to live, work and — sometimes — laugh with it.</p>`,
+      intuicija: `<h2>🧠 Intuition — Digital Intuition</h2>
+      <p>Do algorithms read our thoughts or do they simply know us too well?</p>
+      <p><em>It has happened:</em></p>
+      <ul><li>You think about a trip to Italy, and suddenly ads for cheap flights to Rome appear on social media.</li><li>You search for gifts for mum, and Google suggests tickets to the New Riga Theatre.</li></ul>
+      <p><strong>And you think:</strong> How did it (the computer) know what I was thinking right now?</p>
+      <h3>🔍 Digital Intuition — "machine feels me"</h3>
+      <p>It seems the computer has developed a <strong>sixth sense</strong>. But in reality it is:</p>
+      <ul><li>algorithmic analysis,</li><li>data mining,</li><li>predictive modelling,</li><li>and you yourself — with your <strong>massive click history</strong>.</li></ul>
+      <p><strong>Digital intuition</strong> is no "magic" — it's logic with a cosmic volume of data.</p>
+      <h3>🧮 How does it work — in simple terms?</h3>
+      <ul><li>You search "gluten-free cookies" → the system knows you're interested in healthy eating.</li><li>You watch videos about anxiety → the system offers meditation, psychologists, peppermint tea.</li><li>You stare at a product for a long time → the system "senses" you're about to buy. And starts "pushing" you.</li></ul>
+      <p><em>This isn't prophecy. It's just a high-precision data "fortune-telling table".</em></p>
+      <h3>🤖 Does the computer feel? No. But it sees you better than you see yourself</h3>
+      <p>Human intuition is based on experience, emotions, body language and feelings.<br>Machine intuition is based on:</p>
+      <ul><li>millions of behavioural patterns,</li><li>statistics,</li><li>a combination of time, place, context.</li></ul>
+      <p><strong>The difference?</strong><br>Humans make mistakes. Machines... make mistakes on a massive scale, but confidently.</p>
+      <h3>🧭 So what to do with this digital "intuition"?</h3>
+      <ul><li>No panic. It's not a computer's soul — it's just code on a data diet.</li><li>Don't blindly trust it either — ads are not great advisors.</li><li>And don't forget that human true intuition is unique — the machine can only imitate it.</li></ul>
+      <h3>🧘‍♂️ Summary:</h3>
+      <ul><li>algorithmic imitation of empathy,</li><li>detection of predictable patterns,</li><li>and your own digital mirror.</li></ul>
+      <p>You clicked, they recorded. You paused, they calculated.<br>And then Google "randomly" suggested what you were thinking about... <em>but maybe you saw it first, and then thought of it?</em></p>`,
+      tagadne: `<h2>🧠 We Live Among Smart Devices, but Behave Like Dumb Ones.</h2>
+      <p>Science runs, technology dominates, humans just scroll. Who is actually thinking here?<br>Welcome to mid-2025, where:</p>
+      <ul><li>Artificial intelligence writes content plans.</li><li>Data centres consume more electricity than some decent-sized countries.</li><li>Scientists publish study after study, but society interrupts them with "I have an opinion".</li></ul>
+      <h3>🤖 AI is not the future. It's your present. And you're already inside it.</h3>
+      <p>ChatGPT, Claude, Gemini, Copilot — they're not miracles, they're the quiet colleagues of office workers. They don't interrupt meetings, but do the dirty work:</p>
+      <ul><li>→ Writing emails.</li><li>→ Summarising documents.</li><li>→ Generating texts that managers will claim as their own.</li></ul>
+      <p>The corporate world is learning to use AI. Schools are still trying to ban it. But it's already too late.</p>
+      <p>And humans? Humans are becoming prompt-input nodes who sometimes open Excel.</p>
+      <h3>📱 Technology as background. A background that takes over the stage.</h3>
+      <p>Once a phone was a tool. Now it's your main ally, alarm clock, photographer, navigator, therapist and spy.</p>
+      <p>Your smartwatch reports on your sleep, but you slept badly because you were looking at it until 2:41.<br>Your car analyses the road better than you, yet you're still stuck in traffic listening to a podcast about time management.</p>
+      <p>We've reached the point where technology isn't support, but a determining instrument. You think you choose, but it was suggested in a "For you" profile.</p>
+      <h3>🧬 Science becomes background — if it's not in TikTok format</h3>
+      <p>Science right now is impressive, but marginal.<br>We know:</p>
+      <ul><li>how to modify DNA,</li><li>how to reveal quantum oddities,</li><li>how to map brain activity with a microchip.</li></ul>
+      <p>And yet humans are more likely to believe in bioenergetics, chia seeds and breathing therapy.<br>Science requires time and thought. But it doesn't play the algorithm game where the headline is more important than the content.</p>
+      <h3>👤 The human in this landscape: a data point with emotions</h3>
+      <p>The human right now:</p>
+      <ul><li>Gets more information than ever — but doesn't know who to trust.</li><li>Uses more technology — but doesn't understand it.</li><li>Reads headlines — but lives by impressions.</li></ul>
+      <p>You're not to blame. You're a product of a system that adapted to the digital flow. But the question is — is this the maximum of adaptation, or the beginning of self-destruction?</p>
+      <h3>⚠️ Warning from the present:</h3>
+      <p>Algorithms now define human behaviour.<br>Not reflect, but shape.</p>
+      <p>We talk about freedom, but live in "I agree" mode.<br>We dream of creativity, but let ourselves be profiled by emoji clicks.<br>We want to be unique, but work according to a model predicted by a machine.</p>
+      <h3>🎯 Conclusion:</h3>
+      <p>This is not a dystopia. This is a reality that looks friendly, but operates with a quiet dominance code.</p>
+      <p>And the human? The human has committed to scrolling on. Until they become a passive observer of algorithmic present, who no longer asks: "What comes next?"<br>...but simply presses "Next".</p>`,
+      nakotne: `<h2>🌐 The Future — Will Humans Be Included?</h2>
+      <p>Machines are learning. Technology is accelerating. Science is astounding. But are we still part of the game?</p>
+      <h3>🤖 Artificial Intelligence: Just Another Tool, or Already the Next User?</h3>
+      <p>AI is no longer just an assistant. It's starting to take over decisions that humans used to make. Creativity, translation, data analysis, even programming — all of this is being automated, optimised, replaced.</p>
+      <p>The question is no longer: "What can't AI do yet?",<br>but rather: "What can humans still do better?"</p>
+      <h3>👁️ Technology becomes invisible</h3>
+      <p>In the future, technology won't look like robots.<br>It will be embedded in our clothes, our eyes, our skin, our tone of voice.<br>We won't live "next to" technology — we will live with it inside us.</p>
+      <p>Not just "smartphone", but "smartself".</p>
+      <h3>🧬 Science is pushing at boundaries</h3>
+      <p>From gene engineering to quantum computers — science lets us play with the structure of reality.</p>
+      <ul><li>We will be able to cure diseases before they appear.</li><li>We will be able to see, hear and remember more than ever.</li><li>We will be able to change what it means to be human.</li></ul>
+      <p>And that raises a question:<br>Will the human still be human if they transform themselves into a semi-robot?</p>
+      <h3>👤 The Human — Will They Still Be Needed?</h3>
+      <p>Are we the drivers of the future, or just spectators?<br>Will a writer still be needed if AI writes faster?<br>Will a teacher still be needed if children learn with personalised AI assistants?</p>
+      <p>Perhaps only a user will be needed — one who pays and stays quiet.</p>
+      <h3>📉 The Illusion of Participation</h3>
+      <p>The future of technology is being built with:</p>
+      <ul><li>enormous capital,</li><li>global corporations,</li><li>data that we voluntarily give away.</li></ul>
+      <p>And the human? What do they receive:</p>
+      <ul><li>"I agree to the terms of service"</li><li>"Your attention is our product"</li><li>and "The new update will change your life (but you won't notice)."</li></ul>
+      <h3>🗺 What Awaits Us?</h3>
+      <p>Three options:</p>
+      <ul><li><strong>Symbiosis:</strong> Humans and technology evolve together.</li><li><strong>Assimilation:</strong> Humans gradually become an extension of technology.</li><li><strong>Replacement:</strong> Humans become redundant. Efficiency defeats the remnants of humanism.</li></ul>
+      <h3>🎯 Conclusion:</h3>
+      <p>The future is not a technological problem. It's a question about the human themselves.</p>
+      <p>If we don't ask questions, the servers will answer them.<br>If we don't participate, the future will integrate us — as a function, not as a being.</p>
+      <p>And perhaps the most important question isn't:</p>
+      <p><em>"What will AI be capable of in 10 years?"</em><br>...but:<br><strong>"Will the human still be able to think, feel and refuse — voluntarily?"</strong></p>`,
+      pagatne: `<h2>🔩 When Machines Hissed, and Humans Still Hissed Back</h2>
+      <p><strong>Before clicks, when thinking was done in gears and smoke</strong><br>Before AI and Wi-Fi, before touchscreens and servers — there was steam, cogwheels, radio tubes and computing mechanisms with cranks.<br>And the human still knew how the things they used worked. It was a world where mechanics were understandable, yet the human didn't yet know exactly what they were unleashing.</p>
+      <h3>🕰️ Technology was heavy. Literally.</h3>
+      <ul><li>A calculator? A metal box with cranks.</li><li>A telephone? A wall device with a handset, connected to an operator's ears.</li><li>A radio? A lamp that warmed your room and sometimes burned your finger.</li><li>Back then technology rattled, smoked, moved, glowed and squeaked.</li><li>Every click was a mechanical press, not a soundless capacitive touch whisper.</li></ul>
+      <h3>🤯 Humans Still Thought With Their Heads</h3>
+      <ul><li>Maths was calculated on paper, not recalculated in a calculator.</li><li>Memory was in your head, not in a cloud service.</li><li>"An assistant" was a human sitting behind a desk, not a glowing indicator named Alexa.</li><li>Being intelligent meant knowing, not being able to search.</li></ul>
+      <h3>🔧 Machines were humanity's extension — not their replacement</h3>
+      <p>The machine helped produce, lift, transport.<br>It didn't make decisions, only executed them.<br>And when it broke down, the human dismantled it and put it back together themselves.<br>Now? When the printer squeaks, we restart the entire system and ask artificial intelligence for help.</p>
+      <h3>⚙️ Slowness created respect</h3>
+      <ul><li>You had to wait for the lamp to warm up.</li><li>The typewriter made mistakes loudly and irreversibly.</li><li>Television had only one channel, one time, and one programme.</li><li>And in that there was presence, attention and conscious action.</li><li>Now, when everything is "on demand", the human has become a chaotic click algorithm unto themselves.</li></ul>
+      <h3>📜 But it all started there</h3>
+      <ul><li>First concepts of the computer (Charles Babbage (1791–1871), English mathematician who designed the "Analytical Engine")</li><li>Mechanical calculators that made people stop in amazement</li><li>First electrical wires that promised a new civilisation</li></ul>
+      <p>That was the beginning of an era that didn't yet know it would end with a chip in the forehead and an attention span &lt; 7 seconds.</p>
+      <h3>🎯 Conclusion:</h3>
+      <p>The distant past wasn't wise. But it was honest.<br>The human still turned the crank themselves, pulled the lever themselves, took the risks themselves, thought themselves.</p>
+      <p>And that's precisely why they:</p>
+      <ul><li>invented the computer,</li><li>created the internet,</li><li>invented AI...</li></ul>
+      <p>...and now must answer the question of whether it was all worth it.</p>`
+    };
+
+    function showContent(id) {
+      _curId = id;
+      const lang = (typeof getLang === 'function' && getLang() === 'en') ? 'en' : 'lv';
+      const map = lang === 'en' ? _cEN : _cLV;
+      const closeLabel = lang === 'en' ? 'Close' : 'Aizvērt';
+      const notFound = lang === 'en' ? '<h2>Nothing found</h2>' : '<h2>Nekas nav atrodams</h2>';
+      let html = map[id] || notFound;
+      if (id === 'mi') html += _getMiMusic(lang);
+      contentBox.style.display = 'block';
+      contentBox.innerHTML = `<button id="closeBtn" title="${closeLabel}">&#x2716;</button>` + html;
+      document.getElementById('closeBtn').addEventListener('click', closeBox);
+    }
+
+    document.addEventListener('langchange', () => {
+      if (_curId && contentBox.style.display === 'block') showContent(_curId);
+    });
+
+
+    // 4) F-ja aizvērt saturu
 function closeBox() {
   stopAllAudio();  // <- Pievienots
   contentBox.classList.add('fade-out');
