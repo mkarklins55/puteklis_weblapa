@@ -107,6 +107,10 @@ const TRANSLATIONS = {
     'raksti.kods.p': 'Simulācija, kurā tu pats esi algoritma daļa',
     'raksti.it.h2': 'Pašvaldību vēlēšanu IT fiasko',
     'raksti.it.p': 'Kas nogāja greizi, cik tas maksāja un ko darīt nākotnē',
+    /* --- abonet.html --- */
+    'abonet.h1': '📬 Abonē Putekļa jaunumus',
+    'abonet.p': 'Pievienojies mūsu Telegram kanālam un saņem jaunumus uzreiz, kad tie iznāk.',
+    'abonet.btn': '🔔 Pievienoties Telegram kanālam',
     /* --- jaunumi.html --- */
     'jaunumi.h1': 'Putekļa jaunumi',
     'jaunumi.loading': 'Notiek ielāde...',
@@ -277,6 +281,10 @@ const TRANSLATIONS = {
     'raksti.kods.p': 'A simulation in which you yourself are part of the algorithm',
     'raksti.it.h2': 'Municipal Elections IT Fiasco',
     'raksti.it.p': 'What went wrong, how much it cost and what to do next',
+    /* --- abonet.html --- */
+    'abonet.h1': '📬 Subscribe to Puteklis News',
+    'abonet.p': 'Join our Telegram channel and receive news as soon as it comes out.',
+    'abonet.btn': '🔔 Join Telegram channel',
     /* --- jaunumi.html --- */
     'jaunumi.h1': 'Puteklis News',
     'jaunumi.loading': 'Loading...',
