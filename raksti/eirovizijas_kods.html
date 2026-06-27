@@ -26,12 +26,12 @@
     figure { margin: 2em 0; }
     figcaption { font-size: 0.95em; color: #ccc; margin-top: 0.5em; }
     .lang-en { display: none; }
-    body.lang-en .lang-lv { display: none; }
-    body.lang-en .lang-en { display: block; }
+    html[lang="en"] .lang-lv { display: none; }
+    html[lang="en"] .lang-en { display: block; }
   </style>
 </head>
 <body>
-<script>document.body.classList.add('lang-'+(localStorage.getItem('puteklis-lang')||'lv'));</script>
+<script>(function(){var l=localStorage.getItem('puteklis-lang')||'lv';document.documentElement.lang=l;document.body.classList.add('lang-'+l);})();</script>
 
 <header>
   <nav>

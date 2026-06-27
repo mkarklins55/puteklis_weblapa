@@ -19,12 +19,12 @@
     header nav a:hover { color: #ffd700; }
     header nav a.active { text-decoration: underline; color: #00ffff; }
     .lang-en { display: none; }
-    body.lang-en .lang-lv { display: none; }
-    body.lang-en .lang-en { display: block; }
+    html[lang="en"] .lang-lv { display: none; }
+    html[lang="en"] .lang-en { display: block; }
   </style>
 </head>
 <body>
-<script>document.body.classList.add('lang-'+(localStorage.getItem('puteklis-lang')||'lv'));</script>
+<script>(function(){var l=localStorage.getItem('puteklis-lang')||'lv';document.documentElement.lang=l;document.body.classList.add('lang-'+l);})();</script>
 
   <header>
     <nav>
