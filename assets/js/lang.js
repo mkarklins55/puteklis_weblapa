@@ -386,6 +386,11 @@ function applyLang(lang) {
     if (v) document.title = v;
   }
 
+  document.querySelectorAll('img[data-en-src]').forEach(img => {
+    if (!img.dataset.lvSrc) img.dataset.lvSrc = img.getAttribute('src');
+    img.src = (lang === 'en') ? img.dataset.enSrc : img.dataset.lvSrc;
+  });
+
   const btn = document.getElementById('lang-toggle');
   if (btn) btn.textContent = lang === 'lv' ? 'EN' : 'LV';
 
