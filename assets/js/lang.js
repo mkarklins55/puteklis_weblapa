@@ -388,7 +388,13 @@ function applyLang(lang) {
 
   document.querySelectorAll('img[data-en-src]').forEach(img => {
     if (!img.dataset.lvSrc) img.dataset.lvSrc = img.getAttribute('src');
-    img.src = (lang === 'en') ? img.dataset.enSrc : img.dataset.lvSrc;
+    if (lang === 'en') {
+      img.src = img.dataset.enSrc;
+      img.onerror = function() { this.src = this.dataset.lvSrc; this.onerror = null; };
+    } else {
+      img.src = img.dataset.lvSrc;
+      img.onerror = null;
+    }
   });
 
   const btn = document.getElementById('lang-toggle');
