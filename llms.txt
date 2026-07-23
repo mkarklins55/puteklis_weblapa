@@ -21,7 +21,7 @@ Songs can be filtered by genre, searched by title, and added to personal playlis
 ## Travel & Cycling Journals (puteklis.com/piedzivojumi.html)
 
 Travel stories and cycling adventures. PDF cycling journals:
-- [Armenia](https://www.puteklis.com/pdf/velozurnals_nr4_Armenija.pdf) — cycling through Armenia
+- [Armenia](https://www.puteklis.com/pdf/Velozurnals_nr4_Armenija.pdf) — cycling through Armenia
 - [Alps 2024](https://www.puteklis.com/pdf/velozurnals_Alpi_2024_SMALL.pdf) — mountain cycling in the Alps
 - [Morocco](https://www.puteklis.com/pdf/velozurnals_nr6_Maroka.pdf) — cycling across Morocco
 - [Lofoten Islands 2024](https://www.puteklis.com/pdf/Velozurnals_Lofotu_salas_2024.pdf) — Norway, Lofoten
@@ -72,7 +72,7 @@ Puteklis ir Latvijas eksperimentāls mūzikas projekts. Visas 171 dziesmas ir or
 ## Ceļojumi un velozurnāli (puteklis.com/piedzivojumi.html)
 
 Ceļojumu apraksti un velozurnāli PDF formātā:
-- [Armēnija](https://www.puteklis.com/pdf/velozurnals_nr4_Armenija.pdf)
+- [Armēnija](https://www.puteklis.com/pdf/Velozurnals_nr4_Armenija.pdf)
 - [Alpi 2024](https://www.puteklis.com/pdf/velozurnals_Alpi_2024_SMALL.pdf)
 - [Maroka](https://www.puteklis.com/pdf/velozurnals_nr6_Maroka.pdf)
 - [Lofotu salas 2024](https://www.puteklis.com/pdf/Velozurnals_Lofotu_salas_2024.pdf)
