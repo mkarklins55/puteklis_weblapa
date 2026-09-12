@@ -2,74 +2,236 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.puteklis.com/</loc>
-    <lastmod>2025-05-13</lastmod>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/muzika.html</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.puteklis.com/index_en.html</loc>
-    <lastmod>2025-05-13</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.puteklis.com/foto.html</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.puteklis.com/datori.html</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.puteklis.com/piedzivojumi.html</loc>
-    <lastmod>2025-05-13</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.puteklis.com/maksla.html</loc>
-    <lastmod>2025-05-13</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.puteklis.com/politika_new.html</loc>
-    <lastmod>2025-05-13</lastmod>
+    <loc>https://www.puteklis.com/piedzivojumi.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/manifest.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/jaunumi.html</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.puteklis.com/manifest.html</loc>
-    <lastmod>2025-05-13</lastmod>
+    <loc>https://www.puteklis.com/raksti.html</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/datori.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.puteklis.com/pratotaji.html</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.puteklis.com/atpratotaji.html</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.puteklis.com/raksti.html</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.puteklis.com/politika_new.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/AI_portfolio.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/AI_portfolio_4_upd.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/velozurnals_01.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.puteklis.com/jaunumi.html</loc>
-    <lastmod>2025-05-19</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.puteklis.com/pdf/velozurnals_02.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/velozurnals_03.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/Velozurnals_nr4_Armenija.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/velozurnals_Alpi_2024_SMALL.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/velozurnals_nr6_Maroka.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/Velozurnals_Lofotu_salas_2024.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/100_km_Latvijas_s.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/Elegant Photo Album_Liepaja.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/viena_diena_riga_SMALL.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/AI_portfolio_3.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/Velozurnals_transilvanija_small.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/Uvja_velosezona_2025_blurred.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/velo_no_skrundas_2021_pavasaris.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/senkovs.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/pdf/Lukasz_Twarkowski.pdf</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/raksti/burtiska-uztvere.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/raksti/eiropas_reputacija.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/raksti/eirovizijas_kods.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/raksti/eirovizija_vizualais_tests.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/raksti/eurovision2.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/raksti/eurovision_2025.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/raksti/industrija_vs_eurovision.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.puteklis.com/raksti/pasvaldību_velesanas_IT_neveiksmes.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 </urlset>

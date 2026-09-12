@@ -1106,11 +1106,95 @@ const songs = [
     "image": "cover/Dūdieviņš (Cover by PUTEKLIS).webp",
     "style": "deep house, A modern deep house sound shaped by melodic sensitivity and emotional depth, blending chilled grooves with subtle club energy, The music flows through warm, rolling basslines and clean, side-chained kicks, supported by smooth deep house rhythms that sit comfortably between lounge listening and late-night dancefloor moods, Melodic elements are gentle yet memorable, built from airy synth leads, soft pads, and nostalgic nu-disco textures that add warmth and movement without overpowering the groove, Vocals play a central role — expressive, soulful, and intimate — floating above the mix to enhance the emotional pull, often evoking feelings of longing, calm, and quiet euphoria, The overall atmosphere is dreamy, slightly melancholic, and immersive, designed for night drives, relaxed club sessions, summer evenings, or introspective moments, capturing the essence of modern deep house vibes"
   },
-                     {
-    "title": "Lietus aiz loga",
-    "audio": "music/Lietus aiz loga.mp3",
-    "lyrics": "lyrics/Lietus aiz loga.txt",
-    "image": "cover/Lietus aiz loga.webp",
-    "style": "Soulful deep house, slow-burning groove, deep warm bassline, soft four-on-the-floor kick, spacious atmospheric synth pads, subtle piano chords, restrained electronic percussion, intimate smoky female vocal, slightly husky and sensual tone, minimal verses, hypnotic repetition, gradual emotional build, smooth late-night club atmosphere, understated and confident, organic warmth, polished modern production, 120 BPM"
+                      {
+    "title": "Pirmskara nams",
+    "audio": "music/Chrome Alley Pulse.mp3",
+    "lyrics": "lyrics/Chrome Alley Pulse.txt",
+    "image": "cover/Chrome Alley Pulse.webp",
+    "style": "Dark hypertechno / deep house hybrid, male vocals, Pounding sidechained kick and gritty bass groove under glassy, atmospheric pads and metallic arps, Verses ride a low, tense murmur; chorus opens wider with airy reverb tails and a hypnotic lead hook, Subby low end, crisp hats, and whispered ad-libs drifting in the stereo field for late-night, underground energy, deep"
+  },
+                        {
+    "title": "You Lost Me Forever",
+    "audio": "music/Two Quiet Strangers.mp3",
+    "lyrics": "lyrics/Two Quiet Strangers.txt",
+    "image": "cover/Two Quiet Strangers.webp",
+    "style": "gospel, Up-tempo blues gospel with accordion, blues guitar and piano, Female vocal, soulful and powerful, with call-and-response backing vocals, Groovy rhythm, emotional but energetic feel"
+  },
+  {
+    "title": "Uzticības tālrunis",
+    "audio": "music/Uzticības tālrunis.mp3",
+    "lyrics": "lyrics/Uzticības tālrunis.txt",
+    "image": "cover/Uzticības tālrunis.webp",
+    "style": "country, americana country, western, bluegrass influences"
+  },
+  {
+    "title": "Vij, Dieviņi, zelta viju",
+    "audio": "music/Zelta Viju.mp3",
+    "lyrics": "lyrics/Zelta Viju.txt",
+    "image": "cover/Zelta Viju.webp",
+    "style": "folk, Modern Baltic folk with female vocal ensemble, traditional Latvian folk influences blended with subtle electronic elements, Layered female harmonies, strong rhythmic pulse, ethnic percussion, kokle-like textures and atmospheric sound, Energetic, mystical and hypnotic mood, nature-inspired, ritualistic feel with clean modern production"
+  },
+    {
+    "title": "Pink Mickey Mouse",
+    "audio": "music/Pink Mickey Mouse.mp3",
+    "lyrics": "lyrics/Pink Mickey Mouse.txt",
+    "image": "cover/Pink Mickey Mouse.webp",
+    "style": "country, Upbeat bluegrass americana, playful and rhythmic, Female vocal, clear and storytelling, Banjo, fiddle, acoustic guitar, upright bass, Medium-fast tempo, light swing feel, slightly humorous and lively"
+  },
+    {
+    "title": "Nenormāli gribas",
+    "audio": "music/Nenormali gribas.mp3",
+    "lyrics": "lyrics/Nenormali gribas.txt",
+    "image": "cover/Nenormali gribas.webp",
+    "style": "moody acoustic folk rock drive, gravelly baritone with nervous edge, pulsing arpeggiated acoustic guitar, jangling electric guitar shadows, walking bassline under tension, brushed snare shuffle rhythm, light tambourine ghost hits, minor-key cinematic lift, dusty analog warmth, tape-saturated drum room, late-evening roadside energy, flickering lantern mood, restless rural melancholy, shadowed melodic hooks"
+  },
+      {
+    "title": "Zied ievas Siguldā (Cover by PUTEKLIS)",
+    "audio": "music/Zied ievas Siguldā.mp3",
+    "lyrics": "lyrics/Zied ievas Siguldā.txt",
+    "image": "cover/Zied ievas Siguldā.webp",
+    "style": "Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, blues, outlaw country noir, desert blues"
+  },
+        {
+    "title": "Blue Screen Fires",
+    "audio": "music/Blue Screen Fires.mp3",
+    "lyrics": "lyrics/Blue Screen Fires.txt",
+    "image": "cover/Blue Screen Fires.webp",
+    "style": "Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, blues, outlaw country noir, desert blues"
+  },
+   {
+    "title": "Stacijas Skābeklis",
+    "audio": "music/Stacijas Skābeklis.mp3",
+    "lyrics": "lyrics/Stacijas Skābeklis.txt",
+    "image": "cover/Stacijas Skābeklis.webp",
+    "style": "Baltic folk noir-pop, male and female duet, playful call-and-response vocals, warm acoustic guitars, subtle blues influences, desert wind textures, light trance-folk pulse, atmospheric electronics, poetic urban storytelling, moonlit railway station mood, bittersweet humor, dreamlike imagery, catchy sing-along chorus, intimate yet cinematic, earthy and human, nostalgic but alive"
+  },
+     {
+    "title": "dzīvoklis",
+    "audio": "music/dzīvoklis.mp3",
+    "lyrics": "lyrics/dzīvoklis.txt",
+    "image": "cover/dzīvoklis.webp",
+    "style": "Carnival noir, dark cabaret folk, Balkan brass accents, male and female duet, upright bass groove, brushed drums, accordion swells, playful theatrical vocals, surreal urban storytelling, smoky apartment atmosphere, bittersweet humor, wandering cat energy, cinematic folk cabaret"
+  },
+       {
+    "title": "4 meitenes",
+    "audio": "music/4 meitenes.mp3",
+    "lyrics": "lyrics/4 meitenes.txt",
+    "image": "cover/4 meitenes.webp",
+    "style": "Math-pop cabaret, absurdist folk theatre, male and female duet, playful spoken-word verses, accordion, clarinet, upright bass, beachside surrealism, literary humor, ironic academic atmosphere, whimsical storytelling, catchy sing-along chorus, European art-pop, cinematic summer melancholy, intellectual nonsense, quirky festival energy"
+  },
+   {
+    "title": "Pārdaugava",
+    "audio": "music/Pārdaugava.mp3",
+    "lyrics": "lyrics/Pārdaugava.txt",
+    "image": "cover/Pārdaugava.webp",
+    "style": "erotic darkwave, cinematic fetish pop, Gothic electro-punk with acoustic threats, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, sleazy synth noir, melodic electro-decadence, Industrial glam rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave, Post-Industrial, Neo-Schlager Remix, Soft Neue Deutsche Härte meets absurdist gospel"
+  },
+     {
+    "title": "Cypress Drawer",
+    "audio": "music/Cypress Drawer.mp3",
+    "lyrics": "lyrics/Cypress Drawer.txt",
+    "image": "cover/Cypress Drawer.webp",
+    "style": "Neue Deutsche Härte, Industrial Noir, Darkwave, Apocalyptic Cabaret elements, deep male baritone, spoken-word verses and melodic choruses, heavy distorted guitars, dark synths, melancholic saxophone, underground cinema atmosphere, religious imagery, decadent and intimate, haunted Eastern European nightscap"
   }
 ];

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="lv">
 <head>
+  <link rel="canonical" href="https://www.puteklis.com/jaunumi.html">
   <meta charset="UTF-8" />
-  <title>Jaunumi | Puteklis</title>
+  <link rel="icon" href="/images/logo_small.png" type="image/png">
+  <title data-i18n="nav.jaunumi">Jaunumi | Puteklis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="assets/css/main_puteklis.css" />
+  <link rel="alternate" type="application/rss+xml" title="Putekļa Jaunumi" href="https://puteklis.com/jaunumi.xml" />
   <style>
     body {
       background: linear-gradient(to right, #2c3e50, #4ca1af);
@@ -143,23 +146,21 @@
     <header>
     <nav>
       <ul>
-        <li><a href="index.html">Manifests</a></li>
-        <li><a href="jaunumi.html" class="active">Jaunumi</a></li>
-        <li><a href="raksti.html">Raksti</a></li>
-        <li><a href="abonet.html">Abonēt</a></li>
-        <li><a href="index_en.html">EN</a></li>
+        <li><a href="index.html" data-i18n="nav.manifests">Manifests</a></li>
+        <li><a href="jaunumi.html" class="active" data-i18n="nav.jaunumi">Jaunumi</a></li>
+        <li><a href="raksti.html" data-i18n="nav.raksti">Raksti</a></li>
+        <li><a href="abonet.html" data-i18n="nav.abonet">Abonēt</a></li>
       </ul>
     </nav>
   </header>
 
-<link rel="alternate" type="application/rss+xml" title="Putekļa Jaunumi" href="https://puteklis.com/jaunumi.xml">
-
 
   <div class="container">
-    <h1>Putekļa jaunumi</h1>
-    <div class="news-grid" id="newsContainer">Notiek ielāde...</div>
+    <h1 data-i18n="jaunumi.h1">Putekļa jaunumi</h1>
+    <div class="news-grid" id="newsContainer"></div>
   </div>
 
+  <script src="assets/js/lang.js?v=4"></script>
   <script>
     fetch("jaunumi.json")
       .then(response => response.json())
@@ -170,22 +171,26 @@
         data.forEach(entry => {
           const card = document.createElement("div");
           card.className = "news-card";
-          card.innerHTML = `
-            <h2>${entry.title}</h2>
-            <p><em>${entry.date}</em></p>
-            <p>${entry.description}</p>
-          `;
+          const h2 = document.createElement("h2");
+          h2.textContent = entry.title;
+          const pDate = document.createElement("p");
+          const em = document.createElement("em");
+          em.textContent = entry.date;
+          pDate.appendChild(em);
+          const pDesc = document.createElement("p");
+          pDesc.textContent = entry.description;
+          card.append(h2, pDate, pDesc);
           container.appendChild(card);
         });
       })
       .catch(error => {
-        document.getElementById("newsContainer").innerHTML = "Kļūda ielādējot jaunumus.";
+        document.getElementById("newsContainer").textContent = t('jaunumi.error');
         console.error("JSON ielādes kļūda:", error);
       });
   </script>
 
  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G‑RKRHBD6CN4"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKRHBD6CN4"></script>
   <script src="assets/js/analytics.js"></script>
 
 </body>

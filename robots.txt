@@ -1,6 +1,20 @@
-User-agent: \*
+User-agent: *
 Allow: /
 
-# Sitemap declaration
+Sitemap: https://www.puteklis.com/sitemap.xml
 
-Sitemap: [https://www.puteklis.com/sitemap.xml](https://www.puteklis.com/sitemap.xml)
+# AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /

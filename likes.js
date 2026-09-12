@@ -1,47 +1,107 @@
+const SUPABASE_URL = 'https://czeqqdorcwmonjmgtbsu.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_kSYMKb3RH53KAsyDyHWJ0g_axqhoOeE';
 
-// ====== LIKE / UNLIKE funkcionalitāte ar Cosmos DB ======
-document.addEventListener("DOMContentLoaded", attachLikeHandlers);
+const _h = {
+  'apikey': SUPABASE_KEY,
+  'Authorization': `Bearer ${SUPABASE_KEY}`,
+  'Content-Type': 'application/json'
+};
 
-function attachLikeHandlers() {
-  // Pārraksta event listenerus katrai jaunai kartītei
-  document.querySelectorAll(".card").forEach(card => {
-    const btn  = card.querySelector(".like-btn");
-    const span = card.querySelector(".like-count");
-    if (!btn || !span) return;
+function getDeviceId() {
+  let id = localStorage.getItem('puteklis_device_id');
+  if (!id) {
+    id = (typeof crypto.randomUUID === 'function')
+      ? crypto.randomUUID()
+      : Math.random().toString(36).slice(2) + Date.now().toString(36);
+    localStorage.setItem('puteklis_device_id', id);
+  }
+  return id;
+}
 
-    const idRaw   = card.querySelector("h4")?.textContent.trim() ?? "";
-    const songId  = idRaw.toLowerCase().replace(/[^a-z0-9]/g, "_");
-    const keyLS   = "like_" + songId;
+let _likeCache = null;
 
-    // Ielādēt skaitu
-    fetch(`https://puteklis-functions.azurewebsites.net/api/like/${songId}`)
-      .then(r => r.ok ? r.json() : { count: 0 })
-      .then(data => {
-        span.textContent = data.count ?? 0;
-        if (localStorage.getItem(keyLS) === "1") btn.classList.add("active");
-      })
-      .catch(console.error);
+async function loadLikeData() {
+  if (_likeCache) return _likeCache;
+  const deviceId = getDeviceId();
+  try {
+    const [countsRes, myRes] = await Promise.all([
+      fetch(`${SUPABASE_URL}/rest/v1/song_like_counts?select=song_id,count`, { headers: _h }),
+      fetch(`${SUPABASE_URL}/rest/v1/song_likes?device_id=eq.${encodeURIComponent(deviceId)}&select=song_id`, { headers: _h })
+    ]);
+    const counts = countsRes.ok ? await countsRes.json() : [];
+    const myLikes = myRes.ok ? await myRes.json() : [];
+    _likeCache = {
+      countMap: Object.fromEntries(counts.map(r => [r.song_id, r.count])),
+      likedSet: new Set(myLikes.map(r => r.song_id))
+    };
+  } catch (e) {
+    console.warn('Likes ielāde neizdevās:', e);
+    _likeCache = { countMap: {}, likedSet: new Set() };
+  }
+  return _likeCache;
+}
 
-    // Notīram iepriekšējo listeneri, ja tāds bija
-    btn.replaceWith(btn.cloneNode(true));
-    const newBtn = card.querySelector(".like-btn");
+async function initLikes() {
+  const { countMap, likedSet } = await loadLikeData();
+  document.querySelectorAll('.like-btn').forEach(btn => {
+    const id = btn.dataset.songId;
+    const liked = likedSet.has(id);
+    btn.querySelector('.like-heart').textContent = liked ? '♥' : '♡';
+    btn.querySelector('.like-count').textContent = countMap[id] ?? 0;
+    btn.classList.toggle('liked', liked);
+  });
+}
 
-    newBtn.addEventListener("click", () => {
-      const like = !newBtn.classList.contains("active"); // true = pievienot, false = atņemt
-      fetch(`https://puteklis-functions.azurewebsites.net/api/like/${songId}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ like })
-      })
-      .then(r => r.json())
-      .then(data => {
-        span.textContent = data.count ?? "?";
-        newBtn.classList.toggle("active", like);
-        localStorage.setItem(keyLS, like ? "1" : "0");
-        newBtn.classList.add("animate");
-        setTimeout(()=>newBtn.classList.remove("animate"),150);
-      })
-      .catch(err => console.error("Neizdevās saglabāt like:", err));
-    });
+function attachLikeHandler(btn) {
+  btn.addEventListener('click', async () => {
+    const songId = btn.dataset.songId;
+    const isLiked = btn.classList.contains('liked');
+    const countEl = btn.querySelector('.like-count');
+    const heartEl = btn.querySelector('.like-heart');
+    const cur = parseInt(countEl.textContent) || 0;
+    const deviceId = getDeviceId();
+
+    const newLiked = !isLiked;
+    btn.classList.toggle('liked', newLiked);
+    heartEl.textContent = newLiked ? '♥' : '♡';
+    countEl.textContent = newLiked ? cur + 1 : Math.max(0, cur - 1);
+    btn.disabled = true;
+
+    let ok = false;
+    try {
+      if (isLiked) {
+        const res = await fetch(
+          `${SUPABASE_URL}/rest/v1/song_likes?song_id=eq.${encodeURIComponent(songId)}&device_id=eq.${encodeURIComponent(deviceId)}`,
+          { method: 'DELETE', headers: _h }
+        );
+        ok = res.ok;
+      } else {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/song_likes`, {
+          method: 'POST',
+          headers: { ..._h, 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ song_id: songId, device_id: deviceId })
+        });
+        ok = res.ok || res.status === 409;
+      }
+    } catch (e) {
+      console.warn('Like neizdevās:', e);
+    }
+
+    btn.disabled = false;
+
+    if (ok && _likeCache) {
+      if (newLiked) {
+        _likeCache.likedSet.add(songId);
+        _likeCache.countMap[songId] = cur + 1;
+      } else {
+        _likeCache.likedSet.delete(songId);
+        _likeCache.countMap[songId] = Math.max(0, cur - 1);
+      }
+    }
+    if (!ok) {
+      btn.classList.toggle('liked', isLiked);
+      heartEl.textContent = isLiked ? '♥' : '♡';
+      countEl.textContent = cur;
+    }
   });
 }
