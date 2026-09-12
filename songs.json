@@ -1196,5 +1196,12 @@
         "lyrics":  "lyrics/Cypress Drawer.txt",
         "image":  "cover/Cypress Drawer.webp",
         "style":  "Neue Deutsche Härte, Industrial Noir, Darkwave, Apocalyptic Cabaret elements, deep male baritone, spoken-word verses and melodic choruses, heavy distorted guitars, dark synths, melancholic saxophone, underground cinema atmosphere, religious imagery, decadent and intimate, haunted Eastern European nightscap"
+    },
+    {
+        "title": "Lietus aiz loga",
+        "audio": "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Lietus aiz loga.mp3",
+        "lyrics": "lyrics/Lietus aiz loga.txt",
+        "image": "cover/Lietus aiz loga.webp",
+        "style": "Soulful deep house, slow-burning groove, deep warm bassline, soft four-on-the-floor kick, spacious atmospheric synth pads, subtle piano chords, restrained electronic percussion, intimate smoky female vocal, slightly husky and sensual tone, minimal verses, hypnotic repetition, gradual emotional build, smooth late-night club atmosphere, understated and confident, organic warmth, polished modern production, 120 BPM"
     }
 ]
