@@ -1203,5 +1203,12 @@ const songs = [
     "lyrics": "lyrics/Lietus aiz loga.txt",
     "image": "cover/Lietus aiz loga.webp",
     "style": "Soulful deep house, slow-burning groove, deep warm bassline, soft four-on-the-floor kick, spacious atmospheric synth pads, subtle piano chords, restrained electronic percussion, intimate smoky female vocal, slightly husky and sensual tone, minimal verses, hypnotic repetition, gradual emotional build, smooth late-night club atmosphere, understated and confident, organic warmth, polished modern production, 120 BPM"
+  },
+  {
+    "title": "Ātri, ātri lai viņš uzplaukst",
+    "audio": "music/Ātri, ātri lai viņš uzplaukst.mp3",
+    "lyrics": "lyrics/Ātri, ātri lai viņš uzplaukst.txt",
+    "image": "cover/Ātri, ātri lai viņš uzplaukst.webp",
+    "style": "Dark country rock, gritty acoustic guitar, twangy electric guitar, steady drums, warm but rough bass, smoky tenor saxophone, expressive accordion, sultry sexy female vocal, slightly husky tone, dry sarcastic delivery, cynical attitude, black humor, dusty late-night bar atmosphere, catchy chorus, restrained harmonies, subtle blues influence, raw live-band feel, no sentimental mood"
   }
 ];
