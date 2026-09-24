@@ -1216,6 +1216,6 @@ const songs = [
     "audio": "music/Что в глубине.mp3",
     "lyrics": "lyrics/Что в глубине.txt",
     "image": "cover/Что в глубине.webp",
-    "style": "Dark atmospheric ballad, slow cinematic build, deep resonant male vocal, brooding and introspective delivery, sparse piano, distant echoing strings, subtle ambient drones, minimal percussion, heavy emotional weight, existential dread turning to release, haunting reverb-soaked textures, gradual crescendo, cathartic climax, melancholic yet hopeful ending"
+    "style": "Dark cinematic blues-rock with gothic atmosphere, slow-burning tempo, deep warm bass, restrained live drums, expressive slide guitar and warm overdriven electric guitar, Low smoky male baritone, weathered and slightly raspy, intimate narrative delivery, calm but increasingly intense, Sparse verses with lots of space, subtle ambient textures and distant guitar echoes, Gradual tension build, haunting melodic motifs, melancholic minor-key harmony, Long emotional guitar solo with wide bends, slow vibrato and sustained notes, no shredding, The arrangement should feel like a dark psychological journey: minimal at first, heavier and more dramatic in the middle, then spacious and almost weightless near the end, Organic analog sound, cinematic depth, nocturnal, mysterious, existential"
   }
 ];
