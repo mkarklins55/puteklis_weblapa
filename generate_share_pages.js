@@ -4,8 +4,17 @@ const path = require('path');
 const songs = JSON.parse(fs.readFileSync('songs.json', 'utf8'));
 const base = 'https://puteklis.com';
 
+const CYRILLIC_MAP = {
+    а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'e', ж: 'zh', з: 'z',
+    и: 'i', й: 'i', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p', р: 'r',
+    с: 's', т: 't', у: 'u', ф: 'f', х: 'h', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'sch',
+    ъ: '', ы: 'y', ь: '', э: 'e', ю: 'yu', я: 'ya',
+    і: 'i', ї: 'yi', є: 'ye', ґ: 'g'
+};
+
 function slug(title) {
     return title.toLowerCase()
+        .replace(/[а-яёіїєґ]/g, ch => CYRILLIC_MAP[ch] ?? ch)
         .replace(/[āàáâä]/g, 'a').replace(/[čç]/g, 'c').replace(/[ēèéêë]/g, 'e')
         .replace(/[ģ]/g, 'g').replace(/[īìíîï]/g, 'i').replace(/[ķ]/g, 'k')
         .replace(/[ļ]/g, 'l').replace(/[ņ]/g, 'n').replace(/[šß]/g, 's')

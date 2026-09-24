@@ -1210,5 +1210,12 @@
         "lyrics": "lyrics/Ātri, ātri lai viņš uzplaukst.txt",
         "image": "cover/Ātri, ātri lai viņš uzplaukst.webp",
         "style": "Dark country rock, gritty acoustic guitar, twangy electric guitar, steady drums, warm but rough bass, smoky tenor saxophone, expressive accordion, sultry sexy female vocal, slightly husky tone, dry sarcastic delivery, cynical attitude, black humor, dusty late-night bar atmosphere, catchy chorus, restrained harmonies, subtle blues influence, raw live-band feel, no sentimental mood"
+    },
+    {
+        "title": "Что в глубине",
+        "audio": "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Что в глубине.mp3",
+        "lyrics": "lyrics/Что в глубине.txt",
+        "image": "cover/Что в глубине.webp",
+        "style": "Dark atmospheric ballad, slow cinematic build, deep resonant male vocal, brooding and introspective delivery, sparse piano, distant echoing strings, subtle ambient drones, minimal percussion, heavy emotional weight, existential dread turning to release, haunting reverb-soaked textures, gradual crescendo, cathartic climax, melancholic yet hopeful ending"
     }
 ]
