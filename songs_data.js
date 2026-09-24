@@ -72,14 +72,14 @@ const songs = [
   {
     "title": "Organic House III",
     "audio": "music/Organic House III.mp3",
-    "lyrics": "lyrics/Organic House III.txt",
+    "lyrics": null,
     "image": "cover/Organic House III.webp",
     "style": "house, Organic House, Progressive Melodic Techno, Tech-House"
   },
   {
     "title": "Organic House VII",
     "audio": "music/Organic House VII.mp3",
-    "lyrics": "lyrics/Organic House VII.txt",
+    "lyrics": null,
     "image": "cover/Organic House VII.webp",
     "style": "house, Organic House, Tribal Drums, Punchy Kick, Groove-focused Hi-hats, Atmospheric Pads, Afro-inspired percussion"
   },

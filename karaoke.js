@@ -25,9 +25,13 @@ function createSongCard(song) {
   card.style = 'width:280px;background:#2b2b2b;color:#eee;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,.4);overflow:hidden;';
 
   const styleText = song.style;
-  const safePath = encodeURI(song.lyrics);
+  const safePath = song.lyrics ? encodeURI(song.lyrics) : '';
 
   card.innerHTML = `\n    <img src="${song.image}" alt="${song.title}" style="width:100%;height:180px;object-fit:cover;">\n    <div style="padding:12px;">\n      <h4 style="margin:0 0 8px 0;font-size:1.05em;">${song.title}</h4>\n      <p style="margin:0 0 8px 0;font-size:.85em;color:#bbb;">${styleText}</p>\n      <audio controls preload="none" data-src="${song.audio}" style="width:100%;" onplay="loadAudio(this); pauseOthers(this)"></audio>\n      <button class="lyrics-btn" data-lyrics="${safePath}" data-title="${song.title}"\n              style="margin-top:8px;background:#ee6c4d;border:none;color:#fff;padding:6px 10px;border-radius:5px;cursor:pointer;font-size:.9em;">Vārdi</button>\n      <div id="lyricsBox_${cssSafe(song.title)}" style="display:none;margin-top:8px;background:#111;color:#ddd;padding:8px;border-radius:5px;font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;"></div>\n    </div>`;
+  if (!song.lyrics) {
+    card.querySelector('.lyrics-btn').remove();
+    card.querySelector('#lyricsBox_' + cssSafe(song.title)).remove();
+  }
   return card;
 }
 

@@ -184,9 +184,9 @@ function makeCard(song,i){
       <p>${song.style}</p>
       <div style="display:flex;gap:8px">
         <button class="play-btn" data-idx="${i}">▶️ Atskaņot</button>
-        <button class="lyrics-btn">Vārdi</button>
+        ${song.lyrics ? '<button class="lyrics-btn">Vārdi</button>' : ''}
       </div>
-      <div class="lyrics-box" id="lyr_${cssSafe(song.title)}">Ielādē...</div>
+      ${song.lyrics ? `<div class="lyrics-box" id="lyr_${cssSafe(song.title)}">Ielādē...</div>` : ''}
       <div class="social">\
     <button class="like\-btn" title="Patīk">❤️</button><span class="like\-count">0</span>\
     <a class="share\-link fb" title="Dalīties Facebook"   target="_blank">📘</a>\
@@ -197,7 +197,7 @@ function makeCard(song,i){
 
   /* Poga "Atskaņot" & "Vārdi" */
   c.querySelector('.play-btn').onclick   = e => playIndex(+e.target.dataset.idx);
-  c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
+  if(song.lyrics) c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
 
   /* ---- Sociālo saišu iestatīšana ---- */
   const social = c.querySelector('.social');
@@ -216,6 +216,7 @@ const countSpan = social.querySelector('.like-count');
 
 /* ---------- Parāda / paslēpj dziesmas vārdus ---------- */
 function toggleLyrics(song){
+  if(!song.lyrics) return;
   const box = qs('#lyr_' + cssSafe(song.title));
   if(box.style.display === 'block'){box.style.display='none';return;}
   if(box.textContent === 'Ielādē...'){

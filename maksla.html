@@ -1548,18 +1548,18 @@ function createSongCard(song){
                        padding:6px 0;border-radius:5px;cursor:pointer;font-weight:600;">
           ▶️ Atskaņot
         </button>
-        <button class="lyrics-btn"
+        ${song.lyrics ? `<button class="lyrics-btn"
                 data-lyrics="${encodeURI(song.lyrics)}"
                 data-title="${esc(song.title)}"
                 style="flex:1;background:#555;border:none;color:#fff;
                        padding:6px 0;border-radius:5px;cursor:pointer;">
           Vārdi
-        </button>
+        </button>` : ''}
       </div>
-      <div id="lyricsBox_${cssSafe(song.title)}"
+      ${song.lyrics ? `<div id="lyricsBox_${cssSafe(song.title)}"
            style="display:none;background:#111;color:#ddd;padding:8px;border-radius:5px;
                   font-family:monospace;white-space:pre-wrap;max-height:140px;overflow-y:auto;">
-      </div>
+      </div>` : ''}
     </div>`;
 
   const playBtn = card.querySelector('.play-btn');
@@ -1594,7 +1594,7 @@ function createSongCard(song){
   });
 
   // LYRICS
-  card.querySelector('.lyrics-btn').addEventListener('click', e=>{
+  if(song.lyrics) card.querySelector('.lyrics-btn').addEventListener('click', e=>{
     loadLyrics(e.target.dataset.lyrics, e.target.dataset.title);
   });
 

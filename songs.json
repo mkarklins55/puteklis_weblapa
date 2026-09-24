@@ -72,14 +72,14 @@
     {
         "title":  "Organic House III",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Organic House III.mp3",
-        "lyrics":  "lyrics/Organic House III.txt",
+        "lyrics":  null,
         "image":  "cover/Organic House III.webp",
         "style":  "house, Organic House, Progressive Melodic Techno, Tech-House"
     },
     {
         "title":  "Organic House VII",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Organic House VII.mp3",
-        "lyrics":  "lyrics/Organic House VII.txt",
+        "lyrics":  null,
         "image":  "cover/Organic House VII.webp",
         "style":  "house, Organic House, Tribal Drums, Punchy Kick, Groove-focused Hi-hats, Atmospheric Pads, Afro-inspired percussion"
     },
@@ -500,14 +500,14 @@
     {
         "title":  "Tumša nakte, zaļa zāle",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Tumša nakte, zaļa zāle.mp3",
-        "lyrics":  "lyrics/Tum�?a nakte, zaļa zāle.txt",
+        "lyrics":  "lyrics/Tumša nakte, zaļa zāle.txt",
         "image":  "cover/tumsa_nakte.webp",
         "style":  "synthpop, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, darkwave, erotic darkwave ballad, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, folk polyphony, ritual chant-pop, Baltic ethno-electro, trance-folk minimalism, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering"
     },
     {
         "title":  "Rikšiem bērīti es palaidu",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Rikšiem bērīti es palaidu.mp3",
-        "lyrics":  "lyrics/Rik�?iem bērīti es palaidu.txt",
+        "lyrics":  "lyrics/Rikšiem bērīti es palaidu.txt",
         "image":  "cover/riksiem_beriti.webp",
         "style":  "synthpop, train beat rhythm, outlaw country, industrial-infused synthpop, detached electro-noir, concrete coldwave, cynical alt-pop minimalism, post-digital crooner style, burnout wave, synthetic urban lament, stark dark electropop, aesthetic anti-ballad"
     },
@@ -535,7 +535,7 @@
     {
         "title":  "I’m the palm",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/I’m the palm.mp3",
-        "lyrics":  "lyrics/Ia��m the palm.txt",
+        "lyrics":  "lyrics/I’m the palm.txt",
         "image":  "cover/the_palm.webp",
         "style":  "darkwave, erotic darkwave ballad, sleazy synth noir, melodic electro-decadence, industrial crooner pop, gothic bedroom glam, dirty love song for broken neon, cinematic fetish pop, folk polyphony, ritual chant-pop, Baltic ethno-electro, female vocal harmony, trance-folk minimalism, shamanic drum pulse, nature-inspired avant-pop, contemporary pagan fusion, ancestral vocal layering, ceremonial vocal trance"
     },
@@ -598,7 +598,7 @@
     {
         "title":  "Coffeeshop — “Hedgehog in the Fog”",
         "audio":  "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Coffeeshop — “Hedgehog in the Fog”.mp3",
-        "lyrics":  "lyrics/Coffeeshop a�� a�?Hedgehog in the Foga��.txt",
+        "lyrics":  "lyrics/Coffeeshop — “Hedgehog in the Fog”.txt",
         "image":  "cover/hedgehog.webp",
         "style":  "synthpop, melodic electro-goth, dark synthpop ballad, cinematic darkwave, glam noir electronica, romantic coldwave, urban dream-synth, melancholic industrial pop, dramatic alt-synth rock, neon-shadow chanson, synth-lament for lost cities"
     },

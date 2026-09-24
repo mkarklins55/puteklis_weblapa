@@ -277,9 +277,11 @@ let songs = []; // tiks piepildīts ar fetch
 let list = [];
 let current = -1;
 let shuffleOn = false;
-let focusTrack = new URLSearchParams(window.location.search).get('track');
+const pageParams = new URLSearchParams(window.location.search);
+const sharedPlaylistToken = pageParams.get('playlist');
+let focusTrack = pageParams.get('track');
 let focusApplied = false;
-const autoplayOnLoad = !!focusTrack;
+const autoplayOnLoad = !!focusTrack && !sharedPlaylistToken;
 if(focusTrack) focusTrack = focusTrack.toLowerCase();
 const shareMenus = new Set();
 document.addEventListener('click', () => closeShareMenus());
@@ -291,13 +293,14 @@ async function loadSongs(){
     songs = await res.json();
     populateSelect();
     filterRender();
+    if (sharedPlaylistToken) await loadSharedPlaylist(sharedPlaylistToken);
   }catch(err){
     console.error(err);
     grid.textContent = '❗ Neizdevās ielādēt dziesmu datus.';
   }
 }
 
-function startPlaylistMode(songTitles) {
+function startPlaylistMode(songTitles, playlistName) {
   list = songs.filter(s => songTitles.includes(s.title));
   list.sort((a,b) => songTitles.indexOf(a.title) - songTitles.indexOf(b.title));
   if(!list.length){ alert('Dziesmas nav atrastas.'); return; }
@@ -307,7 +310,9 @@ function startPlaylistMode(songTitles) {
   const bar = document.getElementById('pl-mode-bar');
   const nameEl = document.getElementById('pl-mode-name');
   if(bar){ bar.classList.add('visible'); }
-  if(nameEl && activePl){ nameEl.textContent = '▶ ' + activePl.name; }
+  if(nameEl && (playlistName || activePl)){
+    nameEl.textContent = '▶ ' + (playlistName || activePl.name);
+  }
   grid.classList.add('pl-mode');
   playIndex(0);
   closeSidebar();
@@ -442,7 +447,7 @@ function makeCard(song,i){
 
       <div class='action-row'>
         <button class='play-btn' data-idx='${i}' title='Atskaņot'>▶</button>
-        <button class='lyrics-btn' data-i18n='card.lyrics'>${t('card.lyrics')}</button>
+        ${song.lyrics ? `<button class='lyrics-btn' data-i18n='card.lyrics'>${t('card.lyrics')}</button>` : ''}
         <button class='sb-add-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" title="${t('card.add-title')}" data-i18n-title='card.add-title'>+</button>
         <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}">
           <span class='like-heart'>♡</span>
@@ -459,10 +464,10 @@ function makeCard(song,i){
           </div>
         </div>
       </div>
-      <div class='lyrics-box' id='lyr_${cssSafe(song.title)}' data-i18n='card.lyrics-loading'>${t('card.lyrics-loading')}</div>
+      ${song.lyrics ? `<div class='lyrics-box' id='lyr_${cssSafe(song.title)}' data-i18n='card.lyrics-loading'>${t('card.lyrics-loading')}</div>` : ''}
     </div>`;
   c.querySelector('.play-btn').onclick = e => playIndex(+e.currentTarget.dataset.idx);
-  c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
+  if(song.lyrics) c.querySelector('.lyrics-btn').onclick = () => toggleLyrics(song);
   if(typeof attachLikeHandler === 'function') attachLikeHandler(c.querySelector('.like-btn'));
   const addBtn = c.querySelector('.sb-add-btn');
   if(addBtn) addBtn.onclick = e => { e.stopPropagation(); if(typeof showAddToPlaylistPopup === 'function') showAddToPlaylistPopup(song.title, addBtn); };
@@ -478,6 +483,7 @@ function makeCard(song,i){
   return c;
 }
 function toggleLyrics(song){
+  if(!song.lyrics) return;
   const box = qs('#lyr_' + cssSafe(song.title));
   if(!box) return;
   if(box.style.display === 'block') { box.style.display = 'none'; return; }

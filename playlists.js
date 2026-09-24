@@ -68,8 +68,39 @@ async function togglePublic(pl) {
 }
 
 function copyPlaylistLink(pl) {
-  const url = `${window.location.origin}/muzika.html?playlist=${pl.share_token}`;
-  navigator.clipboard.writeText(url).then(() => alert('Saite nokopēta!\n' + url));
+  if (!pl.share_token) {
+    alert('Šim sarakstam nav kopīgošanas saites.');
+    return;
+  }
+  const url = new URL('muzika.html', window.location.href);
+  url.search = new URLSearchParams({ playlist: pl.share_token }).toString();
+  navigator.clipboard.writeText(url.toString()).then(() => alert('Saite nokopēta!\n' + url));
+}
+
+async function loadSharedPlaylist(token) {
+  const { data: playlist, error: playlistError } = await sb.from('playlists')
+    .select('id, name')
+    .eq('share_token', token)
+    .eq('is_public', true)
+    .maybeSingle();
+  if (playlistError || !playlist) {
+    document.getElementById('songGrid').textContent = 'Publiskais saraksts nav atrasts vai nav pieejams.';
+    return;
+  }
+
+  const { data: rows, error: songsError } = await sb.from('playlist_songs')
+    .select('song_id')
+    .eq('playlist_id', playlist.id)
+    .order('position');
+  if (songsError) {
+    document.getElementById('songGrid').textContent = 'Neizdevās ielādēt saraksta dziesmas.';
+    return;
+  }
+  if (!rows?.length) {
+    document.getElementById('songGrid').textContent = 'Saraksts ir tukšs.';
+    return;
+  }
+  startPlaylistMode(rows.map(row => row.song_id), playlist.name);
 }
 
 async function openPlaylistDetail(pl) {
