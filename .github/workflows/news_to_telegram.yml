@@ -7,9 +7,14 @@ on:
       - generate_rss.js
       - jaunumi.xml
 
+permissions:
+  contents: read
+
 jobs:
   notify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # pushes .github/latest_guid
 
     steps:
       - name: Checkout repo
@@ -30,9 +35,11 @@ jobs:
 
       # (4) Pārbauda, vai šis GUID jau ziņots (saglabāts failā)
       - id: check
+        env:
+          LATEST_GUID: ${{ steps.latest.outputs.guid }}
         run: |
           prev=$(cat .github/latest_guid 2>/dev/null || echo "none")
-          if [ "$prev" = "${{ steps.latest.outputs.guid }}" ]; then
+          if [ "$prev" = "$LATEST_GUID" ]; then
             echo "send=no" >> $GITHUB_OUTPUT
           else
             echo "send=yes" >> $GITHUB_OUTPUT
@@ -44,16 +51,20 @@ jobs:
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID:   ${{ secrets.CHAT_ID }}
+          ITEM_TITLE: ${{ steps.latest.outputs.title }}
+          ITEM_LINK:  ${{ steps.latest.outputs.link }}
         run: |
           node send_telegram.js \
-               "${{ steps.latest.outputs.title }}" \
-               "${{ steps.latest.outputs.link }}"
+               "$ITEM_TITLE" \
+               "$ITEM_LINK"
 
       # (6) Saglabā šo GUID, lai citreiz nesūta to pašu
       - name: Save latest GUID
         if: steps.check.outputs.send == 'yes'
+        env:
+          LATEST_GUID: ${{ steps.latest.outputs.guid }}
         run: |
-          echo "${{ steps.latest.outputs.guid }}" > .github/latest_guid
+          echo "$LATEST_GUID" > .github/latest_guid
           git config user.name github-actions
           git config user.email github@users.noreply.github.com
           git add .github/latest_guid
