@@ -9,7 +9,7 @@ const songs = [
   {
     "title": "Un mēs braucam",
     "audio": "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/un mēs braucam.mp3",
-    "lyrics": "lyrics/Un mēs braucam.txt",
+    "lyrics": "lyrics/un mēs braucam.txt",
     "image": "cover/Un mēs braucam.webp",
     "style": "metal, melodic, progressive metal, synth, nu metal"
   },
@@ -142,7 +142,7 @@ const songs = [
   {
     "title": "Muris",
     "audio": "https://pub-78be37f2f6bf4c179ad8552d367f79e3.r2.dev/Muris.mp3",
-    "lyrics": "lyrics/Muris.txt",
+    "lyrics": "lyrics/muris.txt",
     "image": "cover/muris.webp",
     "style": "rock, Melodic Industrial Rock, Dark Ballad, Gothic Rock, Soft Neue Deutsche Härte, Darkwave"
   },
