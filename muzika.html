@@ -487,11 +487,12 @@ function toggleLyrics(song){
   const box = qs('#lyr_' + cssSafe(song.title));
   if(!box) return;
   if(box.style.display === 'block') { box.style.display = 'none'; return; }
-  if(box.textContent.trim() === 'Ielāde...'){
+  if(box.dataset.lyricsLoaded !== '1'){
+    box.dataset.lyricsLoaded = '1';
     fetch(encodeURI(song.lyrics))
       .then(r => r.ok ? r.text() : Promise.reject())
-      .then(t => box.textContent = t)
-      .catch(() => box.textContent = 'Teksts nav atrasts');
+      .then(txt => { box.removeAttribute('data-i18n'); box.textContent = txt; })
+      .catch(() => { box.removeAttribute('data-i18n'); box.textContent = 'Teksts nav atrasts'; });
   }
   box.style.display = 'block';
 }
