@@ -186,7 +186,7 @@
 <aside id="playlist-sidebar" class="sb-sidebar sb-closed">
   <div class="sb-top">
     <h3 data-i18n="sb.title">📋 Mani saraksti</h3>
-    <button class="sb-close-btn" onclick="closeSidebar()">×</button>
+    <button class="sb-close-btn" onclick="closeSidebar()" aria-label="Aizvērt">×</button>
   </div>
   <div class="sb-inner">
     <!-- Login -->
@@ -220,7 +220,7 @@
       </div>
       <div id="sb-pl-detail-view" style="display:none">
         <div class="sb-detail-header">
-          <button class="sb-back-btn" onclick="closePlaylistDetail()">←</button>
+          <button class="sb-back-btn" onclick="closePlaylistDetail()" aria-label="Atpakaļ">←</button>
           <h4 id="sb-detail-name"></h4>
           <button class="sb-icon-btn" onclick="if(activePl) playPlaylist(activePl.id)" title="Atskaņot visu" data-i18n-title="sb.play-all">▶</button>
         </div>
@@ -252,9 +252,9 @@
   <img id="coverMini" src="" alt="">
   <div id="trackMeta"><h5 id="trackTitle">—</h5><span id="trackStyle">—</span></div>
   <button id="shuffleBtn" class="player-btn" title="Shuffle">🔀</button>
-  <button id="prevBtn" class="player-btn">⏮️</button>
-  <button id="playPauseBtn" class="player-btn">▶️</button>
-  <button id="nextBtn" class="player-btn">⏭️</button>
+  <button id="prevBtn" class="player-btn" aria-label="Iepriekšējā dziesma">⏮️</button>
+  <button id="playPauseBtn" class="player-btn" aria-label="Atskaņot / pauze">▶️</button>
+  <button id="nextBtn" class="player-btn" aria-label="Nākamā dziesma">⏭️</button>
   <div id="progressWrap"><div id="progress"><div id="progressFill"></div></div><div id="timestamp">0:00</div></div>
 </div>
 

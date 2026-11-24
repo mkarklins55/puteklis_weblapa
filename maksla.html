@@ -1850,10 +1850,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     <div style="position:absolute; top:10px; right:10px; display:flex; gap:10px;">
       <button onclick="toggleSlideshow()" style="background:none; border:none; font-size:1.2em; color:white; cursor:pointer;">▶ / ⏸</button>
       <button id="fsToggleBtn" onclick="toggleFullscreen()" style="background:none; border:none; font-size:1.2em; color:white; cursor:pointer;">⛶</button>
-      <button onclick="closeFlickrGallery()" style="background:none; border:none; font-size:1.5em; color:white; cursor:pointer;">&times;</button>
+      <button onclick="closeFlickrGallery()" aria-label="Aizvērt" style="background:none; border:none; font-size:1.5em; color:white; cursor:pointer;">&times;</button>
     </div>
-    <button onclick="nextFlickrImage(-1)" style="position:absolute; left:10px; font-size:2em; background:none; border:none; color:white; cursor:pointer;">&#10094;</button>
-    <button onclick="nextFlickrImage(1)" style="position:absolute; right:10px; font-size:2em; background:none; border:none; color:white; cursor:pointer;">&#10095;</button>
+    <button onclick="nextFlickrImage(-1)" aria-label="Iepriekšējais" style="position:absolute; left:10px; font-size:2em; background:none; border:none; color:white; cursor:pointer;">&#10094;</button>
+    <button onclick="nextFlickrImage(1)" aria-label="Nākamais" style="position:absolute; right:10px; font-size:2em; background:none; border:none; color:white; cursor:pointer;">&#10095;</button>
   </div>
 </div>
 
