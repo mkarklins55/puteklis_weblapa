@@ -92,8 +92,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9); /* melns ar 40% caurspīdīgumu */
-    z-index: 1.5; /* starp fona attēlu (1) un gradientu (2) */
+    background: rgba(0, 0, 0, 0.9); /* melns, 90% necaurspīdīgs */
   }
 
   /* Teksta konteiners centrā */
