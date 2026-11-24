@@ -37,12 +37,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://puteklis.com/manifest.html</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://puteklis.com/jaunumi.html</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -74,6 +68,12 @@
   </url>
   <url>
     <loc>https://puteklis.com/politika_new.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://puteklis.com/abonet.html</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -139,7 +139,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://puteklis.com/pdf/Elegant Photo Album_Liepaja.pdf</loc>
+    <loc>https://puteklis.com/pdf/Elegant%20Photo%20Album_Liepaja.pdf</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>never</changefreq>
     <priority>0.5</priority>
@@ -229,7 +229,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://puteklis.com/raksti/pasvaldību_velesanas_IT_neveiksmes.html</loc>
+    <loc>https://puteklis.com/raksti/pasvald%C4%ABbu_velesanas_IT_neveiksmes.html</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
