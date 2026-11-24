@@ -21,29 +21,29 @@ Songs can be filtered by genre, searched by title, and added to personal playlis
 ## Travel & Cycling Journals (puteklis.com/piedzivojumi.html)
 
 Travel stories and cycling adventures. PDF cycling journals:
-- [Armenia](https://www.puteklis.com/pdf/Velozurnals_nr4_Armenija.pdf) — cycling through Armenia
-- [Alps 2024](https://www.puteklis.com/pdf/velozurnals_Alpi_2024_SMALL.pdf) — mountain cycling in the Alps
-- [Morocco](https://www.puteklis.com/pdf/velozurnals_nr6_Maroka.pdf) — cycling across Morocco
-- [Lofoten Islands 2024](https://www.puteklis.com/pdf/Velozurnals_Lofotu_salas_2024.pdf) — Norway, Lofoten
-- [Transylvania](https://www.puteklis.com/pdf/Velozurnals_transilvanija_small.pdf) — Romania, Transylvania
-- [100 km in Latvia](https://www.puteklis.com/pdf/100_km_Latvijas_s.pdf) — cycling across Latvia
-- [One Day in Riga](https://www.puteklis.com/pdf/viena_diena_riga_SMALL.pdf) — a photo story about Riga
+- [Armenia](https://puteklis.com/pdf/Velozurnals_nr4_Armenija.pdf) — cycling through Armenia
+- [Alps 2024](https://puteklis.com/pdf/velozurnals_Alpi_2024_SMALL.pdf) — mountain cycling in the Alps
+- [Morocco](https://puteklis.com/pdf/velozurnals_nr6_Maroka.pdf) — cycling across Morocco
+- [Lofoten Islands 2024](https://puteklis.com/pdf/Velozurnals_Lofotu_salas_2024.pdf) — Norway, Lofoten
+- [Transylvania](https://puteklis.com/pdf/Velozurnals_transilvanija_small.pdf) — Romania, Transylvania
+- [100 km in Latvia](https://puteklis.com/pdf/100_km_Latvijas_s.pdf) — cycling across Latvia
+- [One Day in Riga](https://puteklis.com/pdf/viena_diena_riga_SMALL.pdf) — a photo story about Riga
 
 ## Photography & AI Portfolio (puteklis.com/foto.html)
 
 AI-generated and original photography. AI portfolio PDFs:
-- [AI Portfolio](https://www.puteklis.com/pdf/AI_portfolio.pdf)
-- [AI Portfolio 4](https://www.puteklis.com/pdf/AI_portfolio_4_upd.pdf)
+- [AI Portfolio](https://puteklis.com/pdf/AI_portfolio.pdf)
+- [AI Portfolio 4](https://puteklis.com/pdf/AI_portfolio_4_upd.pdf)
 
 ## Articles (puteklis.com/raksti.html)
 
 Cultural and social commentary, primarily in Latvian:
-- [Literal Perception](https://www.puteklis.com/raksti/burtiska-uztvere.html)
-- [Europe's Reputation](https://www.puteklis.com/raksti/eiropas_reputacija.html)
-- [The Eurovision Code](https://www.puteklis.com/raksti/eirovizijas_kods.html)
-- [Industry vs Eurovision](https://www.puteklis.com/raksti/industrija_vs_eurovision.html)
-- [Eurovision 2025](https://www.puteklis.com/raksti/eurovision_2025.html)
-- [IT Failures in Municipal Elections](https://www.puteklis.com/raksti/pasvaldību_velesanas_IT_neveiksmes.html)
+- [Literal Perception](https://puteklis.com/raksti/burtiska-uztvere.html)
+- [Europe's Reputation](https://puteklis.com/raksti/eiropas_reputacija.html)
+- [The Eurovision Code](https://puteklis.com/raksti/eirovizijas_kods.html)
+- [Industry vs Eurovision](https://puteklis.com/raksti/industrija_vs_eurovision.html)
+- [Eurovision 2025](https://puteklis.com/raksti/eurovision_2025.html)
+- [IT Failures in Municipal Elections](https://puteklis.com/raksti/pasvaldību_velesanas_IT_neveiksmes.html)
 
 ## Visual Art (puteklis.com/maksla.html)
 
@@ -72,13 +72,13 @@ Puteklis ir Latvijas eksperimentāls mūzikas projekts. Visas 171 dziesmas ir or
 ## Ceļojumi un velozurnāli (puteklis.com/piedzivojumi.html)
 
 Ceļojumu apraksti un velozurnāli PDF formātā:
-- [Armēnija](https://www.puteklis.com/pdf/Velozurnals_nr4_Armenija.pdf)
-- [Alpi 2024](https://www.puteklis.com/pdf/velozurnals_Alpi_2024_SMALL.pdf)
-- [Maroka](https://www.puteklis.com/pdf/velozurnals_nr6_Maroka.pdf)
-- [Lofotu salas 2024](https://www.puteklis.com/pdf/Velozurnals_Lofotu_salas_2024.pdf)
-- [Transilvānija](https://www.puteklis.com/pdf/Velozurnals_transilvanija_small.pdf)
-- [100 km Latvijā](https://www.puteklis.com/pdf/100_km_Latvijas_s.pdf)
-- [Viena diena Rīgā](https://www.puteklis.com/pdf/viena_diena_riga_SMALL.pdf)
+- [Armēnija](https://puteklis.com/pdf/Velozurnals_nr4_Armenija.pdf)
+- [Alpi 2024](https://puteklis.com/pdf/velozurnals_Alpi_2024_SMALL.pdf)
+- [Maroka](https://puteklis.com/pdf/velozurnals_nr6_Maroka.pdf)
+- [Lofotu salas 2024](https://puteklis.com/pdf/Velozurnals_Lofotu_salas_2024.pdf)
+- [Transilvānija](https://puteklis.com/pdf/Velozurnals_transilvanija_small.pdf)
+- [100 km Latvijā](https://puteklis.com/pdf/100_km_Latvijas_s.pdf)
+- [Viena diena Rīgā](https://puteklis.com/pdf/viena_diena_riga_SMALL.pdf)
 
 ## Foto un AI portfolio (puteklis.com/foto.html)
 
@@ -87,12 +87,12 @@ AI ģenerētas un oriģinālas fotogrāfijas un portfolio.
 ## Raksti (puteklis.com/raksti.html)
 
 Kultūras un sabiedrības raksti latviešu valodā:
-- [Burtiskā uztvere](https://www.puteklis.com/raksti/burtiska-uztvere.html)
-- [Eiropas reputācija](https://www.puteklis.com/raksti/eiropas_reputacija.html)
-- [Eirovīzijas kods](https://www.puteklis.com/raksti/eirovizijas_kods.html)
-- [Industrija vs Eurovision](https://www.puteklis.com/raksti/industrija_vs_eurovision.html)
-- [Eurovision 2025](https://www.puteklis.com/raksti/eurovision_2025.html)
-- [Pašvaldību vēlēšanu IT neveiksmes](https://www.puteklis.com/raksti/pasvaldību_velesanas_IT_neveiksmes.html)
+- [Burtiskā uztvere](https://puteklis.com/raksti/burtiska-uztvere.html)
+- [Eiropas reputācija](https://puteklis.com/raksti/eiropas_reputacija.html)
+- [Eirovīzijas kods](https://puteklis.com/raksti/eirovizijas_kods.html)
+- [Industrija vs Eurovision](https://puteklis.com/raksti/industrija_vs_eurovision.html)
+- [Eurovision 2025](https://puteklis.com/raksti/eurovision_2025.html)
+- [Pašvaldību vēlēšanu IT neveiksmes](https://puteklis.com/raksti/pasvaldību_velesanas_IT_neveiksmes.html)
 
 ## Māksla (puteklis.com/maksla.html)
 
@@ -100,4 +100,4 @@ Vizuālā māksla, AI mākslas projekti un izstāžu katalogi.
 
 ## Vietne
 
-https://www.puteklis.com
+https://puteklis.com

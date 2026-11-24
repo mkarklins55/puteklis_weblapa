@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.puteklis.com/sitemap.xml
+Sitemap: https://puteklis.com/sitemap.xml
 
 # AI crawlers
 User-agent: GPTBot
