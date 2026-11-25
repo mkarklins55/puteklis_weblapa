@@ -58,6 +58,8 @@ const TRANSLATIONS = {
     'page.maksla': 'Māksla | Puteklis',
     'page.piedzivojumi': 'Ceļojumi un piedzīvojumi | Puteklis',
     'page.raksti': 'Raksti | Puteklis',
+    'page.jaunumi': 'Putekļa jaunumi | Puteklis',
+    'page.abonet': 'Abonē Putekļa jaunumus | Puteklis',
     /* --- foto.html --- */
     'foto.h1': 'No putekļiem rodas stāsti. No gaismas — attēli.',
     'foto.filter.all': 'Visi',
@@ -114,7 +116,7 @@ const TRANSLATIONS = {
     'raksti.eiropa.h2': 'Eiropas reputācijas lamatas',
     'raksti.eiropa.p': 'Kā normatīvā kultūra kavē izaugsmi, tehnoloģijas un drošību',
     'raksti.eurovision.h2': 'Eirovīzija - dziesmu konkurss vai meme šovs?',
-    'raksti.eurovision.p': 'Analītisks skatiens uz Eirovīzijas evolūciju, drāmām un nākotnes iespējam',
+    'raksti.eurovision.p': 'Analītisks skatiens uz Eirovīzijas evolūciju, drāmām un nākotnes iespējām',
     'raksti.industrija.h2': 'Industrijas dziesmas vs. Eirovīzijas dziesmas',
     'raksti.industrija.p': 'Vai mūzika ir māksla vai maskarāde? Vienā pusē algoritms un albums, otrā – lāzeri, karogi un trīs minūšu drāma.',
     'raksti.kods.h2': 'Eirovīzijas kods',
@@ -246,6 +248,8 @@ const TRANSLATIONS = {
     'page.maksla': 'Art | Puteklis',
     'page.piedzivojumi': 'Travel | Puteklis',
     'page.raksti': 'Articles | Puteklis',
+    'page.jaunumi': 'News | Puteklis',
+    'page.abonet': 'Subscribe | Puteklis',
     /* --- foto.html --- */
     'foto.h1': 'Stories from dust. Images from light.',
     'foto.filter.all': 'All',

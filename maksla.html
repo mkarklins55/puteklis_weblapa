@@ -2348,7 +2348,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
   const audio = document.getElementById('dustAudio');
   const canvas = document.getElementById('dustCanvas');
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas ? canvas.getContext('2d') : null;
   
   let audioContext;
   let analyser;
@@ -2356,6 +2356,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let dataArray;
   let animationId;
   
+  // Lapā nav #dustAudio un #dustCanvas elementu; bez šīs pārbaudes skripts met TypeError.
+  if (audio && canvas) {
   audio.addEventListener('play', async () => {
     if (!audioContext) {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -2387,6 +2389,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   audio.addEventListener('pause', () => cancelAnimationFrame(animationId));
   audio.addEventListener('ended', () => cancelAnimationFrame(animationId));
+  }
   </script>
     
     <script>

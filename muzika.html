@@ -82,6 +82,7 @@
     .like-btn:disabled{opacity:.5;cursor:default}
     .like-heart{font-size:1.05em;line-height:1}
     .like-count{font-size:.85em;font-weight:600}
+    .like-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
     /* Pielikšanas popup */
     .sb-add-btn{background:#2c2c2c;border:1px solid #444;color:#aaa;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:1.1em;font-weight:700;transition:color .2s,border-color .2s;flex:0 0 auto;line-height:1}
@@ -451,8 +452,9 @@ function makeCard(song,i){
         <button class='play-btn' data-idx='${i}' title='Atskaņot'>▶</button>
         ${song.lyrics ? `<button class='lyrics-btn' data-i18n='card.lyrics'>${t('card.lyrics')}</button>` : ''}
         <button class='sb-add-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" title="${t('card.add-title')}" data-i18n-title='card.add-title'>+</button>
-        <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" aria-label="${t('card.like')}" data-i18n-aria='card.like' aria-pressed='false'>
-          <span class='like-heart'>♡</span>
+        <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" aria-pressed='false'>
+          <span class='like-heart' aria-hidden='true'>♡</span>
+          <span class='like-label' data-i18n='card.like'>${t('card.like')}</span>
           <span class='like-count'>…</span>
         </button>
         <div class='share-wrap'>
