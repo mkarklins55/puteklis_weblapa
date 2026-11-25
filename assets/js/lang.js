@@ -52,6 +52,8 @@ const TRANSLATIONS = {
     'a11y.next': 'Nākamais',
     'a11y.slideshow': 'Slīdrāde',
     'a11y.fullscreen': 'Pilnekrāna režīms',
+    'a11y.menu': 'Izvēlne',
+    'a11y.open-radio': 'Atvērt Putekļa radio',
     /* --- Lapas nosaukumi --- */
     'page.muzika': 'Mūzika | Puteklis',
     'page.foto': 'Foto — Putekļa pasaule',
@@ -242,6 +244,8 @@ const TRANSLATIONS = {
     'a11y.next': 'Next',
     'a11y.slideshow': 'Slideshow',
     'a11y.fullscreen': 'Full screen',
+    'a11y.menu': 'Menu',
+    'a11y.open-radio': 'Open Puteklis Radio',
     /* --- Page titles --- */
     'page.muzika': 'Music | Puteklis',
     'page.foto': 'Photo — Puteklis World',
