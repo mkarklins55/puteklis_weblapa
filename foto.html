@@ -12,7 +12,7 @@
 
   <!-- Lightbox2 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
-  <script src="assets/js/lang.js?v=4"></script>
+  <script src="assets/js/lang.js?v=8"></script>
 
   <style>
     :root {
@@ -430,14 +430,14 @@
 
     <!-- Augšējās pogas -->
     <div style="position:absolute; top:10px; right:10px; display:flex; gap:10px;">
-      <button onclick="toggleSlideshow()"   class="lb-btn">▶ / ⏸</button>
-      <button id="fsToggleBtn" onclick="toggleFullscreen()" class="lb-btn">⛶</button>
-      <button onclick="closeFlickrGallery()" class="lb-btn" aria-label="Aizvērt" style="font-size:1.5em;">×</button>
+      <button id="slideshowBtn" onclick="toggleSlideshow()"   class="lb-btn" aria-label="Slīdrāde" data-i18n-aria="a11y.slideshow" aria-pressed="false">▶ / ⏸</button>
+      <button id="fsToggleBtn" onclick="toggleFullscreen()" class="lb-btn" aria-label="Pilnekrāna režīms" data-i18n-aria="a11y.fullscreen" aria-pressed="false">⛶</button>
+      <button onclick="closeFlickrGallery()" class="lb-btn" aria-label="Aizvērt" data-i18n-aria="a11y.close" style="font-size:1.5em;">×</button>
     </div>
 
     <!-- Sānās bultiņas -->
-    <button onclick="nextFlickrImage(-1)" class="lb-arrow" aria-label="Iepriekšējais" style="left:10px;">❮</button>
-    <button onclick="nextFlickrImage( 1)" class="lb-arrow" aria-label="Nākamais" style="right:10px;">❯</button>
+    <button onclick="nextFlickrImage(-1)" class="lb-arrow" aria-label="Iepriekšējais" data-i18n-aria="a11y.prev" style="left:10px;">❮</button>
+    <button onclick="nextFlickrImage( 1)" class="lb-arrow" aria-label="Nākamais" data-i18n-aria="a11y.next" style="right:10px;">❯</button>
   </div>
 </div>
 
@@ -636,10 +636,12 @@ function toggleSlideshow(){
 function startSlideshow(){
   slideshowOn = true;
   slideshowTimer = setInterval(()=>nextFlickrImage(1), 5000);
+  document.getElementById('slideshowBtn').setAttribute('aria-pressed', 'true');
 }
 function stopSlideshow(){
   slideshowOn = false;
   clearInterval(slideshowTimer);
+  document.getElementById('slideshowBtn').setAttribute('aria-pressed', 'false');
 }
 
 /* ---------- 8) AIZVĒRT ---------- */
@@ -659,6 +661,7 @@ function closeFlickrGallery(){
 document.addEventListener('fullscreenchange', ()=>{
   document.getElementById('fsToggleBtn').textContent =
     document.fullscreenElement ? '⤢' : '⛶';
+  document.getElementById('fsToggleBtn').setAttribute('aria-pressed', document.fullscreenElement ? 'true' : 'false');
 });
 document.addEventListener('keydown', (e)=>{
   if(e.key==='Escape' && document.getElementById('flickrLightbox').style.display==='flex'

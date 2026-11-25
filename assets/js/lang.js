@@ -38,6 +38,20 @@ const TRANSLATIONS = {
     'card.share-via': 'Dalīties ar...',
     'card.copy-link': 'Kopēt saiti',
     'card.lyrics-loading': 'Ielāde...',
+    'card.lyrics-error': 'Teksts nav atrasts',
+    'card.like': 'Patīk',
+    /* --- muzika.html: atskaņotājs --- */
+    'player.play': 'Atskaņot',
+    'player.pause': 'Pauze',
+    'player.prev': 'Iepriekšējā dziesma',
+    'player.next': 'Nākamā dziesma',
+    /* --- Pogu nosaukumi ekrāna lasītājiem (aria-label) --- */
+    'a11y.close': 'Aizvērt',
+    'a11y.back': 'Atpakaļ',
+    'a11y.prev': 'Iepriekšējais',
+    'a11y.next': 'Nākamais',
+    'a11y.slideshow': 'Slīdrāde',
+    'a11y.fullscreen': 'Pilnekrāna režīms',
     /* --- Lapas nosaukumi --- */
     'page.muzika': 'Mūzika | Puteklis',
     'page.foto': 'Foto — Putekļa pasaule',
@@ -212,6 +226,20 @@ const TRANSLATIONS = {
     'card.share-via': 'Share via...',
     'card.copy-link': 'Copy link',
     'card.lyrics-loading': 'Loading...',
+    'card.lyrics-error': 'Lyrics not found',
+    'card.like': 'Like',
+    /* --- muzika.html: player --- */
+    'player.play': 'Play',
+    'player.pause': 'Pause',
+    'player.prev': 'Previous track',
+    'player.next': 'Next track',
+    /* --- Button names for screen readers (aria-label) --- */
+    'a11y.close': 'Close',
+    'a11y.back': 'Back',
+    'a11y.prev': 'Previous',
+    'a11y.next': 'Next',
+    'a11y.slideshow': 'Slideshow',
+    'a11y.fullscreen': 'Full screen',
     /* --- Page titles --- */
     'page.muzika': 'Music | Puteklis',
     'page.foto': 'Photo — Puteklis World',
@@ -374,6 +402,11 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n-title]').forEach(el => {
     const v = t(el.dataset.i18nTitle);
     if (v) el.title = v;
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const k = el.dataset.i18nAria;
+    const v = t(k);
+    if (v && v !== k) el.setAttribute('aria-label', v);
   });
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const v = t(el.dataset.i18nHtml);

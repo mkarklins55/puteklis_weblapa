@@ -49,6 +49,7 @@ async function initLikes() {
     btn.querySelector('.like-heart').textContent = liked ? '♥' : '♡';
     btn.querySelector('.like-count').textContent = countMap[id] ?? 0;
     btn.classList.toggle('liked', liked);
+    btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
   });
 }
 
@@ -63,6 +64,7 @@ function attachLikeHandler(btn) {
 
     const newLiked = !isLiked;
     btn.classList.toggle('liked', newLiked);
+    btn.setAttribute('aria-pressed', newLiked ? 'true' : 'false');
     heartEl.textContent = newLiked ? '♥' : '♡';
     countEl.textContent = newLiked ? cur + 1 : Math.max(0, cur - 1);
     btn.disabled = true;
@@ -100,6 +102,7 @@ function attachLikeHandler(btn) {
     }
     if (!ok) {
       btn.classList.toggle('liked', isLiked);
+      btn.setAttribute('aria-pressed', isLiked ? 'true' : 'false');
       heartEl.textContent = isLiked ? '♥' : '♡';
       countEl.textContent = cur;
     }

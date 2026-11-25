@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://puteklis.com/muzika.html" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="assets/css/main_puteklis.css">
-  <script src="assets/js/lang.js?v=4"></script>
+  <script src="assets/js/lang.js?v=8"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <style>
     body{margin:0;font-family:'Helvetica Neue',sans-serif;background:#121212;color:#f8f8f8}
@@ -186,7 +186,7 @@
 <aside id="playlist-sidebar" class="sb-sidebar sb-closed">
   <div class="sb-top">
     <h3 data-i18n="sb.title">📋 Mani saraksti</h3>
-    <button class="sb-close-btn" onclick="closeSidebar()" aria-label="Aizvērt">×</button>
+    <button class="sb-close-btn" onclick="closeSidebar()" aria-label="Aizvērt" data-i18n-aria="a11y.close">×</button>
   </div>
   <div class="sb-inner">
     <!-- Login -->
@@ -220,7 +220,7 @@
       </div>
       <div id="sb-pl-detail-view" style="display:none">
         <div class="sb-detail-header">
-          <button class="sb-back-btn" onclick="closePlaylistDetail()" aria-label="Atpakaļ">←</button>
+          <button class="sb-back-btn" onclick="closePlaylistDetail()" aria-label="Atpakaļ" data-i18n-aria="a11y.back">←</button>
           <h4 id="sb-detail-name"></h4>
           <button class="sb-icon-btn" onclick="if(activePl) playPlaylist(activePl.id)" title="Atskaņot visu" data-i18n-title="sb.play-all">▶</button>
         </div>
@@ -252,9 +252,9 @@
   <img id="coverMini" src="" alt="">
   <div id="trackMeta"><h5 id="trackTitle">—</h5><span id="trackStyle">—</span></div>
   <button id="shuffleBtn" class="player-btn" title="Shuffle">🔀</button>
-  <button id="prevBtn" class="player-btn" aria-label="Iepriekšējā dziesma">⏮️</button>
-  <button id="playPauseBtn" class="player-btn" aria-label="Atskaņot / pauze">▶️</button>
-  <button id="nextBtn" class="player-btn" aria-label="Nākamā dziesma">⏭️</button>
+  <button id="prevBtn" class="player-btn" aria-label="Iepriekšējā dziesma" data-i18n-aria="player.prev">⏮️</button>
+  <button id="playPauseBtn" class="player-btn" aria-label="Atskaņot">▶️</button>
+  <button id="nextBtn" class="player-btn" aria-label="Nākamā dziesma" data-i18n-aria="player.next">⏭️</button>
   <div id="progressWrap"><div id="progress"><div id="progressFill"></div></div><div id="timestamp">0:00</div></div>
 </div>
 
@@ -449,7 +449,7 @@ function makeCard(song,i){
         <button class='play-btn' data-idx='${i}' title='Atskaņot'>▶</button>
         ${song.lyrics ? `<button class='lyrics-btn' data-i18n='card.lyrics'>${t('card.lyrics')}</button>` : ''}
         <button class='sb-add-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" title="${t('card.add-title')}" data-i18n-title='card.add-title'>+</button>
-        <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}">
+        <button class='like-btn' data-song-id="${song.title.replace(/"/g,'&quot;')}" aria-label="${t('card.like')}" data-i18n-aria='card.like' aria-pressed='false'>
           <span class='like-heart'>♡</span>
           <span class='like-count'>…</span>
         </button>
@@ -489,16 +489,26 @@ function toggleLyrics(song){
   if(box.style.display === 'block') { box.style.display = 'none'; return; }
   if(box.dataset.lyricsLoaded !== '1'){
     box.dataset.lyricsLoaded = '1';
+    box.dataset.i18n = 'card.lyrics-loading';
+    box.textContent = t('card.lyrics-loading');
     fetch(encodeURI(song.lyrics))
       .then(r => r.ok ? r.text() : Promise.reject())
       .then(txt => { box.removeAttribute('data-i18n'); box.textContent = txt; })
-      .catch(() => { box.removeAttribute('data-i18n'); box.textContent = 'Teksts nav atrasts'; });
+      .catch(() => { box.dataset.i18n = 'card.lyrics-error'; box.textContent = t('card.lyrics-error'); delete box.dataset.lyricsLoaded; });
   }
   box.style.display = 'block';
 }
 
 
 /* ---------- Atskaņotājs ---------- */
+let playState = false;
+function setPlayState(playing){
+  playState = playing;
+  playPauseBtn.textContent = playing ? '⏸️' : '▶️';
+  playPauseBtn.setAttribute('aria-label', t(playing ? 'player.pause' : 'player.play'));
+}
+document.addEventListener('langchange', () => setPlayState(playState));
+
 function playIndex(i){
   current = i;
   const song = list[i];
@@ -508,10 +518,10 @@ function playIndex(i){
   coverMini.src = song.image;
   trackTitle.textContent = song.title;
   trackStyle.textContent = song.style.split(',')[0].trim();
-  playPauseBtn.textContent = '▶️';
+  setPlayState(false);
   const p = audio.play();
-  if(p instanceof Promise) p.then(() => { playPauseBtn.textContent = '⏸️'; }).catch(() => {});
-  else playPauseBtn.textContent = '⏸️';
+  if(p instanceof Promise) p.then(() => { setPlayState(true); }).catch(() => {});
+  else setPlayState(true);
   updateButtons();
   highlightPlayingCard(i);
   if(typeof initVisualizer === 'function'){
@@ -530,10 +540,10 @@ function updateButtons(){
 playPauseBtn.onclick = () => {
   if(audio.paused){
     audio.play();
-    playPauseBtn.textContent = '⏸️';
+    setPlayState(true);
   } else {
     audio.pause();
-    playPauseBtn.textContent = '▶️';
+    setPlayState(false);
   }
 };
 prevBtn.onclick = () => { if(current > 0) playIndex(current - 1); };
@@ -545,7 +555,7 @@ audio.onended = playNext;
 function playNext(){
   if(!list.length) return;
   shuffleOn ? playIndex(Math.floor(Math.random()*list.length))
-            : (current < list.length - 1 ? playIndex(current + 1) : (playPauseBtn.textContent = '▶️'));
+            : (current < list.length - 1 ? playIndex(current + 1) : setPlayState(false));
 }
 
 audio.ontimeupdate = () => {
