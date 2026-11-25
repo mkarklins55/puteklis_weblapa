@@ -56,7 +56,7 @@ const TRANSLATIONS = {
     'page.muzika': 'Mūzika | Puteklis',
     'page.foto': 'Foto — Putekļa pasaule',
     'page.maksla': 'Māksla | Puteklis',
-    'page.piedzivojumi': 'Ceļojumi | Puteklis',
+    'page.piedzivojumi': 'Ceļojumi un piedzīvojumi | Puteklis',
     'page.raksti': 'Raksti | Puteklis',
     /* --- foto.html --- */
     'foto.h1': 'No putekļiem rodas stāsti. No gaismas — attēli.',
